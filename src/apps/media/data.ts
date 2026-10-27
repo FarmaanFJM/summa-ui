@@ -70,7 +70,7 @@ const LENSES = ['35mm f/2', '50mm f/1.4', '90mm f/2.5', '24mm f/3.5']
 const KEYS = ['A minor', 'D dorian', 'F lydian', 'C major', 'E minor', 'G mixolydian']
 export function details(a: Asset): [string, string][] {
   const h = a.seed
-  if (a.kind === 'photo') return [['Camera', BODIES[h % 4]], ['Lens', LENSES[(h >> 3) % 4]], ['Exposure', `f/${[5.6, 8, 11, 4][(h >> 5) % 4]} · 1/${[125, 250, 500, 60][(h >> 7) % 4]}s · ISO ${[64, 100, 200, 400][(h >> 9) % 4]}`], ['Dimensions', a.ratio >= 1 ? '6240 × ' + Math.round(6240 / a.ratio) : Math.round(6240 * a.ratio) + ' × 6240']]
-  if (a.kind === 'music') return [['Tempo', `${58 + (h % 34)} BPM`], ['Key', KEYS[(h >> 4) % 6]], ['Format', '24-bit / 96 kHz FLAC'], ['Length', fmtTime(a.dur)]]
-  return [['Runtime', fmtTime(a.dur)], ['Aspect', '2.39 : 1'], ['Format', 'Super 35 · ProRes 4444'], ['Grade', ['Warm print', 'Bleach bypass', 'Neutral', 'Cool teal'][(h >> 3) % 4]]]
+  if (a.kind === 'photo') return [['Camera', BODIES[h % 4]], ['Lens', LENSES[(h >>> 3) % 4]], ['Exposure', `f/${[5.6, 8, 11, 4][(h >>> 5) % 4]} · 1/${[125, 250, 500, 60][(h >>> 7) % 4]}s · ISO ${[64, 100, 200, 400][(h >>> 9) % 4]}`], ['Dimensions', a.ratio >= 1 ? '6240 × ' + Math.round(6240 / a.ratio) : Math.round(6240 * a.ratio) + ' × 6240']]
+  if (a.kind === 'music') return [['Tempo', `${58 + (h % 34)} BPM`], ['Key', KEYS[(h >>> 4) % 6]], ['Format', '24-bit / 96 kHz FLAC'], ['Length', fmtTime(a.dur)]]
+  return [['Runtime', fmtTime(a.dur)], ['Aspect', '2.39 : 1'], ['Format', 'Super 35 · ProRes 4444'], ['Grade', ['Warm print', 'Bleach bypass', 'Neutral', 'Cool teal'][(h >>> 3) % 4]]]
 }

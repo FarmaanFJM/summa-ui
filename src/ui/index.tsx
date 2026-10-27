@@ -203,7 +203,7 @@ export function Dropdown<T extends string>(props: DropdownProps<T>) {
           <div className="menu-list">
             {shown.map(o => (
               <button key={o.value} type="button" role="option" data-item aria-selected={selected.includes(o.value)} className="menu-item" onClick={() => pick(o.value)}>
-                {props.multiple && <Checkbox checked={selected.includes(o.value)} onChange={() => pick(o.value)} label={o.label} />}
+                {props.multiple && <span className="checkbox" aria-checked={selected.includes(o.value)} aria-hidden="true"><Icon name="check" size={12} strokeWidth={3} /></span>}
                 {o.color && <span className="dot" style={{ width: 8, height: 8, borderRadius: '50%', background: o.color, flex: 'none' }} />}
                 {o.icon && <Icon name={o.icon} size={15} />}
                 <span className="truncate">{o.label}</span>

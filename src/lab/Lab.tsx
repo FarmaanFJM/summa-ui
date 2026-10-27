@@ -36,7 +36,7 @@ export default function Lab({ current }: { current: string }) {
         </>
       }
     >
-      <div className="topbar">
+      <div className="topbar lab-topbar">
         <DrawerToggle />
         <div className="grow col">
           <span className="lab-title truncate">{proto.name}</span>

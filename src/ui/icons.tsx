@@ -100,7 +100,7 @@ export const ICONS = {
 
 export type IconName = keyof typeof ICONS
 
-type IconProps = { name: IconName; size?: number; fill?: boolean } & Omit<SVGProps<SVGSVGElement>, 'name'>
+type IconProps = { name: IconName; size?: number; fill?: boolean } & Omit<SVGProps<SVGSVGElement>, 'name' | 'fill'>
 
 /** Stroke icon set (24px grid, 1.75 stroke). All apps use this single set (Principle 7). */
 export function Icon({ name, size = 16, fill, ...rest }: IconProps) {

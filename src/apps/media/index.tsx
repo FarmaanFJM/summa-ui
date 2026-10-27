@@ -125,7 +125,7 @@ export default function MediaApp() {
               <span className="md-empty-icon"><Icon name={q ? 'search' : 'image'} size={20} /></span>
               <h2>{q ? `No results for “${q}”` : 'Nothing here yet'}</h2>
               <p className="muted">{q ? 'Check the spelling or try a different search.' : view === 'favorites' ? 'Heart an asset to keep it here.' : 'Add assets from the viewer or a tile menu.'}</p>
-              {(q || type !== 'all') && <Button onClick={() => { setQ(''); setType('all') }}>Clear search</Button>}
+              {(q || type !== 'all') && <Button onClick={() => { setQ(''); setType('all') }}>{q ? 'Clear search' : 'Show all types'}</Button>}
             </div>
           ) : (
             <ul className="md-grid" style={{ ['--cw' as string]: COLW[density] + 'px' }} aria-label="Assets">
@@ -191,7 +191,8 @@ function Tile({ a, cols, current, playing, view, onOpen, onPlay, onFav, onRemove
         <span className="truncate md-cap-s">{a.by}{playable ? ` · ${fmtTime(a.dur)}` : ''}</span>
       </div>
       {playable && (
-        <button type="button" className={`md-tile-play ${playing ? 'on' : ''}`} aria-label={playing ? `Pause ${a.title}` : `Play ${a.title}`} onClick={onPlay}>
+        <button type="button" className={`md-tile-play ${playing ? 'on' : ''}`} aria-label={playing ? `Pause ${a.title}` : `Play ${a.title}`} onClick={onPlay}
+          {...(a.kind === 'music' ? { tabIndex: -1, 'aria-hidden': true } : {})}>
           {playing ? <span className="md-eq" aria-hidden="true"><i /><i /><i /></span> : <Icon name="play" size={18} />}
         </button>
       )}

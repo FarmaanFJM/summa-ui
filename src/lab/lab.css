@@ -6,5 +6,5 @@
   .lab-open-label { display: none; }
   .lab-stage { padding: 0; }
   .lab-frame { border-radius: 0; }
-  .topbar .tabs { display: none; }
+  .lab-topbar .tabs { display: none; }
 }
