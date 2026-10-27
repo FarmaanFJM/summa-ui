@@ -26,7 +26,7 @@ export function Rating({ s, long }: { s: Stay; long?: boolean }) {
   )
 }
 
-export function StayImage({ s, variant = 0, className }: { s: Stay; variant?: number; className?: string }) {
+export function StayImage({ s, variant = (s.seed % 2) * 2, className }: { s: Stay; variant?: number; className?: string }) {
   const d = destById(s.dest)!
   return <div className={className}><Art motif={variant === 1 ? 'room' : variant === 3 ? 'detail' : d.motif} pal={d.pal} seed={s.seed} variant={variant} label={`${s.name}, photo ${variant + 1}`} /></div>
 }

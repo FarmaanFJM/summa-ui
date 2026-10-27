@@ -135,7 +135,7 @@ export const nightPrice = (s: Stay, room: Room, iso: string) => {
   const dow = dowOf(iso)
   return Math.round(s.price * room.mult * (dow === 5 || dow === 6 ? 1.12 : 1) * season(iso))
 }
-export const unavailable = (s: Stay, iso: string) => iso < TODAY || hash(s.id + iso) % 100 < 4
+export const unavailable = (s: Stay, iso: string) => iso < TODAY || hash(s.id + iso) % 1000 < 22
 export const soldOut = (s: Stay, q: Query) => { for (let d = q.checkIn; d < q.checkOut; d = addDays(d, 1)) if (unavailable(s, d)) return true; return false }
 
 export type Breakdown = { nights: number; rooms: number; nightly: number; subtotal: number; fees: number; taxes: number; total: number; perNight: number }

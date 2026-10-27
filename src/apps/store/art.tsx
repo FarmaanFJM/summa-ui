@@ -443,6 +443,9 @@ export function Stage({ id, bg, w = 800, h = 800, floor = 600 }: { id: string; b
   )
 }
 
+const ZOOM: Partial<Record<Kind, number>> = { mug: 1.45, cup: 1.6, bowl: 1.3, vase: 1.12, penpot: 1.2, tray: 1.4, cushion: 1.15, throw: 1.25, notebook: 1.05, dome: 1.05 }
+const zoomFor = (l: Look) => { const z = ZOOM[l.kind] ?? 1; return z === 1 ? undefined : `translate(400 600) scale(${z}) translate(-400 -600)` }
+
 /** One product render. `view` 0 is the hero angle; 1 is a close crop; 2 is a quieter context; 3 is mirrored light on a deeper tone. */
 export function ProductArt({ look, view = 0, label }: { look: Look; view?: number; label?: string }) {
   const id = useId().replace(/[^a-z0-9]/gi, '')
@@ -453,7 +456,7 @@ export function ProductArt({ look, view = 0, label }: { look: Look; view?: numbe
   return (
     <svg viewBox="0 0 800 800" preserveAspectRatio="xMidYMid slice" role="img" aria-label={label ?? 'Product image'} width="100%" height="100%" style={{ display: 'block' }}>
       <Stage id={id} bg={bg} />
-      <g transform={tf}><ProductObject look={look} id={id + 'o'} /></g>
+      <g transform={tf}><g transform={zoomFor(look)}><ProductObject look={look} id={id + 'o'} /></g></g>
     </svg>
   )
 }

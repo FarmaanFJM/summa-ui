@@ -1,7 +1,7 @@
 /* Northgate Chess Club: public website layout. All classes prefixed cc- (site) and cb- (board). */
 .cc-root { height: 100%; background: var(--s0); }
 .cc-scroll { height: 100%; overflow-y: auto; overflow-x: hidden; }
-.cc-wrap { width: 100%; max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+.cc-wrap { width: 100%; max-width: 1200px; margin: 0 auto; padding-inline: 24px; }
 .cc-scroll section[id], .cc-scroll footer[id] { scroll-margin-top: 56px; }
 
 /* ---------- Nav ---------- */
@@ -243,7 +243,7 @@
   .cc-agenda { max-height: none; }
 }
 @media (max-width: 860px) {
-  .cc-wrap { padding: 0 16px; }
+  .cc-wrap { padding-inline: 16px; }
   .cc-links { display: none; }
   .cc-burger { display: inline-grid; }
   .cc-nav-in { gap: 12px; }

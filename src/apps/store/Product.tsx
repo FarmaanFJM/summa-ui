@@ -33,7 +33,7 @@ export function ProductPage({ id }: { id: string }) {
   const cat = catOf(p.cat)!
   const price = priceOf(p, size)
   const free = price * qty >= 120
-  const eta = fmtDate(addDays(free ? 5 : 5))
+  const eta = fmtDate(addDays(5))
   const w = wish.includes(p.id)
   const bd = breakdown(p)
   const list = reviews.filter(r => !star || r.stars === star)

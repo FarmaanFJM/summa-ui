@@ -15,7 +15,7 @@ export function Landing({ q }: { q: Query }) {
   return (
     <div className="tv-page">
       <section className="tv-hero">
-        <div className="tv-hero-art" aria-hidden="true"><Art motif="coast" pal="tide" seed={11} variant={1} /></div>
+        <div className="tv-hero-art" aria-hidden="true"><Art motif="alpine" pal="glacier" seed={5} variant={1} /></div>
         <div className="tv-hero-shade" />
         <div className="tv-wrap tv-hero-in">
           <h1 className="tv-h1">Stays worth the journey</h1>
