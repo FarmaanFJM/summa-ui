@@ -1,0 +1,10 @@
+.lab-eyebrow { padding: 8px 10px 6px; }
+.lab-title { font-size: var(--fs-lg); font-weight: 600; }
+.lab-stage { flex: 1; min-height: 0; display: flex; justify-content: center; background: var(--s0); padding: 0 8px 8px; }
+.lab-frame { border: 0; height: 100%; width: 100%; background: var(--s0); border-radius: var(--r-lg); transition: width 220ms var(--ease); }
+@media (max-width: 820px) {
+  .lab-open-label { display: none; }
+  .lab-stage { padding: 0; }
+  .lab-frame { border-radius: 0; }
+  .topbar .tabs { display: none; }
+}
