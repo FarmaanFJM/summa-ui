@@ -45,8 +45,9 @@ export function Popover({ anchor, open, onClose, placement = 'bottom-start', cla
     }
     place()
     window.addEventListener('resize', place)
-    window.addEventListener('scroll', onClose, true)
-    return () => { window.removeEventListener('resize', place); window.removeEventListener('scroll', onClose, true) }
+    const onScroll = (e: Event) => { if (!ref.current?.contains(e.target as Node)) onClose() }
+    window.addEventListener('scroll', onScroll, true)
+    return () => { window.removeEventListener('resize', place); window.removeEventListener('scroll', onScroll, true) }
   }, [open, anchor, placement, isEl, onClose])
 
   useEffect(() => {

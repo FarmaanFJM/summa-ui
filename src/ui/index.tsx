@@ -31,7 +31,7 @@ export function IconButton({ icon, label, size = 'md', on, filled, iconSize, cla
 }
 
 /* ------------------------------------------------------------------ Inputs */
-export function SearchInput({ className = '', ...rest }: InputHTMLAttributes<HTMLInputElement>) {
+export function SearchInput({ className = '', ...rest }: InputHTMLAttributes<HTMLInputElement> & { ref?: Ref<HTMLInputElement> }) {
   return (
     <label className={`search ${className}`}>
       <Icon name="search" size={15} />
@@ -236,7 +236,7 @@ export function Dialog({ open, onClose, title, children, footer, width }: { open
     if (!open) return
     const prev = document.activeElement as HTMLElement | null
     const el = ref.current!
-    ;(el.querySelector<HTMLElement>('[autofocus],input,textarea,select') ?? el.querySelector<HTMLElement>('button'))?.focus()
+    ;(el.querySelector<HTMLElement>('[data-autofocus],[autofocus],input,textarea,select') ?? el.querySelector<HTMLElement>('button'))?.focus()
     const key = (e: KeyboardEvent) => {
       if (e.key === 'Escape') { e.stopPropagation(); onClose() }
       if (e.key === 'Tab') {
