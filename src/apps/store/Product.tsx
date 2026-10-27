@@ -99,7 +99,7 @@ export function ProductPage({ id }: { id: string }) {
             <div className="muted">{p.reviews} reviews</div>
             <div className="st-bars" role="group" aria-label="Filter reviews by rating">
               {[5, 4, 3, 2, 1].map((s, i) => (
-                <button key={s} type="button" aria-pressed={star === s} className="st-bar" onClick={() => { setStar(star === s ? 0 : s); setShown(4) }}>
+                <button key={s} type="button" aria-pressed={star === s} className="st-rbar" onClick={() => { setStar(star === s ? 0 : s); setShown(4) }}>
                   <span className="num">{s}</span><SI name="star" size={11} fill />
                   <span className="st-bar-track"><span style={{ width: `${(bd[i] / p.reviews) * 100}%` }} /></span>
                   <span className="muted num">{bd[i]}</span>

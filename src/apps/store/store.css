@@ -171,9 +171,9 @@
 .st-rev-sum { display: flex; flex-direction: column; gap: 6px; }
 .st-big { font-size: 56px; font-weight: 600; letter-spacing: -0.03em; line-height: 1; }
 .st-bars { display: flex; flex-direction: column; gap: 2px; margin-top: 16px; margin-left: -8px; }
-.st-bar { display: flex; align-items: center; gap: 8px; height: 30px; padding: 0 8px; border-radius: var(--r); color: var(--text-2); }
-.st-bar:hover { background: var(--s2); }
-.st-bar[aria-pressed="true"] { background: var(--select); color: var(--text); }
+.st-rbar { display: flex; align-items: center; gap: 8px; height: 30px; padding: 0 8px; border-radius: var(--r); color: var(--text-2); }
+.st-rbar:hover { background: var(--s2); }
+.st-rbar[aria-pressed="true"] { background: var(--select); color: var(--text); }
 .st-bar-track { flex: 1; height: 6px; border-radius: 3px; background: var(--s3); overflow: hidden; }
 .st-bar-track span { display: block; height: 100%; background: var(--text-2); border-radius: 3px; }
 .st-rev-list { display: flex; flex-direction: column; }
