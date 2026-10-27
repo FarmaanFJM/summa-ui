@@ -25,12 +25,16 @@ export default function Lab({ current }: { current: string }) {
       sidebar={
         <>
           <Brand name="Summa-UI Laboratory" />
-          <div className="eyebrow lab-eyebrow">Prototypes</div>
-          <nav className="col" aria-label="Prototypes" style={{ gap: 2 }}>
-            {PROTOTYPES.map((p, i) => (
-              <NavItem key={p.id} icon={p.icon} label={p.name} current={p.id === proto.id} count={i + 1} onClick={() => go(p.id)} />
-            ))}
-          </nav>
+          {[1, 2].map(g => (
+            <div key={g}>
+              <div className="eyebrow lab-eyebrow">{g === 1 ? 'Phase 1: Workspaces' : 'Phase 2: Layout diversity'}</div>
+              <nav className="col" aria-label={g === 1 ? 'Phase 1 prototypes' : 'Phase 2 prototypes'} style={{ gap: 2 }}>
+                {PROTOTYPES.map((p, i) => p.group === g && (
+                  <NavItem key={p.id} icon={p.icon} label={p.name} current={p.id === proto.id} count={i < 9 ? i + 1 : undefined} onClick={() => go(p.id)} />
+                ))}
+              </nav>
+            </div>
+          ))}
           <div className="grow" />
           <NavItem icon="info" label="Principles applied" closesDrawer onClick={() => { location.hash = '/principles' }} />
         </>
