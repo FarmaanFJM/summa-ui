@@ -127,7 +127,7 @@ export function ListView(p: ViewProps) {
               </div>
             </td>
             <td className="c-mod muted num" role="gridcell">{fmtDate(it.modified)}</td>
-            <td className="c-size muted num" role="gridcell">{it.kind === 'folder' ? '—' : fmtSize(it.size)}</td>
+            <td className="c-size muted num" role="gridcell">{it.kind === 'folder' ? '' : fmtSize(it.size)}</td>
             <td className="c-kind muted" role="gridcell"><span className="truncate">{kindLabel(it)}</span></td>
             <td className="c-share" role="gridcell"><Avatars people={it.shared} /></td>
             <td className="c-act" role="gridcell">

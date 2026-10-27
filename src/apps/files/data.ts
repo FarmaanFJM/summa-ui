@@ -128,10 +128,10 @@ const FILES: FileSpec[] = [
   ['Competitive audit.pdf', 'research', 11],
   ['Usability findings.pptx', 'research', 4, ['Elena Voss']],
   // interviews
-  ['Interview 01 — Hana.mp3', 'interviews', 6.2],
-  ['Interview 02 — Diego.mp3', 'interviews', 6.1],
-  ['Interview 03 — Marta.mp3', 'interviews', 5.9],
-  ['Interview 04 — Sam.mp3', 'interviews', 5.8],
+  ['Interview 01 - Hana.mp3', 'interviews', 6.2],
+  ['Interview 02 - Diego.mp3', 'interviews', 6.1],
+  ['Interview 03 - Marta.mp3', 'interviews', 5.9],
+  ['Interview 04 - Sam.mp3', 'interviews', 5.8],
   ['Transcript 01.txt', 'interviews', 5.7],
   ['Transcript 02.txt', 'interviews', 5.7],
   ['Interview guide.docx', 'interviews', 9],
@@ -145,9 +145,9 @@ const FILES: FileSpec[] = [
   ['tokens.json', 'design', 1.4],
   ['theme.css', 'design', 1.4],
   // exports
-  ['Home — desktop.png', 'exports', 1.2],
-  ['Home — mobile.png', 'exports', 1.2],
-  ['Settings — desktop.png', 'exports', 1.3],
+  ['Home - desktop.png', 'exports', 1.2],
+  ['Home - mobile.png', 'exports', 1.2],
+  ['Settings - desktop.png', 'exports', 1.3],
   ['Onboarding flow.mp4', 'exports', 1.5, ['Priya Raman']],
   ['Icons.svg', 'exports', 3],
   // specs
@@ -197,7 +197,7 @@ const FILES: FileSpec[] = [
   ['Old portfolio.zip', 'archive', 410],
   ['Thesis draft v3.docx', 'archive', 560],
   ['Demo reel.mov', 'archive', 450],
-  ['Mixdown — Early Light.wav', 'archive', 520],
+  ['Mixdown - Early Light.wav', 'archive', 520],
 ]
 
 export function buildItems(): Item[] {
