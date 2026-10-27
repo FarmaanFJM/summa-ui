@@ -66,7 +66,12 @@ h1, h2, h3, h4, p { margin: 0; }
 .search { position: relative; display: flex; align-items: center; color: var(--text-3); }
 .search > svg { position: absolute; left: 10px; pointer-events: none; }
 .search .input { padding-left: 32px; }
-.surface-2 .input, .menu .input, .dialog .input { background: var(--s3); }
+.surface-2 .input, .menu .input { background: var(--s3); }
+.dialog .input { background: var(--s4); }
+.dialog .btn-secondary { background: var(--s4); }
+.dialog .btn-secondary:hover:not(:disabled) { background: #444545; }
+.dialog .tabs { background: var(--s4); }
+.dialog .tab[aria-selected="true"] { background: #4b4c4c; }
 
 /* ---------- Tag: one background, no border (Principle 4) ---------- */
 .tag { display: inline-flex; align-items: center; gap: 5px; height: 20px; padding: 0 7px; border-radius: 5px;

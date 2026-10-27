@@ -20,6 +20,39 @@ const APPLIED: { n: number; title: string; how: string }[] = [
   { n: 10, title: 'Minimalism over prevalence', how: 'Label creation lives inside the label dropdown. Send becomes Stop (with an arming guard). Selection replaces the header with a bulk bar. Row and message actions appear on hover/focus.' },
   { n: 11, title: 'Rectangle Rule', how: 'Muted headings with body on the same left edge. Folder navigation uses breadcrumbs and a flat list, never an indented tree. Lists are flat.' },
   { n: 12, title: 'Dividers secondary', how: 'Only under table headers, inside tooltips/menus, and between menu groups. Spacing does the rest.' },
+  { n: 13, title: 'No em dashes', how: 'No em dash appears in any UI text or demo content. Empty table cells are left empty.' },
+  { n: 14, title: 'No sidebar stacking', how: 'Phase 2 apps have no navigation sidebar at all. Left and right columns are content panes (watchlist, filters, order book, rail).' },
+  { n: 15, title: 'Monochromatic selection and focus', how: 'Focus rings, input outlines, selected rows and cards, checkboxes, switches, tabs and active nav are neutral (--focus, --select). Emerald remains for the brand mark, the primary action of a view and meaningful state.' },
+  { n: 16, title: 'Layout diversity', how: 'Each Phase 2 app has its own structure, chosen from its task and documented in docs/PHASE2_LAYOUTS.md.' },
+]
+
+const PHASE1_CHANGES = [
+  'Focus ring, text input outline, ::selection, caret: emerald to neutral (tokens --focus, --select).',
+  'Selected rows and cards in Projects, Files, Documents, plus list-row selection: emerald tint to neutral fill; keyboard cursor and drop-target rings to neutral.',
+  'Checkbox, switch, toggled icon button, menu check marks, in-menu create item: emerald to neutral.',
+  'Em dashes removed from file names and the empty size cell in Files.',
+  'Dialog inputs, secondary buttons and tabs now sit one step lighter than the dialog surface (they were invisible on it).',
+  'Kept emerald: brand mark, primary buttons, Send, spinner, starred and favourite markers, analytics and executive deltas, done status.',
+]
+
+const LAYOUTS: { app: string; layout: string }[] = [
+  { app: 'Executive Dashboard', layout: 'Top bar over a full-width 12-column card grid. Activity is a grid cell.' },
+  { app: 'Chess Club', layout: 'Public site: sticky top nav, scrolling bands, playable board as the hero beside its game panel.' },
+  { app: 'Social Media', layout: 'One centred 600px feed column, quiet right rail on wide screens, bottom tab bar on mobile.' },
+  { app: 'Trading Platform', layout: 'Terminal grid: ticker strip, watchlist, chart with order entry, order book and trades, tabbed positions panel.' },
+  { app: 'E-commerce Store', layout: 'Header with category nav; grid beside a filter pane; product page; cart slide-over; focused checkout.' },
+  { app: 'Travel Booking', layout: 'Hero search, results with a horizontal filter bar, detail page, stepped reservation with a summary.' },
+]
+
+const TENSIONS: Note[] = [
+  { app: 'Executive, Trading', text: 'Elevation without borders is faint between --s0 and --s1; cards use an inset top highlight. Principle 6 vs dense financial data: series, severity and candle colours are the few hues the data needs, with signs and arrows alongside.' },
+  { app: 'Trading', text: 'Principle 10 vs a terminal that needs many controls visible at once. Principle 5 vs financial completeness: every column is kept, mobile turns tables into cards.' },
+  { app: 'Social', text: 'Principle 8 (familiar avatar gutter) vs Principle 11 (no indentation): the Rectangle Rule won, so media and actions align with the author row. Dividers between posts were kept for ambiguity.' },
+  { app: 'Social, Chess, Store', text: 'Where the single emerald primary goes is ambiguous on long pages with many actions. Used one per view in the chrome and primaries inside dialogs; Social uses a neutral inverted submit.' },
+  { app: 'Store, Travel', text: 'Hairline dividers between repeated rows (cart lines, review rows, price totals) were kept because spacing alone was ambiguous.' },
+  { app: 'Chess', text: 'Dark pieces and a warm grey board are content colour; highlights stay neutral. Check uses --danger as meaningful state.' },
+  { app: 'Social, Store, Travel', text: 'Hover-only controls (quick add, heart, reaction picker) are always visible in compact form on touch.' },
+  { app: 'Shared', text: 'Principle 14 and mobile: a collapsed category menu or drawer is allowed because it replaces inline navigation, it does not sit beside it.' },
 ]
 
 const EXCEPTIONS: Exception[] = [
@@ -35,6 +68,15 @@ const EXCEPTIONS: Exception[] = [
   { app: 'File Manager', what: 'Hue gradients as image thumbnails and previews.', why: 'Placeholder media content, not chrome.' },
   { app: 'File Manager', what: 'Header hairline in the list table.', why: 'Separates sticky column headers from scrolling rows.' },
   { app: 'Media Library', what: '2px accent ring on the currently playing tile.', why: 'Now-playing is state that must be findable in a wall of imagery.' },
+  { app: 'Chess Club', what: 'Danger-coloured glow on a king in check.', why: 'Check is a meaningful state.' },
+  { app: 'Chess Club', what: 'Tabs inside dialogs sit slightly darker than their parent.', why: 'No neutral token kept them legible otherwise (fixed shared-wide afterwards).' },
+  { app: 'Trading', what: 'Emerald and danger on candles, depth bars, buy and sell submit; a warm line for the second moving average.', why: 'Market movement is the semantic colour the data needs; a second indicator needs a distinct hue.' },
+  { app: 'Trading', what: 'Ticker strip scrolls continuously (pauses on hover, static for reduced motion).', why: 'A movers strip is conventional and scannable.' },
+  { app: 'Executive', what: 'Warning amber for severity 2 incidents and dashed plan lines.', why: 'Severity needs more than two states; also written as text.' },
+  { app: 'Social', what: 'Notifications keep an icon column; composer keeps the avatar at the left.', why: 'Scanning notification types; inputs are conventionally led by the avatar.' },
+  { app: 'Social, Store', what: 'Hairline dividers between posts, cart lines and checkout steps.', why: 'Repeated structures are ambiguous with spacing alone.' },
+  { app: 'Store', what: 'A small Sold out label on product images.', why: 'Functional stock state that must be visible in a grid.' },
+  { app: 'Travel', what: 'Language menu only switches date format; Add to trips stores the booking.', why: 'A non-translating language switcher would be fake; the storage step follows the brief.' },
   { app: 'Media Library', what: 'Lightbox backdrop is near-black, darker than the page.', why: 'The image has to dominate; the details drawer inside it is still lighter than its surround.' },
 ]
 
@@ -70,6 +112,24 @@ export default function Principles() {
         </section>
 
         <section>
+          <h2 className="eyebrow">Phase 2 layouts</h2>
+          <dl className="pr-list">
+            {LAYOUTS.map(l => (
+              <div key={l.app} className="pr-row"><dt>{l.app}</dt><dd className="muted">{l.layout}</dd></div>
+            ))}
+          </dl>
+        </section>
+
+        <section>
+          <h2 className="eyebrow">Phase 1 changes for neutral selection and focus</h2>
+          <dl className="pr-list">
+            {PHASE1_CHANGES.map((c, i) => (
+              <div key={i} className="pr-row"><dt>Change {i + 1}</dt><dd className="muted">{c}</dd></div>
+            ))}
+          </dl>
+        </section>
+
+        <section>
           <h2 className="eyebrow">Deliberate exceptions</h2>
           <dl className="pr-list">
             {EXCEPTIONS.map((e, i) => (
@@ -77,6 +137,15 @@ export default function Principles() {
                 <dt>{e.app}</dt>
                 <dd><span>{e.what}</span> <span className="muted">{e.why}</span></dd>
               </div>
+            ))}
+          </dl>
+        </section>
+
+        <section>
+          <h2 className="eyebrow">Phase 2 tensions</h2>
+          <dl className="pr-list">
+            {TENSIONS.map((e, i) => (
+              <div key={i} className="pr-row"><dt>{e.app}</dt><dd className="muted">{e.text}</dd></div>
             ))}
           </dl>
         </section>
