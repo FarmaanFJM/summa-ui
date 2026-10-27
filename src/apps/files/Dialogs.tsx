@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useState } from 'react'
-import { Button, Dialog, Icon, IconButton } from '../../ui'
+import { useEffect, useMemo, useRef, useState } from 'react'
+import { Button, Dialog, Icon, IconButton, Menu, useAnchored } from '../../ui'
 import { excerptFor, fmtDate, fmtSize, kindLabel, type Item } from './data'
 import { FileIcon, thumbStyle } from './FileViews'
 
@@ -74,14 +74,17 @@ function Preview({ it }: { it: Item }) {
 export function PreviewDialog({ item, pos, count, location, onClose, onNav, onDownload }: {
   item: Item; pos: number; count: number; location: string; onClose: () => void; onNav: (d: -1 | 1) => void; onDownload: () => void
 }) {
+  const done = useRef<HTMLButtonElement>(null)
+  useEffect(() => { const t = window.setTimeout(() => done.current?.focus(), 0); return () => window.clearTimeout(t) }, [])
   useEffect(() => {
     const k = (e: KeyboardEvent) => {
       if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); onNav(1) }
       else if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); onNav(-1) }
       else if (e.key === ' ') { e.preventDefault(); onClose() }
     }
-    document.addEventListener('keydown', k)
-    return () => document.removeEventListener('keydown', k)
+    // registered a tick late so the keystroke that opened the preview cannot also close it
+    const t = window.setTimeout(() => document.addEventListener('keydown', k), 0)
+    return () => { window.clearTimeout(t); document.removeEventListener('keydown', k) }
   }, [onNav, onClose])
   return (
     <Dialog open onClose={onClose} title={item.name} width={680}
@@ -91,7 +94,7 @@ export function PreviewDialog({ item, pos, count, location, onClose, onNav, onDo
         <IconButton icon="chevron-left" label="Previous file" disabled={count < 2} onClick={() => onNav(-1)} />
         <IconButton icon="chevron-right" label="Next file" disabled={count < 2} onClick={() => onNav(1)} />
         <Button variant="secondary" icon="download" onClick={onDownload}>Download</Button>
-        <Button variant="primary" onClick={onClose}>Done</Button>
+        <Button ref={done} variant="primary" onClick={onClose}>Done</Button>
       </>}>
       <div className="files-pv">
         <Preview it={item} />
@@ -111,6 +114,7 @@ export function MovePicker({ mode, moving, all, start, onClose, onConfirm }: {
   mode: 'move' | 'copy'; moving: Item[]; all: Item[]; start: string; onClose: () => void; onConfirm: (dest: string) => void
 }) {
   const [cur, setCur] = useState(start)
+  const more = useAnchored()
   const byId = useMemo(() => new Map(all.map(i => [i.id, i])), [all])
   const movingIds = useMemo(() => new Set(moving.filter(m => m.kind === 'folder').map(m => m.id)), [moving])
   const crumbs = useMemo(() => {
@@ -122,15 +126,25 @@ export function MovePicker({ mode, moving, all, start, onClose, onConfirm }: {
   const children = all.filter(i => i.kind === 'folder' && i.parent === cur && !i.trashed).sort((a, b) => a.name.localeCompare(b.name))
   const same = mode === 'move' && moving.every(m => m.parent === cur)
   const invalid = inside(cur) || same
+  const fold = crumbs.length > 3
+  const hidden = fold ? crumbs.slice(1, -2) : []
+  const shown = fold ? [crumbs[0], ...crumbs.slice(-2)] : crumbs
   const label = moving.length === 1 ? `“${moving[0].name}”` : `${moving.length} items`
   return (
     <Dialog open onClose={onClose} title={`${mode === 'move' ? 'Move' : 'Copy'} ${label}`} width={460}
       footer={<><Button variant="ghost" onClick={onClose}>Cancel</Button><Button variant="primary" disabled={invalid} onClick={() => onConfirm(cur)}>{mode === 'move' ? 'Move here' : 'Copy here'}</Button></>}>
       <nav className="files-pk-crumbs" aria-label="Destination path">
-        {crumbs.map((c, i) => (
+        {shown.map((c, i) => (
           <span key={c.id} className="row" style={{ gap: 2 }}>
             {i > 0 && <Icon name="chevron-right" size={12} className="faint" />}
-            {i === crumbs.length - 1 ? <span className="files-pk-cur" aria-current="location">{c.name}</span> : <button type="button" className="files-crumb" onClick={() => setCur(c.id)}>{c.name}</button>}
+            {fold && i === 1 && (
+              <>
+                <button ref={more.ref} type="button" className="files-crumb" aria-label="Show hidden folders" aria-haspopup="menu" aria-expanded={more.open} onClick={more.toggle}>…</button>
+                <Menu anchor={more.el} open={more.open} onClose={more.close} label="Path" items={hidden.map(h => ({ label: h.name, icon: 'folder' as const, onSelect: () => setCur(h.id) }))} />
+                <Icon name="chevron-right" size={12} className="faint" />
+              </>
+            )}
+            {i === shown.length - 1 ? <span className="files-pk-cur" aria-current="location">{c.name}</span> : <button type="button" className="files-crumb" onClick={() => setCur(c.id)}>{c.name}</button>}
           </span>
         ))}
       </nav>
