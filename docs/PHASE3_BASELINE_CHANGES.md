@@ -66,3 +66,10 @@ All edits are inside `max-width: 820px` (or the existing app breakpoints / conta
 ## Verification
 
 `npx tsc --noEmit` and `npx vite build` pass. All 12 routes plus extra routes (travel results, store category, project detail, notifications) loaded at 1440x900, 390x844 and 375x667 with no console or page errors and no horizontal overflow at mobile widths. No U+2014 in the owned paths.
+
+## Lead changes made after remediation (shared files)
+- `src/styles/tokens.css`: `--focus` alpha 0.62 to 0.5; `--danger` `#ef7070` to `#f27f7f` (danger text now at least 4.5:1 on `--s4`); new `--danger-solid` (`#c53d3d`), `--danger-solid-hover` (`#b23535`, white text 6:1) and `--danger-ink`.
+- `src/styles/base.css`: focus outline 1.5px, input ring 1px, `.btn-danger` solid (was pale red on tint), dialog inputs, secondary buttons and tabs one step lighter than the dialog surface.
+- `src/ui/icons.tsx`: now generated from the pinned Lucide catalog (`npm run icons:build`). Names unchanged; some shapes differ slightly (for example `more-h`, `circle-half`).
+- `src/apps/social/icons.tsx`, `src/apps/store/icons.tsx`: hand-drawn app-local icons removed; wrappers now forward to the shared `Icon` (one icon family).
+- `src/ui/index.tsx`: `Dialog` custom widths use `min(Npx, 100%)` so they cannot overflow on mobile.

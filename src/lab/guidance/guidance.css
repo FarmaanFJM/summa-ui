@@ -3,3 +3,4 @@
 .gd-scroll { flex: 1; min-height: 0; }
 .gd-wrap { max-width: 1120px; margin: 0 auto; padding: 16px 16px 80px; }
 @media (max-width: 640px) { .gd-back-label { display: none; } .gd-top { padding: 8px; overflow-x: auto; } }
+@media (max-width: 640px) { .gd-top .tab { padding: 0 8px; } }
