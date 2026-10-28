@@ -1,0 +1,33 @@
+{
+  "id": "FB-0010",
+  "createdAt": "2026-10-28T16:44:42Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "gitmanager",
+    "route": "Sidebar brand row; application icon"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Brand component (src/ui Brand, .brand-mark) versus the Summa application logo system",
+  "screenshots": [
+    {
+      "file": "gitmanager-brand-row.png"
+    },
+    {
+      "file": "GitManager-Summa-256.png"
+    }
+  ],
+  "explanation": "Raised while integrating the owner's new Summa application logo system into GitManager (the owner supplied the assets and the system description, SUMMA-LOGO-SYSTEM-v2.md, as a proposed baseline). The system: one rounded #1B1C1C tile (--s1), one centred flat #10B981 (--accent) symbol per application, transparent outside, no gradients, effects or lettering, consistent padding and stroke weight. Summa-UI v0.1.0's Brand component draws a different mark: an emerald filled square with the generic layers icon. GitManager kept the .brand row (layout, type, spacing) and shows its own logo in place of .brand-mark, without changing the guidance. The guidance has no rule for application icons or for how an application's logo appears in the brand row, so the next application will face the same choice. GitManager documents its application of the system in docs/BRANDING.md and verifies colours, transparency and the embedded Windows icon with scripts/verify-branding.mjs.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-gap",
+    "rationale": "No principle, preset or token covers application identity: icons, the in-app brand mark, or the relation between --s1/--accent and an application logo. The owner's logo system generalizes to every Summa application by design. Suggested change: add the logo system to the guidance (an identity section with the geometry, colours and export rules) and let Brand take an application logo; the owner decides.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P07",
+    "P06"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "triaged",
+  "proposal": null
+}

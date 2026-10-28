@@ -1,0 +1,27 @@
+{
+  "id": "FB-0009",
+  "createdAt": "2026-10-28T15:55:01Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "gitmanager",
+    "route": "CI: Verify the pinned Summa-UI release (windows-latest)"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Consumption contract: vendored bundle verification on Windows checkouts (docs/SUMMA_INTEGRATION.md, scripts/verify-vendored.mjs)",
+  "screenshots": [
+    {
+      "file": "windows-ci-verify-vendored.png"
+    }
+  ],
+  "explanation": "Found while setting up GitManager's CI (not reported by the owner). The vendored bundle verified on Linux but failed on windows-latest: Git for Windows checks out with core.autocrlf=true, converts every text file in the vendored guidance to CRLF, and verify-vendored.mjs reports them as modified because the manifest hashes LF bytes. Any consumer with Windows contributors or Windows CI hits this. SUMMA_INTEGRATION.md does not mention line endings. GitManager fixed it with a .gitattributes file (* text=auto eol=lf, third_party/** -text). The capture is a rendering of the CI log lines (the original is in the GitManager Actions run for commit 57b559b).",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-gap",
+    "rationale": "The integration contract and its tooling assume byte-identical checkouts but do not say how to guarantee them on Windows. Generalizes to every consumer that vendors the bundle on Windows. Suggested change: document the required .gitattributes in SUMMA_INTEGRATION.md, have vendor-guidance.mjs write a .gitattributes next to the vendored copy, or let verify-vendored.mjs report line-ending-only differences explicitly.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [],
+  "relatedAntiPatterns": [],
+  "status": "triaged",
+  "proposal": null
+}

@@ -1,0 +1,37 @@
+{
+  "id": "FB-0005",
+  "createdAt": "2026-10-28T15:46:42Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "gitmanager",
+    "route": "Services tab, service rows; sidebar"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Live process state indicator (starting, ready, running, failed, stopped)",
+  "screenshots": [
+    {
+      "file": "07-services-starting.png"
+    },
+    {
+      "file": "08-services-ready.png"
+    }
+  ],
+  "explanation": "Found while building GitManager (not reported by the owner). A service has a live state that the user waits on. AP-005 and P04 discourage status pills; preset.loading-state covers spinners but not a persistent state; P15 allows emerald for meaningful state. GitManager uses a small mark plus the state word: hollow neutral ring for stopped, neutral dot for running without a readiness check, emerald dot for ready, red dot for failed, spinner for starting and stopping. The objective evaluator's heuristic CHK-012 then reports 'accent fills 4' on that screen (brand mark, two ready dots, the sidebar running marker; 0.1 percent of the window) as needs-human. The guidance should say whether this is the intended use of emerald and how such indicators look, so the next application does not invent its own and the heuristic can tell state dots from accent overuse.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-gap",
+    "rationale": "The guidance covers decorative pills and loading, not persistent live states; P15 allows emerald for meaningful state but no pattern defines it, and CHK-012 cannot distinguish it from accent overuse. Generalizes to deployments, jobs, devices and connections. Suggested change: a state-indicator preset (mark plus word, which states may use emerald or danger) and a CHK-012 exception for marks paired with a state label.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P04",
+    "P06",
+    "P15"
+  ],
+  "relatedAntiPatterns": [
+    "AP-005",
+    "AP-012"
+  ],
+  "status": "triaged",
+  "proposal": null
+}

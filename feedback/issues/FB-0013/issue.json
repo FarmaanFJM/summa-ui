@@ -1,0 +1,30 @@
+{
+  "id": "FB-0013",
+  "createdAt": "2026-10-28T18:42:41Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "gitmanager",
+    "route": "Settings, General (Windows installed build)"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Switch (no disabled state)",
+  "screenshots": [
+    {
+      "file": "settings-general-windows.png"
+    }
+  ],
+  "explanation": "Found while adding GitManager's startup settings (not reported by the owner). Start minimized only means something when Launch at Windows startup is on, so it must be shown but not operable until then. Summa-UI's React Switch takes only checked, onChange and label: there is no disabled prop, and base.css has no .switch:disabled style. GitManager wrapped the switch in a native <fieldset disabled>, which disables it for pointer and keyboard, and dimmed the row to 45 % opacity (the value GitManager already uses for .gm-disabled). Dependent settings are common in any settings screen, so the next application will invent its own disabled switch, with its own opacity.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-gap",
+    "rationale": "Every settings screen with dependent options needs a disabled switch; neither the React component nor the CSS defines one, so each application picks its own opacity and mechanism. Suggested change: a disabled prop on Switch (rendered as the button's disabled attribute) and a .switch:disabled rule using the same treatment as disabled buttons.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P07",
+    "P17"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "triaged",
+  "proposal": null
+}

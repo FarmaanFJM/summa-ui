@@ -1,0 +1,34 @@
+{
+  "id": "FB-0004",
+  "createdAt": "2026-10-28T15:46:42Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "gitmanager",
+    "route": "Services tab, Output panel"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Monospace output and log region (no preset)",
+  "screenshots": [
+    {
+      "file": "08-services-ready.png"
+    },
+    {
+      "file": "07-services-starting.png"
+    }
+  ],
+  "explanation": "Found while building GitManager (not reported by the owner). Developer tools show process output in a log region. The guidance has no pattern for it: P02 forbids a nested surface darker than its parent, which rules out the conventional dark terminal well; there is no token or rule for monospace text size and line height, for distinguishing the application's own lines from tool output, for stderr, or for follow-the-tail scrolling. GitManager used one --s2 surface on the --s1 panel, var(--mono) 12.5px/1.6, --text-2 for its own lines, no red for stderr (many tools log normally to stderr), and follows the end only while the user is at the bottom. Build logs, CI views, consoles and AI tool traces will need the same decisions.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-gap",
+    "rationale": "No principle, preset or token covers monospace output regions; P02 rules out the conventional darker well without offering the alternative. Generalizes to build logs, CI, consoles and agent traces. Suggested change: a preset (for example preset.log-output) with surface, typography, line roles and scrolling behaviour.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P02",
+    "P06",
+    "P05"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "triaged",
+  "proposal": null
+}
