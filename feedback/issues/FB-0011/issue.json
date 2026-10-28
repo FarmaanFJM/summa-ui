@@ -1,0 +1,31 @@
+{
+  "id": "FB-0011",
+  "createdAt": "2026-10-28T16:44:42Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "gitmanager",
+    "route": "Repository workspace, Branches tab"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Data table with sortable column headers (no preset)",
+  "screenshots": [
+    {
+      "file": "05-branches.png"
+    }
+  ],
+  "explanation": "Found while building GitManager's branch overview (not reported by the owner). A developer tool needs a compact table: column headers, sorting by clicking a header (with aria-sort), right-aligned numbers, a quiet selected row, a detail pane, columns that collapse in narrow panes. The laboratory's File Manager has one (files.css, app-specific), but the guidance has no table preset, so GitManager rebuilt the same treatment in a CSS grid with role=table semantics, using --line for the header rule, --select for the selected row and the File Manager's header-button pattern. The next application with tabular data will rebuild it again.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-gap",
+    "rationale": "Tables are common in developer tools, admin screens and dashboards; the only implementation is local to one laboratory app. Suggested change: promote the File Manager table treatment to a preset (header row, sortable header button, numeric alignment, selection, collapse rules) with CSS in presets.css.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P07",
+    "P08",
+    "P01"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "triaged",
+  "proposal": null
+}
