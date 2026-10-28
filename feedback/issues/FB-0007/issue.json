@@ -1,0 +1,30 @@
+{
+  "id": "FB-0007",
+  "createdAt": "2026-10-28T15:46:43Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "gitmanager",
+    "route": "Workspace header, branch picker"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "preset.dropdown and React Dropdown: no grouped variant",
+  "screenshots": [
+    {
+      "file": "04-branch-picker.png"
+    }
+  ],
+  "explanation": "Found while building GitManager (not reported by the owner). A branch picker lists local branches, then remote branches that have no local branch (choosing one creates a tracking branch). preset.dropdown has single, searchable, creatable, multiple and quiet variants, and the React Dropdown cannot render section headings, so GitManager composed its own picker from Popover and the .menu-search, .menu-list, .menu-heading and .menu-item classes. It looks and behaves like the Dropdown, but every application that needs groups (recent and all, people and teams, local and remote) will repeat this composition with its own keyboard handling.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-gap",
+    "rationale": "No grouped variant exists in preset.dropdown or the reference Dropdown, so applications compose their own grouped pickers from Popover and menu classes, each with its own keyboard handling. Suggested change: a grouped variant (section headings inside the list) in the preset and the reference implementation.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P08",
+    "P07"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "triaged",
+  "proposal": null
+}

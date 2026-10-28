@@ -1,0 +1,30 @@
+{
+  "id": "FB-0008",
+  "createdAt": "2026-10-28T15:46:43Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "gitmanager",
+    "route": "Services tab, row actions and Stop button"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Icon catalog: filled stop icon at small sizes",
+  "screenshots": [
+    {
+      "file": "08-services-ready.png"
+    }
+  ],
+  "explanation": "Found while building GitManager (not reported by the owner), low confidence. The catalog's stop icon is Lucide square, filled by design. In a 28px icon button at the end of a list row, rendered at 15px in --text-2, it reads like a filled checkbox. The labelled Stop button in the toolbar is clear. This may be acceptable; recorded so the owner can judge whether small icon-only stop controls need a different treatment.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-ambiguity",
+    "rationale": "Low confidence. The catalog says stop is filled by design; at 15px in a small icon button beside rows it can be mistaken for a filled checkbox. May be not-a-problem; the owner decides. If it is a problem, a usage note (icon-only stop controls keep a label or tooltip, or appear only on hover) would generalize.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P07",
+    "P10"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "triaged",
+  "proposal": null
+}

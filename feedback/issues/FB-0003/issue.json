@@ -1,0 +1,29 @@
+{
+  "id": "FB-0003",
+  "createdAt": "2026-10-28T15:46:42Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "gitmanager",
+    "route": "Workspace header, branch picker"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Icon catalog (guidance/icons/catalog.json): version-control icons",
+  "screenshots": [
+    {
+      "file": "04-branch-picker.png"
+    }
+  ],
+  "explanation": "Found while building GitManager, the first application outside the laboratory (not reported by the owner). A Git client needs icons for branch, commit, merge and pull request, which every comparable product (GitHub Desktop, VS Code, Fork) uses. The catalog has none, and the rules forbid other icon families. GitManager fell back to text (the branch name in a select), arrow-down for Pull and refresh for Fetch. Any version-control, deployment or review application will hit the same gap.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-gap",
+    "rationale": "GitManager followed the icon rules (catalog only, one stroke weight). No icon in the catalog expresses version control, and adding another family is forbidden, so any version-control or deployment application repeats the workaround. Suggested change: add Lucide git-branch, git-commit-horizontal, git-merge, git-pull-request (stable Summa names such as branch, commit, merge, pull-request) in a minor release.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P07"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "triaged",
+  "proposal": null
+}

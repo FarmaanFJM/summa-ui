@@ -144,6 +144,17 @@
       "status": "active",
       "regression": false,
       "notes": "The laboratory pages that display the guidance. Feedback about presets, icons and anti-pattern demos is recorded against this entry."
+    },
+    {
+      "id": "gitmanager",
+      "name": "GitManager",
+      "path": "feedback/external/gitmanager.usage.json",
+      "guidanceVersion": "0.1.0",
+      "bundleDigest": "5ef73215334c313089cb3cd87f6f78f65eef48f67dfdc5d53bd84fedad408cc7",
+      "basis": "built-with",
+      "status": "active",
+      "regression": false,
+      "notes": "External application in FarmaanFJM/GitManager, the first built with the approved guidance outside this repository (Electron, React). The path is a copy of its summa-ui.usage.json because the registry requires a path in this repository. Not a regression reference; its screenshots live in GitManager docs/screenshots and with its feedback issues."
     }
   ]
 }

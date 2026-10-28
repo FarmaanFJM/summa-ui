@@ -1,0 +1,31 @@
+{
+  "id": "FB-0006",
+  "createdAt": "2026-10-28T15:46:42Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "gitmanager",
+    "route": "Services tab, profile select"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "preset.dropdown: creatable variant versus the search field rule",
+  "screenshots": [
+    {
+      "file": "14-profile-dropdown-create.png"
+    }
+  ],
+  "explanation": "Found while building GitManager (not reported by the owner). preset.dropdown says not to use a search field when there are 7 options or fewer, and AP-009 says to put Create inside the dropdown (type a new name, then Create). The creatable variant needs a text field to type the name, so a creatable dropdown with one or two options must either show the search field (breaking the first rule) or lose in-list creation (breaking AP-009). GitManager's profile select has one to three profiles and shows the field, labelled 'Search or create profile' by the reference Dropdown. Two reasonable readings give different results.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-ambiguity",
+    "rationale": "preset.dropdown whenNotToUse (no search field for 7 options or fewer) and the creatable variant with AP-009 conflict for small creatable lists. Two readings give different interfaces. Suggested change: state that a creatable dropdown always shows its text field, or define a Create row that opens an inline name field.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P10"
+  ],
+  "relatedAntiPatterns": [
+    "AP-009"
+  ],
+  "status": "triaged",
+  "proposal": null
+}
