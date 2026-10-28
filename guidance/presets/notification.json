@@ -73,7 +73,7 @@
     "De-duplicate: an identical type, title and message restarts the existing toast timer instead of stacking another.",
     "Motion is a short fade and 8px rise; prefers-reduced-motion removes the movement.",
     "Colour discipline (P03, P06): the surface is always neutral; only the leading icon takes the semantic hue. No tinted backgrounds, no coloured left borders, no coloured outlines.",
-    "referenceStatus: the user mentioned a supplied toast design as a visual reference, but no reference image or file reached this session. This preset is built from the principles only and needs the owner's review against that reference before it is treated as agreed."
+    "Status: provisional. Compare with the owner's toast reference before treating the visual design as approved."
   ],
   "tokens": [
     "--s4",
@@ -127,5 +127,7 @@
     "html": "examples/notification.html",
     "css": "css/presets.css",
     "react": "src/presets/Toast.tsx"
-  }
+  },
+  "status": "provisional",
+  "statusNote": "Provisional. The owner supplied a toast reference in a separate conversation that this implementation could not access. Typography, spacing, icon treatment, placement and motion are built from the principles only and must be compared with that reference before the preset is marked reviewed."
 }

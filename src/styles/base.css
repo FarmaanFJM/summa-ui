@@ -117,7 +117,7 @@ h1, h2, h3, h4, p { margin: 0; }
 .menu-item:hover:not(:disabled), .menu-item:focus-visible { background: rgba(255, 255, 255, 0.08); outline: none; }
 .menu-item.danger, .menu-item.danger > svg { color: var(--danger); }
 .menu-item:disabled { color: var(--text-3); }
-.menu-item .shortcut { margin-left: auto; color: var(--text-3); font-size: var(--fs-sm); padding-left: 16px; }
+.menu-item .shortcut { margin-left: auto; color: var(--text-2); font-size: var(--fs-sm); padding-left: 16px; } /* 4.7:1 on --s4; hidden on touch */
 .menu-item .check { margin-left: auto; color: var(--text); }
 .menu-heading { padding: 6px 8px 2px; }
 .popover .divider { margin: 4px -4px; }
@@ -181,3 +181,17 @@ h1, h2, h3, h4, p { margin: 0; }
   .topbar { padding: 0 8px; }
 }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; } }
+
+/* ---------- Touch hit areas (P18, CHK-020) ----------
+   On narrow or coarse-pointer screens every control must have an effective hit area of at least 40x40 CSS px.
+   Visible chrome stays as designed: transparent controls grow their box; filled controls keep their look and
+   gain an invisible ::after extension. Verified with real hit testing: node scripts/test-tap-targets.mjs */
+:root { --hit: 40px; }
+@media (max-width: 820px), (pointer: coarse) {
+  .icon-btn, .icon-btn.sm { width: var(--hit); height: var(--hit); }
+  .input { height: var(--hit); }
+  .menu-item, .nav-item { min-height: var(--hit); }
+  .btn, .tab, .select, .checkbox, .switch { position: relative; }
+  .btn::after, .tab::after, .select::after, .checkbox::after { content: ""; position: absolute; left: 50%; top: 50%; width: max(100%, var(--hit)); height: max(100%, var(--hit)); transform: translate(-50%, -50%); }
+  .menu-item .shortcut { display: none; } /* keyboard hints mean nothing on touch */
+}

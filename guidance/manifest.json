@@ -32,7 +32,7 @@
       "src/lab (gallery)"
     ]
   },
-  "bundleDigest": "a6f6deb65972f97cd5fbddc8beb81380c4ab086662ad79cebb6235d147dbb2e6",
+  "bundleDigest": "e0bcdd5f03b262a3aa69244afaaf3f8ce8f8bffc852f5ee020bee15177842bcc",
   "files": [
     {
       "path": "IDS.md",
@@ -1266,8 +1266,8 @@
     },
     {
       "path": "presets/notification.json",
-      "sha256": "0f2c5b4b31577130aee5bd08087169bbc4beea8c0df3fab5c8ad170c864c403f",
-      "bytes": 6909,
+      "sha256": "ab975d66f7097456ed69c27f81a88896b7bc908b2c2ef8e869098e3429e5bfee",
+      "bytes": 7090,
       "role": "presets"
     },
     {
@@ -1308,8 +1308,8 @@
     },
     {
       "path": "schema/preset.schema.json",
-      "sha256": "7892ab08d3f8349590c185e4605fdb728cf38f7b7f9a602d11fed531dd5dd45a",
-      "bytes": 2066,
+      "sha256": "cf041ccb9c4528912823abee1d03493b409bd452618d4e7e1f997a9555e62e50",
+      "bytes": 2987,
       "role": "schema"
     },
     {

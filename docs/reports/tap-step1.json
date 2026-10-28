@@ -1,0 +1,2000 @@
+{
+  "viewport": "390x844",
+  "apps": {
+    "ai": {
+      "tested": 41,
+      "undersized": 14,
+      "tapMismatch": 2,
+      "pageErrors": [],
+      "failing": [
+        {
+          "pass": "full height",
+          "sel": "button.icon-btn.sm \"Message actions\"",
+          "size": "40x36",
+          "effective": "40x36",
+          "thief": "div.ai-col \"Write a debounce hook \""
+        },
+        {
+          "pass": "full height",
+          "sel": "textarea \"Message\"",
+          "size": "350x30",
+          "effective": "348x32",
+          "thief": "form.ai-composer \"Atlas Pro\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.icon-btn.sm \"Copy code\"",
+          "size": "40x37",
+          "effective": "40x36",
+          "thief": "code \"import { useEffect, us\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.icon-btn.sm \"Actions for Debounce a\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "button.ai-conv-main \"Debounce a search inpu\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.icon-btn.sm \"Actions for Launch che\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "button.ai-conv-main \"Launch checklist for t\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.icon-btn.sm \"Actions for Latency vs\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "button.ai-conv-main \"Latency vs throughput\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.icon-btn.sm \"Actions for Pricing ch\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "button.ai-conv-main \"Pricing change announc\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.icon-btn.sm \"Actions for Quarterly \"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "button.ai-conv-main \"Quarterly OKR wording\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.icon-btn.sm \"Actions for Postgres i\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "button.ai-conv-main \"Postgres index for slo\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.icon-btn.sm \"Actions for Onboarding\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "button.ai-conv-main \"Onboarding email seque\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.icon-btn.sm \"Actions for Summarise \"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "button.ai-conv-main \"Summarise customer int\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.icon-btn.sm \"Actions for Regex for \"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "button.ai-conv-main \"Regex for invoice numb\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.icon-btn.sm \"Actions for Trip itine\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "button.ai-conv-main \"Trip itinerary for Lis\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.icon-btn.sm \"Actions for Naming ide\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "button.ai-conv-main \"Naming ideas for the a\""
+        }
+      ],
+      "tapBad": [
+        {
+          "pass": "first screen",
+          "sel": "button.icon-btn.sm \"Copy code\"",
+          "reason": "tap at 323,170 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.icon-btn.sm \"Copy code\"",
+          "reason": "tap at 323,717 did not reach the element"
+        }
+      ]
+    },
+    "projects": {
+      "tested": 68,
+      "undersized": 19,
+      "tapMismatch": 14,
+      "pageErrors": [],
+      "failing": [
+        {
+          "pass": "full height",
+          "sel": "button.pm-status-btn \"Status: Backlog. Chang\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "div.pm-row \"SUM-131Migrate email t\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-title.truncate \"Single sign-on: map Id\"",
+          "size": "318x24",
+          "effective": "316x24",
+          "thief": "div.pm-row \"SUM-137Single sign-on:\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-title.truncate \"Keyboard shortcut shee\"",
+          "size": "318x24",
+          "effective": "316x24",
+          "thief": "div.pm-row \"SUM-136Keyboard shortc\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-title.truncate \"Migrate email template\"",
+          "size": "318x24",
+          "effective": "316x24",
+          "thief": "div.pm-row \"SUM-131Migrate email t\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-status-btn \"Status: Todo. Change s\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "div.pm-row \"SUM-138Rewrite onboard\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-title.truncate \"Bulk invite members fr\"",
+          "size": "318x24",
+          "effective": "316x24",
+          "thief": "div.pm-row \"SUM-141Bulk invite mem\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-title.truncate \"Dark mode contrast on \"",
+          "size": "318x24",
+          "effective": "316x24",
+          "thief": "div.pm-row \"SUM-132Dark mode contr\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-title.truncate \"Rewrite onboarding che\"",
+          "size": "318x24",
+          "effective": "316x24",
+          "thief": "div.pm-row \"SUM-138Rewrite onboard\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-status-btn \"Status: In progress. C\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "div.pm-row \"SUM-142Workspace switc\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-title.truncate \"Audit log export times\"",
+          "size": "318x24",
+          "effective": "316x24",
+          "thief": "div.pm-row \"SUM-139Audit log expor\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-title.truncate \"Workspace switcher dro\"",
+          "size": "318x24",
+          "effective": "316x24",
+          "thief": "div.pm-row \"SUM-142Workspace switc\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-status-btn \"Status: In review. Cha\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "div.pm-row \"SUM-133Webhook retries\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-title.truncate \"Cache permission check\"",
+          "size": "318x24",
+          "effective": "316x24",
+          "thief": "div.pm-row \"SUM-140Cache permissio\""
+        },
+        {
+          "pass": "first screen",
+          "sel": "button.pm-status-btn \"Status: In review. Cha\"",
+          "size": "36x23",
+          "effective": "36x24",
+          "thief": "div.pm-row \"SUM-133Webhook retries\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-title.truncate \"Webhook retries ignore\"",
+          "size": "318x24",
+          "effective": "316x24",
+          "thief": "div.pm-row \"SUM-133Webhook retries\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-status-btn \"Status: Done. Change s\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "div.pm-row \"SUM-134Empty states us\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-title.truncate \"Rate limit dashboard f\"",
+          "size": "318x24",
+          "effective": "316x24",
+          "thief": "div.pm-row \"SUM-130Rate limit dash\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-title.truncate \"Upgrade Postgres to 16\"",
+          "size": "318x24",
+          "effective": "316x24",
+          "thief": "div.pm-row \"SUM-135Upgrade Postgre\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-title.truncate \"Empty states use the w\"",
+          "size": "318x24",
+          "effective": "316x24",
+          "thief": "div.pm-row \"SUM-134Empty states us\""
+        }
+      ],
+      "tapBad": [
+        {
+          "pass": "full height",
+          "sel": "button.pm-status-btn \"Status: Backlog. Chang\"",
+          "reason": "tap at 13,165 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-status-btn \"Status: Backlog. Chang\"",
+          "reason": "tap at 13,224 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-status-btn \"Status: Backlog. Chang\"",
+          "reason": "tap at 13,283 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-status-btn \"Status: Todo. Change s\"",
+          "reason": "tap at 13,384 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-status-btn \"Status: Todo. Change s\"",
+          "reason": "tap at 13,443 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-status-btn \"Status: Todo. Change s\"",
+          "reason": "tap at 13,502 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-status-btn \"Status: In progress. C\"",
+          "reason": "tap at 13,603 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-status-btn \"Status: In progress. C\"",
+          "reason": "tap at 13,662 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-status-btn \"Status: In review. Cha\"",
+          "reason": "tap at 13,763 did not reach the element"
+        },
+        {
+          "pass": "first screen",
+          "sel": "button.pm-status-btn \"Status: In review. Cha\"",
+          "reason": "tap at 13,824 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-status-btn \"Status: In review. Cha\"",
+          "reason": "tap at 13,822 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-status-btn \"Status: Done. Change s\"",
+          "reason": "tap at 13,924 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-status-btn \"Status: Done. Change s\"",
+          "reason": "tap at 13,982 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-status-btn \"Status: Done. Change s\"",
+          "reason": "tap at 13,1041 did not reach the element"
+        }
+      ]
+    },
+    "documents": {
+      "tested": 21,
+      "undersized": 0,
+      "tapMismatch": 0,
+      "pageErrors": [],
+      "failing": [],
+      "tapBad": []
+    },
+    "analytics": {
+      "tested": 34,
+      "undersized": 3,
+      "tapMismatch": 5,
+      "pageErrors": [],
+      "failing": [
+        {
+          "pass": "full height",
+          "sel": "button.switch \"Compare to previous pe\"",
+          "size": "30x18",
+          "effective": "36x24",
+          "thief": "div.an-controls \"Last 30 daysCompare to\""
+        },
+        {
+          "pass": "full height",
+          "sel": "label.search.an-search",
+          "size": "140x30",
+          "effective": "140x32",
+          "thief": "header.an-ph \"Top pagesAll sections\""
+        },
+        {
+          "pass": "full height",
+          "sel": "input.input \"Search pages\"",
+          "size": "140x30",
+          "effective": "140x32",
+          "thief": "header.an-ph \"Top pagesAll sections\""
+        }
+      ],
+      "tapBad": [
+        {
+          "pass": "full height",
+          "sel": "button.an-kpi \"Revenue$282,396+9.7%\"",
+          "reason": "tap at 189,123 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.an-kpi \"Active users18,220+6.0\"",
+          "reason": "tap at 380,123 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.an-kpi \"Conversion3.4%+7.5%\"",
+          "reason": "tap at 189,229 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.an-kpi \"Churn2.1%−4.1%\"",
+          "reason": "tap at 380,229 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.an-kpi \"Avg. session4:19+6.4%\"",
+          "reason": "tap at 11,430 did not reach the element"
+        }
+      ]
+    },
+    "files": {
+      "tested": 59,
+      "undersized": 1,
+      "tapMismatch": 9,
+      "pageErrors": [],
+      "failing": [
+        {
+          "pass": "full height",
+          "sel": "button.tab.files-viewtab \"List view\"",
+          "size": "32x28",
+          "effective": "32x40",
+          "thief": "button.tab.files-viewtab \"Grid view\""
+        }
+      ],
+      "tapBad": [
+        {
+          "pass": "full height",
+          "sel": "div.files-body.scroll \"File area\"",
+          "reason": "tap at 3,119 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "div.files-mrow \"ArchiveSep 12, 2025\"",
+          "reason": "tap at 15,177 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "div.files-mrow \"PersonalOct 25\"",
+          "reason": "tap at 15,243 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "div.files-mrow \"PhotosOct 19\"",
+          "reason": "tap at 15,309 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "div.files-mrow \"WorkToday, 5:42 AM\"",
+          "reason": "tap at 15,375 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "div.files-mrow \"2026 goals.docxSep 24 \"",
+          "reason": "tap at 15,441 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "div.files-mrow \"Passport scan.jpgApr 2\"",
+          "reason": "tap at 15,507 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "div.files-mrow \"Reading list.mdOct 23 \"",
+          "reason": "tap at 15,573 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "div.files-mrow \"Welcome to Drive.pdfSe\"",
+          "reason": "tap at 15,639 did not reach the element"
+        }
+      ]
+    },
+    "media": {
+      "tested": 111,
+      "undersized": 28,
+      "tapMismatch": 53,
+      "pageErrors": [],
+      "failing": [
+        {
+          "pass": "full height",
+          "sel": "button.md-ov.fav \"Remove from favorites\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Open Horizon, Portland\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Terra\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Open Terraced Dusk\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Harbo\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Open Harbour Notes\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Cedar\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Open Cedar Morning\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Concr\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Open Concrete Stair\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Slow \"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Play Slow Burn Horizon\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Night\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Play Night Ferry by No\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for The G\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Open The Glass House\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Brise\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Open Brise-soleil\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Resin\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Play Resin by Aster Fi\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Overp\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Open Overpass\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Low S\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Open Low Sun, Erg Cheb\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Merid\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Play Meridian Two by M\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Salt \"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Open Salt Flats\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Atriu\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Open Atrium, Late\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Cloud\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Open Cloud Inversion\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Route\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Open Route 9, Last Lig\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Paper\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Play Paper Lanterns by\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Blue \"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Open Blue Hour, Tre Ci\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Winte\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Open Winter Kitchen\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Slack\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Open Slack Water\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Inlan\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Play Inland Sea by Lum\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Horiz\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Open Horizon, Portland\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Low T\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Play Low Tide Choir by\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Fog L\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Open Fog Line, Hoh\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Slipf\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Open Slipface\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Ridge\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Open Ridge Pines\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Quiet\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Play Quiet Machinery b\""
+        }
+      ],
+      "tapBad": [
+        {
+          "pass": "full height",
+          "sel": "button.md-hit \"Open Terraced Dusk\"",
+          "reason": "tap at 15,269 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov.fav \"Remove from favorites\"",
+          "reason": "tap at 115,183 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Terra\"",
+          "reason": "tap at 153,183 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov.fav \"Remove from favorites\"",
+          "reason": "tap at 115,293 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Harbo\"",
+          "reason": "tap at 153,293 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-hit \"Open Cedar Country\"",
+          "reason": "tap at 15,543 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Cedar\"",
+          "reason": "tap at 153,481 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-hit \"Open Concrete Stair\"",
+          "reason": "tap at 15,775 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Concr\"",
+          "reason": "tap at 153,565 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Slow \"",
+          "reason": "tap at 153,798 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-hit \"Open Harbour Notes\"",
+          "reason": "tap at 203,245 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Harbo\"",
+          "reason": "tap at 341,183 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov.fav \"Remove from favorites\"",
+          "reason": "tap at 303,267 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Night\"",
+          "reason": "tap at 341,267 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-hit \"Open The Glass House\"",
+          "reason": "tap at 203,517 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for The G\"",
+          "reason": "tap at 341,455 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Brise\"",
+          "reason": "tap at 341,540 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Resin\"",
+          "reason": "tap at 341,728 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-hit \"Open Overpass\"",
+          "reason": "tap at 15,1048 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Overp\"",
+          "reason": "tap at 153,986 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-hit \"Open Low Sun, Erg Cheb\"",
+          "reason": "tap at 15,1176 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov.fav \"Remove from favorites\"",
+          "reason": "tap at 115,1070 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Low S\"",
+          "reason": "tap at 153,1070 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Merid\"",
+          "reason": "tap at 153,1199 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov.fav \"Remove from favorites\"",
+          "reason": "tap at 115,1387 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Salt \"",
+          "reason": "tap at 153,1387 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov.fav \"Remove from favorites\"",
+          "reason": "tap at 115,1575 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Atriu\"",
+          "reason": "tap at 153,1575 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-hit \"Open Cloud Inversion\"",
+          "reason": "tap at 15,1908 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Cloud\"",
+          "reason": "tap at 153,1822 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-hit \"Open Route 9, Last Lig\"",
+          "reason": "tap at 15,1994 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov.fav \"Remove from favorites\"",
+          "reason": "tap at 115,1932 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Route\"",
+          "reason": "tap at 153,1932 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Paper\"",
+          "reason": "tap at 153,2017 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-hit \"Open Cedar Morning\"",
+          "reason": "tap at 15,2311 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Cedar\"",
+          "reason": "tap at 153,2205 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Blue \"",
+          "reason": "tap at 153,2334 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-hit \"Open Winter Kitchen\"",
+          "reason": "tap at 203,978 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Winte\"",
+          "reason": "tap at 341,916 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Slack\"",
+          "reason": "tap at 341,1000 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Inlan\"",
+          "reason": "tap at 341,1188 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-hit \"Open Horizon, Portland\"",
+          "reason": "tap at 203,1462 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov.fav \"Remove from favorites\"",
+          "reason": "tap at 303,1376 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Horiz\"",
+          "reason": "tap at 341,1376 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Low T\"",
+          "reason": "tap at 341,1486 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-hit \"Open Fog Line, Hoh\"",
+          "reason": "tap at 203,1884 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Fog L\"",
+          "reason": "tap at 341,1674 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-hit \"Open Salt Flats\"",
+          "reason": "tap at 203,1969 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Salt \"",
+          "reason": "tap at 341,1907 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-hit \"Open Slipface\"",
+          "reason": "tap at 203,2201 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Slipf\"",
+          "reason": "tap at 341,1991 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Ridge\"",
+          "reason": "tap at 341,2224 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Quiet\"",
+          "reason": "tap at 341,2368 did not reach the element"
+        }
+      ]
+    },
+    "executive": {
+      "tested": 24,
+      "undersized": 6,
+      "tapMismatch": 1,
+      "pageErrors": [],
+      "failing": [
+        {
+          "pass": "full height",
+          "sel": "button.ex-th \"Business unit\"",
+          "size": "122x36",
+          "effective": "120x36",
+          "thief": "th \"Business unit\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.ex-th.on \"Revenue\"",
+          "size": "85x36",
+          "effective": "84x36",
+          "thief": "th.r \"Revenue\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.ex-th \"Var %\"",
+          "size": "68x36",
+          "effective": "64x36",
+          "thief": "button.ex-th \"EBITDA margin\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.ex-th \"EBITDA margin\"",
+          "size": "88x36",
+          "effective": "88x36",
+          "thief": "td.r.num \"23.7%\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.btn.btn-ghost \"Defer Open 22 engineer\"",
+          "size": "61x28",
+          "effective": "60x28",
+          "thief": "li.ex-dec-r \"Open 22 engineering ro\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.btn.btn-secondary \"Approve Open 22 engine\"",
+          "size": "103x28",
+          "effective": "103x28",
+          "thief": "li.ex-dec-r \"Open 22 engineering ro\""
+        }
+      ],
+      "tapBad": [
+        {
+          "pass": "full height",
+          "sel": "button.ex-th \"Var %\"",
+          "reason": "tap at 289,1129 did not reach the element"
+        }
+      ]
+    },
+    "chess": {
+      "tested": 29,
+      "undersized": 1,
+      "tapMismatch": 1,
+      "pageErrors": [],
+      "failing": [
+        {
+          "pass": "full height",
+          "sel": "a.cc-logo \"Northgate Chess Club, \"",
+          "size": "99x30",
+          "effective": "99x32",
+          "thief": "div.cc-wrap.cc-nav-in \"NorthgatePlayTournamen\""
+        }
+      ],
+      "tapBad": [
+        {
+          "pass": "full height",
+          "sel": "a.cc-logo \"Northgate Chess Club, \"",
+          "reason": "tap at 113,41 did not reach the element"
+        }
+      ]
+    },
+    "social": {
+      "tested": 93,
+      "undersized": 8,
+      "tapMismatch": 40,
+      "pageErrors": [],
+      "failing": [
+        {
+          "pass": "full height",
+          "sel": "a.so-logo \"Tidepool home\"",
+          "size": "90x22",
+          "effective": "90x24",
+          "thief": "header.so-top \"TidepoolHomeExploreNot\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.so-avbtn \"Account menu\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "div.so-top-right \"Post\""
+        },
+        {
+          "pass": "full height",
+          "sel": "a.so-name \"Odalys Ferreira\"",
+          "size": "111x20",
+          "effective": "111x20",
+          "thief": "span.muted \"@odalys · 4m\""
+        },
+        {
+          "pass": "full height",
+          "sel": "a.so-name \"Tobias Reed\"",
+          "size": "88x20",
+          "effective": "88x20",
+          "thief": "span.muted \"@tobias.reed · 12m\""
+        },
+        {
+          "pass": "full height",
+          "sel": "a.so-name \"Halden Fjeld\"",
+          "size": "90x20",
+          "effective": "88x20",
+          "thief": "span.muted \"@halden · 25m\""
+        },
+        {
+          "pass": "full height",
+          "sel": "a.so-name \"Priya Nambiar\"",
+          "size": "102x20",
+          "effective": "102x20",
+          "thief": "span.muted \"@priya_n · 41m\""
+        },
+        {
+          "pass": "full height",
+          "sel": "a.so-name \"Kofi Mensah-Rhodes\"",
+          "size": "152x20",
+          "effective": "152x20",
+          "thief": "span.muted \"@kofi · 55m\""
+        },
+        {
+          "pass": "full height",
+          "sel": "a.so-name \"June Aoyama\"",
+          "size": "99x20",
+          "effective": "99x20",
+          "thief": "span.muted \"@june · 1h\""
+        }
+      ],
+      "tapBad": [
+        {
+          "pass": "full height",
+          "sel": "button.so-avbtn \"Account menu\"",
+          "reason": "tap at 349,15 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "a \"Odalys Ferreira profil\"",
+          "reason": "tap at 17,252 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.so-media-cell \"Open image 1 of 2\"",
+          "reason": "tap at 17,603 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.so-media-cell \"Open image 2 of 2\"",
+          "reason": "tap at 374,405 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.so-act \"Reply, 5 replies\"",
+          "reason": "tap at 9,619 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.so-act \"Repost options\"",
+          "reason": "tap at 61,619 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.so-act \"Like, hold for more re\"",
+          "reason": "tap at 122,619 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.so-act \"Bookmark\"",
+          "reason": "tap at 305,619 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.so-act \"Share\"",
+          "reason": "tap at 347,619 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "a \"Tobias Reed profile\"",
+          "reason": "tap at 17,682 did not reach the element"
+        },
+        {
+          "pass": "first screen",
+          "sel": "button.so-fab \"New post\"",
+          "reason": "tap at 175,797 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.so-act \"Reply, 4 replies\"",
+          "reason": "tap at 9,811 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.so-act \"Repost options\"",
+          "reason": "tap at 61,811 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.so-act \"Like, hold for more re\"",
+          "reason": "tap at 114,811 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.so-act \"Bookmark\"",
+          "reason": "tap at 305,811 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.so-act \"Share\"",
+          "reason": "tap at 347,811 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "a \"Halden Fjeld profile\"",
+          "reason": "tap at 17,874 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.so-media-cell \"Open image 2 of 4\"",
+          "reason": "tap at 374,1027 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.so-media-cell \"Open image 3 of 4\"",
+          "reason": "tap at 17,1248 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.so-media-cell \"Open image 4 of 4\"",
+          "reason": "tap at 374,1248 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.so-act \"Reply, 6 replies\"",
+          "reason": "tap at 9,1264 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.so-act \"Repost options\"",
+          "reason": "tap at 61,1264 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.so-act \"Like, hold for more re\"",
+          "reason": "tap at 131,1264 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.so-act \"Bookmark\"",
+          "reason": "tap at 305,1264 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.so-act \"Share\"",
+          "reason": "tap at 347,1264 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "a \"Priya Nambiar profile\"",
+          "reason": "tap at 17,1327 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.so-act \"Reply, 7 replies\"",
+          "reason": "tap at 9,1677 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.so-act \"Repost options\"",
+          "reason": "tap at 61,1677 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.so-act \"Like, hold for more re\"",
+          "reason": "tap at 122,1677 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.so-act \"Bookmark\"",
+          "reason": "tap at 305,1677 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.so-act \"Share\"",
+          "reason": "tap at 347,1677 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "a \"Kofi Mensah-Rhodes pro\"",
+          "reason": "tap at 17,1740 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.so-linkcard \"fieldnotes.kofi.studio\"",
+          "reason": "tap at 17,2175 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.so-act \"Reply, 3 replies\"",
+          "reason": "tap at 9,2190 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.so-act \"Repost options\"",
+          "reason": "tap at 61,2190 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.so-act \"Like, hold for more re\"",
+          "reason": "tap at 122,2190 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.so-act \"Bookmark\"",
+          "reason": "tap at 305,2190 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.so-act \"Share\"",
+          "reason": "tap at 347,2190 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "a \"June Aoyama profile\"",
+          "reason": "tap at 17,2253 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.so-fab \"New post\"",
+          "reason": "tap at 175,2353 did not reach the element"
+        }
+      ]
+    },
+    "trading": {
+      "tested": 52,
+      "undersized": 19,
+      "tapMismatch": 20,
+      "pageErrors": [],
+      "failing": [
+        {
+          "pass": "full height",
+          "sel": "button.tr-mv \"TIDE/USD0.04115+7.21%\"",
+          "size": "170x32",
+          "effective": "168x32",
+          "thief": "div.tr-root.mobile \"ArclineEquity$259,635.\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-mv \"HALO/USD3.4882+4.37%\"",
+          "size": "197x32",
+          "effective": "196x32",
+          "thief": "header.tr-top \"ArclineEquity$259,635.\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-switch \"Instrument NVXA, chang\"",
+          "size": "83x28",
+          "effective": "83x28",
+          "thief": "div.tr-head \"NVXANexavia Corp184.13\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.ask \"Ask 184.68, size 122. \"",
+          "size": "374x28",
+          "effective": "372x28",
+          "thief": "button.tr-bk-r.ask \"Ask 184.60, size 158. \""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.ask \"Ask 184.60, size 158. \"",
+          "size": "374x28",
+          "effective": "372x28",
+          "thief": "button.tr-bk-r.ask \"Ask 184.53, size 177. \""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.ask \"Ask 184.53, size 177. \"",
+          "size": "374x28",
+          "effective": "372x28",
+          "thief": "button.tr-bk-r.ask \"Ask 184.45, size 139. \""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.ask \"Ask 184.45, size 139. \"",
+          "size": "374x28",
+          "effective": "372x28",
+          "thief": "button.tr-bk-r.ask \"Ask 184.38, size 211. \""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.ask \"Ask 184.38, size 211. \"",
+          "size": "374x28",
+          "effective": "372x28",
+          "thief": "button.tr-bk-r.ask \"Ask 184.31, size 109. \""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.ask \"Ask 184.31, size 109. \"",
+          "size": "374x28",
+          "effective": "372x28",
+          "thief": "button.tr-bk-r.ask \"Ask 184.23, size 107. \""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.ask \"Ask 184.23, size 107. \"",
+          "size": "374x28",
+          "effective": "372x28",
+          "thief": "button.tr-bk-r.ask \"Ask 184.16, size 124. \""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.ask \"Ask 184.16, size 124. \"",
+          "size": "374x28",
+          "effective": "372x28",
+          "thief": "div.tr-bk-body \"184.681221,147184.6015\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.bid \"Bid 184.09, size 103. \"",
+          "size": "374x28",
+          "effective": "372x28",
+          "thief": "button.tr-bk-r.bid \"Bid 184.02, size 131. \""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.bid \"Bid 184.02, size 131. \"",
+          "size": "374x28",
+          "effective": "372x28",
+          "thief": "button.tr-bk-r.bid \"Bid 183.94, size 120. \""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.bid \"Bid 183.94, size 120. \"",
+          "size": "374x28",
+          "effective": "372x28",
+          "thief": "button.tr-bk-r.bid \"Bid 183.87, size 151. \""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.bid \"Bid 183.87, size 151. \"",
+          "size": "374x28",
+          "effective": "372x28",
+          "thief": "button.tr-bk-r.bid \"Bid 183.80, size 127. \""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.bid \"Bid 183.80, size 127. \"",
+          "size": "374x28",
+          "effective": "372x28",
+          "thief": "button.tr-bk-r.bid \"Bid 183.72, size 161. \""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.bid \"Bid 183.72, size 161. \"",
+          "size": "374x28",
+          "effective": "372x28",
+          "thief": "button.tr-bk-r.bid \"Bid 183.65, size 221. \""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.bid \"Bid 183.65, size 221. \"",
+          "size": "374x28",
+          "effective": "372x28",
+          "thief": "button.tr-bk-r.bid \"Bid 183.57, size 230. \""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.bid \"Bid 183.57, size 230. \"",
+          "size": "374x28",
+          "effective": "372x28",
+          "thief": "div.tr-mt-body \"PriceSizeTotal184.6812\""
+        }
+      ],
+      "tapBad": [
+        {
+          "pass": "full height",
+          "sel": "button.tr-mv \"TIDE/USD0.04115+7.21%\"",
+          "reason": "tap at 165,59 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-mv \"HALO/USD3.4882+4.37%\"",
+          "reason": "tap at 363,59 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-switch \"Instrument NVXA, chang\"",
+          "reason": "tap at 97,128 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "svg \"Candlestick chart. Dra\"",
+          "reason": "tap at 11,596 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.ask \"Ask 184.68, size 122. \"",
+          "reason": "tap at 194,682 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.ask \"Ask 184.60, size 158. \"",
+          "reason": "tap at 194,710 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.ask \"Ask 184.53, size 177. \"",
+          "reason": "tap at 194,738 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.ask \"Ask 184.45, size 139. \"",
+          "reason": "tap at 194,766 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.ask \"Ask 184.38, size 211. \"",
+          "reason": "tap at 194,794 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.ask \"Ask 184.31, size 109. \"",
+          "reason": "tap at 194,822 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.ask \"Ask 184.23, size 107. \"",
+          "reason": "tap at 194,850 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.ask \"Ask 184.16, size 124. \"",
+          "reason": "tap at 194,878 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.bid \"Bid 184.09, size 103. \"",
+          "reason": "tap at 194,946 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.bid \"Bid 184.02, size 131. \"",
+          "reason": "tap at 194,974 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.bid \"Bid 183.94, size 120. \"",
+          "reason": "tap at 194,1002 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.bid \"Bid 183.87, size 151. \"",
+          "reason": "tap at 194,1030 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.bid \"Bid 183.80, size 127. \"",
+          "reason": "tap at 194,1058 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.bid \"Bid 183.72, size 161. \"",
+          "reason": "tap at 194,1086 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.bid \"Bid 183.65, size 221. \"",
+          "reason": "tap at 194,1114 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.bid \"Bid 183.57, size 230. \"",
+          "reason": "tap at 194,1142 did not reach the element"
+        }
+      ]
+    },
+    "store": {
+      "tested": 72,
+      "undersized": 24,
+      "tapMismatch": 23,
+      "pageErrors": [],
+      "failing": [
+        {
+          "pass": "full height",
+          "sel": "a.st-logo \"Oak & Ember home\"",
+          "size": "121x22",
+          "effective": "120x24",
+          "thief": "div.st-bar \"Oak & Ember0\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-cartbtn \"Open bag, 0 items\"",
+          "size": "63x36",
+          "effective": "63x36",
+          "thief": "div.st-actions \"0\""
+        },
+        {
+          "pass": "full height",
+          "sel": "a.st-seeall \"View all\"",
+          "size": "72x21",
+          "effective": "72x24",
+          "thief": "div.st-sect-head \"FeaturedView all\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-heart \"Save Lull Desk Lamp to\"",
+          "size": "34x34",
+          "effective": "32x32",
+          "thief": "a \"Lull Desk Lamp, $124\""
+        },
+        {
+          "pass": "full height",
+          "sel": "a.st-card-name \"Lull Desk Lamp\"",
+          "size": "109x23",
+          "effective": "108x24",
+          "thief": "div.st-card-info \"Lull Desk Lamp$1244.8(\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-swatch \"Charcoal\"",
+          "size": "16x16",
+          "effective": "28x36",
+          "thief": "button.st-swatch \"Sage\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-swatch \"Oat\"",
+          "size": "16x16",
+          "effective": "28x36",
+          "thief": "button.st-swatch \"Charcoal\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-swatch \"Moss\"",
+          "size": "16x16",
+          "effective": "28x36",
+          "thief": "button.st-swatch \"Terracotta\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-heart \"Save Everyday Mug to w\"",
+          "size": "34x34",
+          "effective": "32x32",
+          "thief": "a \"Everyday Mug, $28\""
+        },
+        {
+          "pass": "full height",
+          "sel": "a.st-card-name \"Everyday Mug\"",
+          "size": "103x23",
+          "effective": "103x24",
+          "thief": "div.st-card-info \"Everyday MugFrom $284.\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-swatch \"Sage\"",
+          "size": "16x16",
+          "effective": "36x36",
+          "thief": "div.st-grid \"Quick addLull Desk Lam\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-swatch \"Terracotta\"",
+          "size": "16x16",
+          "effective": "28x36",
+          "thief": "button.st-swatch \"Sage\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-swatch \"Slate\"",
+          "size": "16x16",
+          "effective": "36x36",
+          "thief": "div.st-grid \"Quick addLull Desk Lam\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-heart \"Save Grid Notebook to \"",
+          "size": "34x34",
+          "effective": "32x32",
+          "thief": "a \"Grid Notebook, $24\""
+        },
+        {
+          "pass": "full height",
+          "sel": "a.st-card-name \"Grid Notebook\"",
+          "size": "104x23",
+          "effective": "104x24",
+          "thief": "div.st-card-info \"Grid NotebookFrom $244\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-heart \"Save Field Tote to wis\"",
+          "size": "34x34",
+          "effective": "32x32",
+          "thief": "a \"Field Tote, $58\""
+        },
+        {
+          "pass": "full height",
+          "sel": "a.st-card-name \"Field Tote\"",
+          "size": "70x23",
+          "effective": "68x24",
+          "thief": "div.st-card-info \"Field Tote$584.8(389)\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-swatch \"Sand\"",
+          "size": "16x16",
+          "effective": "28x36",
+          "thief": "button.st-swatch \"Charcoal\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-heart \"Save Ridge Vase to wis\"",
+          "size": "34x34",
+          "effective": "32x32",
+          "thief": "a \"Ridge Vase, $64\""
+        },
+        {
+          "pass": "full height",
+          "sel": "a.st-card-name \"Ridge Vase\"",
+          "size": "80x23",
+          "effective": "80x24",
+          "thief": "div.st-card-info \"Ridge Vase$644.8(98)\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-heart \"Save Oslo Dining Chair\"",
+          "size": "34x34",
+          "effective": "32x32",
+          "thief": "a \"Oslo Dining Chair, $24\""
+        },
+        {
+          "pass": "full height",
+          "sel": "a.st-card-name \"Oslo Dining Chair\"",
+          "size": "124x23",
+          "effective": "124x24",
+          "thief": "div.st-card-info \"Oslo Dining Chair$2454\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-heart \"Save Wool Throw to wis\"",
+          "size": "34x34",
+          "effective": "32x32",
+          "thief": "a \"Wool Throw, $118\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-heart \"Save Snake Plant to wi\"",
+          "size": "34x34",
+          "effective": "32x32",
+          "thief": "a \"Snake Plant, $42\""
+        }
+      ],
+      "tapBad": [
+        {
+          "pass": "full height",
+          "sel": "button.st-cartbtn \"Open bag, 0 items\"",
+          "reason": "tap at 372,11 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "a \"Lull Desk Lamp, $124\"",
+          "reason": "tap at 19,1428 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-heart \"Save Lull Desk Lamp to\"",
+          "reason": "tap at 175,1439 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-quick \"Quick add Lull Desk La\"",
+          "reason": "tap at 177,1586 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "a \"Everyday Mug, $28\"",
+          "reason": "tap at 204,1428 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-heart \"Save Everyday Mug to w\"",
+          "reason": "tap at 360,1439 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-quick \"Quick add Everyday Mug\"",
+          "reason": "tap at 362,1586 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "a \"Grid Notebook, $24\"",
+          "reason": "tap at 19,1711 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-heart \"Save Grid Notebook to \"",
+          "reason": "tap at 175,1722 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-quick \"Quick add Grid Noteboo\"",
+          "reason": "tap at 177,1869 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "a \"Field Tote, $58\"",
+          "reason": "tap at 204,1711 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-heart \"Save Field Tote to wis\"",
+          "reason": "tap at 360,1722 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-quick \"Quick add Field Tote t\"",
+          "reason": "tap at 362,1869 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "a \"Ridge Vase, $64\"",
+          "reason": "tap at 19,1993 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-heart \"Save Ridge Vase to wis\"",
+          "reason": "tap at 175,2004 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-quick \"Quick add Ridge Vase t\"",
+          "reason": "tap at 177,2151 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "a \"Oslo Dining Chair, $24\"",
+          "reason": "tap at 204,1993 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-heart \"Save Oslo Dining Chair\"",
+          "reason": "tap at 360,2004 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-quick \"Quick add Oslo Dining \"",
+          "reason": "tap at 362,2151 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "a \"Wool Throw, $118\"",
+          "reason": "tap at 19,2276 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-heart \"Save Wool Throw to wis\"",
+          "reason": "tap at 175,2287 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "a \"Snake Plant, $42\"",
+          "reason": "tap at 204,2276 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-heart \"Save Snake Plant to wi\"",
+          "reason": "tap at 360,2287 did not reach the element"
+        }
+      ]
+    },
+    "travel": {
+      "tested": 37,
+      "undersized": 8,
+      "tapMismatch": 23,
+      "pageErrors": [],
+      "failing": [
+        {
+          "pass": "full height",
+          "sel": "a.tv-logo \"Wayfarer, home\"",
+          "size": "93x30",
+          "effective": "92x32",
+          "thief": "div.tv-wrap.tv-header-in \"WayfarerTrips\""
+        },
+        {
+          "pass": "full height",
+          "sel": "input#_r_2_.tv-input",
+          "size": "277x20",
+          "effective": "276x20",
+          "thief": "div.tv-field.input-field \"Destination\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.icon-btn.tv-heart \"Save Quinta da Falesia\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "button.tv-tile-main \"Quinta da Falesia, Alg\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.icon-btn.tv-heart \"Save Palmeraie Resort\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "button.tv-tile-main \"Palmeraie Resort, Marr\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.icon-btn.tv-heart \"Save Hotel Kronborg Pl\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "button.tv-tile-main \"Hotel Kronborg Plads, \""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.icon-btn.tv-heart \"Save Casa do Largo\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "button.tv-tile-main \"Casa do Largo, Lisbon\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.icon-btn.tv-heart \"Save Dar Elias\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "button.tv-tile-main \"Dar Elias, Marrakech\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.icon-btn.tv-heart \"Save Gasthof Hirschen\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "button.tv-tile-main \"Gasthof Hirschen, Blac\""
+        }
+      ],
+      "tapBad": [
+        {
+          "pass": "full height",
+          "sel": "button.tv-field.wide \"DatesFri 20 Nov to Tue\"",
+          "reason": "tap at 194,420 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tv-field \"Guests2 guests, 1 room\"",
+          "reason": "tap at 194,488 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.btn.btn-primary \"Search\"",
+          "reason": "tap at 194,556 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tv-dest-tile.t1 \"Lisbon, Portugal\"",
+          "reason": "tap at 19,681 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tv-dest-tile.t2 \"Amalfi Coast, Italy\"",
+          "reason": "tap at 19,843 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tv-dest-tile.t3 \"Chamonix, France\"",
+          "reason": "tap at 204,843 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tv-dest-tile.t4 \"Marrakech, Morocco\"",
+          "reason": "tap at 19,1005 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tv-dest-tile.t5 \"Santorini, Greece\"",
+          "reason": "tap at 204,1005 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tv-dest-tile.t6 \"Black Forest, Germany\"",
+          "reason": "tap at 19,1167 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tv-dest-tile.t7 \"Copenhagen, Denmark\"",
+          "reason": "tap at 204,1167 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tv-dest-tile.t8 \"Algarve, Portugal\"",
+          "reason": "tap at 19,1329 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tv-tile-main \"Quinta da Falesia, Alg\"",
+          "reason": "tap at 19,1562 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.icon-btn.tv-heart \"Save Quinta da Falesia\"",
+          "reason": "tap at 27,1570 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tv-tile-main \"Palmeraie Resort, Marr\"",
+          "reason": "tap at 206,1562 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.icon-btn.tv-heart \"Save Palmeraie Resort\"",
+          "reason": "tap at 214,1570 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tv-tile-main \"Hotel Kronborg Plads, \"",
+          "reason": "tap at 19,1830 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.icon-btn.tv-heart \"Save Hotel Kronborg Pl\"",
+          "reason": "tap at 27,1838 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tv-tile-main \"Casa do Largo, Lisbon\"",
+          "reason": "tap at 206,1830 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.icon-btn.tv-heart \"Save Casa do Largo\"",
+          "reason": "tap at 214,1838 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tv-tile-main \"Dar Elias, Marrakech\"",
+          "reason": "tap at 19,2191 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.icon-btn.tv-heart \"Save Dar Elias\"",
+          "reason": "tap at 27,2199 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tv-tile-main \"Gasthof Hirschen, Blac\"",
+          "reason": "tap at 206,2191 did not reach the element"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.icon-btn.tv-heart \"Save Gasthof Hirschen\"",
+          "reason": "tap at 214,2199 did not reach the element"
+        }
+      ]
+    }
+  },
+  "totals": {
+    "tested": 641,
+    "undersized": 131,
+    "tapMismatch": 191
+  }
+}
