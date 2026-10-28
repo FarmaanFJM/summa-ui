@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import './executive.css'
-import { Avatar, Button, Dropdown, Icon, IconButton, Menu, Tabs, useAnchored, useMedia, type MenuEntry } from '../../ui'
+import { Button, Dropdown, Icon, IconButton, Menu, Tabs, useAnchored, useMedia, type MenuEntry } from '../../ui'
 import { DECISIONS, PERIODS, UNITS, selUnits, type Decision, type PeriodId } from './data'
 import { Finance, Operations, Overview, People, type Ctx } from './sections'
 
@@ -106,7 +106,7 @@ export default function Executive() {
               <Icon name="sliders" size={17} />{filtersOn > 0 && <span className="ex-badge num">{filtersOn}</span>}
             </button>
           )}
-          <button ref={um.ref} type="button" className="ex-user" aria-label="Account menu" aria-haspopup="menu" aria-expanded={um.open} onClick={um.toggle}><Avatar name="Amara Whitfield" large /></button>
+          <IconButton ref={um.ref} icon="user" label="Account menu" className="ex-user" aria-haspopup="menu" aria-expanded={um.open} onClick={um.toggle} />
           <Menu anchor={um.el} open={um.open} onClose={um.close} items={menu} placement="bottom-end" label="Account" width={248} />
         </div>
         {mobile && (

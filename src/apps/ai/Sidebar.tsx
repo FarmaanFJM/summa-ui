@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useRef, useState, type Ref } from 'react'
-import { Avatar, Brand, Button, Dialog, Icon, IconButton, Menu, SearchInput, useAnchored } from '../../ui'
+import { Brand, Button, Dialog, Icon, IconButton, Menu, SearchInput, useAnchored } from '../../ui'
 import { GROUP_ORDER, groupOf, type Conv } from './data'
 
 type RowProps = { c: Conv; active: boolean; onOpen: () => void; onRename: (t: string) => void; onPin: () => void; onDelete: () => void }
@@ -83,14 +83,13 @@ export function Sidebar({ convs, activeId, query, onQuery, searchRef, onNew, onO
         {!groups.length && <p className="ai-none faint">{query ? 'No chats match your search' : 'No conversations yet'}</p>}
       </nav>
       <div className="ai-user">
-        <Avatar name="Farmaan Mohammad" />
         <span className="truncate grow">Farmaan Mohammad</span>
         <Icon name="chevron-down" size={14} className="faint" />
       </div>
       <Dialog open={!!confirm} onClose={() => setConfirm(null)} title="Delete conversation?" width={400}
         footer={<>
           <Button variant="ghost" onClick={() => setConfirm(null)}>Cancel</Button>
-          <Button variant="danger" autoFocus onClick={() => { if (confirm) onDelete(confirm.id); setConfirm(null) }}>Delete</Button>
+          <Button variant="danger" icon="trash" autoFocus onClick={() => { if (confirm) onDelete(confirm.id); setConfirm(null) }}>Delete conversation</Button>
         </>}>
         <p className="muted truncate">“{confirm?.title}” will be permanently removed.</p>
       </Dialog>

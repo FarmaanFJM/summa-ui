@@ -1,5 +1,5 @@
 import { useMemo, useState } from 'react'
-import { Avatar, Button, Dialog, Icon, SearchInput, Tabs } from '../../ui'
+import { Button, Dialog, Icon, SearchInput, Tabs } from '../../ui'
 import { PLAYERS, ratingHistory, type Player, type Section } from './data'
 import { Band, BandHead } from './parts'
 
@@ -61,7 +61,6 @@ export function Standings() {
                 <td className="rank num faint">{rank}</td>
                 <td className="name">
                   <button type="button" className="cc-player" onClick={e => { e.stopPropagation(); setOpen(p) }} aria-label={`${p.name}, rating ${p.rating}. Open rating history`}>
-                    <Avatar name={p.name} />
                     <span className="truncate">{p.name}</span>
                     <span className="faint cc-sec">{p.section}</span>
                   </button>

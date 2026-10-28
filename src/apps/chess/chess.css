@@ -76,9 +76,9 @@
 .cb-sq.last.dark::before { background: rgba(255, 255, 255, 0.2); }
 .cb-sq.sel.light::before { background: rgba(50, 46, 40, 0.34); }
 .cb-sq.sel.dark::before { background: rgba(255, 255, 255, 0.34); }
-.cb-sq.hint::before { box-shadow: inset 0 0 0 4px rgba(255, 255, 255, 0.85); }
+.cb-sq.hint::before { box-shadow: inset 0 0 0 2px rgba(255, 255, 255, 0.85); }
 .cb-sq.check::before { background: radial-gradient(circle at 50% 50%, rgba(239, 112, 112, 0.95) 0, rgba(239, 112, 112, 0.55) 40%, rgba(239, 112, 112, 0) 74%); }
-.cb-sq.cursor::after { box-shadow: inset 0 0 0 3px rgba(20, 20, 20, 0.85), inset 0 0 0 5px rgba(255, 255, 255, 0.85); }
+.cb-sq.cursor::after { box-shadow: inset 0 0 0 1.5px rgba(20, 20, 20, 0.85), inset 0 0 0 3px rgba(255, 255, 255, 0.85); }
 .cb-piece { position: relative; z-index: 1; width: 90%; height: 90%; pointer-events: none; filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.28)); }
 .cb-piece.lifted { opacity: 0.3; }
 .cb-dot { position: absolute; z-index: 2; width: 30%; height: 30%; border-radius: 50%; background: rgba(28, 27, 24, 0.3); pointer-events: none; }
@@ -138,7 +138,6 @@
 .cc-table .form { width: 190px; padding-left: 40px; letter-spacing: 0.08em; }
 .cc-table th.form .cc-th { padding-left: 40px; }
 .cc-player { display: flex; align-items: center; gap: 12px; min-width: 0; max-width: 100%; font-weight: 500; text-align: left; }
-.cc-player .avatar { width: 28px; height: 28px; font-size: 11px; }
 .cc-sec { font-size: var(--fs-sm); font-weight: 400; margin-left: 4px; }
 
 .cc-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin: 16px 0 20px; }

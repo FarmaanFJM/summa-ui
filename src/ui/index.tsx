@@ -81,9 +81,17 @@ export function Tag({ children, icon, accent, color, className = '' }: { childre
   )
 }
 
-export function Avatar({ name, large }: { name: string; large?: boolean }) {
-  const initials = name.split(/\s+/).map(s => s[0]).slice(0, 2).join('').toUpperCase()
-  return <span className={`avatar ${large ? 'lg' : ''}`} title={name} aria-label={name}>{initials}</span>
+/**
+ * Avatar: a deliberate opt-in for REAL identity imagery only (Principle 20).
+ * Use it when an actual picture exists: pass `src` (or custom `children` such as an <img> or SVG art).
+ * Initials render only when the caller passes an explicit `initials` prop, and that should be rare:
+ * never generate initials, colours or circles to fill a slot where no real imagery exists.
+ * Otherwise show the plain name and relevant metadata instead of an Avatar.
+ */
+export function Avatar({ name, src, children, initials, large }: { name: string; src?: string; children?: ReactNode; initials?: string; large?: boolean }) {
+  const content = children ?? (src ? <img src={src} alt="" style={{ width: "100%", height: "100%", objectFit: "cover", borderRadius: "inherit" }} /> : initials)
+  if (content == null || content === '') return null
+  return <span className={`avatar ${large ? 'lg' : ''}`} title={name} role="img" aria-label={name}>{content}</span>
 }
 
 export const Divider = () => <hr className="divider" />

@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState, type ReactNode } from 'react'
-import { Avatar, Checkbox, Icon, Menu, Popover, Tag, useAnchored, type IconName, type MenuEntry, type Placement } from '../../ui'
+import { Checkbox, Icon, Menu, Popover, Tag, useAnchored, type IconName, type MenuEntry, type Placement } from '../../ui'
 import { MEMBERS, PRIORITIES, STATUSES, TODAY, fmtDue, memberName, type Label, type Priority, type Status, type Task } from './data'
 
 /** Anchors a menu to any trigger element rendered by the caller. */
@@ -73,7 +73,7 @@ export function TaskRow({ task, labels, selected, anySelected, cursor, active, o
       <button type="button" className="pm-title truncate" onClick={e => { e.stopPropagation(); onOpen() }}>{task.title}</button>
       <LabelTags ids={task.labels} labels={labels} />
       <Due task={task} />
-      <span className="pm-assignee">{task.assignee ? <Avatar name={memberName(task.assignee)} /> : null}</span>
+      <span className="pm-assignee truncate" title={task.assignee ? memberName(task.assignee) : undefined}>{task.assignee ? memberName(task.assignee).split(' ')[0] : null}</span>
     </div>
   )
 }
@@ -91,7 +91,7 @@ export function TaskCard({ task, labels, selected, cursor, active, onOpen, onSel
         <LabelTags ids={task.labels} labels={labels} max={1} />
         <span className="grow" />
         <Due task={task} />
-        {task.assignee && <Avatar name={memberName(task.assignee)} />}
+        {task.assignee && <span className="pm-assignee-t muted truncate" title={memberName(task.assignee)}>{memberName(task.assignee).split(' ')[0]}</span>}
       </div>
     </div>
   )

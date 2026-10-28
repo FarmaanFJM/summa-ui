@@ -21,7 +21,6 @@
 .tv-header-end { display: flex; align-items: center; gap: 4px; }
 .tv-trips-btn.on { background: var(--s3); color: var(--text); }
 .tv-count-dot { min-width: 18px; height: 18px; padding: 0 5px; border-radius: 9px; background: var(--s4); color: var(--text); font-size: var(--fs-xs); line-height: 18px; text-align: center; }
-.tv-avatar { border-radius: 50%; margin-left: 4px; display: grid; place-items: center; }
 
 /* ---------- Hero and search ---------- */
 .tv-hero { position: relative; height: 360px; flex: none; }
@@ -236,7 +235,8 @@ button.tv-field:hover, button.tv-field[aria-expanded="true"] { background: var(-
 .tv-fld .input[aria-invalid="true"] { box-shadow: 0 0 0 1.5px var(--danger); }
 .tv-form-foot { padding-top: 6px; }
 .tv-form-foot .btn { min-width: 240px; }
-.tv-banner { padding: 12px 14px; border-radius: var(--r-lg); background: var(--danger-soft); color: var(--danger); }
+.tv-banner { display: flex; gap: 10px; align-items: flex-start; padding: 12px 14px; border-radius: var(--r-lg); background: var(--s2); color: var(--text); }
+.tv-banner svg { color: var(--danger); flex: none; margin-top: 2px; }
 .tv-review { margin: 0; display: flex; flex-direction: column; background: var(--s1); border-radius: var(--r-lg); padding: 6px 18px; }
 .tv-review > div { display: grid; grid-template-columns: 110px 1fr; gap: 12px; padding: 12px 0; }
 .tv-review > div + div { border-top: 1px solid var(--line); }

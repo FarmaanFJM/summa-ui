@@ -1,5 +1,5 @@
 import { useEffect, useRef, type DragEvent, type MouseEvent } from 'react'
-import { Avatar, Checkbox, Icon, IconButton } from '../../ui'
+import { Checkbox, Icon, IconButton } from '../../ui'
 import { ICON, fmtDate, fmtSize, kindLabel, type Item } from './data'
 
 export type SortKey = 'name' | 'modified' | 'size' | 'kind'
@@ -30,15 +30,10 @@ export function FileIcon({ item, size = 18 }: { item: Item; size?: number }) {
 function hueOf(name: string) { let h = 0; for (let i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) % 360; return h }
 export const thumbStyle = (name: string) => { const h = hueOf(name); return { background: `linear-gradient(135deg, hsl(${h} 22% 34%), hsl(${(h + 40) % 360} 26% 22%))` } }
 
-function Avatars({ people }: { people?: string[] }) {
+function SharedWith({ people }: { people?: string[] }) {
   if (!people?.length) return null
-  const shown = people.slice(0, 3)
-  return (
-    <span className="files-avatars" aria-label={`Shared with ${people.join(', ')}`}>
-      {shown.map(p => <Avatar key={p} name={p} />)}
-      {people.length > 3 && <span className="faint num files-more">+{people.length - 3}</span>}
-    </span>
-  )
+  const label = people.length === 1 ? people[0].split(' ')[0] : `${people.length} people`
+  return <span className="muted files-shared" title={`Shared with ${people.join(', ')}`}>{label}</span>
 }
 
 function RenameInput({ item, onDone }: { item: Item; onDone: (name: string | null) => void }) {
@@ -129,7 +124,7 @@ export function ListView(p: ViewProps) {
             <td className="c-mod muted num" role="gridcell">{fmtDate(it.modified)}</td>
             <td className="c-size muted num" role="gridcell">{it.kind === 'folder' ? '' : fmtSize(it.size)}</td>
             <td className="c-kind muted" role="gridcell"><span className="truncate">{kindLabel(it)}</span></td>
-            <td className="c-share" role="gridcell"><Avatars people={it.shared} /></td>
+            <td className="c-share" role="gridcell"><SharedWith people={it.shared} /></td>
             <td className="c-act" role="gridcell">
               <span className="files-actions">
                 {!p.trashView && <IconButton size="sm" icon="star" label={it.starred ? 'Remove star' : 'Add star'} className={it.starred ? 'on starred' : 'star-off'} onClick={e => { e.stopPropagation(); p.onStar(it.id) }} onDoubleClick={e => e.stopPropagation()} />}

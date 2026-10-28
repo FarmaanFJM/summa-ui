@@ -1,16 +1,40 @@
-import { Fragment, useEffect, useRef, useState, type ReactNode } from 'react'
+import { Fragment, useEffect, useId, useMemo, useRef, useState, type ReactNode } from 'react'
 import { Button, Menu, MenuButton, useAnchored, type MenuEntry } from '../../ui'
 import { SI, type SIconName } from './icons'
-import { Scene, PALS, type Media } from './art'
+import { Scene, PALS, rng, type Media } from './art'
 import { ME, USERS, compact, fmtAgo, fmtFull, userOf, type Comment, type Post, type User } from './data'
 import { REACTIONS, useSocial, userFor, type ReactionId } from './state'
 import { go, href } from './router'
 
 /* ---------------------------------------------------------------- bits */
+/* Purely graphic generated avatar art: abstract procedural shapes from the user's palette and seed. No letters. */
 export function Face({ u, size = 40 }: { u: User; size?: number }) {
-  const p = PALS[u.pal]
-  const ini = u.name.split(/\s+/).map(s => s[0]).slice(0, 2).join('').toUpperCase()
-  return <span className="so-face" aria-hidden="true" style={{ width: size, height: size, fontSize: Math.round(size * 0.38), background: `linear-gradient(140deg, ${p.sky[2]}, ${p.mid})`, color: p.ink }}>{ini}</span>
+  const uid = useId().replace(/:/g, '')
+  const body = useMemo(() => {
+    const p = PALS[u.pal]
+    const r = rng(u.seed * 2654435 + 17)
+    const cols = [p.far, p.mid, p.sun, p.near]
+    const shapes = Array.from({ length: 3 }, (_, i) => {
+      const cx = 8 + r() * 48, cy = 8 + r() * 48, rad = 14 + r() * 22
+      return <circle key={i} cx={cx.toFixed(1)} cy={cy.toFixed(1)} r={rad.toFixed(1)} fill={cols[Math.floor(r() * cols.length)]} opacity={0.55 + r() * 0.4} />
+    })
+    const a = r() * 40
+    return { p, shapes, a }
+  }, [u.pal, u.seed])
+  const { p, shapes, a } = body
+  return (
+    <svg className="so-face" aria-hidden="true" width={size} height={size} viewBox="0 0 64 64">
+      <defs>
+        <clipPath id={`${uid}c`}><circle cx="32" cy="32" r="32" /></clipPath>
+        <linearGradient id={`${uid}g`} x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor={p.sky[2]} /><stop offset="1" stopColor={p.mid} /></linearGradient>
+      </defs>
+      <g clipPath={`url(#${uid}c)`}>
+        <rect width="64" height="64" fill={`url(#${uid}g)`} />
+        {shapes}
+        <path d={`M0 ${(44 + a / 4).toFixed(1)} Q 32 ${(30 + a / 2).toFixed(1)} 64 ${(46 - a / 4).toFixed(1)} V64 H0 Z`} fill={p.near} opacity="0.75" />
+      </g>
+    </svg>
+  )
 }
 
 export function Rich({ text }: { text: string }) {

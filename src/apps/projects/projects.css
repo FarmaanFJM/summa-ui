@@ -25,7 +25,8 @@
 .pm-labels { display: inline-flex; gap: 6px; flex: none; }
 .pm-due { width: 48px; flex: none; text-align: right; font-size: var(--fs-sm); color: var(--text-2); white-space: nowrap; }
 .pm-due.late, .pm-late { color: var(--danger); }
-.pm-assignee { width: 24px; height: 24px; flex: none; display: grid; }
+.pm-assignee { width: 64px; flex: none; color: var(--text-2); font-size: var(--fs-sm); text-align: right; }
+.pm-assignee-t { font-size: var(--fs-sm); max-width: 80px; }
 .pm-status-btn { display: grid; place-items: center; width: 26px; height: 26px; margin: 0 -2px; border-radius: 50%; flex: none; transition: background var(--dur); }
 .pm-status-btn:hover, .pm-status-btn[aria-expanded="true"] { background: var(--s4); }
 .pm-st { display: grid; }
@@ -106,7 +107,9 @@
 /* narrow list pane (container), works with the detail panel open too */
 @container pl (max-width: 860px) { .pm-btn-text { display: none; } .pm-search { width: 160px; } .pm-labels { display: none; } }
 @container pl (max-width: 560px) {
-  .pm-top { flex-wrap: wrap; padding: 6px 8px 8px 12px; row-gap: 6px; }
+  .pm-top { flex-wrap: wrap; padding: 12px 12px 12px 12px; row-gap: 12px; column-gap: 8px; }
+  .pm-top .btn, .pm-top .icon-btn, .pm-search, .pm-search .input { min-height: 40px; }
+  .pm-top .tab { height: 36px; }
   .pm-tabs, .pm-new { order: 1; }
   .pm-search { order: 2; flex: 1 1 160px; width: auto; margin: 0; }
   .pm-top > .btn-ghost { order: 3; }

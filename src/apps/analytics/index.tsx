@@ -1,6 +1,6 @@
 import './analytics.css'
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { AppShell, Avatar, Brand, Button, Dialog, Dropdown, DrawerToggle, Icon, Menu, NavItem, Switch, useAnchored } from '../../ui'
+import { AppShell, Brand, Button, Dialog, Dropdown, DrawerToggle, Icon, Menu, NavItem, Switch, useAnchored } from '../../ui'
 import {
   COUNTRIES, MIN_DAY, NAV, PAGES, TODAY, aggregate, catValue, csvOf, dayFull, dayOfIso, download, isoOf, len, mainBin, prevOf, rangeOf, rangeShort, rangeText,
   series, sparkBin, type Col, type PageId, type PresetId, type Range, type Row,
@@ -98,7 +98,7 @@ export default function Analytics() {
             {NAV.map(n => <NavItem key={n.id} icon={n.icon} label={n.label} current={page === n.id} onClick={() => setPage(n.id)} />)}
           </nav>
           <span className="grow" />
-          <div className="an-user"><Avatar name="Farmaan Mohammad" /><span className="truncate grow">Meridian Inc.</span></div>
+          <div className="an-user"><span className="truncate grow">Meridian Inc.</span></div>
         </div>
       }
     >

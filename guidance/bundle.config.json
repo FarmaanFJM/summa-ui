@@ -1,0 +1,6 @@
+{
+  "name": "summa-ui-guidance",
+  "version": "0.1.0",
+  "channel": "draft",
+  "description": "Framework-agnostic Summa-UI design guidance for AI agents: principles, anti-patterns, token guidance, presets, a curated icon catalog and objective check rules."
+}

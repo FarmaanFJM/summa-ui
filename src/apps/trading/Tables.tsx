@@ -49,7 +49,7 @@ export function Positions({ s, mobile, onClose, onRow }: { s: State; mobile: boo
         { k: 'm', label: 'Mark', r: true, v: num(mark, i.dec) }, { k: 'v', label: 'Value', r: true, v: usd(p.qty * mark) },
         { k: 'p', label: 'P&L', r: true, v: <Pnl v={pnl} /> }, { k: 'pp', label: 'P&L %', r: true, v: <Pnl v={pnl} p={pct} /> },
       ],
-      action: <Button variant="danger" onClick={e => { e.stopPropagation(); onClose(p.sym) }} aria-label={`Close position ${p.sym}`}>Close</Button>,
+      action: <Button variant="secondary" onClick={e => { e.stopPropagation(); onClose(p.sym) }} aria-label={`Close position ${p.sym}`}>Close</Button>,
     }
   })
   return <Grid rows={rows} label="Positions" mobile={mobile} empty="No open positions." onRow={onRow} />

@@ -1,6 +1,6 @@
 import './travel.css'
 import { useEffect, useRef, useState } from 'react'
-import { Avatar, Button, Dialog, Icon, IconButton, Menu, useAnchored, useMedia, type MenuEntry } from '../../ui'
+import { Button, Dialog, Icon, IconButton, Menu, useAnchored, useMedia, type MenuEntry } from '../../ui'
 import { BookPage } from './Book'
 import { RATES, destById, stayById, type Currency, type Locale } from './data'
 import { Landing } from './Landing'
@@ -40,7 +40,7 @@ function Header() {
             <Icon name="cloud" size={15} />{!narrow && <span className="num">{cur} · {loc === 'en-GB' ? 'UK' : 'US'}</span>}
           </Button>
           <Menu anchor={money.el} open={money.open} onClose={money.close} items={regional} label="Currency and language" width={250} />
-          <button ref={acct.ref} type="button" className="tv-avatar" aria-label="Account menu" aria-haspopup="menu" aria-expanded={acct.open} onClick={acct.toggle}><Avatar name="Alex Morgan" large /></button>
+          <IconButton ref={acct.ref} icon="user" label="Account menu" aria-haspopup="menu" aria-expanded={acct.open} onClick={acct.toggle} />
           <Menu anchor={acct.el} open={acct.open} onClose={acct.close} items={account} label="Account" />
         </nav>
       </div>

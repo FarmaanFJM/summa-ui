@@ -39,7 +39,7 @@ export function TripsPage() {
                   </div>
                   <div className="tv-trip-side">
                     <div className="num tv-strong">{money(t.total, cur)}</div>
-                    {!cancelled && <Button variant="danger" onClick={() => setTarget(t)}>Cancel booking</Button>}
+                    {!cancelled && <Button variant="secondary" onClick={() => setTarget(t)}>Cancel booking</Button>}
                   </div>
                 </li>
               )

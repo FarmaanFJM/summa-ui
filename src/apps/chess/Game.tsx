@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
-import { Avatar, Button, Dialog, Dropdown, Icon, Tabs } from '../../ui'
+import { Button, Dialog, Dropdown, Icon, Tabs } from '../../ui'
 import { Board } from './Board'
 import { botAssessment, LEVELS, type Level } from './bot'
 import { requestBotMove } from './botClient'
@@ -38,7 +38,6 @@ function Captured({ pieces, diff }: { pieces: number[]; diff: number }) {
 function Strip({ name, rating, color, captured, diff, clock, active, timed }: { name: string; rating: number | null; color: Color; captured: number[]; diff: number; clock: number; active: boolean; timed: boolean }) {
   return (
     <div className="cc-strip">
-      <Avatar name={name.replace(/ \(bot\)/, '')} large />
       <div className="cc-strip-name">
         <span className="truncate">{name}</span>
         {rating !== null && <span className="faint num">{rating}</span>}
@@ -230,7 +229,7 @@ export function HeroGame() {
           <>
             <Button variant="ghost" onClick={() => setConfirm(null)}>Cancel</Button>
             {confirm?.kind === 'resign'
-              ? <Button variant="danger" data-autofocus onClick={resign}>Resign</Button>
+              ? <Button variant="danger" icon="flag" data-autofocus onClick={resign}>Resign game</Button>
               : <Button variant="secondary" data-autofocus onClick={() => { const c = confirm!; if (c.kind === 'new') { setPref(c.pref); setTc(c.tc); start(c.pref, c.tc) }; setConfirm(null) }}>New game</Button>}
           </>
         }

@@ -237,7 +237,7 @@ export default function ProjectsApp() {
         setProjects(ps => [...ps, { id, name, key, seq: 0 }]); setScope(id); setNewProject(false); setOpenId(null)
       }} />
       <Dialog open={!!deleting} onClose={() => setDeleting(null)} title={deleting && deleting.length > 1 ? `Delete ${deleting.length} tasks?` : 'Delete task?'}
-        footer={<><Button variant="ghost" onClick={() => setDeleting(null)}>Cancel</Button><Button variant="danger" onClick={() => { remove(deleting!); setDeleting(null) }}>Delete</Button></>}>
+        footer={<><Button variant="ghost" onClick={() => setDeleting(null)}>Cancel</Button><Button variant="danger" icon="trash" onClick={() => { remove(deleting!); setDeleting(null) }}>{deleting && deleting.length > 1 ? 'Delete tasks' : 'Delete task'}</Button></>}>
         <p className="muted">{deleting && deleting.length > 1 ? 'These tasks' : 'This task'} and {deleting && deleting.length > 1 ? 'their' : 'its'} activity will be permanently removed.</p>
       </Dialog>
     </AppShell>

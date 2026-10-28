@@ -1,5 +1,5 @@
 import { useLayoutEffect, useRef, useState } from 'react'
-import { Avatar, Dropdown, IconButton, Icon, MenuButton, Tag, type Option } from '../../ui'
+import { Dropdown, IconButton, Icon, MenuButton, Tag, type Option } from '../../ui'
 import { MEMBERS, PRIORITIES, STATUSES, TODAY, dayOffset, fmtDue, memberName, type Label, type Priority, type Project, type Status, type Task } from './data'
 
 function Autosize({ value, onChange, className, placeholder, label, onEnter }: { value: string; onChange: (v: string) => void; className: string; placeholder?: string; label: string; onEnter?: () => void }) {
@@ -21,7 +21,7 @@ export function Detail({ task, project, labels, onClose, onPatch, onCreateLabel,
 
   const statusOpts: Option<Status>[] = STATUSES.map(s => ({ value: s.value, label: s.label, icon: s.icon }))
   const prioOpts: Option<Priority>[] = PRIORITIES.map(p => ({ value: p.value, label: p.label, icon: 'flag' }))
-  const memberOpts: Option[] = [...MEMBERS.map(m => ({ value: m.id, label: m.name, icon: 'user' as const })), { value: 'none', label: 'Unassigned', icon: 'x' as const }]
+  const memberOpts: Option[] = [...MEMBERS.map(m => ({ value: m.id, label: m.name })), { value: 'none', label: 'Unassigned' }]
   const labelOpts: Option[] = labels.map(l => ({ value: l.id, label: l.name, color: l.color }))
   const dueChoices: [string, string][] = [['Today', TODAY], ['Tomorrow', dayOffset(1)], ['In a week', dayOffset(7)], ['In two weeks', dayOffset(14)]]
   const dueOpts: Option[] = [
@@ -59,7 +59,7 @@ export function Detail({ task, project, labels, onClose, onPatch, onCreateLabel,
             <Dropdown quiet searchable label="Assignee" options={memberOpts} value={task.assignee ?? 'none'} placeholder="Unassigned"
               onChange={v => onPatch({ assignee: v === 'none' ? null : v })}
               renderValue={() => task.assignee
-                ? <><Avatar name={memberName(task.assignee)} /><span className="truncate">{memberName(task.assignee)}</span></>
+                ? <span className="truncate">{memberName(task.assignee)}</span>
                 : <span className="faint">Unassigned</span>} />
           </dd>
           <dt>Labels</dt>
@@ -85,7 +85,6 @@ export function Detail({ task, project, labels, onClose, onPatch, onCreateLabel,
             <li key={a.id} className="pm-ev"><span className="pm-ev-dot" /><span className="muted"><b>{memberName(a.who).split(' ')[0]}</b> {a.text}</span><span className="faint">{a.at}</span></li>
           ) : (
             <li key={a.id} className="pm-cm">
-              <Avatar name={memberName(a.who)} />
               <div className="grow">
                 <div className="row"><b>{memberName(a.who)}</b><span className="faint">{a.at}</span></div>
                 <p>{a.text}</p>

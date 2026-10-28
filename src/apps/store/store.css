@@ -68,7 +68,7 @@
 .st-sw-grid { display: flex; flex-wrap: wrap; gap: 12px; }
 .st-swatch { border-radius: 50%; background: var(--sw); flex: none; box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16); transition: box-shadow var(--dur); }
 .st-swatch:hover { box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16), 0 0 0 2px var(--ring-gap, var(--s1)), 0 0 0 3px var(--text-3); }
-.st-swatch[data-on="true"] { box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16), 0 0 0 2px var(--ring-gap, var(--s1)), 0 0 0 3.5px var(--text); }
+.st-swatch[data-on="true"] { box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.16), 0 0 0 2px var(--ring-gap, var(--s1)), 0 0 0 3.5px var(--text-2); }
 .st-sheet { --ring-gap: var(--s2); }
 .st-toolbar { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; min-height: 36px; }
 .st-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 32px 20px; }
@@ -129,7 +129,7 @@
 .st-thumbs { display: flex; flex-direction: column; gap: 10px; }
 .st-thumb { position: relative; aspect-ratio: 1; border-radius: 10px; overflow: hidden; opacity: 0.72; transition: opacity var(--dur), box-shadow var(--dur); }
 .st-thumb:hover { opacity: 1; }
-.st-thumb[aria-pressed="true"] { opacity: 1; box-shadow: 0 0 0 2px var(--s1), 0 0 0 3.5px var(--text); }
+.st-thumb[aria-pressed="true"] { opacity: 1; box-shadow: 0 0 0 2px var(--s1), 0 0 0 3.5px var(--text-2); }
 .st-main { position: relative; aspect-ratio: 1; border-radius: 18px; overflow: hidden; background: var(--s2); }
 .st-info { display: flex; flex-direction: column; gap: 22px; max-width: 520px; }
 .st-info h1 { font-size: 32px; font-weight: 700; letter-spacing: -0.02em; line-height: 1.15; }

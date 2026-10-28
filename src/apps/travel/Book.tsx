@@ -136,7 +136,7 @@ export function BookPage({ id, q, roomId }: { id: string; q: Query; roomId: stri
                 {sumOpen && summary}
               </div>
             )}
-            {gone && <div className="tv-banner" role="alert">This stay is no longer available for your dates. Go back and choose other dates.</div>}
+            {gone && <div className="tv-banner" role="alert"><Icon name="circle-alert" size={16} /><span>This stay is no longer available for your dates. Go back and choose other dates.</span></div>}
 
             {step === 0 && (
               <>

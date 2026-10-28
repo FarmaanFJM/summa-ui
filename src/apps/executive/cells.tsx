@@ -1,5 +1,5 @@
 import { useMemo, useState, type CSSProperties, type ReactNode } from 'react'
-import { Avatar, Button, Icon } from '../../ui'
+import { Button, Icon } from '../../ui'
 import { Sparkline } from './charts'
 import { UNITS, rolesFor, sgn, type Activity, type Decision, type Incident, type Kpi, type Lane } from './data'
 
@@ -201,7 +201,6 @@ export function ActivityFeed({ items }: { items: Activity[] }) {
     <div className="ex-feed-w"><ul role="list" className="ex-feed scroll">
       {items.map(a => (
         <li key={a.id} className="ex-feed-r">
-          <Avatar name={a.who} />
           <div className="grow">
             <div className="ex-feed-t"><b>{a.who}</b> {a.what} {a.target}</div>
             <div className="faint ex-feed-w2">{a.when}</div>
