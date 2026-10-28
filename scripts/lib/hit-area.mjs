@@ -48,13 +48,14 @@ export function measureHitAreas({ min = 40, step = 4, scope = 'body', only }) {
       else if (t) { const k = label(t.closest(SEL) ?? t); thieves[k] = (thieves[k] ?? 0) + 1 }
     }
     // Probe points for real taps: the owned sample nearest to each corner of the effective area and to its centre.
-    const near = (tx, ty) => ownedPts.reduce((b, q) => (!b || Math.hypot(q[0] - tx, q[1] - ty) < Math.hypot(b[0] - tx, b[1] - ty) ? q : b), null)
+    const near = (tx, ty) => { const pool = ownedPts.filter(q => q[0] >= minX + 3 && q[0] <= maxX - 3 && q[1] >= minY + 3 && q[1] <= maxY - 3); return (pool.length ? pool : ownedPts).reduce((b, q) => (!b || Math.hypot(q[0] - tx, q[1] - ty) < Math.hypot(b[0] - tx, b[1] - ty) ? q : b), null) } // never closer than 3px to the edge of the effective area
     let probes = []
     const radOf = k => { const v = s[k]; return v.endsWith('%') ? parseFloat(v) / 100 * Math.min(full.width, full.height) : parseFloat(v) || 0 }
     const rad = Math.min(Math.max(radOf('borderTopLeftRadius'), radOf('borderTopRightRadius'), radOf('borderBottomLeftRadius'), radOf('borderBottomRightRadius')), Math.min(full.width, full.height) / 2)
     const ownBox = !!owned && minX >= full.left - 2 && maxX <= full.right + 2 && minY >= full.top - 2 && maxY <= full.bottom + 2
-    const inset = ownBox ? 3 + 0.3 * rad : 3 // inside the rounded corner of the element itself, or 3px in when the area is a square extension
-    if (owned) probes = [near((minX + maxX) / 2, (minY + maxY) / 2), near(minX + inset, minY + inset), near(maxX - inset, minY + inset), near(minX + inset, maxY - inset), near(maxX - inset, maxY - inset)]
+    // Probes: the centre and four interior points 20% in from each side. Edge taps are decided by Chromium's own touch adjustment, which CSS cannot control; the geometric edges are covered by the elementFromPoint sampling above.
+    const iw = (maxX - minX) * 0.2, ih = (maxY - minY) * 0.2
+    if (owned) probes = [near((minX + maxX) / 2, (minY + maxY) / 2), near(minX + iw, minY + ih), near(maxX - iw, minY + ih), near(minX + iw, maxY - ih), near(maxX - iw, maxY - ih)]
     const effW = owned ? Math.min(maxX - minX, W) : 0, effH = owned ? Math.min(maxY - minY, H) : 0
     e.setAttribute('data-hit-i', String(i))
     out.push({ i: i++, sel: label(e), w: Math.round(c.w), h: Math.round(c.h), effW: Math.round(effW), effH: Math.round(effH), cx: Math.round(cx), cy: Math.round(cy), bbox: owned ? [Math.round(minX), Math.round(minY), Math.round(maxX), Math.round(maxY)] : null, thief: Object.entries(thieves).sort((a, b) => b[1] - a[1])[0]?.[0] ?? null, at: [Math.round(full.left), Math.round(full.top)], probes, rad: Math.round(rad), ownBox, pass: effW >= min - 2 && effH >= min - 2, isRange: e.matches('input[type=range]') })

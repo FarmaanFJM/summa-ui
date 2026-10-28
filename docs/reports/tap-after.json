@@ -13,11 +13,52 @@
     "projects": {
       "tested": 84,
       "undersized": 0,
-      "tapMismatch": 0,
+      "tapMismatch": 8,
       "pageErrors": [],
       "skippedScenarios": [],
       "failing": [],
-      "tapBad": []
+      "tapBad": [
+        {
+          "pass": "full height",
+          "sel": "button.pm-title.truncate \"Keyboard shortcut shee\"",
+          "reason": "tap at 58,214 landed on div.pm-row"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-title.truncate \"Migrate email template\"",
+          "reason": "tap at 58,272 landed on div.pm-row"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-title.truncate \"Dark mode contrast on \"",
+          "reason": "tap at 58,433 landed on div.pm-row"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-title.truncate \"Rewrite onboarding che\"",
+          "reason": "tap at 58,491 landed on div.pm-row"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-title.truncate \"Workspace switcher dro\"",
+          "reason": "tap at 58,652 landed on div.pm-row"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-title.truncate \"Webhook retries ignore\"",
+          "reason": "tap at 58,812 landed on div.pm-row"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-title.truncate \"Upgrade Postgres to 16\"",
+          "reason": "tap at 58,972 landed on div.pm-row"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-title.truncate \"Empty states use the w\"",
+          "reason": "tap at 58,1031 landed on div.pm-row"
+        }
+      ]
     },
     "documents": {
       "tested": 24,
@@ -40,52 +81,11 @@
     "files": {
       "tested": 89,
       "undersized": 0,
-      "tapMismatch": 8,
+      "tapMismatch": 0,
       "pageErrors": [],
       "skippedScenarios": [],
       "failing": [],
-      "tapBad": [
-        {
-          "pass": "full height",
-          "sel": "div.files-mrow \"ArchiveSep 12, 2025\"",
-          "reason": "tap at 382,175 landed on div.files-mrow"
-        },
-        {
-          "pass": "full height",
-          "sel": "div.files-mrow \"PersonalOct 25\"",
-          "reason": "tap at 382,189 landed on div.files-mrow"
-        },
-        {
-          "pass": "full height",
-          "sel": "div.files-mrow \"PhotosOct 19\"",
-          "reason": "tap at 382,255 landed on div.files-mrow"
-        },
-        {
-          "pass": "full height",
-          "sel": "div.files-mrow \"WorkToday, 5:42 AM\"",
-          "reason": "tap at 382,321 landed on div.files-mrow"
-        },
-        {
-          "pass": "full height",
-          "sel": "div.files-mrow \"2026 goals.docxSep 24 \"",
-          "reason": "tap at 382,387 landed on div.files-mrow"
-        },
-        {
-          "pass": "full height",
-          "sel": "div.files-mrow \"Passport scan.jpgApr 2\"",
-          "reason": "tap at 382,453 landed on div.files-mrow"
-        },
-        {
-          "pass": "full height",
-          "sel": "div.files-mrow \"Reading list.mdOct 23 \"",
-          "reason": "tap at 382,519 landed on div.files-mrow"
-        },
-        {
-          "pass": "full height",
-          "sel": "div.files-mrow \"Welcome to Drive.pdfSe\"",
-          "reason": "tap at 382,585 landed on div.files-mrow"
-        }
-      ]
+      "tapBad": []
     },
     "media": {
       "tested": 167,
@@ -115,14 +115,27 @@
       "tapBad": []
     },
     "social": {
-      "tested": 122,
-      "undersized": 0,
+      "tested": 126,
+      "undersized": 2,
       "tapMismatch": 0,
       "pageErrors": [],
-      "skippedScenarios": [
-        "compose with attachment: locator.tap: Timeout 30000ms exceeded."
+      "skippedScenarios": [],
+      "failing": [
+        {
+          "pass": "state: compose with attachment",
+          "sel": "button.so-remove \"Remove image 1\"",
+          "size": "26x26",
+          "effective": "24x24",
+          "thief": "circle"
+        },
+        {
+          "pass": "state: compose with attachment",
+          "sel": "button.so-submit \"Post\"",
+          "size": "70x34",
+          "effective": "70x32",
+          "thief": "div.so-comp-bar \"280Post\""
+        }
       ],
-      "failing": [],
       "tapBad": []
     },
     "trading": {
@@ -154,8 +167,8 @@
     }
   },
   "totals": {
-    "tested": 936,
-    "undersized": 0,
+    "tested": 940,
+    "undersized": 2,
     "tapMismatch": 8
   }
 }
