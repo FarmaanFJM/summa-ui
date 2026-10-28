@@ -2,18 +2,18 @@
   "guidanceVersion": "0.1.0",
   "generator": "scripts/regression-check.mjs",
   "counts": {
-    "projects@1440x900": {},
     "ai@1440x900": {
       "CHK-022 needs-human": 1
     },
     "ai@390x844": {
       "CHK-022 needs-human": 1
     },
+    "projects@1440x900": {},
     "projects@390x844": {},
-    "documents@390x844": {
+    "documents@1440x900": {
       "CHK-022 needs-human": 4
     },
-    "documents@1440x900": {
+    "documents@390x844": {
       "CHK-022 needs-human": 4
     },
     "analytics@1440x900": {},
@@ -25,9 +25,7 @@
       "CHK-022 needs-human": 1
     },
     "media@1440x900": {},
-    "media@390x844": {
-      "CHK-020 fail": 13
-    },
+    "media@390x844": {},
     "executive@1440x900": {},
     "executive@390x844": {},
     "chess@1440x900": {},

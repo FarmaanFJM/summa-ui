@@ -17,7 +17,8 @@ const scope = opt('scope') ?? 'body'
 if (!url) { console.error('usage: run-checks.mjs <url> [--viewport WxH] [--scope selector] [--json]'); process.exit(2) }
 
 const browser = await chromium.launch()
-const page = await (await browser.newContext({ viewport: { width: vw, height: vh } })).newPage()
+// Phone widths are evaluated as a touch device (touch screen, no hover), because CHK-020 is about touch targets.
+const page = await (await browser.newContext({ viewport: { width: vw, height: vh }, ...(vw <= 480 ? { isMobile: true, hasTouch: true, deviceScaleFactor: 2 } : {}) })).newPage()
 await page.goto(url)
 await page.waitForTimeout(1500)
 const findings = (await page.evaluate(collect, { scope, vw })).filter(f => f.checkId !== 'CHK-020')
