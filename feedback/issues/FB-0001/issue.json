@@ -1,0 +1,27 @@
+{
+  "id": "FB-0001",
+  "createdAt": "2026-10-28T10:30:50Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "lab-guidance",
+    "route": "#/guidance/presets/notification"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "preset.notification (toast), as shown in the presets gallery",
+  "screenshots": [
+    {
+      "file": "presets-toasts-desktop.png",
+      "viewport": "1440x900",
+      "note": "Success, error and expanded error toasts stacked"
+    }
+  ],
+  "explanation": "The owner supplied a toast design reference in a separate ChatGPT conversation that the implementing agent could not access. The notification preset was built from the principles only. Its typography, spacing, icon treatment, placement and motion are not visually approved. The owner should compare the preset with the reference and record the verdict here. Until then the preset stays provisional in the bundle manifest.",
+  "classification": {
+    "status": "unclassified",
+    "kind": null
+  },
+  "relatedPrinciples": [],
+  "relatedAntiPatterns": [],
+  "status": "open",
+  "proposal": null
+}

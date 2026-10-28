@@ -1,0 +1,13 @@
+# Design rules, releases and approvals need the owner's review. Enforce with branch protection:
+# "Require review from Code Owners" on main (see docs/RELEASING.md).
+/PRINCIPLES.md              @FarmaanFJM
+/guidance/                  @FarmaanFJM
+/docs/releases/             @FarmaanFJM
+/docs/DECISIONS.md          @FarmaanFJM
+/feedback/OWNERS.json       @FarmaanFJM
+/feedback/proposals/        @FarmaanFJM
+/feedback/issues/           @FarmaanFJM
+/.github/                   @FarmaanFJM
+/scripts/verify-release.mjs @FarmaanFJM
+/scripts/validate-guidance.mjs @FarmaanFJM
+/scripts/validate-feedback.mjs @FarmaanFJM

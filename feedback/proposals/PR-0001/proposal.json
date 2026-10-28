@@ -1,0 +1,54 @@
+{
+  "id": "PR-0001",
+  "title": "Add a text contrast check for placeholders and secondary text",
+  "issues": [
+    "FB-0002"
+  ],
+  "kind": "new-check",
+  "status": "draft",
+  "authoredBy": "claude-agent",
+  "authoredAt": "2026-10-28T10:30:50Z",
+  "summary": "Add CHK-023 (text contrast at least 4.5:1 for body, placeholder and secondary text, 3:1 for large text and icons) to the check rules, and a token decision for --text-3 placeholders. Draft only: the owner decides whether the floor is 4.5:1 for placeholders and whether --text-3 is lightened or placeholders move to --text-2.",
+  "change": {
+    "files": [
+      "guidance/checks/rules.json",
+      "guidance/tokens.json",
+      "guidance/prompt-pack.md"
+    ],
+    "principleIds": [],
+    "antiPatternIds": [],
+    "checkIds": [
+      "CHK-023"
+    ],
+    "presetIds": [],
+    "conflictsWithApprovedRules": []
+  },
+  "examples": {
+    "negative": [
+      {
+        "description": "Placeholder text in --text-3 on --s2 (3.24:1).",
+        "snippet": "input::placeholder { color: var(--text-3); } /* on --s2: 3.24:1 */",
+        "screenshot": "feedback/issues/FB-0002/store-search-placeholder-desktop.png"
+      }
+    ],
+    "positive": [
+      {
+        "description": "Placeholder text in --text-2 on --s2 (6.34:1), or a lighter --text-3 that reaches 4.5:1.",
+        "snippet": "input::placeholder { color: var(--text-2); } /* on --s2: 6.34:1 */"
+      }
+    ]
+  },
+  "validation": {
+    "result": "pending",
+    "regressionReport": null,
+    "baseline": "feedback/baselines/guidance-v0.1.0.json",
+    "notes": "Run npm run regression with the candidate bundle before submitting. Expect the 12 reference apps to show placeholder contrast failures until their placeholder tokens are updated by the owner's decision."
+  },
+  "versionImpact": "minor",
+  "existingApplications": {
+    "policy": "unchanged-until-owner-updates",
+    "note": "Existing applications are not changed by this proposal. Their records keep guidance 0.1.0 until the owner decides to update them."
+  },
+  "ownerDecision": null,
+  "releasedIn": null
+}

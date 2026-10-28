@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "application": {
+    "name": "example-app",
+    "repository": "https://github.com/example/example-app",
+    "commit": "0000000000000000000000000000000000000000"
+  },
+  "guidance": {
+    "name": "summa-ui-guidance",
+    "version": "0.1.0",
+    "bundleDigest": "5ef73215334c313089cb3cd87f6f78f65eef48f67dfdc5d53bd84fedad408cc7",
+    "tag": "guidance-v0.1.0",
+    "source": "vendored"
+  },
+  "recordedAt": "2026-10-28T10:30:50Z",
+  "exceptions": [
+    {
+      "principle": "P03",
+      "reason": "The diff view needs a coloured gutter with an established meaning for added and removed lines.",
+      "scope": "diff viewer only"
+    }
+  ],
+  "humanReview": {
+    "reviewedBy": "FarmaanFJM",
+    "reviewedAt": "2026-10-28T11:00:00Z",
+    "verdict": "example record"
+  }
+}

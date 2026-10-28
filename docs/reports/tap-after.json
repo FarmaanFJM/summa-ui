@@ -1,0 +1,118 @@
+{
+  "viewport": "390x844",
+  "apps": {
+    "ai": {
+      "tested": 50,
+      "undersized": 0,
+      "tapMismatch": 0,
+      "pageErrors": [],
+      "skippedScenarios": [],
+      "failing": [],
+      "tapBad": []
+    },
+    "projects": {
+      "tested": 84,
+      "undersized": 0,
+      "tapMismatch": 0,
+      "pageErrors": [],
+      "skippedScenarios": [],
+      "failing": [],
+      "tapBad": []
+    },
+    "documents": {
+      "tested": 24,
+      "undersized": 0,
+      "tapMismatch": 0,
+      "pageErrors": [],
+      "skippedScenarios": [],
+      "failing": [],
+      "tapBad": []
+    },
+    "analytics": {
+      "tested": 39,
+      "undersized": 0,
+      "tapMismatch": 0,
+      "pageErrors": [],
+      "skippedScenarios": [],
+      "failing": [],
+      "tapBad": []
+    },
+    "files": {
+      "tested": 89,
+      "undersized": 0,
+      "tapMismatch": 0,
+      "pageErrors": [],
+      "skippedScenarios": [],
+      "failing": [],
+      "tapBad": []
+    },
+    "media": {
+      "tested": 167,
+      "undersized": 0,
+      "tapMismatch": 0,
+      "pageErrors": [],
+      "skippedScenarios": [],
+      "failing": [],
+      "tapBad": []
+    },
+    "executive": {
+      "tested": 32,
+      "undersized": 0,
+      "tapMismatch": 0,
+      "pageErrors": [],
+      "skippedScenarios": [],
+      "failing": [],
+      "tapBad": []
+    },
+    "chess": {
+      "tested": 39,
+      "undersized": 0,
+      "tapMismatch": 0,
+      "pageErrors": [],
+      "skippedScenarios": [],
+      "failing": [],
+      "tapBad": []
+    },
+    "social": {
+      "tested": 126,
+      "undersized": 0,
+      "tapMismatch": 0,
+      "pageErrors": [],
+      "skippedScenarios": [],
+      "failing": [],
+      "tapBad": []
+    },
+    "trading": {
+      "tested": 88,
+      "undersized": 0,
+      "tapMismatch": 0,
+      "pageErrors": [],
+      "skippedScenarios": [],
+      "failing": [],
+      "tapBad": []
+    },
+    "store": {
+      "tested": 116,
+      "undersized": 0,
+      "tapMismatch": 0,
+      "pageErrors": [],
+      "skippedScenarios": [],
+      "failing": [],
+      "tapBad": []
+    },
+    "travel": {
+      "tested": 86,
+      "undersized": 0,
+      "tapMismatch": 0,
+      "pageErrors": [],
+      "skippedScenarios": [],
+      "failing": [],
+      "tapBad": []
+    }
+  },
+  "totals": {
+    "tested": 940,
+    "undersized": 0,
+    "tapMismatch": 0
+  }
+}

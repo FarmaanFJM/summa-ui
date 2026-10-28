@@ -1,0 +1,149 @@
+{
+  "schemaVersion": 1,
+  "applications": [
+    {
+      "id": "ai",
+      "name": "AI Workspace",
+      "path": "src/apps/ai",
+      "route": "#/ai",
+      "guidanceVersion": "0.1.0",
+      "bundleDigest": "5ef73215334c313089cb3cd87f6f78f65eef48f67dfdc5d53bd84fedad408cc7",
+      "basis": "retrofitted",
+      "status": "approved-reference",
+      "notes": "Built during the draft phases of Summa-UI and remediated against principles 17 to 20 and the v0.1.0 tokens. Used as an approved reference for regression checks. Documented exceptions are listed on #/principles."
+    },
+    {
+      "id": "projects",
+      "name": "Project Manager",
+      "path": "src/apps/projects",
+      "route": "#/projects",
+      "guidanceVersion": "0.1.0",
+      "bundleDigest": "5ef73215334c313089cb3cd87f6f78f65eef48f67dfdc5d53bd84fedad408cc7",
+      "basis": "retrofitted",
+      "status": "approved-reference",
+      "notes": "Built during the draft phases of Summa-UI and remediated against principles 17 to 20 and the v0.1.0 tokens. Used as an approved reference for regression checks. Documented exceptions are listed on #/principles."
+    },
+    {
+      "id": "documents",
+      "name": "Document Editor",
+      "path": "src/apps/documents",
+      "route": "#/documents",
+      "guidanceVersion": "0.1.0",
+      "bundleDigest": "5ef73215334c313089cb3cd87f6f78f65eef48f67dfdc5d53bd84fedad408cc7",
+      "basis": "retrofitted",
+      "status": "approved-reference",
+      "notes": "Built during the draft phases of Summa-UI and remediated against principles 17 to 20 and the v0.1.0 tokens. Used as an approved reference for regression checks. Documented exceptions are listed on #/principles."
+    },
+    {
+      "id": "analytics",
+      "name": "Analytics Dashboard",
+      "path": "src/apps/analytics",
+      "route": "#/analytics",
+      "guidanceVersion": "0.1.0",
+      "bundleDigest": "5ef73215334c313089cb3cd87f6f78f65eef48f67dfdc5d53bd84fedad408cc7",
+      "basis": "retrofitted",
+      "status": "approved-reference",
+      "notes": "Built during the draft phases of Summa-UI and remediated against principles 17 to 20 and the v0.1.0 tokens. Used as an approved reference for regression checks. Documented exceptions are listed on #/principles."
+    },
+    {
+      "id": "files",
+      "name": "File Manager",
+      "path": "src/apps/files",
+      "route": "#/files",
+      "guidanceVersion": "0.1.0",
+      "bundleDigest": "5ef73215334c313089cb3cd87f6f78f65eef48f67dfdc5d53bd84fedad408cc7",
+      "basis": "retrofitted",
+      "status": "approved-reference",
+      "notes": "Built during the draft phases of Summa-UI and remediated against principles 17 to 20 and the v0.1.0 tokens. Used as an approved reference for regression checks. Documented exceptions are listed on #/principles."
+    },
+    {
+      "id": "media",
+      "name": "Media Library",
+      "path": "src/apps/media",
+      "route": "#/media",
+      "guidanceVersion": "0.1.0",
+      "bundleDigest": "5ef73215334c313089cb3cd87f6f78f65eef48f67dfdc5d53bd84fedad408cc7",
+      "basis": "retrofitted",
+      "status": "approved-reference",
+      "notes": "Built during the draft phases of Summa-UI and remediated against principles 17 to 20 and the v0.1.0 tokens. Used as an approved reference for regression checks. Documented exceptions are listed on #/principles."
+    },
+    {
+      "id": "executive",
+      "name": "Executive Dashboard",
+      "path": "src/apps/executive",
+      "route": "#/executive",
+      "guidanceVersion": "0.1.0",
+      "bundleDigest": "5ef73215334c313089cb3cd87f6f78f65eef48f67dfdc5d53bd84fedad408cc7",
+      "basis": "retrofitted",
+      "status": "approved-reference",
+      "notes": "Built during the draft phases of Summa-UI and remediated against principles 17 to 20 and the v0.1.0 tokens. Used as an approved reference for regression checks. Documented exceptions are listed on #/principles."
+    },
+    {
+      "id": "chess",
+      "name": "Chess Club",
+      "path": "src/apps/chess",
+      "route": "#/chess",
+      "guidanceVersion": "0.1.0",
+      "bundleDigest": "5ef73215334c313089cb3cd87f6f78f65eef48f67dfdc5d53bd84fedad408cc7",
+      "basis": "retrofitted",
+      "status": "approved-reference",
+      "notes": "Built during the draft phases of Summa-UI and remediated against principles 17 to 20 and the v0.1.0 tokens. Used as an approved reference for regression checks. Documented exceptions are listed on #/principles."
+    },
+    {
+      "id": "social",
+      "name": "Social Media",
+      "path": "src/apps/social",
+      "route": "#/social",
+      "guidanceVersion": "0.1.0",
+      "bundleDigest": "5ef73215334c313089cb3cd87f6f78f65eef48f67dfdc5d53bd84fedad408cc7",
+      "basis": "retrofitted",
+      "status": "approved-reference",
+      "notes": "Built during the draft phases of Summa-UI and remediated against principles 17 to 20 and the v0.1.0 tokens. Used as an approved reference for regression checks. Documented exceptions are listed on #/principles."
+    },
+    {
+      "id": "trading",
+      "name": "Trading Platform",
+      "path": "src/apps/trading",
+      "route": "#/trading",
+      "guidanceVersion": "0.1.0",
+      "bundleDigest": "5ef73215334c313089cb3cd87f6f78f65eef48f67dfdc5d53bd84fedad408cc7",
+      "basis": "retrofitted",
+      "status": "approved-reference",
+      "notes": "Built during the draft phases of Summa-UI and remediated against principles 17 to 20 and the v0.1.0 tokens. Used as an approved reference for regression checks. Documented exceptions are listed on #/principles."
+    },
+    {
+      "id": "store",
+      "name": "E-commerce Store",
+      "path": "src/apps/store",
+      "route": "#/store",
+      "guidanceVersion": "0.1.0",
+      "bundleDigest": "5ef73215334c313089cb3cd87f6f78f65eef48f67dfdc5d53bd84fedad408cc7",
+      "basis": "retrofitted",
+      "status": "approved-reference",
+      "notes": "Built during the draft phases of Summa-UI and remediated against principles 17 to 20 and the v0.1.0 tokens. Used as an approved reference for regression checks. Documented exceptions are listed on #/principles."
+    },
+    {
+      "id": "travel",
+      "name": "Travel Booking",
+      "path": "src/apps/travel",
+      "route": "#/travel",
+      "guidanceVersion": "0.1.0",
+      "bundleDigest": "5ef73215334c313089cb3cd87f6f78f65eef48f67dfdc5d53bd84fedad408cc7",
+      "basis": "retrofitted",
+      "status": "approved-reference",
+      "notes": "Built during the draft phases of Summa-UI and remediated against principles 17 to 20 and the v0.1.0 tokens. Used as an approved reference for regression checks. Documented exceptions are listed on #/principles."
+    },
+    {
+      "id": "lab-guidance",
+      "name": "Guidance galleries (anti-patterns, icons, presets)",
+      "path": "src/lab/guidance",
+      "route": "#/guidance/presets",
+      "guidanceVersion": "0.1.0",
+      "bundleDigest": "5ef73215334c313089cb3cd87f6f78f65eef48f67dfdc5d53bd84fedad408cc7",
+      "basis": "reference",
+      "status": "active",
+      "regression": false,
+      "notes": "The laboratory pages that display the guidance. Feedback about presets, icons and anti-pattern demos is recorded against this entry."
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+.ic-head h1 { font-size: var(--fs-2xl); font-weight: 600; margin: 8px 0 4px; }
+.ic-head p { margin: 0 0 20px; max-width: 60ch; }
+.ic-tools { display: flex; gap: 8px; margin-bottom: 8px; }
+.ic-tools .ic-search { flex: 1; max-width: 360px; }
+.ic-tools .ic-cat { min-width: 180px; }
+.ic-section { margin-top: 28px; }
+.ic-h { margin: 0 0 10px; font-size: var(--fs-sm); font-weight: 500; color: var(--text-2); }
+.ic-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(104px, 1fr)); gap: 6px; }
+.ic-tile { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; height: 80px; padding: 0 6px;
+  background: var(--s2); border-radius: var(--r); color: var(--text); transition: background var(--dur); }
+.ic-tile:hover { background: var(--s3); }
+.ic-tile[aria-current] { background: var(--select-strong); }
+.ic-tile:focus-visible { outline: none; box-shadow: 0 0 0 1.5px var(--focus); }
+.ic-name { max-width: 100%; font-size: var(--fs-xs); color: var(--text-2); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ic-empty { margin-top: 40px; }
+.ic-usage ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 10px; max-width: 72ch; }
+.ic-usage li { color: var(--text); line-height: 1.5; }
+.ic-src { margin-top: 20px; font-size: var(--fs-sm); }
+
+.ic-detail { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; padding-bottom: 16px; }
+.ic-preview { display: flex; gap: 8px; }
+.ic-preview figure { flex: 1; margin: 0; height: 84px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; background: var(--s2); border-radius: var(--r); }
+.ic-box { height: 24px; display: flex; align-items: center; }
+.ic-detail:focus { outline: none; }
+.ic-preview figcaption { font-size: var(--fs-xs); color: var(--text-3); }
+.ic-meta { display: grid; grid-template-columns: 76px 1fr; gap: 8px 12px; margin: 0; }
+.ic-meta dt { color: var(--text-3); font-size: var(--fs-sm); }
+.ic-meta dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+.ic-meta .mono { font-family: var(--mono); font-size: var(--fs-sm); }
+.ic-snip-head { display: flex; align-items: center; justify-content: space-between; min-height: 32px; }
+.ic-snip-head .ic-h { margin: 0; }
+.ic-code { margin: 0; min-width: 0; padding: 10px 12px; background: var(--s2); border-radius: var(--r); font: var(--fs-xs)/1.5 var(--mono); color: var(--text-2);
+  white-space: pre-wrap; overflow-wrap: anywhere; max-height: 120px; overflow: auto; }
+
+@media (max-width: 640px) {
+  .ic-tools { flex-direction: column; }
+  .ic-tools .ic-search { max-width: none; }
+  .ic-grid { grid-template-columns: repeat(3, 1fr); }
+  /* Detail becomes a bottom sheet on phones. */
+  .backdrop:has(.ic-detail) { grid-template-columns: minmax(0, 1fr); place-items: end stretch; padding: 0; }
+  .dialog:has(.ic-detail) { width: 100%; max-height: 88dvh; border-radius: var(--r-xl) var(--r-xl) 0 0; }
+}
