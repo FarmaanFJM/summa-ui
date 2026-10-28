@@ -344,4 +344,9 @@
   .st-heart::after, .st-quick::after { content: ""; position: absolute; left: 50%; top: 50%; width: var(--hit); height: var(--hit); transform: translate(-50%, -50%); }
   .st-swatch::after { inset: auto; left: 50%; top: 50%; width: var(--hit); height: var(--hit); transform: translate(-50%, -50%); }
   .st-card-sw { gap: 24px; }
+  .st-crumbs a { position: relative; padding: 10px 5px; margin: -10px -5px; }
+  .st-ratingrow { position: relative; padding: 9px 0; margin-top: -15px; margin-bottom: -9px; }
+  .st-stepper button { width: var(--hit); }
+  .st-rbar { height: var(--hit); }
+  .st-price input[type="range"] { height: var(--hit); }
 }
