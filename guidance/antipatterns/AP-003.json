@@ -23,7 +23,7 @@
     },
     {
       "id": "neutral-destructive",
-      "title": "Neutral button, confirm next",
+      "title": "Neutral, confirm next",
       "description": "When the action is not the focus of the view, use a neutral secondary button with the same verb and icon, and put the danger treatment on the confirmation step.",
       "demo": "good-neutral-destructive"
     }

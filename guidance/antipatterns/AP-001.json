@@ -17,7 +17,7 @@
   "good": [
     {
       "id": "flat-surfaces",
-      "title": "Elevation instead of outlines",
+      "title": "Elevation, not outlines",
       "description": "One panel on a lighter surface. Inputs and buttons are filled one step lighter than their parent. No border anywhere.",
       "demo": "good-flat-surfaces"
     }

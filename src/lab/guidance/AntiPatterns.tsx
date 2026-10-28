@@ -79,7 +79,7 @@ function Detail({ e }: { e: AP }) {
   return (
     <article className="apg-detail" key={e.id}>
       <div className="apg-nav">
-        <a className="btn btn-ghost" href="#/guidance/antipatterns"><Icon name="chevron-left" />All anti-patterns</a>
+        <a className="btn btn-ghost" style={{ marginLeft: -12 }} href="#/guidance/antipatterns"><Icon name="chevron-left" />All anti-patterns</a>
         <div className="grow" />
         {prev && <a className="btn btn-ghost" href={`#/guidance/antipatterns/${prev.id}`} aria-label={`Previous: ${prev.name}`}><Icon name="chevron-left" />{prev.id}</a>}
         {next && <a className="btn btn-ghost" href={`#/guidance/antipatterns/${next.id}`} aria-label={`Next: ${next.name}`}>{next.id}<Icon name="chevron-right" /></a>}
@@ -106,7 +106,7 @@ function Detail({ e }: { e: AP }) {
         <div className="apg-side">
           <div className="apg-side-head">
             <span className="lbl">Prefer</span>
-            {e.good.length > 1 && <Tabs flat label="Alternatives" value={g.id} onChange={v => setGi(Math.max(0, e.good.findIndex(x => x.id === v)))} items={e.good.map(x => ({ value: x.id, label: x.title.length > 24 ? x.title.slice(0, 22) + '...' : x.title }))} />}
+            {e.good.length > 1 && <Tabs flat label="Alternatives" value={g.id} onChange={v => setGi(Math.max(0, e.good.findIndex(x => x.id === v)))} items={e.good.map(x => ({ value: x.id, label: x.title }))} />}
           </div>
           <Stage k={g.demo} label={`Prefer: ${g.title}`} />
           <p className="apg-caption"><strong>{g.title}.</strong> {g.description}{g.preset && <> Preset: <span className="apg-chk">{g.preset}</span></>}</p>

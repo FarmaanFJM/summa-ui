@@ -15,13 +15,13 @@
   "good": [
     {
       "id": "sidebar-swap",
-      "title": "Swap the sidebar, add a back chevron",
+      "title": "Swap sidebar content",
       "description": "Selecting Settings replaces the sidebar content with its sections and a back control. Try it.",
       "demo": "good-sidebar-swap"
     },
     {
       "id": "content-detail",
-      "title": "Sections in the content region",
+      "title": "Sections in content",
       "description": "Keep one sidebar and show the secondary context as tabs and a list in the primary content.",
       "demo": "good-content-detail"
     }

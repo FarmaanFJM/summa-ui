@@ -10,19 +10,19 @@
     "P09"
   ],
   "bad": {
-    "description": "A toolbar with fourteen icon buttons, all visible, wrapping to a second line.",
+    "description": "A toolbar with fourteen icon buttons, all visible at once.",
     "demo": "bad-toolbar-overload"
   },
   "good": [
     {
       "id": "toolbar-menu",
-      "title": "Frequent actions plus a menu",
+      "title": "Frequent plus menu",
       "description": "Three common actions and a More menu for the rest. Try the menu.",
       "demo": "good-toolbar-menu"
     },
     {
       "id": "context-menu",
-      "title": "Contextual menu on the item",
+      "title": "Context menu",
       "description": "Item actions live in a context menu opened from the row, with shortcuts shown inside it.",
       "demo": "good-static-context-menu",
       "preset": "preset.context-menu"

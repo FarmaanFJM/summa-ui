@@ -23,13 +23,13 @@
     },
     {
       "id": "functional-tag",
-      "title": "Tag only when it is a filter",
+      "title": "Functional tag",
       "description": "A neutral Tag (one background, no border) for a category that users really filter and group by.",
       "demo": "good-functional-tag"
     },
     {
       "id": "transient-notification",
-      "title": "Transient notification for events",
+      "title": "Notification",
       "description": "An event such as a save is acknowledged briefly in a notification instead of a permanent badge.",
       "demo": "good-toast-saved",
       "preset": "preset.notification"

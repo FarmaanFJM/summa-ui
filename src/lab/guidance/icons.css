@@ -35,6 +35,6 @@
   .ic-tools .ic-search { max-width: none; }
   .ic-grid { grid-template-columns: repeat(3, 1fr); }
   /* Detail becomes a bottom sheet on phones. */
-  .backdrop:has(.ic-detail) { place-items: end stretch; padding: 0; }
+  .backdrop:has(.ic-detail) { grid-template-columns: minmax(0, 1fr); place-items: end stretch; padding: 0; }
   .dialog:has(.ic-detail) { width: 100%; max-height: 88dvh; border-radius: var(--r-xl) var(--r-xl) 0 0; }
 }

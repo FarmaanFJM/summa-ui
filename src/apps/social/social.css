@@ -200,7 +200,7 @@ div.so-quote.link { cursor: pointer; }
   .so-badge { position: absolute; top: 2px; right: 4px; }
 }
 @media (max-width: 719px) {
-  .so-top { height: 48px; grid-template-columns: 1fr auto; padding: 0 12px; }
+  .so-top { height: 56px; grid-template-columns: 1fr auto; padding: 0 12px; }
   .so-nav, .so-postbtn { display: none; }
   .so-wrap { padding-top: 0; }
   .so-col { border-radius: 0; width: 100%; }
@@ -212,8 +212,8 @@ div.so-quote.link { cursor: pointer; }
   .so-fab { width: 46px; height: 46px; border-radius: 50%; background: var(--accent); color: var(--accent-ink); display: grid; place-items: center; flex: none; margin: 0 8px; }
   .so-post { padding: 14px; }
   .so-pagehead { padding-left: 10px; }
-  .so-tabbar { padding: 8px 14px; overflow-x: auto; }
-  .so-composer-wrap { padding: 6px 14px 14px; }
+  .so-tabbar { padding: 12px 14px; overflow-x: auto; }
+  .so-composer-wrap { padding: 8px 14px 16px; }
   .so-banner { height: 120px; }
   .so-profile { padding: 0 14px 8px; }
   .so-act { min-width: 40px; height: 40px; }
