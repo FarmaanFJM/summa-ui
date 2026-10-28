@@ -20,6 +20,8 @@
 .ic-detail { display: grid; grid-template-columns: minmax(0, 1fr); gap: 16px; padding-bottom: 16px; }
 .ic-preview { display: flex; gap: 8px; }
 .ic-preview figure { flex: 1; margin: 0; height: 84px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px; background: var(--s2); border-radius: var(--r); }
+.ic-box { height: 24px; display: flex; align-items: center; }
+.ic-detail:focus { outline: none; }
 .ic-preview figcaption { font-size: var(--fs-xs); color: var(--text-3); }
 .ic-meta { display: grid; grid-template-columns: 76px 1fr; gap: 8px 12px; margin: 0; }
 .ic-meta dt { color: var(--text-3); font-size: var(--fs-sm); }

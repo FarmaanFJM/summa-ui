@@ -46,16 +46,16 @@ function CopyBlock({ title, code }: { title: string; code: string }) {
 function Detail({ e }: { e: Entry }) {
   const svg = markup(e)
   return (
-    <div className="ic-detail">
+    <div className="ic-detail" tabIndex={-1} data-autofocus>
       <div className="ic-preview">
         {[16, 20, 24].map(s => (
           <figure key={s}>
-            <Icon name={e.name as IconName} size={s} />
+            <span className="ic-box"><Icon name={e.name as IconName} size={s} /></span>
             <figcaption>{s}px</figcaption>
           </figure>
         ))}
         <figure>
-          <Icon name={e.name as IconName} size={20} fill />
+          <span className="ic-box"><Icon name={e.name as IconName} size={20} fill /></span>
           <figcaption>fill</figcaption>
         </figure>
       </div>
