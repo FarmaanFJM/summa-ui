@@ -49,3 +49,6 @@
 .pz-hier > div { background: var(--s2); border-radius: var(--r); padding: 12px; display: flex; flex-direction: column; gap: 8px; }
 .pz-skel-box { min-height: 248px; }
 @media (max-width: 640px) { .pz-demo { padding: 12px; } .pz-section { padding-top: 32px; } }
+
+.pz-status { margin: 0 0 12px; max-width: 70ch; font-size: var(--fs-sm); }
+.pz-status strong { color: var(--text-2); font-weight: 600; }

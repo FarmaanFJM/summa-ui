@@ -390,7 +390,7 @@ Objective checks an evaluator can run (see checks/rules.json):
 - CHK-017 [objective, error] Em dash in user-facing copy (P13)
 - CHK-018 [objective, error] Keyboard focus indicator contrast (P17, P15)
 - CHK-019 [objective, error] Destructive button text contrast (P19)
-- CHK-020 [objective, error] Touch target size on mobile (P18)
+- CHK-020 [objective, error] Touch target effective hit area on mobile (P18)
 - CHK-021 [objective, error] Horizontal overflow (P18)
 - CHK-022 [objective, error] Focus outline removed without replacement (P17, P15)
 

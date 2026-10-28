@@ -237,33 +237,66 @@ export function Dropdown<T extends string>(props: DropdownProps<T>) {
 }
 
 /* ------------------------------------------------------------------ Dialog */
-export function Dialog({ open, onClose, title, children, footer, width }: { open: boolean; onClose: () => void; title: string; children?: ReactNode; footer?: ReactNode; width?: number }) {
+/** While any modal dialog is open the page behind it is inert: no focus, no clicks, hidden from assistive technology. */
+let modalDepth = 0
+function setBackgroundInert(on: boolean) {
+  const root = document.getElementById('root')
+  if (!root) return
+  modalDepth = Math.max(0, modalDepth + (on ? 1 : -1))
+  if (modalDepth > 0) root.setAttribute('inert', '')
+  else root.removeAttribute('inert')
+}
+
+type DialogProps = {
+  open: boolean; onClose: () => void; title: string; children?: ReactNode; footer?: ReactNode; width?: number
+  /** Short plain text announced after the title. Always provide one for confirmations. */
+  description?: ReactNode
+  /** Use "alertdialog" for confirmations that interrupt the user, especially destructive ones. */
+  role?: 'dialog' | 'alertdialog'
+  /** Backdrop click closes a dialog by default. An alertdialog must be answered, so it does not. */
+  dismissOnBackdrop?: boolean
+}
+
+export function Dialog({ open, onClose, title, description, role = 'dialog', dismissOnBackdrop, children, footer, width }: DialogProps) {
   const ref = useRef<HTMLDivElement>(null)
   const titleId = useId()
+  const descId = useId()
+  const closeRef = useRef(onClose)
+  closeRef.current = onClose // keeps the effect below from re-running (and re-stealing focus) on every parent render
   useEffect(() => {
     if (!open) return
     const prev = document.activeElement as HTMLElement | null
     const el = ref.current!
-    ;(el.querySelector<HTMLElement>('[data-autofocus],[autofocus],input,textarea,select') ?? el.querySelector<HTMLElement>('button'))?.focus()
+    setBackgroundInert(true)
+    const preferred = role === 'alertdialog'
+      ? el.querySelector<HTMLElement>('[data-autofocus]') ?? el.querySelector<HTMLElement>('.dialog-foot button')
+      : el.querySelector<HTMLElement>('[data-autofocus],[autofocus],input,textarea,select')
+    ;(preferred ?? el.querySelector<HTMLElement>('button') ?? el).focus()
     const key = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') { e.stopPropagation(); onClose() }
+      if (e.key === 'Escape') { e.stopPropagation(); closeRef.current() }
       if (e.key === 'Tab') {
-        const f = Array.from(el.querySelectorAll<HTMLElement>('button:not(:disabled),input,textarea,select,[tabindex]:not([tabindex="-1"])'))
-        if (!f.length) return
+        const f = Array.from(el.querySelectorAll<HTMLElement>('button:not(:disabled),a[href],input:not(:disabled),textarea,select,[tabindex]:not([tabindex="-1"])'))
+        if (!f.length) { e.preventDefault(); return }
         const first = f[0], last = f[f.length - 1]
         if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus() }
         else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus() }
       }
     }
     document.addEventListener('keydown', key)
-    return () => { document.removeEventListener('keydown', key); prev?.focus() }
-  }, [open, onClose])
+    return () => { document.removeEventListener('keydown', key); setBackgroundInert(false); prev?.focus() }
+  }, [open, role])
   if (!open) return null
+  const backdropCloses = dismissOnBackdrop ?? role === 'dialog'
   return createPortal(
-    <div className="backdrop" onMouseDown={e => { if (e.target === e.currentTarget) onClose() }}>
-      <div ref={ref} className="dialog" role="dialog" aria-modal="true" aria-labelledby={titleId} style={width ? { width: `min(${width}px, 100%)` } : undefined}>
+    <div className="backdrop" onMouseDown={e => { if (backdropCloses && e.target === e.currentTarget) onClose() }}>
+      <div ref={ref} className="dialog" role={role} aria-modal="true" aria-labelledby={titleId}
+        aria-describedby={description ? descId : undefined} tabIndex={-1}
+        style={width ? { width: `min(${width}px, 100%)` } : undefined}>
         <h2 id={titleId} className="dialog-head">{title}</h2>
-        <div className="dialog-body">{children}</div>
+        <div className="dialog-body">
+          {description && <p id={descId} className="dialog-desc">{description}</p>}
+          {children}
+        </div>
         {footer && <div className="dialog-foot">{footer}</div>}
       </div>
     </div>,

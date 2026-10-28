@@ -142,6 +142,9 @@ h1, h2, h3, h4, p { margin: 0; }
   border-radius: var(--r-xl); box-shadow: 0 0 0 1px var(--line-strong), var(--shadow-pop); animation: pop-in 160ms var(--ease); }
 .dialog-head { padding: 20px 20px 4px; font-size: var(--fs-lg); font-weight: 600; }
 .dialog-body { padding: 8px 20px 4px; overflow: auto; }
+.dialog-desc { margin: 0 0 12px; color: var(--text-2); }
+.dialog-desc:last-child { margin-bottom: 0; }
+.dialog:focus { outline: none; }
 .dialog-foot { padding: 16px 20px 20px; display: flex; justify-content: flex-end; gap: 8px; }
 
 /* ---------- Rows ---------- */

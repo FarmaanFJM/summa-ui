@@ -17,7 +17,7 @@
   ],
   "anatomy": [
     "Surface: neutral glass (--s4 at 88%), --r-lg, 4px padding, shadow.",
-    "Item: 30px minimum height, optional 15px leading icon, label, optional right aligned shortcut.",
+    "Item: 30px minimum height (40px on touch), optional 15px leading icon, label, optional right aligned shortcut.",
     "Heading (optional): small muted caps label above a group, same left edge as items.",
     "Separator: 1px --line divider between groups.",
     "Check mark: neutral (--text) on the right for toggled items.",
@@ -61,7 +61,6 @@
     "--r-sm",
     "--text",
     "--text-2",
-    "--text-3",
     "--danger",
     "--sp-1",
     "--fs-sm",
@@ -73,7 +72,7 @@
     "Opening and closing restore focus to the opener.",
     "Shift+F10 and the Menu key open the menu for the focused item so keyboard users are not excluded.",
     "Danger meaning is carried by the label and icon, not by colour alone.",
-    "Item text is --text on the glass surface. Shortcuts use --text-3 (about 2.4:1 on --s4): they are a redundant hint and the action is always named by its label. Danger items use --danger (about 4.0:1 on --s4) together with an icon and a verb."
+    "Item text is --text on the glass surface (9.9:1 on --s4). Shortcut hints use --text-2 (4.8:1 on --s4), so they stay readable, and are hidden on touch devices where keyboard shortcuts do not apply. If a hint is not worth reading, do not show it. Danger items use --danger (4.55:1 on --s4) together with an icon and a clear verb, and sit last after a separator."
   ],
   "principles": [
     "P07",

@@ -40,7 +40,7 @@ export function ConfirmDialog({ open, onConfirm, onCancel, title, description, c
   const trash: IconName | undefined = icon ?? (destructive ? 'trash' : undefined)
 
   return (
-    <Dialog open={open} onClose={close} title={title}
+    <Dialog open={open} onClose={close} title={title} description={description} role={destructive ? 'alertdialog' : 'dialog'}
       footer={
         <>
           <Button variant="secondary" onClick={close} data-autofocus={destructive && !requireText ? true : undefined}>{cancelLabel}</Button>
@@ -51,11 +51,10 @@ export function ConfirmDialog({ open, onConfirm, onCancel, title, description, c
           </Button>
         </>
       }>
-      {description && <p className="muted">{description}</p>}
       {requireText && (
         <div className="sm-dialog__field">
           <label className="sm-dialog__label" htmlFor="confirm-text">Type <strong>{requireText}</strong> to confirm</label>
-          <input id="confirm-text" className="input" value={typed} autoComplete="off" spellCheck={false}
+          <input id="confirm-text" className="input" data-autofocus value={typed} autoComplete="off" spellCheck={false}
             onChange={e => setTyped(e.target.value)}
             onKeyDown={e => { if (e.key === 'Enter') { e.preventDefault(); void confirm() } }} />
         </div>

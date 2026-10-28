@@ -289,7 +289,8 @@
 .sm-menu__item:hover:not(:disabled):not([aria-disabled="true"]), .sm-menu__item.is-active { background: rgba(255, 255, 255, 0.08); }
 .sm-menu__item:disabled, .sm-menu__item[aria-disabled="true"] { color: var(--text-3); cursor: default; }
 .sm-menu__label { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
-.sm-menu__shortcut { margin-left: auto; padding-left: 16px; color: var(--text-3); font-size: var(--fs-sm); white-space: nowrap; }
+.sm-menu__shortcut { margin-left: auto; padding-left: 16px; color: var(--text-2); font-size: var(--fs-sm); white-space: nowrap; } /* 4.8:1 on --s4 */
+@media (hover: none) { .sm-menu__shortcut { display: none; } } /* keyboard hints mean nothing on touch */
 /* Selected option: a neutral check mark on the right, never a coloured row. */
 .sm-menu__check { margin-left: auto; color: var(--text); }
 .sm-menu__item[aria-selected="true"], .sm-menu__item[aria-checked="true"] { color: var(--text); }
@@ -328,4 +329,11 @@
   .sm-toast, .sm-toast[data-state="leaving"], .sm-toast[data-depth] { transition: opacity 1ms; transform: none; }
   .sm-skeleton { animation: none; background: var(--s3); }
   .sm-spinner { animation-duration: 1800ms; }
+}
+
+/* Touch hit areas (CHK-020): 40px effective targets without changing how controls look. */
+@media (pointer: coarse), (max-width: 820px) {
+  .sm-menu__item { min-height: 40px; }
+  .sm-btn { position: relative; }
+  .sm-btn::after { content: ""; position: absolute; left: 50%; top: 50%; width: max(100%, 40px); height: max(100%, 40px); transform: translate(-50%, -50%); }
 }

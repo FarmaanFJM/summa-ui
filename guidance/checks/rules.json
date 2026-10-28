@@ -499,25 +499,31 @@
     },
     {
       "id": "CHK-020",
-      "title": "Touch target size on mobile",
+      "title": "Touch target effective hit area on mobile",
       "principles": [
         "P18"
       ],
       "automation": "objective",
       "kind": "viewport-layout",
       "severity": "error",
-      "description": "At 390px, every primary interactive element has a hit area of at least 40 by 40 CSS pixels (44 recommended).",
+      "description": "At 390px, every interactive element has an effective hit area of at least 40 by 40 CSS pixels that the browser actually assigns to it, with no overlap with neighbouring controls.",
       "procedure": [
-        "Render at 390x844.",
-        "For each button, a, input and [role=button] measure bounding box including padding.",
-        "Fail when width or height is below 40px, unless the element is inline text link inside a paragraph."
+        "Render at 390x844 with touch enabled; repeat with a tall viewport (full page) and with any mobile drawer open.",
+        "For each visible interactive element (button, link, input, select, summary, role button/tab/checkbox/switch/menuitem/option/link, focusable label) take a square centred on it of size max(width, 40) by max(height, 40).",
+        "Sample the square on a 4px grid with elementFromPoint. The effective hit area is the bounding box of the sample points that resolve to the element (or its descendant, or its label).",
+        "Fail when the effective width or height is below 38px (2px sampling tolerance). Report the element that owns the missing area when another control overlaps it.",
+        "Optionally confirm with real touch taps at the centre and inset corners of the effective area, intercepting clicks in the capture phase so application state is unchanged."
       ],
       "exceptions": [
-        "Inline text links inside running text"
+        "Inline text links inside running text",
+        "Elements covered by an overlay at their own centre",
+        "Visually hidden inputs whose label is tested instead"
       ],
       "thresholds": {
         "viewportWidth": 390,
-        "minPx": 40
+        "minPx": 40,
+        "sampleStepPx": 4,
+        "tolerancePx": 2
       }
     },
     {

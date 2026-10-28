@@ -32,7 +32,7 @@
       "src/lab (gallery)"
     ]
   },
-  "bundleDigest": "e0bcdd5f03b262a3aa69244afaaf3f8ce8f8bffc852f5ee020bee15177842bcc",
+  "bundleDigest": "f101da88b51d3b67e8311d7dea2744c23b67ad12d32b8fc34a7baf275addc8be",
   "files": [
     {
       "path": "IDS.md",
@@ -150,14 +150,14 @@
     },
     {
       "path": "checks/rules.json",
-      "sha256": "3988ccb760d5405d2a6a71355e63160e1ee1117c993e17b577c51c992173dbb1",
-      "bytes": 23136,
+      "sha256": "f710e8fa391adeee8ea03cfd60cea4a3eb1110fc8bbeb9172f0f56d3644d20c2",
+      "bytes": 24060,
       "role": "checks"
     },
     {
       "path": "css/presets.css",
-      "sha256": "1568158b2008e85b182856992f971407e5b91c4598f6f31f3214063b30b8658c",
-      "bytes": 20895,
+      "sha256": "9e7294f208db2f459d44c481862c8de5644dc3edab328e2e074cb9b51fe39402",
+      "bytes": 21394,
       "role": "css"
     },
     {
@@ -168,8 +168,8 @@
     },
     {
       "path": "examples/confirm-dialog.html",
-      "sha256": "e9398ad8229ff53e41927c7a1b1317cfe4f7b9958726092408e3ee94c1c5ea1b",
-      "bytes": 6853,
+      "sha256": "ee76a8453a2accc281683bc080b12d1dd42c81ad803515beba36cd9ce55415e5",
+      "bytes": 7296,
       "role": "examples"
     },
     {
@@ -1224,14 +1224,14 @@
     },
     {
       "path": "presets/confirm-dialog.json",
-      "sha256": "21a7c7ccdd6b177625282f40758b0d5f004b8d64dab79a271ea1bd1a9f5f4550",
-      "bytes": 4448,
+      "sha256": "1cc5588df40eb481794331de763af4681c1968b602efccc9e98bef526d9c47ee",
+      "bytes": 4855,
       "role": "presets"
     },
     {
       "path": "presets/context-menu.json",
-      "sha256": "f39058b3a600e1051cfd02deb60cddb435480be444c319e6b011fa47d73d5abd",
-      "bytes": 4086,
+      "sha256": "44ebd9abc0cf16b7134ee2eba2310ca1d2d9475219406a00c7226255def5a59d",
+      "bytes": 4205,
       "role": "presets"
     },
     {
@@ -1278,8 +1278,8 @@
     },
     {
       "path": "prompt-pack.md",
-      "sha256": "d4f23e639ddbbabefc062a09868da8a36123000cc6a54739c2aae5fcdc5404a0",
-      "bytes": 35935,
+      "sha256": "8c9e5034d80a199cf65ef8b78d48753ec7371152abc03ca482fe8e695eab0e18",
+      "bytes": 35949,
       "role": "principles"
     },
     {

@@ -71,7 +71,9 @@
     "Focus moves into the dialog on open, is trapped, and returns to the trigger on close.",
     "Never rely on colour alone: the destructive button has a verb and an icon, white text on --danger-solid reaches at least 4.5:1.",
     "The type-to-confirm field has a visible label that names the exact text; the disabled state is conveyed with the disabled attribute, not only opacity.",
-    "Keyboard: Tab and Shift+Tab cycle, Esc cancels, Enter activates the focused button."
+    "Keyboard: Tab and Shift+Tab cycle, Esc cancels, Enter activates the focused button.",
+    "The background page is inert while the dialog is open (focus, clicks and assistive technology are confined to the dialog). An alertdialog is not dismissed by clicking the backdrop; Esc and the Cancel button answer it. A plain dialog may be dismissed by backdrop click.",
+    "The consequence sentence is the accessible description (aria-describedby); in React pass it as the Dialog description prop."
   ],
   "principles": [
     "P19",

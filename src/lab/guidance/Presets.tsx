@@ -5,7 +5,7 @@ import '../../../guidance/css/presets.css'
 import './presets.css'
 
 type Spec = {
-  id: string; name: string; purpose: string
+  id: string; name: string; purpose: string; status?: 'provisional' | 'reviewed'; statusNote?: string
   whenToUse: string[]; whenNotToUse: string[]; behavior?: string[]
   implementations: { html?: string; css?: string; react?: string }
 }
@@ -52,6 +52,7 @@ function Section({ slug, children }: { slug: string; children: ReactNode }) {
         </div>
       </div>
       {spec && <p className="muted pz-purpose">{spec.purpose}</p>}
+      {spec?.status === 'provisional' && spec.statusNote && <p className="faint pz-status"><strong>Provisional.</strong> {spec.statusNote.replace(/^Provisional\.\s*/, '')}</p>}
       <div className="pz-grid">
         <div className="pz-demo">{children}</div>
         {spec && (

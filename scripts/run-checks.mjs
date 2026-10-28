@@ -7,6 +7,7 @@ import { createRequire } from 'node:module'
 const require = createRequire(import.meta.url)
 const { chromium } = require('playwright')
 import { collect } from './lib/collector.mjs'
+import { measureHitAreas } from './lib/hit-area.mjs'
 
 const args = process.argv.slice(2)
 const url = args.find(a => !a.startsWith('--'))
@@ -19,7 +20,8 @@ const browser = await chromium.launch()
 const page = await (await browser.newContext({ viewport: { width: vw, height: vh } })).newPage()
 await page.goto(url)
 await page.waitForTimeout(1500)
-const findings = await page.evaluate(collect, { scope, vw })
+const findings = (await page.evaluate(collect, { scope, vw })).filter(f => f.checkId !== 'CHK-020')
+if (vw <= 480) for (const it of await page.evaluate(measureHitAreas, { min: 40, step: 4, scope })) if (!it.pass) findings.push({ checkId: 'CHK-020', status: 'fail', target: it.sel, evidence: `${it.w}x${it.h}, effective hit area ${it.effW}x${it.effH}${it.thief ? ', overlapped by ' + it.thief : ''}` })
 
 /* CHK-018 / CHK-004 / CHK-022: tab through focusable elements and inspect the focus indicator. */
 const focus = []

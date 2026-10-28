@@ -18,10 +18,10 @@
 </style>
 </head>
 <body>
-<main>
+<main id="page">
   <div>
     <h1>Confirm dialog</h1>
-    <p>Question title with a specific verb, one sentence of consequence, Cancel and a verb button. Esc and backdrop click cancel.</p>
+    <p>Question title with a specific verb, one sentence of consequence, Cancel and a verb button. Esc cancels. A destructive alertdialog is not dismissed by backdrop click; the page behind is inert while any dialog is open.</p>
   </div>
 
   <section>
@@ -64,6 +64,7 @@
   var cancel = document.getElementById('dlg-cancel');
   var confirmBtn = document.getElementById('dlg-confirm');
   var result = document.getElementById('result');
+  var page = document.getElementById('page');
   var opener = null;
   var current = null;
 
@@ -72,6 +73,8 @@
   function open(cfg) {
     current = cfg;
     opener = document.activeElement;
+    dialog.setAttribute('role', cfg.destructive ? 'alertdialog' : 'dialog');
+    if (page) page.inert = true;   // background is unreachable by keyboard, pointer and assistive technology
     title.textContent = cfg.title;
     desc.textContent = cfg.description;
     confirmBtn.className = 'sm-btn ' + (cfg.destructive ? 'sm-btn--danger' : 'sm-btn--primary');
@@ -90,6 +93,7 @@
   }
   function close(value) {
     backdrop.hidden = true;
+    if (page) page.inert = false;
     var cfg = current; current = null;
     if (opener && opener.focus) opener.focus();
     result.textContent = value ? cfg.doneText : 'Cancelled. Nothing changed.';
@@ -99,8 +103,8 @@
   input.addEventListener('keydown', function (e) { if (e.key === 'Enter' && !confirmBtn.disabled) close(true); });
   cancel.addEventListener('click', function () { close(false); });
   confirmBtn.addEventListener('click', function () { close(true); });
-  // Backdrop click cancels; clicks inside the dialog do not.
-  backdrop.addEventListener('mousedown', function (e) { if (e.target === backdrop) close(false); });
+  // Backdrop click cancels a plain dialog only. An alertdialog must be answered (Esc or Cancel).
+  backdrop.addEventListener('mousedown', function (e) { if (e.target === backdrop && current && !current.destructive) close(false); });
 
   document.addEventListener('keydown', function (e) {
     if (backdrop.hidden) return;

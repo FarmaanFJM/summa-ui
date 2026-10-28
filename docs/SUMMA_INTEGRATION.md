@@ -23,6 +23,20 @@ Directory `guidance/` in `FarmaanFJM/summa-ui`, described by `guidance/manifest.
 
 Versioning: semantic version in `bundle.config.json`. `channel` is `draft`, `candidate` or `approved`. Only `approved` bundles, with `reviewedBy` set, may be pinned. `bundleDigest` is the sha256 over the sorted `path:sha256` lines of every file in the manifest and is the pin of record.
 
+## Recommended distribution: vendored and digest pinned
+Recommendation (pending the owner's explicit approval): Summa vendors a copy of the approved bundle and pins it by `bundleDigest`. The summa-ui repository stays standalone; the Summa repository is not modified by this phase.
+
+Why vendored: task time needs no network; the exact bytes an agent saw are reviewable in the Summa history; a bundle can only change through a reviewed Summa pull request; there is no accidental consumption of `main`.
+
+Tooling in this repository (tested, no dependencies):
+```bash
+# in summa-ui, after the owner sets channel to approved and tags the release
+node scripts/vendor-guidance.mjs <summa>/third_party/summa-ui-guidance --lock <summa>/summa-ui.lock.json
+# in Summa CI and at Orchestrator start (copy scripts/verify-vendored.mjs into Summa)
+node verify-vendored.mjs third_party/summa-ui-guidance summa-ui.lock.json
+```
+`vendor-guidance.mjs` verifies the source manifest, refuses any bundle whose channel is not `approved` (a `--allow-draft` flag exists for local trials only) and writes the lock file. `verify-vendored.mjs` fails on a modified, missing or extra file, a digest or version mismatch, or a non-approved channel. The bundle is currently `draft`, so nothing can be pinned yet.
+
 ## Pinning
 Summa stores a lock file, for example `summa-ui.lock.json`, committed in the Summa repository:
 
@@ -93,6 +107,6 @@ Suggested evaluator implementation: a Playwright script that loads each route at
 6. Tests: a fixture UI containing known anti-patterns (the gallery's Avoid demos are suitable fixtures) must produce the expected failing check ids; the Prefer demos must pass.
 
 ## Open decisions for the owner
-- Whether the bundle is vendored into Summa or fetched by commit.
+- Whether to adopt the recommended vendored distribution above, or fetch by exact commit.
 - Whether `heuristic` checks that cannot reach a verdict block merges or only report.
 - Who may promote a bundle from `candidate` to `approved`.
