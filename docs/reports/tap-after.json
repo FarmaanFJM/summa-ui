@@ -13,52 +13,11 @@
     "projects": {
       "tested": 84,
       "undersized": 0,
-      "tapMismatch": 8,
+      "tapMismatch": 0,
       "pageErrors": [],
       "skippedScenarios": [],
       "failing": [],
-      "tapBad": [
-        {
-          "pass": "full height",
-          "sel": "button.pm-title.truncate \"Keyboard shortcut shee\"",
-          "reason": "tap at 58,214 landed on div.pm-row"
-        },
-        {
-          "pass": "full height",
-          "sel": "button.pm-title.truncate \"Migrate email template\"",
-          "reason": "tap at 58,272 landed on div.pm-row"
-        },
-        {
-          "pass": "full height",
-          "sel": "button.pm-title.truncate \"Dark mode contrast on \"",
-          "reason": "tap at 58,433 landed on div.pm-row"
-        },
-        {
-          "pass": "full height",
-          "sel": "button.pm-title.truncate \"Rewrite onboarding che\"",
-          "reason": "tap at 58,491 landed on div.pm-row"
-        },
-        {
-          "pass": "full height",
-          "sel": "button.pm-title.truncate \"Workspace switcher dro\"",
-          "reason": "tap at 58,652 landed on div.pm-row"
-        },
-        {
-          "pass": "full height",
-          "sel": "button.pm-title.truncate \"Webhook retries ignore\"",
-          "reason": "tap at 58,812 landed on div.pm-row"
-        },
-        {
-          "pass": "full height",
-          "sel": "button.pm-title.truncate \"Upgrade Postgres to 16\"",
-          "reason": "tap at 58,972 landed on div.pm-row"
-        },
-        {
-          "pass": "full height",
-          "sel": "button.pm-title.truncate \"Empty states use the w\"",
-          "reason": "tap at 58,1031 landed on div.pm-row"
-        }
-      ]
+      "tapBad": []
     },
     "documents": {
       "tested": 24,
@@ -116,26 +75,11 @@
     },
     "social": {
       "tested": 126,
-      "undersized": 2,
+      "undersized": 0,
       "tapMismatch": 0,
       "pageErrors": [],
       "skippedScenarios": [],
-      "failing": [
-        {
-          "pass": "state: compose with attachment",
-          "sel": "button.so-remove \"Remove image 1\"",
-          "size": "26x26",
-          "effective": "24x24",
-          "thief": "circle"
-        },
-        {
-          "pass": "state: compose with attachment",
-          "sel": "button.so-submit \"Post\"",
-          "size": "70x34",
-          "effective": "70x32",
-          "thief": "div.so-comp-bar \"280Post\""
-        }
-      ],
+      "failing": [],
       "tapBad": []
     },
     "trading": {
@@ -168,7 +112,7 @@
   },
   "totals": {
     "tested": 940,
-    "undersized": 2,
-    "tapMismatch": 8
+    "undersized": 0,
+    "tapMismatch": 0
   }
 }

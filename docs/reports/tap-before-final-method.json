@@ -1,0 +1,2723 @@
+{
+  "viewport": "390x844",
+  "apps": {
+    "ai": {
+      "tested": 50,
+      "undersized": 24,
+      "tapMismatch": 0,
+      "pageErrors": [],
+      "skippedScenarios": [],
+      "failing": [
+        {
+          "pass": "state: composer generating",
+          "sel": "button.icon-btn.mobile-only \"Open navigation\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "header.topbar \"Debounce a search inpu\""
+        },
+        {
+          "pass": "state: composer generating",
+          "sel": "button.icon-btn.mobile-only \"New chat\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "header.topbar \"Debounce a search inpu\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.icon-btn.sm \"Copy code\"",
+          "size": "28x28",
+          "effective": "28x28",
+          "thief": "figcaption \"tsx\""
+        },
+        {
+          "pass": "state: composer generating",
+          "sel": "button.icon-btn.sm \"Message actions\"",
+          "size": "40x36",
+          "effective": "40x36",
+          "thief": "div.ai-col \"Write a debounce hook \""
+        },
+        {
+          "pass": "state: composer generating",
+          "sel": "textarea \"Message\"",
+          "size": "350x30",
+          "effective": "348x32",
+          "thief": "form.ai-composer \"Atlas Pro\""
+        },
+        {
+          "pass": "state: composer generating",
+          "sel": "button.icon-btn \"Attach files\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "form.ai-composer \"Atlas Pro\""
+        },
+        {
+          "pass": "state: composer generating",
+          "sel": "button.select.quiet \"Model\"",
+          "size": "97x32",
+          "effective": "96x32",
+          "thief": "form.ai-composer \"Atlas Pro\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.btn.btn-secondary \"New chat\"",
+          "size": "280x32",
+          "effective": "280x32",
+          "thief": "div.ai-side-top \"New chat\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "label.search",
+          "size": "280x32",
+          "effective": "280x32",
+          "thief": "div.ai-side-top \"New chat\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "input.input \"Search chats\"",
+          "size": "280x32",
+          "effective": "280x32",
+          "thief": "div.ai-side-top \"New chat\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.icon-btn.sm \"Actions for Debounce a\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "button.ai-conv-main \"Debounce a search inpu\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.icon-btn.sm \"Actions for Launch che\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "button.ai-conv-main \"Launch checklist for t\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.icon-btn.sm \"Actions for Latency vs\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "button.ai-conv-main \"Latency vs throughput\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.icon-btn.sm \"Actions for Pricing ch\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "button.ai-conv-main \"Pricing change announc\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.icon-btn.sm \"Actions for Quarterly \"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "button.ai-conv-main \"Quarterly OKR wording\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.icon-btn.sm \"Actions for Postgres i\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "button.ai-conv-main \"Postgres index for slo\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.icon-btn.sm \"Actions for Onboarding\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "button.ai-conv-main \"Onboarding email seque\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.icon-btn.sm \"Actions for Summarise \"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "button.ai-conv-main \"Summarise customer int\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.icon-btn.sm \"Actions for Regex for \"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "button.ai-conv-main \"Regex for invoice numb\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.icon-btn.sm \"Actions for Trip itine\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "button.ai-conv-main \"Trip itinerary for Lis\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.icon-btn.sm \"Actions for Naming ide\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "button.ai-conv-main \"Naming ideas for the a\""
+        },
+        {
+          "pass": "state: drawer conversation menu",
+          "sel": "button.menu-item \"Rename\"",
+          "size": "172x30",
+          "effective": "172x32",
+          "thief": "div.popover \"Conversation actions\""
+        },
+        {
+          "pass": "state: drawer conversation menu",
+          "sel": "button.menu-item \"Unpin\"",
+          "size": "172x30",
+          "effective": "172x32",
+          "thief": "div.popover \"Conversation actions\""
+        },
+        {
+          "pass": "state: drawer conversation menu",
+          "sel": "button.menu-item.danger \"Delete\"",
+          "size": "172x30",
+          "effective": "172x32",
+          "thief": "div.popover \"Conversation actions\""
+        }
+      ],
+      "tapBad": []
+    },
+    "projects": {
+      "tested": 85,
+      "undersized": 32,
+      "tapMismatch": 0,
+      "pageErrors": [],
+      "skippedScenarios": [],
+      "failing": [
+        {
+          "pass": "full height",
+          "sel": "button.icon-btn.mobile-only \"Open navigation\"",
+          "size": "32x40",
+          "effective": "32x40",
+          "thief": "header.pm-top \"Summa CoreFilterSortLi\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tab \"List\"",
+          "size": "48x36",
+          "effective": "48x36",
+          "thief": "div.tabs \"View\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tab \"Board\"",
+          "size": "64x36",
+          "effective": "64x36",
+          "thief": "div.tabs \"View\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-status-btn \"Status: Backlog. Chang\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "div.pm-row \"SUM-131Migrate email t\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-title.truncate \"Single sign-on: map Id\"",
+          "size": "318x24",
+          "effective": "316x24",
+          "thief": "div.pm-row \"SUM-137Single sign-on:\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-title.truncate \"Keyboard shortcut shee\"",
+          "size": "318x24",
+          "effective": "316x24",
+          "thief": "div.pm-row \"SUM-136Keyboard shortc\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-title.truncate \"Migrate email template\"",
+          "size": "318x24",
+          "effective": "316x24",
+          "thief": "div.pm-row \"SUM-131Migrate email t\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-status-btn \"Status: Todo. Change s\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "div.pm-row \"SUM-138Rewrite onboard\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-title.truncate \"Bulk invite members fr\"",
+          "size": "318x24",
+          "effective": "316x24",
+          "thief": "div.pm-row \"SUM-141Bulk invite mem\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-title.truncate \"Dark mode contrast on \"",
+          "size": "318x24",
+          "effective": "316x24",
+          "thief": "div.pm-row \"SUM-132Dark mode contr\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-title.truncate \"Rewrite onboarding che\"",
+          "size": "318x24",
+          "effective": "316x24",
+          "thief": "div.pm-row \"SUM-138Rewrite onboard\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-status-btn \"Status: In progress. C\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "div.pm-row \"SUM-142Workspace switc\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-title.truncate \"Audit log export times\"",
+          "size": "318x24",
+          "effective": "316x24",
+          "thief": "div.pm-row \"SUM-139Audit log expor\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-title.truncate \"Workspace switcher dro\"",
+          "size": "318x24",
+          "effective": "316x24",
+          "thief": "div.pm-row \"SUM-142Workspace switc\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-status-btn \"Status: In review. Cha\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "div.pm-row \"SUM-133Webhook retries\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-title.truncate \"Cache permission check\"",
+          "size": "318x24",
+          "effective": "316x24",
+          "thief": "div.pm-row \"SUM-140Cache permissio\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-title.truncate \"Webhook retries ignore\"",
+          "size": "318x24",
+          "effective": "316x24",
+          "thief": "div.pm-row \"SUM-133Webhook retries\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-status-btn \"Status: Done. Change s\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "div.pm-row \"SUM-134Empty states us\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-title.truncate \"Rate limit dashboard f\"",
+          "size": "318x24",
+          "effective": "316x24",
+          "thief": "div.pm-row \"SUM-130Rate limit dash\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-title.truncate \"Upgrade Postgres to 16\"",
+          "size": "318x24",
+          "effective": "316x24",
+          "thief": "div.pm-row \"SUM-135Upgrade Postgre\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.pm-title.truncate \"Empty states use the w\"",
+          "size": "318x24",
+          "effective": "316x24",
+          "thief": "div.pm-row \"SUM-134Empty states us\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.nav-item \"My tasks5\"",
+          "size": "284x32",
+          "effective": "284x32",
+          "thief": "div.brand \"Northwind\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.icon-btn.sm \"Create project\"",
+          "size": "28x28",
+          "effective": "28x28",
+          "thief": "div.pm-side-head \"Projects\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.nav-item \"Summa Core10\"",
+          "size": "284x32",
+          "effective": "284x32",
+          "thief": "div.pm-side-head \"Projects\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.nav-item \"Mobile app6\"",
+          "size": "284x32",
+          "effective": "284x32",
+          "thief": "nav.col.scroll \"Projects\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.nav-item \"Design system4\"",
+          "size": "284x32",
+          "effective": "284x32",
+          "thief": "nav.col.scroll \"Projects\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.nav-item \"Billing5\"",
+          "size": "284x32",
+          "effective": "284x32",
+          "thief": "nav.col.scroll \"Projects\""
+        },
+        {
+          "pass": "state: task detail",
+          "sel": "button.icon-btn.mobile-only \"Back to tasks\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "header.pm-detail-head \"Summa Core / SUM-137\""
+        },
+        {
+          "pass": "state: task detail",
+          "sel": "button.icon-btn \"Task actions\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "header.pm-detail-head \"Summa Core / SUM-137\""
+        },
+        {
+          "pass": "state: new task dialog",
+          "sel": "button.select \"Project\"",
+          "size": "123x32",
+          "effective": "123x32",
+          "thief": "div.col \"Summa CoreTodo\""
+        },
+        {
+          "pass": "state: new task dialog",
+          "sel": "button.select \"Status\"",
+          "size": "92x32",
+          "effective": "92x32",
+          "thief": "div.col \"Summa CoreTodo\""
+        },
+        {
+          "pass": "state: new task dialog",
+          "sel": "button.btn.btn-ghost \"Cancel\"",
+          "size": "70x32",
+          "effective": "70x32",
+          "thief": "div.dialog-foot \"CancelCreate task\""
+        }
+      ],
+      "tapBad": []
+    },
+    "documents": {
+      "tested": 24,
+      "undersized": 14,
+      "tapMismatch": 0,
+      "pageErrors": [],
+      "skippedScenarios": [],
+      "failing": [
+        {
+          "pass": "full height",
+          "sel": "button.icon-btn.mobile-only \"Open navigation\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "header.topbar.doc-topbar \"DocumentsOffline mode:\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tab \"Write\"",
+          "size": "60x28",
+          "effective": "60x28",
+          "thief": "header.topbar.doc-topbar \"DocumentsOffline mode:\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tab \"Source\"",
+          "size": "71x28",
+          "effective": "71x28",
+          "thief": "header.topbar.doc-topbar \"DocumentsOffline mode:\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.icon-btn \"Document actions\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "header.topbar.doc-topbar \"DocumentsOffline mode:\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "label.search",
+          "size": "244x32",
+          "effective": "244x32",
+          "thief": "div.brand \"Documents\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "input.input \"Search documents\"",
+          "size": "244x32",
+          "effective": "244x32",
+          "thief": "div.brand \"Documents\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.btn.btn-secondary \"New document\"",
+          "size": "244x32",
+          "effective": "244x32",
+          "thief": "div.doc-side-tools \"New document\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.icon-btn.sm \"Actions for Offline mo\"",
+          "size": "28x28",
+          "effective": "28x28",
+          "thief": "button.doc-row-main \"Offline mode: product \""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.icon-btn.sm \"Actions for Product sy\"",
+          "size": "28x28",
+          "effective": "28x28",
+          "thief": "button.doc-row-main \"Product sync, 22 Octob\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.icon-btn.sm \"Actions for Notes on s\"",
+          "size": "28x28",
+          "effective": "28x28",
+          "thief": "button.doc-row-main \"Notes on slow software\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.icon-btn.sm \"Actions for Parked ide\"",
+          "size": "28x28",
+          "effective": "28x28",
+          "thief": "button.doc-row-main \"Parked ideasSep 26\""
+        },
+        {
+          "pass": "state: document menu",
+          "sel": "button.menu-item \"Export as Markdown\"",
+          "size": "177x30",
+          "effective": "176x32",
+          "thief": "div.popover \"Document actions\""
+        },
+        {
+          "pass": "state: document menu",
+          "sel": "button.menu-item \"Copy as Markdown\"",
+          "size": "177x30",
+          "effective": "176x32",
+          "thief": "button.menu-item \"Export as Markdown\""
+        },
+        {
+          "pass": "state: document menu",
+          "sel": "button.menu-item.danger \"Delete document\"",
+          "size": "177x30",
+          "effective": "176x32",
+          "thief": "div.popover \"Document actions\""
+        }
+      ],
+      "tapBad": []
+    },
+    "analytics": {
+      "tested": 39,
+      "undersized": 14,
+      "tapMismatch": 0,
+      "pageErrors": [],
+      "skippedScenarios": [],
+      "failing": [
+        {
+          "pass": "full height",
+          "sel": "button.switch \"Compare to previous pe\"",
+          "size": "30x18",
+          "effective": "36x24",
+          "thief": "div.an-controls \"Last 30 daysCompare to\""
+        },
+        {
+          "pass": "full height",
+          "sel": "label.search.an-search",
+          "size": "140x30",
+          "effective": "140x32",
+          "thief": "header.an-ph \"Top pagesAll sections\""
+        },
+        {
+          "pass": "full height",
+          "sel": "input.input \"Search pages\"",
+          "size": "140x30",
+          "effective": "140x32",
+          "thief": "header.an-ph \"Top pagesAll sections\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.icon-btn.sm \"Next page\"",
+          "size": "28x28",
+          "effective": "28x28",
+          "thief": "section.an-panel.an-table \"Top pages\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.nav-item \"Overview\"",
+          "size": "216x32",
+          "effective": "216x32",
+          "thief": "div.eyebrow.an-eyebrow \"Analytics\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.nav-item \"Acquisition\"",
+          "size": "216x32",
+          "effective": "216x32",
+          "thief": "button.nav-item \"Retention\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.nav-item \"Retention\"",
+          "size": "216x32",
+          "effective": "216x32",
+          "thief": "button.nav-item \"Revenue\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.nav-item \"Revenue\"",
+          "size": "216x32",
+          "effective": "216x32",
+          "thief": "button.nav-item \"Reports\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.nav-item \"Reports\"",
+          "size": "216x32",
+          "effective": "216x32",
+          "thief": "span.grow"
+        },
+        {
+          "pass": "state: range dropdown",
+          "sel": "button.menu-item \"Last 7 days\"",
+          "size": "192x30",
+          "effective": "192x32",
+          "thief": "div.popover \"Date range\""
+        },
+        {
+          "pass": "state: range dropdown",
+          "sel": "button.menu-item \"Last 30 days\"",
+          "size": "192x30",
+          "effective": "192x32",
+          "thief": "button.menu-item \"Last 7 days\""
+        },
+        {
+          "pass": "state: range dropdown",
+          "sel": "button.menu-item \"Last 90 days\"",
+          "size": "192x30",
+          "effective": "192x32",
+          "thief": "button.menu-item \"Last 30 days\""
+        },
+        {
+          "pass": "state: range dropdown",
+          "sel": "button.menu-item \"Year to date\"",
+          "size": "192x30",
+          "effective": "192x32",
+          "thief": "button.menu-item \"Last 90 days\""
+        },
+        {
+          "pass": "state: range dropdown",
+          "sel": "button.menu-item \"Custom range…\"",
+          "size": "192x30",
+          "effective": "192x32",
+          "thief": "button.menu-item \"Year to date\""
+        }
+      ],
+      "tapBad": []
+    },
+    "files": {
+      "tested": 89,
+      "undersized": 32,
+      "tapMismatch": 0,
+      "pageErrors": [],
+      "skippedScenarios": [],
+      "failing": [
+        {
+          "pass": "state: grid view",
+          "sel": "button.tab.files-viewtab \"List view\"",
+          "size": "32x28",
+          "effective": "32x28",
+          "thief": "header.topbar.files-topbar \"My DriveNameNew\""
+        },
+        {
+          "pass": "state: grid view",
+          "sel": "button.tab.files-viewtab \"Grid view\"",
+          "size": "32x28",
+          "effective": "32x28",
+          "thief": "header.topbar.files-topbar \"My DriveNameNew\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.nav-item \"My Drive\"",
+          "size": "232x32",
+          "effective": "232x32",
+          "thief": "div.brand \"Files\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.nav-item \"Recent\"",
+          "size": "232x32",
+          "effective": "232x32",
+          "thief": "nav.files-locs \"Locations\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.nav-item \"Starred\"",
+          "size": "232x32",
+          "effective": "232x32",
+          "thief": "nav.files-locs \"Locations\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.nav-item \"Shared\"",
+          "size": "232x32",
+          "effective": "232x32",
+          "thief": "nav.files-locs \"Locations\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.nav-item \"Trash\"",
+          "size": "232x32",
+          "effective": "232x32",
+          "thief": "nav.files-locs \"Locations\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.nav-item \"Work\"",
+          "size": "232x32",
+          "effective": "232x32",
+          "thief": "div.eyebrow.files-side-head \"Folders\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.nav-item \"Atlas redesign\"",
+          "size": "232x32",
+          "effective": "232x32",
+          "thief": "nav.files-quick.scroll \"Folders\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.nav-item \"Finance\"",
+          "size": "232x32",
+          "effective": "232x32",
+          "thief": "nav.files-quick.scroll \"Folders\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.nav-item \"Personal\"",
+          "size": "232x32",
+          "effective": "232x32",
+          "thief": "nav.files-quick.scroll \"Folders\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.nav-item \"Photos\"",
+          "size": "232x32",
+          "effective": "232x32",
+          "thief": "nav.files-quick.scroll \"Folders\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.nav-item \"Travel\"",
+          "size": "232x32",
+          "effective": "232x32",
+          "thief": "nav.files-quick.scroll \"Folders\""
+        },
+        {
+          "pass": "state: new menu",
+          "sel": "button.menu-item \"New folder\"",
+          "size": "172x30",
+          "effective": "172x32",
+          "thief": "div.popover \"New\""
+        },
+        {
+          "pass": "state: new menu",
+          "sel": "button.menu-item \"New document\"",
+          "size": "172x30",
+          "effective": "172x32",
+          "thief": "div.popover \"New\""
+        },
+        {
+          "pass": "state: new menu",
+          "sel": "button.menu-item \"Upload file…\"",
+          "size": "172x30",
+          "effective": "172x32",
+          "thief": "div.popover \"New\""
+        },
+        {
+          "pass": "state: grid view",
+          "sel": "button.checkbox \"Select Archive\"",
+          "size": "16x16",
+          "effective": "16x16",
+          "thief": "div.files-card \"ArchiveSep 12, 2025\""
+        },
+        {
+          "pass": "state: grid view",
+          "sel": "button.icon-btn.sm \"More actions for Archi\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "div.files-card \"ArchiveSep 12, 2025\""
+        },
+        {
+          "pass": "state: grid view",
+          "sel": "button.checkbox \"Select Personal\"",
+          "size": "16x16",
+          "effective": "16x16",
+          "thief": "div.files-card \"PersonalOct 25\""
+        },
+        {
+          "pass": "state: grid view",
+          "sel": "button.icon-btn.sm \"More actions for Perso\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "div.files-card \"PersonalOct 25\""
+        },
+        {
+          "pass": "state: grid view",
+          "sel": "button.checkbox \"Select Photos\"",
+          "size": "16x16",
+          "effective": "16x16",
+          "thief": "div.files-card \"PhotosOct 19\""
+        },
+        {
+          "pass": "state: grid view",
+          "sel": "button.icon-btn.sm \"More actions for Photo\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "div.files-card \"PhotosOct 19\""
+        },
+        {
+          "pass": "state: grid view",
+          "sel": "button.checkbox \"Select Work\"",
+          "size": "16x16",
+          "effective": "16x16",
+          "thief": "div.files-card \"WorkToday, 5:42 AM\""
+        },
+        {
+          "pass": "state: grid view",
+          "sel": "button.icon-btn.sm \"More actions for Work\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "div.files-card \"WorkToday, 5:42 AM\""
+        },
+        {
+          "pass": "state: grid view",
+          "sel": "button.checkbox \"Select 2026 goals.docx\"",
+          "size": "16x16",
+          "effective": "16x16",
+          "thief": "div.files-card \"2026 goals.docxSep 24 \""
+        },
+        {
+          "pass": "state: grid view",
+          "sel": "button.icon-btn.sm \"More actions for 2026 \"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "div.files-card \"2026 goals.docxSep 24 \""
+        },
+        {
+          "pass": "state: grid view",
+          "sel": "button.checkbox \"Select Passport scan.j\"",
+          "size": "16x16",
+          "effective": "16x16",
+          "thief": "div.files-card \"Passport scan.jpgApr 2\""
+        },
+        {
+          "pass": "state: grid view",
+          "sel": "button.icon-btn.sm \"More actions for Passp\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "div.files-card \"Passport scan.jpgApr 2\""
+        },
+        {
+          "pass": "state: grid view",
+          "sel": "button.checkbox \"Select Reading list.md\"",
+          "size": "16x16",
+          "effective": "16x16",
+          "thief": "div.files-card \"Reading list.mdOct 23 \""
+        },
+        {
+          "pass": "state: grid view",
+          "sel": "button.icon-btn.sm \"More actions for Readi\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "div.files-card \"Reading list.mdOct 23 \""
+        },
+        {
+          "pass": "state: grid view",
+          "sel": "button.checkbox \"Select Welcome to Driv\"",
+          "size": "16x16",
+          "effective": "16x16",
+          "thief": "div.files-card \"Welcome to Drive.pdfSe\""
+        },
+        {
+          "pass": "state: grid view",
+          "sel": "button.icon-btn.sm \"More actions for Welco\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "div.files-card \"Welcome to Drive.pdfSe\""
+        }
+      ],
+      "tapBad": []
+    },
+    "media": {
+      "tested": 167,
+      "undersized": 41,
+      "tapMismatch": 0,
+      "pageErrors": [],
+      "skippedScenarios": [],
+      "failing": [
+        {
+          "pass": "state: player bar",
+          "sel": "button.tab \"All\"",
+          "size": "88x36",
+          "effective": "88x36",
+          "thief": "div.tabs \"Type\""
+        },
+        {
+          "pass": "state: player bar",
+          "sel": "button.tab \"Photos\"",
+          "size": "88x36",
+          "effective": "88x36",
+          "thief": "div.tabs \"Type\""
+        },
+        {
+          "pass": "state: player bar",
+          "sel": "button.tab \"Music\"",
+          "size": "88x36",
+          "effective": "88x36",
+          "thief": "div.tabs \"Type\""
+        },
+        {
+          "pass": "state: player bar",
+          "sel": "button.tab \"Film\"",
+          "size": "88x36",
+          "effective": "88x36",
+          "thief": "div.tabs \"Type\""
+        },
+        {
+          "pass": "state: player bar",
+          "sel": "button.md-ov.fav \"Remove from favorites\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Play Night Ferry by No\""
+        },
+        {
+          "pass": "state: viewer",
+          "sel": "button.md-ov \"More actions for Terra\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Open Terraced Dusk\""
+        },
+        {
+          "pass": "state: player bar",
+          "sel": "button.md-ov \"More actions for Harbo\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Pause Harbour Light by\""
+        },
+        {
+          "pass": "state: viewer",
+          "sel": "button.md-ov \"More actions for Cedar\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Open Cedar Country\""
+        },
+        {
+          "pass": "state: viewer",
+          "sel": "button.md-ov \"More actions for Concr\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Open Concrete Stair\""
+        },
+        {
+          "pass": "state: player bar",
+          "sel": "button.md-ov \"More actions for Slow \"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Play Slow Burn Horizon\""
+        },
+        {
+          "pass": "state: player bar",
+          "sel": "button.md-ov \"More actions for Night\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Play Night Ferry by No\""
+        },
+        {
+          "pass": "state: viewer",
+          "sel": "button.md-ov \"More actions for The G\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Open The Glass House\""
+        },
+        {
+          "pass": "state: viewer",
+          "sel": "button.md-ov \"More actions for Brise\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Open Brise-soleil\""
+        },
+        {
+          "pass": "state: player bar",
+          "sel": "button.md-ov \"More actions for Resin\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Play Resin by Aster Fi\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Overp\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Open Overpass\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Low S\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Open Low Sun, Erg Cheb\""
+        },
+        {
+          "pass": "state: player bar",
+          "sel": "button.md-ov \"More actions for Merid\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Play Meridian Two by M\""
+        },
+        {
+          "pass": "state: player bar",
+          "sel": "button.md-ov \"More actions for Salt \"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Play Salt Meridian by \""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Atriu\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Open Atrium, Late\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Cloud\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Open Cloud Inversion\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Route\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Open Route 9, Last Lig\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Paper\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Play Paper Lanterns by\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Blue \"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Open Blue Hour, Tre Ci\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Winte\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Open Winter Kitchen\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Slack\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Open Slack Water\""
+        },
+        {
+          "pass": "state: player bar",
+          "sel": "button.md-ov \"More actions for Inlan\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Play Inland Sea by Lum\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Horiz\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Open Horizon, Portland\""
+        },
+        {
+          "pass": "state: player bar",
+          "sel": "button.md-ov \"More actions for Low T\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Play Low Tide Choir by\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Fog L\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Open Fog Line, Hoh\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Slipf\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Open Slipface\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Ridge\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Open Ridge Pines\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.md-ov \"More actions for Quiet\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "button.md-hit \"Play Quiet Machinery b\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.nav-item \"Library36\"",
+          "size": "284x32",
+          "effective": "284x32",
+          "thief": "div.brand \"Studio Library\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.nav-item \"Favorites10\"",
+          "size": "284x32",
+          "effective": "284x32",
+          "thief": "nav.col \"Library\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.nav-item \"Recently added20\"",
+          "size": "284x32",
+          "effective": "284x32",
+          "thief": "nav.col \"Library\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.icon-btn.sm \"New collection\"",
+          "size": "28x28",
+          "effective": "28x28",
+          "thief": "div.md-side-head \"Collections\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.nav-item \"Desert Series6\"",
+          "size": "284x32",
+          "effective": "284x32",
+          "thief": "div.md-side-head \"Collections\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.nav-item \"Night Drive7\"",
+          "size": "284x32",
+          "effective": "284x32",
+          "thief": "nav.col.scroll \"Collections\""
+        },
+        {
+          "pass": "drawer open",
+          "sel": "button.nav-item \"Moodboard: Salt House5\"",
+          "size": "284x32",
+          "effective": "284x32",
+          "thief": "nav.col.scroll \"Collections\""
+        },
+        {
+          "pass": "state: player bar",
+          "sel": "button.icon-btn \"Pause\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "div.md-player \"Player\""
+        },
+        {
+          "pass": "state: player bar",
+          "sel": "button.icon-btn \"Next\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "div.md-player \"Player\""
+        }
+      ],
+      "tapBad": []
+    },
+    "executive": {
+      "tested": 32,
+      "undersized": 7,
+      "tapMismatch": 0,
+      "pageErrors": [],
+      "skippedScenarios": [],
+      "failing": [
+        {
+          "pass": "full height",
+          "sel": "button.ex-th \"Business unit\"",
+          "size": "122x36",
+          "effective": "120x36",
+          "thief": "th \"Business unit\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.ex-th.on \"Revenue\"",
+          "size": "85x36",
+          "effective": "84x36",
+          "thief": "th.r \"Revenue\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.ex-th \"Var %\"",
+          "size": "68x36",
+          "effective": "64x36",
+          "thief": "button.ex-th \"EBITDA margin\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.ex-th \"EBITDA margin\"",
+          "size": "88x36",
+          "effective": "88x36",
+          "thief": "td.r.num \"23.7%\""
+        },
+        {
+          "pass": "state: filter sheet",
+          "sel": "button.tab \"Quarter\"",
+          "size": "115x36",
+          "effective": "115x36",
+          "thief": "div.tabs \"Period\""
+        },
+        {
+          "pass": "state: filter sheet",
+          "sel": "button.tab \"Year to date\"",
+          "size": "115x36",
+          "effective": "115x36",
+          "thief": "div.tabs \"Period\""
+        },
+        {
+          "pass": "state: filter sheet",
+          "sel": "button.tab \"12 months\"",
+          "size": "115x36",
+          "effective": "115x36",
+          "thief": "div.tabs \"Period\""
+        }
+      ],
+      "tapBad": []
+    },
+    "chess": {
+      "tested": 39,
+      "undersized": 19,
+      "tapMismatch": 0,
+      "pageErrors": [],
+      "skippedScenarios": [],
+      "failing": [
+        {
+          "pass": "full height",
+          "sel": "a.cc-logo \"Northgate Chess Club, \"",
+          "size": "99x30",
+          "effective": "99x32",
+          "thief": "div.cc-wrap.cc-nav-in \"NorthgatePlayTournamen\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.btn.btn-primary \"Join\"",
+          "size": "52x32",
+          "effective": "52x32",
+          "thief": "div.cc-wrap.cc-nav-in \"NorthgatePlayTournamen\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.icon-btn.cc-burger \"Open menu\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "div.cc-wrap.cc-nav-in \"NorthgatePlayTournamen\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tab \"Easy\"",
+          "size": "56x28",
+          "effective": "56x28",
+          "thief": "div.cc-panel-head \"OpponentEasyMediumHard\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tab \"Medium\"",
+          "size": "78x28",
+          "effective": "78x28",
+          "thief": "div.cc-panel-head \"OpponentEasyMediumHard\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tab \"Hard\"",
+          "size": "56x28",
+          "effective": "56x28",
+          "thief": "div.cc-panel-head \"OpponentEasyMediumHard\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.select \"Play as\"",
+          "size": "133x32",
+          "effective": "132x32",
+          "thief": "div.cc-panel-head \"OpponentEasyMediumHard\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.select \"Clock\"",
+          "size": "133x32",
+          "effective": "132x32",
+          "thief": "div.cc-panel-head \"OpponentEasyMediumHard\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.btn.btn-ghost \"Tournaments\"",
+          "size": "134x32",
+          "effective": "134x32",
+          "thief": "div.cc-wrap.cc-news-in \"Autumn Rapid Open on S\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.btn.btn-secondary \"Hint\"",
+          "size": "73x32",
+          "effective": "72x32",
+          "thief": "div.cc-puzzle-info \"Puzzle of the dayWhite\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.btn.btn-ghost \"Reset\"",
+          "size": "84x32",
+          "effective": "84x32",
+          "thief": "div.cc-puzzle-info \"Puzzle of the dayWhite\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.btn.btn-ghost \"Skip\"",
+          "size": "53x32",
+          "effective": "52x32",
+          "thief": "div.cc-puzzle-info \"Puzzle of the dayWhite\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tab \"Upcoming\"",
+          "size": "93x28",
+          "effective": "92x28",
+          "thief": "header.cc-bandhead \"TournamentsUpcomingPas\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tab \"Past\"",
+          "size": "53x28",
+          "effective": "52x28",
+          "thief": "header.cc-bandhead \"TournamentsUpcomingPas\""
+        },
+        {
+          "pass": "state: register dialog",
+          "sel": "input#_r_9_.input",
+          "size": "318x32",
+          "effective": "316x32",
+          "thief": "div.cc-field \"Full name\""
+        },
+        {
+          "pass": "state: register dialog",
+          "sel": "input#_r_a_.input",
+          "size": "318x32",
+          "effective": "316x32",
+          "thief": "div.cc-field \"Email\""
+        },
+        {
+          "pass": "state: register dialog",
+          "sel": "input#_r_b_.input",
+          "size": "318x32",
+          "effective": "316x32",
+          "thief": "div.cc-field \"Rating (optional)\""
+        },
+        {
+          "pass": "state: register dialog",
+          "sel": "button.btn.btn-ghost \"Cancel\"",
+          "size": "70x32",
+          "effective": "70x32",
+          "thief": "div.dialog-foot \"CancelRegister\""
+        },
+        {
+          "pass": "state: register dialog",
+          "sel": "button.btn.btn-primary \"Register\"",
+          "size": "79x32",
+          "effective": "79x32",
+          "thief": "div.dialog-foot \"CancelRegister\""
+        }
+      ],
+      "tapBad": []
+    },
+    "social": {
+      "tested": 126,
+      "undersized": 20,
+      "tapMismatch": 0,
+      "pageErrors": [],
+      "skippedScenarios": [],
+      "failing": [
+        {
+          "pass": "state: profile",
+          "sel": "a.so-logo \"Tidepool home\"",
+          "size": "90x22",
+          "effective": "90x24",
+          "thief": "header.so-top \"TidepoolHomeExploreNot\""
+        },
+        {
+          "pass": "state: profile",
+          "sel": "a.icon-btn.so-searchicon \"Search\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "header.so-top \"TidepoolHomeExploreNot\""
+        },
+        {
+          "pass": "state: profile",
+          "sel": "button.so-avbtn \"Account menu\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "header.so-top \"TidepoolHomeExploreNot\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tab \"For you\"",
+          "size": "74x28",
+          "effective": "74x28",
+          "thief": "div.so-tabbar \"For youFollowing\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tab \"Following\"",
+          "size": "88x28",
+          "effective": "88x28",
+          "thief": "div.so-tabbar \"For youFollowing\""
+        },
+        {
+          "pass": "state: compose with attachment",
+          "sel": "button.icon-btn \"Attach image\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "div.so-composer \"280Post\""
+        },
+        {
+          "pass": "state: compose dialog",
+          "sel": "button.icon-btn \"Add poll\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "div.so-comp-bar \"280Post\""
+        },
+        {
+          "pass": "full height",
+          "sel": "a.so-name \"Odalys Ferreira\"",
+          "size": "111x20",
+          "effective": "111x20",
+          "thief": "span.muted \"@odalys · 4m\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.icon-btn.sm \"More options\"",
+          "size": "28x28",
+          "effective": "28x28",
+          "thief": "header.so-ph \"June Aoyama@june · 1h\""
+        },
+        {
+          "pass": "full height",
+          "sel": "a.so-name \"Tobias Reed\"",
+          "size": "88x20",
+          "effective": "88x20",
+          "thief": "span.muted \"@tobias.reed · 12m\""
+        },
+        {
+          "pass": "full height",
+          "sel": "a.so-name \"Halden Fjeld\"",
+          "size": "90x20",
+          "effective": "88x20",
+          "thief": "span.muted \"@halden · 25m\""
+        },
+        {
+          "pass": "full height",
+          "sel": "a.so-name \"Priya Nambiar\"",
+          "size": "102x20",
+          "effective": "102x20",
+          "thief": "span.muted \"@priya_n · 41m\""
+        },
+        {
+          "pass": "full height",
+          "sel": "a.so-name \"Kofi Mensah-Rhodes\"",
+          "size": "152x20",
+          "effective": "152x20",
+          "thief": "span.muted \"@kofi · 55m\""
+        },
+        {
+          "pass": "full height",
+          "sel": "a.so-name \"June Aoyama\"",
+          "size": "99x20",
+          "effective": "99x20",
+          "thief": "span.muted \"@june · 1h\""
+        },
+        {
+          "pass": "state: notifications",
+          "sel": "button.btn.btn-ghost \"Mark all read\"",
+          "size": "111x32",
+          "effective": "111x32",
+          "thief": "div.so-pagehead \"NotificationsMark all \""
+        },
+        {
+          "pass": "state: notifications",
+          "sel": "button.tab \"All\"",
+          "size": "41x28",
+          "effective": "40x28",
+          "thief": "div.so-tabbar \"AllMentions\""
+        },
+        {
+          "pass": "state: notifications",
+          "sel": "button.tab \"Mentions\"",
+          "size": "86x28",
+          "effective": "86x28",
+          "thief": "div.so-tabbar \"AllMentions\""
+        },
+        {
+          "pass": "state: profile",
+          "sel": "button.icon-btn \"Back\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "div.so-pagehead \"Profile\""
+        },
+        {
+          "pass": "state: compose with attachment",
+          "sel": "button.so-remove \"Remove image 1\"",
+          "size": "26x26",
+          "effective": "24x24",
+          "thief": "circle"
+        },
+        {
+          "pass": "state: compose with attachment",
+          "sel": "button.so-submit \"Post\"",
+          "size": "70x34",
+          "effective": "70x32",
+          "thief": "div.so-comp-main \"280Post\""
+        }
+      ],
+      "tapBad": []
+    },
+    "trading": {
+      "tested": 92,
+      "undersized": 54,
+      "tapMismatch": 16,
+      "pageErrors": [],
+      "skippedScenarios": [],
+      "failing": [
+        {
+          "pass": "full height",
+          "sel": "button.icon-btn \"Pause market feed\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "header.tr-top \"ArclineEquity$259,635.\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-mv \"HALO/USD3.4882+4.37%\"",
+          "size": "197x32",
+          "effective": "196x32",
+          "thief": "header.tr-top \"ArclineEquity$259,635.\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-switch \"Instrument NVXA, chang\"",
+          "size": "83x28",
+          "effective": "83x28",
+          "thief": "div.tr-head \"NVXANexavia Corp184.13\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tab \"1m\"",
+          "size": "42x28",
+          "effective": "42x28",
+          "thief": "div.tr-chart-bar \"1m5m1h1DO 184.35 H 184\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tab \"5m\"",
+          "size": "45x28",
+          "effective": "44x28",
+          "thief": "div.tr-chart-bar \"1m5m1h1DO 184.35 H 184\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tab \"1h\"",
+          "size": "38x28",
+          "effective": "40x28",
+          "thief": "div.tr-chart-bar \"1m5m1h1DO 184.35 H 184\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tab \"1D\"",
+          "size": "40x28",
+          "effective": "40x28",
+          "thief": "div.tr-chart-bar \"1m5m1h1DO 184.35 H 184\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.icon-btn \"Indicators\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "div.tr-chart-bar \"1m5m1h1DO 184.35 H 184\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tab \"Book\"",
+          "size": "58x36",
+          "effective": "56x36",
+          "thief": "div.tr-mt-bar.scroll \"BookTradesPositions (5\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tab \"Trades\"",
+          "size": "70x36",
+          "effective": "70x36",
+          "thief": "div.tr-mt-bar.scroll \"BookTradesPositions (5\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tab \"Positions (5)\"",
+          "size": "108x36",
+          "effective": "108x36",
+          "thief": "div.tr-mt-bar.scroll \"BookTradesPositions (5\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tab \"Orders (3)\"",
+          "size": "93x36",
+          "effective": "92x36",
+          "thief": "div.tr-mt-bar.scroll \"BookTradesPositions (5\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.ask \"Ask 184.68, size 122. \"",
+          "size": "374x28",
+          "effective": "372x28",
+          "thief": "button.tr-bk-r.ask \"Ask 184.60, size 158. \""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.ask \"Ask 184.60, size 158. \"",
+          "size": "374x28",
+          "effective": "372x28",
+          "thief": "button.tr-bk-r.ask \"Ask 184.53, size 177. \""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.ask \"Ask 184.53, size 177. \"",
+          "size": "374x28",
+          "effective": "372x28",
+          "thief": "button.tr-bk-r.ask \"Ask 184.45, size 139. \""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.ask \"Ask 184.45, size 139. \"",
+          "size": "374x28",
+          "effective": "372x28",
+          "thief": "button.tr-bk-r.ask \"Ask 184.38, size 211. \""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.ask \"Ask 184.38, size 211. \"",
+          "size": "374x28",
+          "effective": "372x28",
+          "thief": "button.tr-bk-r.ask \"Ask 184.31, size 109. \""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.ask \"Ask 184.31, size 109. \"",
+          "size": "374x28",
+          "effective": "372x28",
+          "thief": "button.tr-bk-r.ask \"Ask 184.23, size 107. \""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.ask \"Ask 184.23, size 107. \"",
+          "size": "374x28",
+          "effective": "372x28",
+          "thief": "button.tr-bk-r.ask \"Ask 184.16, size 124. \""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.ask \"Ask 184.16, size 124. \"",
+          "size": "374x28",
+          "effective": "372x28",
+          "thief": "div.tr-bk-body \"184.681221,147184.6015\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.bid \"Bid 184.09, size 103. \"",
+          "size": "374x28",
+          "effective": "372x28",
+          "thief": "button.tr-bk-r.bid \"Bid 184.02, size 131. \""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.bid \"Bid 184.02, size 131. \"",
+          "size": "374x28",
+          "effective": "372x28",
+          "thief": "button.tr-bk-r.bid \"Bid 183.94, size 120. \""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.bid \"Bid 183.94, size 120. \"",
+          "size": "374x28",
+          "effective": "372x28",
+          "thief": "button.tr-bk-r.bid \"Bid 183.87, size 151. \""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.bid \"Bid 183.87, size 151. \"",
+          "size": "374x28",
+          "effective": "372x28",
+          "thief": "button.tr-bk-r.bid \"Bid 183.80, size 127. \""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.bid \"Bid 183.80, size 127. \"",
+          "size": "374x28",
+          "effective": "372x28",
+          "thief": "button.tr-bk-r.bid \"Bid 183.72, size 161. \""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.bid \"Bid 183.72, size 161. \"",
+          "size": "374x28",
+          "effective": "372x28",
+          "thief": "button.tr-bk-r.bid \"Bid 183.65, size 221. \""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.bid \"Bid 183.65, size 221. \"",
+          "size": "374x28",
+          "effective": "372x28",
+          "thief": "button.tr-bk-r.bid \"Bid 183.57, size 230. \""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.bid \"Bid 183.57, size 230. \"",
+          "size": "374x28",
+          "effective": "372x28",
+          "thief": "div.tr-mt-body \"PriceSizeTotal184.6812\""
+        },
+        {
+          "pass": "state: order sheet",
+          "sel": "button.icon-btn \"Close\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "div.tr-sheet-h \"Trade NVXA\""
+        },
+        {
+          "pass": "state: instrument sheet",
+          "sel": "label.search",
+          "size": "370x32",
+          "effective": "368x32",
+          "thief": "div.tr-wl-top \"AllStarred 3Symbol\""
+        },
+        {
+          "pass": "state: instrument sheet",
+          "sel": "input.input \"Search instruments\"",
+          "size": "370x32",
+          "effective": "368x32",
+          "thief": "div.tr-wl-top \"AllStarred 3Symbol\""
+        },
+        {
+          "pass": "state: instrument sheet",
+          "sel": "button.tab \"All\"",
+          "size": "41x28",
+          "effective": "40x28",
+          "thief": "div.tr-wl-top \"AllStarred 3Symbol\""
+        },
+        {
+          "pass": "state: instrument sheet",
+          "sel": "button.tab \"Starred 3\"",
+          "size": "86x28",
+          "effective": "84x28",
+          "thief": "div.tr-wl-top \"AllStarred 3Symbol\""
+        },
+        {
+          "pass": "state: instrument sheet",
+          "sel": "button.select.quiet \"Sort by\"",
+          "size": "87x28",
+          "effective": "87x28",
+          "thief": "div.tr-wl-top \"AllStarred 3Symbol\""
+        },
+        {
+          "pass": "state: instrument sheet",
+          "sel": "button.icon-btn.sm \"Sort ascending\"",
+          "size": "28x28",
+          "effective": "28x28",
+          "thief": "div.tr-wl-top \"AllStarred 3Symbol\""
+        },
+        {
+          "pass": "state: instrument sheet",
+          "sel": "button.tr-star \"Add ARCL/USD to starre\"",
+          "size": "28x52",
+          "effective": "28x52",
+          "thief": "button.tr-wl-main \"ARCL/USDArcline Token1\""
+        },
+        {
+          "pass": "state: instrument sheet",
+          "sel": "button.tr-star \"Add AURK/USD to starre\"",
+          "size": "28x52",
+          "effective": "28x52",
+          "thief": "button.tr-wl-main \"AURK/USDAurek0.8283−3.\""
+        },
+        {
+          "pass": "state: instrument sheet",
+          "sel": "button.tr-star.on \"Remove HALO/USD from s\"",
+          "size": "28x52",
+          "effective": "28x52",
+          "thief": "button.tr-wl-main \"HALO/USDHalo3.4882+4.3\""
+        },
+        {
+          "pass": "state: instrument sheet",
+          "sel": "button.tr-star.on \"Remove KELP from starr\"",
+          "size": "28x52",
+          "effective": "28x52",
+          "thief": "button.tr-wl-main \"KELPKelpwave Energy27.\""
+        },
+        {
+          "pass": "state: instrument sheet",
+          "sel": "button.tr-star \"Add LMNA/USD to starre\"",
+          "size": "28x52",
+          "effective": "28x52",
+          "thief": "button.tr-wl-main \"LMNA/USDLumina1,287.15\""
+        },
+        {
+          "pass": "state: instrument sheet",
+          "sel": "button.tr-star.on \"Remove NVXA from starr\"",
+          "size": "28x52",
+          "effective": "28x52",
+          "thief": "button.tr-wl-main \"NVXANexavia Corp184.13\""
+        },
+        {
+          "pass": "state: instrument sheet",
+          "sel": "button.tr-star \"Add ORBT to starred\"",
+          "size": "28x52",
+          "effective": "28x52",
+          "thief": "button.tr-wl-main \"ORBTOrbitron Systems62\""
+        },
+        {
+          "pass": "state: instrument sheet",
+          "sel": "button.tr-star \"Add QUAR to starred\"",
+          "size": "28x52",
+          "effective": "28x52",
+          "thief": "button.tr-wl-main \"QUARQuarry Metals Grou\""
+        },
+        {
+          "pass": "state: instrument sheet",
+          "sel": "button.tr-star \"Add TIDE/USD to starre\"",
+          "size": "28x52",
+          "effective": "28x52",
+          "thief": "button.tr-wl-main \"TIDE/USDTidewater0.041\""
+        },
+        {
+          "pass": "state: instrument sheet",
+          "sel": "button.tr-star \"Add ZYNT to starred\"",
+          "size": "28x52",
+          "effective": "28x52",
+          "thief": "button.tr-wl-main \"ZYNTZyntra Biosciences\""
+        },
+        {
+          "pass": "state: order sheet",
+          "sel": "button.tr-seg.buy \"Buy\"",
+          "size": "176x32",
+          "effective": "176x32",
+          "thief": "div.tr-oe-side \"Side\""
+        },
+        {
+          "pass": "state: order sheet",
+          "sel": "button.tr-seg.sell \"Sell\"",
+          "size": "176x32",
+          "effective": "176x32",
+          "thief": "div.tr-oe-side \"Side\""
+        },
+        {
+          "pass": "state: order sheet",
+          "sel": "button.tab \"Market\"",
+          "size": "117x28",
+          "effective": "116x28",
+          "thief": "form.tr-oe \"Order entry\""
+        },
+        {
+          "pass": "state: order sheet",
+          "sel": "button.tab \"Limit\"",
+          "size": "117x28",
+          "effective": "116x28",
+          "thief": "form.tr-oe \"Order entry\""
+        },
+        {
+          "pass": "state: order sheet",
+          "sel": "button.tab \"Stop\"",
+          "size": "117x28",
+          "effective": "116x28",
+          "thief": "form.tr-oe \"Order entry\""
+        },
+        {
+          "pass": "state: order sheet",
+          "sel": "button.tr-pct-b \"25%\"",
+          "size": "85x36",
+          "effective": "84x36",
+          "thief": "form.tr-oe \"Order entry\""
+        },
+        {
+          "pass": "state: order sheet",
+          "sel": "button.tr-pct-b \"50%\"",
+          "size": "85x36",
+          "effective": "84x36",
+          "thief": "form.tr-oe \"Order entry\""
+        },
+        {
+          "pass": "state: order sheet",
+          "sel": "button.tr-pct-b \"75%\"",
+          "size": "85x36",
+          "effective": "84x36",
+          "thief": "form.tr-oe \"Order entry\""
+        },
+        {
+          "pass": "state: order sheet",
+          "sel": "button.tr-pct-b \"100%\"",
+          "size": "85x36",
+          "effective": "84x36",
+          "thief": "form.tr-oe \"Order entry\""
+        }
+      ],
+      "tapBad": [
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.ask \"Ask 184.68, size 122. \"",
+          "reason": "element disappeared after an earlier tap"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.ask \"Ask 184.60, size 158. \"",
+          "reason": "element disappeared after an earlier tap"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.ask \"Ask 184.53, size 177. \"",
+          "reason": "element disappeared after an earlier tap"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.ask \"Ask 184.45, size 139. \"",
+          "reason": "element disappeared after an earlier tap"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.ask \"Ask 184.38, size 211. \"",
+          "reason": "element disappeared after an earlier tap"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.ask \"Ask 184.31, size 109. \"",
+          "reason": "element disappeared after an earlier tap"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.ask \"Ask 184.23, size 107. \"",
+          "reason": "element disappeared after an earlier tap"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.ask \"Ask 184.16, size 124. \"",
+          "reason": "element disappeared after an earlier tap"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.bid \"Bid 184.09, size 103. \"",
+          "reason": "element disappeared after an earlier tap"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.bid \"Bid 184.02, size 131. \"",
+          "reason": "element disappeared after an earlier tap"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.bid \"Bid 183.94, size 120. \"",
+          "reason": "element disappeared after an earlier tap"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.bid \"Bid 183.87, size 151. \"",
+          "reason": "element disappeared after an earlier tap"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.bid \"Bid 183.80, size 127. \"",
+          "reason": "element disappeared after an earlier tap"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.bid \"Bid 183.72, size 161. \"",
+          "reason": "element disappeared after an earlier tap"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.bid \"Bid 183.65, size 221. \"",
+          "reason": "element disappeared after an earlier tap"
+        },
+        {
+          "pass": "full height",
+          "sel": "button.tr-bk-r.bid \"Bid 183.57, size 230. \"",
+          "reason": "element disappeared after an earlier tap"
+        }
+      ]
+    },
+    "store": {
+      "tested": 118,
+      "undersized": 53,
+      "tapMismatch": 8,
+      "pageErrors": [],
+      "skippedScenarios": [],
+      "failing": [
+        {
+          "pass": "state: checkout",
+          "sel": "a.st-logo \"Oak & Ember home\"",
+          "size": "121x22",
+          "effective": "120x24",
+          "thief": "div.st-mini-in \"Oak & EmberBack to bag\""
+        },
+        {
+          "pass": "state: product page",
+          "sel": "button.st-cartbtn \"Open bag, 0 items\"",
+          "size": "63x36",
+          "effective": "63x36",
+          "thief": "div.st-actions \"0\""
+        },
+        {
+          "pass": "full height",
+          "sel": "a.st-seeall \"View all\"",
+          "size": "72x21",
+          "effective": "72x24",
+          "thief": "div.st-sect-head \"FeaturedView all\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-heart \"Save Lull Desk Lamp to\"",
+          "size": "34x34",
+          "effective": "32x32",
+          "thief": "a \"Lull Desk Lamp, $124\""
+        },
+        {
+          "pass": "full height",
+          "sel": "a.st-card-name \"Lull Desk Lamp\"",
+          "size": "109x23",
+          "effective": "108x24",
+          "thief": "div.st-card-info \"Lull Desk Lamp$1244.8(\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-swatch \"Charcoal\"",
+          "size": "16x16",
+          "effective": "28x36",
+          "thief": "button.st-swatch \"Sage\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-swatch \"Oat\"",
+          "size": "16x16",
+          "effective": "28x36",
+          "thief": "button.st-swatch \"Charcoal\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-swatch \"Moss\"",
+          "size": "16x16",
+          "effective": "28x36",
+          "thief": "button.st-swatch \"Terracotta\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-heart \"Save Everyday Mug to w\"",
+          "size": "34x34",
+          "effective": "32x32",
+          "thief": "a \"Everyday Mug, $28\""
+        },
+        {
+          "pass": "full height",
+          "sel": "a.st-card-name \"Everyday Mug\"",
+          "size": "103x23",
+          "effective": "103x24",
+          "thief": "div.st-card-info \"Everyday MugFrom $284.\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-swatch \"Sage\"",
+          "size": "16x16",
+          "effective": "36x36",
+          "thief": "div.st-grid \"Quick addLull Desk Lam\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-swatch \"Terracotta\"",
+          "size": "16x16",
+          "effective": "28x36",
+          "thief": "button.st-swatch \"Sage\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-swatch \"Slate\"",
+          "size": "16x16",
+          "effective": "36x36",
+          "thief": "div.st-grid \"Quick addLull Desk Lam\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-heart \"Save Grid Notebook to \"",
+          "size": "34x34",
+          "effective": "32x32",
+          "thief": "a \"Grid Notebook, $24\""
+        },
+        {
+          "pass": "full height",
+          "sel": "a.st-card-name \"Grid Notebook\"",
+          "size": "104x23",
+          "effective": "104x24",
+          "thief": "div.st-card-info \"Grid NotebookFrom $244\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-heart \"Save Field Tote to wis\"",
+          "size": "34x34",
+          "effective": "32x32",
+          "thief": "a \"Field Tote, $58\""
+        },
+        {
+          "pass": "full height",
+          "sel": "a.st-card-name \"Field Tote\"",
+          "size": "70x23",
+          "effective": "68x24",
+          "thief": "div.st-card-info \"Field Tote$584.8(389)\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-swatch \"Sand\"",
+          "size": "16x16",
+          "effective": "28x36",
+          "thief": "button.st-swatch \"Charcoal\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-heart \"Save Ridge Vase to wis\"",
+          "size": "34x34",
+          "effective": "32x32",
+          "thief": "a \"Ridge Vase, $64\""
+        },
+        {
+          "pass": "full height",
+          "sel": "a.st-card-name \"Ridge Vase\"",
+          "size": "80x23",
+          "effective": "80x24",
+          "thief": "div.st-card-info \"Ridge Vase$644.8(98)\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-heart \"Save Oslo Dining Chair\"",
+          "size": "34x34",
+          "effective": "32x32",
+          "thief": "a \"Oslo Dining Chair, $24\""
+        },
+        {
+          "pass": "full height",
+          "sel": "a.st-card-name \"Oslo Dining Chair\"",
+          "size": "124x23",
+          "effective": "124x24",
+          "thief": "div.st-card-info \"Oslo Dining Chair$2454\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-heart \"Save Wool Throw to wis\"",
+          "size": "34x34",
+          "effective": "32x32",
+          "thief": "a \"Wool Throw, $118\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.st-heart \"Save Snake Plant to wi\"",
+          "size": "34x34",
+          "effective": "32x32",
+          "thief": "a \"Snake Plant, $42\""
+        },
+        {
+          "pass": "state: category and filters",
+          "sel": "button.icon-btn \"Close filters\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "div.st-sheet-head \"Filters\""
+        },
+        {
+          "pass": "state: category and filters",
+          "sel": "input \"Minimum price\"",
+          "size": "350x18",
+          "effective": "348x16",
+          "thief": "div.st-price \"$10$430+\""
+        },
+        {
+          "pass": "state: category and filters",
+          "sel": "input \"Maximum price\"",
+          "size": "350x18",
+          "effective": "348x16",
+          "thief": "div.st-fgroups \"Price$10$430+ColourTyp\""
+        },
+        {
+          "pass": "state: category and filters",
+          "sel": "button.st-swatch \"Oat\"",
+          "size": "30x30",
+          "effective": "36x40",
+          "thief": "button.st-swatch \"Sand\""
+        },
+        {
+          "pass": "state: category and filters",
+          "sel": "button.st-swatch \"Sand\"",
+          "size": "30x30",
+          "effective": "36x40",
+          "thief": "button.st-swatch \"Terracotta\""
+        },
+        {
+          "pass": "state: category and filters",
+          "sel": "button.st-swatch \"Terracotta\"",
+          "size": "30x30",
+          "effective": "36x40",
+          "thief": "button.st-swatch \"Sage\""
+        },
+        {
+          "pass": "state: category and filters",
+          "sel": "button.st-swatch \"Sage\"",
+          "size": "30x30",
+          "effective": "36x40",
+          "thief": "button.st-swatch \"Moss\""
+        },
+        {
+          "pass": "state: category and filters",
+          "sel": "button.st-swatch \"Moss\"",
+          "size": "30x30",
+          "effective": "36x40",
+          "thief": "button.st-swatch \"Slate\""
+        },
+        {
+          "pass": "state: category and filters",
+          "sel": "button.st-swatch \"Slate\"",
+          "size": "30x30",
+          "effective": "36x40",
+          "thief": "button.st-swatch \"Charcoal\""
+        },
+        {
+          "pass": "state: category and filters",
+          "sel": "button.st-swatch \"Charcoal\"",
+          "size": "30x30",
+          "effective": "36x40",
+          "thief": "button.st-swatch \"Walnut\""
+        },
+        {
+          "pass": "state: category and filters",
+          "sel": "button.checkbox \"Table lamps\"",
+          "size": "16x16",
+          "effective": "28x40",
+          "thief": "div.st-sheet-body \"Price$10$430+ColourTyp\""
+        },
+        {
+          "pass": "state: category and filters",
+          "sel": "button.checkbox \"Pendants\"",
+          "size": "16x16",
+          "effective": "28x40",
+          "thief": "div.st-sheet-body \"Price$10$430+ColourTyp\""
+        },
+        {
+          "pass": "state: category and filters",
+          "sel": "button.checkbox \"Desk lamps\"",
+          "size": "16x16",
+          "effective": "28x40",
+          "thief": "div.st-sheet-body \"Price$10$430+ColourTyp\""
+        },
+        {
+          "pass": "state: category and filters",
+          "sel": "button.checkbox \"Ceramic lamps\"",
+          "size": "16x16",
+          "effective": "28x40",
+          "thief": "div.st-sheet-body \"Price$10$430+ColourTyp\""
+        },
+        {
+          "pass": "state: category and filters",
+          "sel": "button.checkbox \"Mugs\"",
+          "size": "16x16",
+          "effective": "28x40",
+          "thief": "div.st-sheet-body \"Price$10$430+ColourTyp\""
+        },
+        {
+          "pass": "state: category and filters",
+          "sel": "button.checkbox \"Cups\"",
+          "size": "16x16",
+          "effective": "28x40",
+          "thief": "div.st-sheet-body \"Price$10$430+ColourTyp\""
+        },
+        {
+          "pass": "state: category and filters",
+          "sel": "button.checkbox \"Bowls\"",
+          "size": "16x16",
+          "effective": "28x40",
+          "thief": "div.st-sheet-body \"Price$10$430+ColourTyp\""
+        },
+        {
+          "pass": "state: category and filters",
+          "sel": "button.checkbox \"Vases\"",
+          "size": "16x16",
+          "effective": "28x40",
+          "thief": "div.st-sheet-body \"Price$10$430+ColourTyp\""
+        },
+        {
+          "pass": "state: category and filters",
+          "sel": "button.checkbox \"Chairs\"",
+          "size": "16x16",
+          "effective": "28x32",
+          "thief": "div.st-sheet-body \"Price$10$430+ColourTyp\""
+        },
+        {
+          "pass": "state: product page",
+          "sel": "a \"Home\"",
+          "size": "35x19",
+          "effective": "36x20",
+          "thief": "div.st-page \"HomeLightingEmber Tabl\""
+        },
+        {
+          "pass": "state: product page",
+          "sel": "a \"Lighting\"",
+          "size": "47x19",
+          "effective": "47x20",
+          "thief": "div.st-page \"HomeLightingEmber Tabl\""
+        },
+        {
+          "pass": "state: product page",
+          "sel": "button.st-ratingrow \"4.7 (128 reviews)\"",
+          "size": "191x21",
+          "effective": "191x24",
+          "thief": "div.st-info \"Ember Table Lamp$1484.\""
+        },
+        {
+          "pass": "state: cart drawer",
+          "sel": "button.icon-btn \"Close bag\"",
+          "size": "32x32",
+          "effective": "32x32",
+          "thief": "div.st-sheet-head \"Bag (1)\""
+        },
+        {
+          "pass": "state: checkout",
+          "sel": "a.st-line-name \"Ember Table Lamp\"",
+          "size": "124x21",
+          "effective": "124x20",
+          "thief": "span.muted.st-sm \"Sand\""
+        },
+        {
+          "pass": "state: cart drawer",
+          "sel": "button \"Increase quantity\"",
+          "size": "36x40",
+          "effective": "36x40",
+          "thief": "div.row \"1\""
+        },
+        {
+          "pass": "state: cart drawer",
+          "sel": "input.input \"Promo code\"",
+          "size": "279x32",
+          "effective": "279x32",
+          "thief": "div.st-sheet-foot.col \"ApplySubtotal$148.00De\""
+        },
+        {
+          "pass": "state: checkout",
+          "sel": "button.btn.btn-secondary \"Apply\"",
+          "size": "63x32",
+          "effective": "63x32",
+          "thief": "aside.st-co-sum \"Order summary\""
+        },
+        {
+          "pass": "state: checkout",
+          "sel": "button.btn.btn-ghost \"Back to bag\"",
+          "size": "125x32",
+          "effective": "124x32",
+          "thief": "div.st-mini-in \"Oak & EmberBack to bag\""
+        },
+        {
+          "pass": "state: checkout",
+          "sel": "input.input \"Promo code\"",
+          "size": "251x32",
+          "effective": "251x32",
+          "thief": "aside.st-co-sum \"Order summary\""
+        }
+      ],
+      "tapBad": [
+        {
+          "pass": "state: category and filters",
+          "sel": "button.checkbox \"Pendants\"",
+          "reason": "tap at 42,460 landed on label.st-check"
+        },
+        {
+          "pass": "state: category and filters",
+          "sel": "button.checkbox \"Desk lamps\"",
+          "reason": "tap at 42,500 landed on label.st-check"
+        },
+        {
+          "pass": "state: category and filters",
+          "sel": "button.checkbox \"Ceramic lamps\"",
+          "reason": "tap at 42,540 landed on label.st-check"
+        },
+        {
+          "pass": "state: category and filters",
+          "sel": "button.checkbox \"Mugs\"",
+          "reason": "tap at 42,580 landed on label.st-check"
+        },
+        {
+          "pass": "state: category and filters",
+          "sel": "button.checkbox \"Cups\"",
+          "reason": "tap at 42,620 landed on label.st-check"
+        },
+        {
+          "pass": "state: category and filters",
+          "sel": "button.checkbox \"Bowls\"",
+          "reason": "tap at 42,660 landed on label.st-check"
+        },
+        {
+          "pass": "state: category and filters",
+          "sel": "button.checkbox \"Vases\"",
+          "reason": "tap at 42,700 landed on label.st-check"
+        },
+        {
+          "pass": "state: category and filters",
+          "sel": "button.checkbox \"Chairs\"",
+          "reason": "tap at 42,740 landed on label.st-check"
+        }
+      ]
+    },
+    "travel": {
+      "tested": 86,
+      "undersized": 43,
+      "tapMismatch": 0,
+      "pageErrors": [],
+      "skippedScenarios": [],
+      "failing": [
+        {
+          "pass": "state: stay",
+          "sel": "a.tv-logo \"Wayfarer, home\"",
+          "size": "93x30",
+          "effective": "92x32",
+          "thief": "div.tv-wrap.tv-header-in \"WayfarerTrips\""
+        },
+        {
+          "pass": "full height",
+          "sel": "input#_r_2_.tv-input",
+          "size": "277x20",
+          "effective": "276x20",
+          "thief": "div.tv-field.input-field \"Destination\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.icon-btn.tv-heart \"Save Quinta da Falesia\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "button.tv-tile-main \"Quinta da Falesia, Alg\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.icon-btn.tv-heart \"Save Palmeraie Resort\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "button.tv-tile-main \"Palmeraie Resort, Marr\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.icon-btn.tv-heart \"Save Hotel Kronborg Pl\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "button.tv-tile-main \"Hotel Kronborg Plads, \""
+        },
+        {
+          "pass": "state: stay",
+          "sel": "button.icon-btn.tv-heart \"Save Casa do Largo\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "div.tv-stay-head \"Casa do LargoHotel in \""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.icon-btn.tv-heart \"Save Dar Elias\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "button.tv-tile-main \"Dar Elias, Marrakech\""
+        },
+        {
+          "pass": "full height",
+          "sel": "button.icon-btn.tv-heart \"Save Gasthof Hirschen\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "button.tv-tile-main \"Gasthof Hirschen, Blac\""
+        },
+        {
+          "pass": "state: results",
+          "sel": "button.icon-btn.tv-heart \"Save Palacete Azul\"",
+          "size": "36x36",
+          "effective": "36x36",
+          "thief": "button.tv-card-hit \"Palacete Azul, Chiado,\""
+        },
+        {
+          "pass": "state: stay",
+          "sel": "button.tv-back \"Back to Lisbon\"",
+          "size": "134x36",
+          "effective": "134x36",
+          "thief": "div.tv-wrap \"Back to LisbonCasa do \""
+        },
+        {
+          "pass": "state: stay",
+          "sel": "button.btn.btn-secondary \"Show all photos\"",
+          "size": "152x32",
+          "effective": "152x32",
+          "thief": "button.tv-g.g0 \"Open photo 1 of 5\""
+        },
+        {
+          "pass": "state: dates popover",
+          "sel": "button.icon-btn.sm \"Previous month\"",
+          "size": "28x28",
+          "effective": "28x28",
+          "thief": "div.tv-month-name \"November 2026\""
+        },
+        {
+          "pass": "state: dates popover",
+          "sel": "button.icon-btn.sm \"Next month\"",
+          "size": "28x28",
+          "effective": "28x28",
+          "thief": "div.popover.tv-pop-cal \"Choose dates\""
+        },
+        {
+          "pass": "state: dates popover",
+          "sel": "button.tv-day \"Sun 1 Nov\"",
+          "size": "44x36",
+          "effective": "44x36",
+          "thief": "div.tv-days \"November 2026\""
+        },
+        {
+          "pass": "state: dates popover",
+          "sel": "button.tv-day \"Mon 2 Nov\"",
+          "size": "44x36",
+          "effective": "44x36",
+          "thief": "div.tv-days \"November 2026\""
+        },
+        {
+          "pass": "state: dates popover",
+          "sel": "button.tv-day \"Tue 3 Nov\"",
+          "size": "44x36",
+          "effective": "44x36",
+          "thief": "div.tv-days \"November 2026\""
+        },
+        {
+          "pass": "state: dates popover",
+          "sel": "button.tv-day \"Wed 4 Nov\"",
+          "size": "44x36",
+          "effective": "44x36",
+          "thief": "div.tv-days \"November 2026\""
+        },
+        {
+          "pass": "state: dates popover",
+          "sel": "button.tv-day \"Thu 5 Nov\"",
+          "size": "44x36",
+          "effective": "44x36",
+          "thief": "div.tv-days \"November 2026\""
+        },
+        {
+          "pass": "state: dates popover",
+          "sel": "button.tv-day \"Fri 6 Nov\"",
+          "size": "44x36",
+          "effective": "44x36",
+          "thief": "div.tv-days \"November 2026\""
+        },
+        {
+          "pass": "state: dates popover",
+          "sel": "button.tv-day \"Sat 7 Nov\"",
+          "size": "44x36",
+          "effective": "44x36",
+          "thief": "div.tv-days \"November 2026\""
+        },
+        {
+          "pass": "state: dates popover",
+          "sel": "button.tv-day \"Sun 8 Nov\"",
+          "size": "44x36",
+          "effective": "44x36",
+          "thief": "div.tv-days \"November 2026\""
+        },
+        {
+          "pass": "state: dates popover",
+          "sel": "button.tv-day \"Mon 9 Nov\"",
+          "size": "44x36",
+          "effective": "44x36",
+          "thief": "div.tv-days \"November 2026\""
+        },
+        {
+          "pass": "state: dates popover",
+          "sel": "button.tv-day \"Tue 10 Nov\"",
+          "size": "44x36",
+          "effective": "44x36",
+          "thief": "div.tv-days \"November 2026\""
+        },
+        {
+          "pass": "state: dates popover",
+          "sel": "button.tv-day \"Wed 11 Nov\"",
+          "size": "44x36",
+          "effective": "44x36",
+          "thief": "div.tv-days \"November 2026\""
+        },
+        {
+          "pass": "state: dates popover",
+          "sel": "button.tv-day \"Thu 12 Nov\"",
+          "size": "44x36",
+          "effective": "44x36",
+          "thief": "div.tv-days \"November 2026\""
+        },
+        {
+          "pass": "state: dates popover",
+          "sel": "button.tv-day \"Fri 13 Nov\"",
+          "size": "44x36",
+          "effective": "44x36",
+          "thief": "div.tv-days \"November 2026\""
+        },
+        {
+          "pass": "state: dates popover",
+          "sel": "button.tv-day \"Sat 14 Nov\"",
+          "size": "44x36",
+          "effective": "44x36",
+          "thief": "div.tv-days \"November 2026\""
+        },
+        {
+          "pass": "state: dates popover",
+          "sel": "button.tv-day \"Sun 15 Nov\"",
+          "size": "44x36",
+          "effective": "44x36",
+          "thief": "div.tv-days \"November 2026\""
+        },
+        {
+          "pass": "state: dates popover",
+          "sel": "button.tv-day \"Mon 16 Nov\"",
+          "size": "44x36",
+          "effective": "44x36",
+          "thief": "div.tv-days \"November 2026\""
+        },
+        {
+          "pass": "state: dates popover",
+          "sel": "button.tv-day \"Tue 17 Nov\"",
+          "size": "44x36",
+          "effective": "44x36",
+          "thief": "div.tv-days \"November 2026\""
+        },
+        {
+          "pass": "state: dates popover",
+          "sel": "button.tv-day \"Wed 18 Nov\"",
+          "size": "44x36",
+          "effective": "44x36",
+          "thief": "div.tv-days \"November 2026\""
+        },
+        {
+          "pass": "state: dates popover",
+          "sel": "button.tv-day \"Thu 19 Nov\"",
+          "size": "44x36",
+          "effective": "44x36",
+          "thief": "div.tv-days \"November 2026\""
+        },
+        {
+          "pass": "state: dates popover",
+          "sel": "button.tv-day.end \"Fri 20 Nov\"",
+          "size": "44x36",
+          "effective": "44x36",
+          "thief": "div.tv-days \"November 2026\""
+        },
+        {
+          "pass": "state: dates popover",
+          "sel": "button.tv-day.in \"Sat 21 Nov\"",
+          "size": "44x36",
+          "effective": "44x36",
+          "thief": "div.tv-days \"November 2026\""
+        },
+        {
+          "pass": "state: dates popover",
+          "sel": "button.tv-day.in \"Sun 22 Nov\"",
+          "size": "44x36",
+          "effective": "44x36",
+          "thief": "div.tv-days \"November 2026\""
+        },
+        {
+          "pass": "state: dates popover",
+          "sel": "button.tv-day.in \"Mon 23 Nov\"",
+          "size": "44x36",
+          "effective": "44x36",
+          "thief": "div.tv-days \"November 2026\""
+        },
+        {
+          "pass": "state: dates popover",
+          "sel": "button.tv-day.end \"Tue 24 Nov\"",
+          "size": "44x36",
+          "effective": "44x36",
+          "thief": "div.tv-days \"November 2026\""
+        },
+        {
+          "pass": "state: dates popover",
+          "sel": "button.tv-day \"Wed 25 Nov\"",
+          "size": "44x36",
+          "effective": "44x36",
+          "thief": "div.tv-days \"November 2026\""
+        },
+        {
+          "pass": "state: dates popover",
+          "sel": "button.tv-day \"Thu 26 Nov\"",
+          "size": "44x36",
+          "effective": "44x36",
+          "thief": "div.tv-days \"November 2026\""
+        },
+        {
+          "pass": "state: dates popover",
+          "sel": "button.tv-day \"Fri 27 Nov\"",
+          "size": "44x36",
+          "effective": "44x36",
+          "thief": "div.tv-days \"November 2026\""
+        },
+        {
+          "pass": "state: dates popover",
+          "sel": "button.tv-day \"Sat 28 Nov\"",
+          "size": "44x36",
+          "effective": "44x36",
+          "thief": "div.tv-days \"November 2026\""
+        },
+        {
+          "pass": "state: dates popover",
+          "sel": "button.tv-day \"Sun 29 Nov\"",
+          "size": "44x36",
+          "effective": "44x36",
+          "thief": "div.tv-days \"November 2026\""
+        },
+        {
+          "pass": "state: dates popover",
+          "sel": "button.tv-day \"Mon 30 Nov\"",
+          "size": "44x36",
+          "effective": "44x36",
+          "thief": "div.tv-cal-foot \"4 nights\""
+        }
+      ],
+      "tapBad": []
+    }
+  },
+  "totals": {
+    "tested": 947,
+    "undersized": 353,
+    "tapMismatch": 24
+  }
+}
