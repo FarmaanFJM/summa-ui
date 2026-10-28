@@ -123,7 +123,24 @@ if (existsSync(join(G, 'manifest.json'))) {
   for (const abs of walk(G)) { const rel = relative(G, abs).split('\\').join('/'); if (rel !== 'manifest.json' && !listed.has(rel)) err(`file not in manifest: ${rel}`) }
   const digest = sha(m.files.map(f => `${f.path}:${f.sha256}`).join('\n'))
   if (digest !== m.bundleDigest) err('bundleDigest mismatch')
-  if (m.channel === 'approved' && !m.reviewedBy) err('approved bundle must name reviewedBy')
+  if (m.channel === 'approved') {
+    if (!m.reviewedBy) err('approved bundle must name reviewedBy')
+    if (!m.approvedAt) err('approved bundle must record approvedAt')
+    const owners = existsSync(join(root, 'feedback/OWNERS.json')) ? json(join(root, 'feedback/OWNERS.json')).owners : []
+    if (!owners.includes(m.reviewedBy)) err(`reviewedBy "${m.reviewedBy}" is not listed in feedback/OWNERS.json`)
+    const recPath = join(root, `docs/releases/guidance-v${m.version}.json`)
+    if (!existsSync(recPath)) err(`approved bundle needs a release record at docs/releases/guidance-v${m.version}.json`)
+    else {
+      const rec = json(recPath)
+      if (rec.bundleDigest !== m.bundleDigest) err(`release record digest ${rec.bundleDigest} does not match manifest digest ${m.bundleDigest}`)
+      if (rec.approvedBy !== m.reviewedBy) err('release record approvedBy does not match manifest reviewedBy')
+      if (rec.version !== m.version) err('release record version does not match manifest version')
+    }
+  }
+  // Provisional presets must be declared in the manifest, and declared ones must exist.
+  const provisionalPresets = pFiles.map(f => json(join(pDir, f))).filter(d => d.status === 'provisional').map(d => d.id).sort()
+  const declared = [...(m.provisional ?? [])].sort()
+  if (JSON.stringify(provisionalPresets) !== JSON.stringify(declared)) err(`manifest.provisional ${JSON.stringify(declared)} does not match provisional presets ${JSON.stringify(provisionalPresets)}`)
 }
 for (const w of warnings) console.warn('warn ', w)
 if (errors.length) { console.error(`guidance validation FAILED (${errors.length})`); errors.forEach(e => console.error(' - ' + e)); process.exit(1) }

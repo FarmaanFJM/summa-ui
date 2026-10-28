@@ -2,10 +2,23 @@
   "schemaVersion": 1,
   "name": "summa-ui-guidance",
   "version": "0.1.0",
-  "channel": "draft",
-  "reviewedBy": null,
-  "approvedAt": null,
+  "channel": "approved",
+  "reviewedBy": "FarmaanFJM",
+  "approvedAt": "2026-10-28T10:30:50Z",
+  "approvalRef": "Owner approval of v0.1.0 as the initial baseline, given in the design session https://claude.ai/code/session_01PxTQ4DFyiXW1FyvyEPxc9a on 2026-10-28. The approved content is unchanged from the validated commit d4ab45e; only approval metadata and release notes were added.",
   "description": "Framework-agnostic Summa-UI design guidance for AI agents: principles, anti-patterns, token guidance, presets, a curated icon catalog and objective check rules.",
+  "provisional": [
+    "preset.notification"
+  ],
+  "knownLimitations": [
+    "preset.notification is provisional: the owner's toast reference could not be compared with this implementation. Typography, spacing, icon treatment, placement and motion are not visually approved.",
+    "Heuristic checks CHK-005, 007, 009, 010, 012, 014, 015 and 016 are specified in checks/rules.json but not implemented in the reference evaluator (scripts/run-checks.mjs). Objective checks implemented there: CHK-001, 002, 003, 004, 006, 008, 011, 013, 017, 018, 019, 020, 021, 022.",
+    "Input placeholder text uses --text-3, which is 3.24:1 on --s2 and below the 4.5:1 guideline. A token level decision is deferred to the owner.",
+    "Touch hit area verification uses Chromium hit testing and interior tap probes; range sliders are checked for size only, and Chromium's own touch adjustment near adjacent clickable edges is not controlled by CSS.",
+    "The Summa default design system (charcoal with a lime accent) differs from Summa-UI (charcoal with emerald). Reconciling them is an owner decision handled in the Summa integration pull request.",
+    "Icon shapes come from Lucide 1.62.0 and differ slightly from the earlier hand-drawn set.",
+    "The bundle has been evaluated on the 12 laboratory prototypes only; it has not yet been used to build a previously unseen application."
+  ],
   "entrypoints": {
     "principles": "principles.json",
     "antipatterns": "antipatterns/",
@@ -22,7 +35,7 @@
     "humanJudgment": 10,
     "icons": 165,
     "tokens": 49,
-    "files": 215
+    "files": 216
   },
   "compat": {
     "frameworkAgnostic": true,
@@ -32,7 +45,7 @@
       "src/lab (gallery)"
     ]
   },
-  "bundleDigest": "f101da88b51d3b67e8311d7dea2744c23b67ad12d32b8fc34a7baf275addc8be",
+  "bundleDigest": "5ef73215334c313089cb3cd87f6f78f65eef48f67dfdc5d53bd84fedad408cc7",
   "files": [
     {
       "path": "IDS.md",
@@ -44,6 +57,12 @@
       "path": "README.md",
       "sha256": "6bd05a58c859479950e142941a11633878ee48c4b20fe9de97f94ce8922811ba",
       "bytes": 2451,
+      "role": "docs"
+    },
+    {
+      "path": "RELEASE_NOTES.md",
+      "sha256": "f2c1c2f36682c546f1ed9b654b66c84145fec7584d6ff319e00b2f392c59b1b5",
+      "bytes": 932,
       "role": "docs"
     },
     {
@@ -144,8 +163,8 @@
     },
     {
       "path": "bundle.config.json",
-      "sha256": "53854a4ba8a981f18f31538ed904c520bc4a5bbb6a8f79da7dbe579fcf2e29a0",
-      "bytes": 259,
+      "sha256": "1a6ccd620b00a46c7076ed0a27b272aaac847057464802811cc817f301dfbe3a",
+      "bytes": 2000,
       "role": "docs"
     },
     {
@@ -1302,8 +1321,8 @@
     },
     {
       "path": "schema/manifest.schema.json",
-      "sha256": "c5ffbe556d6e67621f93a1fbc2f763aa633ef122bc4f416b1fa890bc48897cea",
-      "bytes": 2200,
+      "sha256": "b89e6a6576c57d49278854fd3e91adaa9e954afbdb14e4b46d0ea3ea40430778",
+      "bytes": 3662,
       "role": "schema"
     },
     {

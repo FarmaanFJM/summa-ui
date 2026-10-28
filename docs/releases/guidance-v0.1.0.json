@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "bundle": "summa-ui-guidance",
+  "version": "0.1.0",
+  "channel": "approved",
+  "bundleDigest": "5ef73215334c313089cb3cd87f6f78f65eef48f67dfdc5d53bd84fedad408cc7",
+  "digestAlgorithm": "sha256 over the manifest file list, one 'path:sha256' line per file in manifest order, joined by newline (manifest.json itself excluded)",
+  "approvedBy": "FarmaanFJM",
+  "approvedAt": "2026-10-28T10:30:50Z",
+  "approvalRef": "Owner approval of v0.1.0 as the initial baseline, given in the design session https://claude.ai/code/session_01PxTQ4DFyiXW1FyvyEPxc9a on 2026-10-28. The approved content is unchanged from the validated commit d4ab45e; only approval metadata and release notes were added.",
+  "validatedContentCommit": "d4ab45ed724b0f83acaf64771d98b97134c4cb13",
+  "tag": "guidance-v0.1.0",
+  "tagTarget": "The commit that contains this record. Resolve with: git rev-parse guidance-v0.1.0^{commit}. The tag is annotated and must never be moved or deleted.",
+  "repository": "FarmaanFJM/summa-ui",
+  "counts": {
+    "principles": 22,
+    "antipatterns": 16,
+    "presets": 8,
+    "checks": 22,
+    "humanJudgment": 10,
+    "icons": 165,
+    "tokens": 49,
+    "files": 216
+  },
+  "provisional": [
+    "preset.notification"
+  ],
+  "knownLimitations": [
+    "preset.notification is provisional: the owner's toast reference could not be compared with this implementation. Typography, spacing, icon treatment, placement and motion are not visually approved.",
+    "Heuristic checks CHK-005, 007, 009, 010, 012, 014, 015 and 016 are specified in checks/rules.json but not implemented in the reference evaluator (scripts/run-checks.mjs). Objective checks implemented there: CHK-001, 002, 003, 004, 006, 008, 011, 013, 017, 018, 019, 020, 021, 022.",
+    "Input placeholder text uses --text-3, which is 3.24:1 on --s2 and below the 4.5:1 guideline. A token level decision is deferred to the owner.",
+    "Touch hit area verification uses Chromium hit testing and interior tap probes; range sliders are checked for size only, and Chromium's own touch adjustment near adjacent clickable edges is not controlled by CSS.",
+    "The Summa default design system (charcoal with a lime accent) differs from Summa-UI (charcoal with emerald). Reconciling them is an owner decision handled in the Summa integration pull request.",
+    "Icon shapes come from Lucide 1.62.0 and differ slightly from the earlier hand-drawn set.",
+    "The bundle has been evaluated on the 12 laboratory prototypes only; it has not yet been used to build a previously unseen application."
+  ],
+  "previousApprovedVersion": null
+}

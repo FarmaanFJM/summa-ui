@@ -115,7 +115,8 @@ const files = walk(G).map(abs => {
 const digest = sha(files.map(f => `${f.path}:${f.sha256}`).join('\n'))
 writeJson(join(G, 'manifest.json'), {
   schemaVersion: 1, name: cfg.name, version: cfg.version, channel: cfg.channel,
-  reviewedBy: cfg.reviewedBy ?? null, approvedAt: cfg.approvedAt ?? null, description: cfg.description,
+  reviewedBy: cfg.reviewedBy ?? null, approvedAt: cfg.approvedAt ?? null, approvalRef: cfg.approvalRef ?? null, description: cfg.description,
+  provisional: cfg.provisional ?? [], knownLimitations: cfg.knownLimitations ?? [],
   entrypoints: { principles: 'principles.json', antipatterns: 'antipatterns/', presets: 'presets/', tokens: 'tokens.json', icons: 'icons/catalog.json', checks: 'checks/rules.json' },
   counts: { principles: pr.principles.length, antipatterns: aps.length, presets: presets.length, checks: checks.checks.length, humanJudgment: checks.humanJudgment.length, icons: icons ? icons.icons.length : 0, tokens: decl.length, files: files.length },
   compat: { frameworkAgnostic: true, optionalReference: ['src/presets (React)', 'src/ui (React)', 'src/lab (gallery)'] },
