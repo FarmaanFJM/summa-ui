@@ -14,13 +14,18 @@
     "validate:guidance": "node scripts/validate-guidance.mjs",
     "validate:antipatterns": "node scripts/validate-antipatterns.mjs",
     "validate:presets": "node scripts/validate-presets.mjs",
-    "validate": "npm run guidance:build && npm run validate:icons && npm run validate:antipatterns && npm run validate:presets && npm run validate:guidance",
+    "validate": "npm run guidance:build && npm run validate:icons && npm run validate:antipatterns && npm run validate:presets && npm run validate:guidance && npm run validate:feedback",
     "checks": "node scripts/run-checks.mjs",
     "test:browser": "node scripts/test-guidance.mjs",
     "test:tap": "node scripts/test-tap-targets.mjs",
     "test:desktop-layout": "node scripts/layout-snapshot.mjs --compare docs/reports/desktop-layout-before.json",
     "vendor": "node scripts/vendor-guidance.mjs",
-    "vendor:verify": "node scripts/verify-vendored.mjs"
+    "vendor:verify": "node scripts/verify-vendored.mjs",
+    "validate:feedback": "node scripts/validate-feedback.mjs",
+    "feedback": "node scripts/feedback.mjs",
+    "regression": "node scripts/regression-check.mjs",
+    "verify:release": "node scripts/verify-release.mjs",
+    "record:usage": "node scripts/record-guidance-usage.mjs"
   },
   "dependencies": {
     "react": "^19.3.1",

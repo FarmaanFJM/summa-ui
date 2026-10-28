@@ -1,0 +1,31 @@
+{
+  "id": "FB-0002",
+  "createdAt": "2026-10-28T10:30:50Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "store",
+    "route": "#/store"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Header search field placeholder (also all input placeholders using --text-3)",
+  "screenshots": [
+    {
+      "file": "store-search-placeholder-desktop.png",
+      "viewport": "1440x900",
+      "note": "Placeholder text 'Search lamps, mugs, notebooks'"
+    }
+  ],
+  "explanation": "Found during validation, not reported by the owner. Input placeholder text uses --text-3 which measures 3.24:1 on --s2, below the 4.5:1 guideline. No principle or check sets a text contrast floor: CHK-018 covers keyboard focus rings only. This is recorded as a known limitation of guidance 0.1.0.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-gap",
+    "rationale": "The guidance says nothing about text contrast for placeholders and secondary text, so applications built from it can repeat this. It generalizes beyond the Store.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P17"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "proposal-drafted",
+  "proposal": "PR-0001"
+}

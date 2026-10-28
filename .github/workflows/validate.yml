@@ -1,0 +1,23 @@
+name: validate
+on:
+  pull_request:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  guidance:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx tsc --noEmit
+      - run: npm run validate
+      # The build script rewrites generated files; they must already be committed and current.
+      - name: Generated files are current
+        run: git diff --exit-code
+      - run: npx vite build

@@ -37,3 +37,9 @@ Standalone routes render the app alone, with no laboratory chrome.
 - `src/ui/` shared icons and components (Menu, Dropdown, Dialog, Tabs, AppShell, …)
 - `src/apps/<id>/` one folder per prototype (app-specific components stay local until promoted)
 - `src/lab/` laboratory shell and principles view
+
+## Guidance releases and feedback
+- Release records: `docs/releases/` (current: `guidance-v0.1.0`, approved by the owner, tag `guidance-v0.1.0`). Procedure and immutability: `docs/RELEASING.md`.
+- Consuming from another repository (for example Summa): `docs/SUMMA_INTEGRATION.md`, vendored and digest pinned.
+- Design feedback loop: `docs/FEEDBACK_WORKFLOW.md`, records in `feedback/`.
+- `npm run validate`, `npm run test:browser`, `npm run test:tap`, `npm run regression`, `npm run verify:release -- <tag>`.

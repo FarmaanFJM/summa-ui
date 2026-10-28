@@ -1,6 +1,6 @@
 # Summa integration contract (proposal)
 
-Status: proposal for a separate, later change in the Summa repository. Nothing here modifies the main Summa repository. The human owner approves the contract and any bundle version before use.
+Status: contract for the integration pull request in the Summa repository (separate from the Summa-UI release pull request; neither is merged without the owner's explicit authorization). Version 0.1.0 of the bundle was approved by the owner on 2026-10-28; see `docs/releases/guidance-v0.1.0.json`.
 
 ## Goals
 - Summa Orchestrator loads a pinned, human-approved Summa-UI guidance bundle for UI tasks.
@@ -36,6 +36,12 @@ node scripts/vendor-guidance.mjs <summa>/third_party/summa-ui-guidance --lock <s
 node verify-vendored.mjs third_party/summa-ui-guidance summa-ui.lock.json
 ```
 `vendor-guidance.mjs` verifies the source manifest, refuses any bundle whose channel is not `approved` (a `--allow-draft` flag exists for local trials only) and writes the lock file. `verify-vendored.mjs` fails on a modified, missing or extra file, a digest or version mismatch, or a non-approved channel. The bundle is currently `draft`, so nothing can be pinned yet.
+
+## Release verification
+Before vendoring, verify the release from git objects: `node scripts/verify-release.mjs guidance-v0.1.0 --expect-digest <digest>`. Summa pins `version`, `tag`, `commit` and `bundleDigest`; only the digest is authoritative.
+
+## Feedback and updates
+Applications built by Summa record the guidance version with `scripts/record-guidance-usage.mjs` (`summa-ui.usage.json`). Design problems found by the owner follow `docs/FEEDBACK_WORKFLOW.md`; an approved change reaches Summa only as a new release and a reviewed re-vendoring pull request. Existing applications are not updated silently.
 
 ## Pinning
 Summa stores a lock file, for example `summa-ui.lock.json`, committed in the Summa repository:

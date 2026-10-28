@@ -1,0 +1,274 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://summa-ui/feedback/proposal.schema.json",
+  "title": "Guidance improvement proposal",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "title",
+    "issues",
+    "kind",
+    "status",
+    "authoredBy",
+    "authoredAt",
+    "summary",
+    "change",
+    "examples",
+    "validation",
+    "versionImpact",
+    "existingApplications",
+    "ownerDecision",
+    "releasedIn"
+  ],
+  "properties": {
+    "id": {
+      "type": "string",
+      "pattern": "^PR-\\d{4}$"
+    },
+    "title": {
+      "type": "string",
+      "minLength": 5
+    },
+    "issues": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string",
+        "pattern": "^FB-\\d{4}$"
+      }
+    },
+    "kind": {
+      "enum": [
+        "new-principle",
+        "principle-revision",
+        "new-antipattern",
+        "antipattern-revision",
+        "new-check",
+        "check-revision",
+        "token-change",
+        "preset-change",
+        "clarification"
+      ]
+    },
+    "status": {
+      "enum": [
+        "draft",
+        "submitted",
+        "approved",
+        "rejected",
+        "released"
+      ],
+      "description": "Only the owner may move a proposal to approved or rejected."
+    },
+    "authoredBy": {
+      "type": "string"
+    },
+    "authoredAt": {
+      "type": "string"
+    },
+    "summary": {
+      "type": "string",
+      "minLength": 20
+    },
+    "change": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "files"
+      ],
+      "properties": {
+        "files": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "principleIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^P\\d{2}$"
+          }
+        },
+        "antiPatternIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^AP-\\d{3}$"
+          }
+        },
+        "checkIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^CHK-\\d{3}$"
+          }
+        },
+        "presetIds": {
+          "type": "array",
+          "items": {
+            "type": "string",
+            "pattern": "^preset\\.[a-z-]+$"
+          }
+        },
+        "conflictsWithApprovedRules": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          },
+          "description": "Approved rules this contradicts. Each needs an explicit decision in docs/DECISIONS.md."
+        }
+      }
+    },
+    "examples": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "negative",
+        "positive"
+      ],
+      "properties": {
+        "negative": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "description"
+            ],
+            "properties": {
+              "description": {
+                "type": "string"
+              },
+              "snippet": {
+                "type": "string"
+              },
+              "screenshot": {
+                "type": "string"
+              },
+              "demo": {
+                "type": "string"
+              }
+            }
+          }
+        },
+        "positive": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "description"
+            ],
+            "properties": {
+              "description": {
+                "type": "string"
+              },
+              "snippet": {
+                "type": "string"
+              },
+              "screenshot": {
+                "type": "string"
+              },
+              "demo": {
+                "type": "string"
+              }
+            }
+          }
+        }
+      }
+    },
+    "validation": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "result"
+      ],
+      "properties": {
+        "result": {
+          "enum": [
+            "pending",
+            "no-regressions",
+            "regressions-accepted",
+            "regressions-found"
+          ]
+        },
+        "regressionReport": {
+          "type": [
+            "string",
+            "null"
+          ]
+        },
+        "baseline": {
+          "type": "string"
+        },
+        "ranAt": {
+          "type": "string"
+        },
+        "notes": {
+          "type": "string"
+        }
+      }
+    },
+    "versionImpact": {
+      "enum": [
+        "patch",
+        "minor",
+        "major"
+      ]
+    },
+    "existingApplications": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "policy"
+      ],
+      "properties": {
+        "policy": {
+          "const": "unchanged-until-owner-updates"
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "ownerDecision": {
+      "type": [
+        "object",
+        "null"
+      ],
+      "additionalProperties": false,
+      "required": [
+        "by",
+        "decision",
+        "at"
+      ],
+      "properties": {
+        "by": {
+          "type": "string"
+        },
+        "decision": {
+          "enum": [
+            "approved",
+            "rejected",
+            "changes-requested"
+          ]
+        },
+        "at": {
+          "type": "string"
+        },
+        "note": {
+          "type": "string"
+        }
+      }
+    },
+    "releasedIn": {
+      "type": [
+        "string",
+        "null"
+      ],
+      "pattern": "^\\d+\\.\\d+\\.\\d+$"
+    }
+  }
+}
