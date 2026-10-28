@@ -170,7 +170,6 @@
   .ex-filter-btn, .ex-user { min-width: 40px; min-height: 40px; }
   .ex-card-feed .ex-feed-w { min-height: 280px; }
   .ex-th { height: var(--hit); }
-  .ex-dec-r { padding: 12px 0; }
   .ex-th { margin: 0 -3px; } /* neighbouring header buttons must not overlap */
 }
 

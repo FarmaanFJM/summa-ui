@@ -236,7 +236,6 @@ div.so-quote.link { cursor: pointer; }
   .so-avbtn::after { content: ""; position: absolute; left: 50%; top: 50%; width: var(--hit); height: var(--hit); transform: translate(-50%, -50%); }
   /* name link: grow upward into the post padding without moving anything (the meta line below holds the time link) */
   .so-name { position: relative; padding: 21px 0 0; margin-top: -21px; }
-  .so-time { position: relative; z-index: 1; }
   /* the media grid and link card no longer clip with a radius (that clips taps in the corners): round the art instead */
   .so-media { overflow: visible; }
   .so-media-cell > svg { clip-path: inset(0 round 0); }
