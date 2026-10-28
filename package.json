@@ -9,7 +9,13 @@
     "preview": "vite preview",
     "typecheck": "tsc --noEmit",
     "icons:build": "node scripts/build-icons.mjs",
-    "validate:icons": "node scripts/validate-icons.mjs"
+    "validate:icons": "node scripts/validate-icons.mjs",
+    "guidance:build": "node scripts/build-guidance.mjs",
+    "validate:guidance": "node scripts/validate-guidance.mjs",
+    "validate:antipatterns": "node scripts/validate-antipatterns.mjs",
+    "validate:presets": "node scripts/validate-presets.mjs",
+    "validate": "npm run guidance:build && npm run validate:icons && npm run validate:antipatterns && npm run validate:presets && npm run validate:guidance",
+    "checks": "node scripts/run-checks.mjs"
   },
   "dependencies": {
     "react": "^19.3.1",
