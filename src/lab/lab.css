@@ -10,10 +10,10 @@
 }
 
 /* Principles view (separate from the apps) */
-.pr-page { height: 100%; background: var(--s0); }
+.pr-page { background: var(--s0); }
 .pr-wrap { max-width: 880px; margin: 0 auto; padding: 24px 16px 64px; display: flex; flex-direction: column; gap: 40px; }
 .pr-back { align-self: flex-start; margin-left: -12px; }
-.pr-h1 { font-size: var(--fs-2xl); font-weight: 650; letter-spacing: -0.02em; margin-top: -24px; }
+.pr-h1 { font-size: var(--fs-2xl); font-weight: 650; letter-spacing: -0.02em; }
 .pr-lede { margin-top: -32px; }
 .pr-list { margin: 8px 0 0; display: flex; flex-direction: column; }
 .pr-row { display: grid; grid-template-columns: 220px 1fr; gap: 24px; padding: 10px 0; }

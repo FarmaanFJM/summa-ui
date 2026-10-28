@@ -1,5 +1,4 @@
 import { PROTOTYPES } from '../registry'
-import { Icon } from '../ui'
 import './lab.css'
 
 /** Separate review view. Nothing here appears inside the prototypes themselves. */
@@ -93,9 +92,8 @@ const AMBIGUITIES: Note[] = [
 
 export default function Principles() {
   return (
-    <div className="pr-page scroll">
+    <div className="pr-page">
       <div className="pr-wrap">
-        <a className="btn btn-ghost pr-back" href="#/lab"><Icon name="chevron-left" /> Laboratory</a>
         <h1 className="pr-h1">Principles applied</h1>
         <p className="muted pr-lede">Review notes for the six prototypes. These notes live outside the apps on purpose.</p>
 

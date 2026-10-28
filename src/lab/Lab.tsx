@@ -35,8 +35,15 @@ export default function Lab({ current }: { current: string }) {
               </nav>
             </div>
           ))}
-          <div className="grow" />
-          <NavItem icon="info" label="Principles applied" closesDrawer onClick={() => { location.hash = '/principles' }} />
+          <div>
+            <div className="eyebrow lab-eyebrow">Guidance</div>
+            <nav className="col" aria-label="Guidance" style={{ gap: 2 }}>
+              <NavItem icon="x" label="Anti-patterns" onClick={() => { location.hash = '/guidance/antipatterns' }} />
+              <NavItem icon="layers" label="Icons" onClick={() => { location.hash = '/guidance/icons' }} />
+              <NavItem icon="sliders" label="Presets" onClick={() => { location.hash = '/guidance/presets' }} />
+              <NavItem icon="info" label="Principles applied" onClick={() => { location.hash = '/principles' }} />
+            </nav>
+          </div>
         </>
       }
     >

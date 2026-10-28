@@ -159,6 +159,36 @@ Choose layouts according to the tasks, user expectations and information archite
 
 A consistent design language does not require an identical application layout. Variety must come from the task, never from novelty: familiarity and usability remain essential.
 
+## 17. Subtle Focus and Selection
+
+Monochromatic focus and selection are necessary but not sufficient. Avoid high-contrast, thick or visually dominant outlines for ordinary input focus, selected content and active controls.
+
+Use restrained neutral contrast and minimal visual weight: a 1px to 1.5px neutral ring, a slightly lighter surface, or both. A selected row is a quiet fill, not a frame.
+
+Maintain accessible keyboard-focus indicators. The ring must still reach at least 3:1 contrast against the surface it sits on. Do not confuse invisible focus with tasteful minimalism.
+
+This refines principle 15. Where the two differ about the weight of a focus or selection treatment, principle 17 governs.
+
+## 18. Mobile Navigation Breathing Room
+
+Do not compress navigation, headings, filters and action buttons into excessively dense vertical stacks on mobile.
+
+Provide sufficient spacing between navigation and primary content. Do not sacrifice readability and visual rhythm simply to fit more information above the fold. Scrolling is preferable to unnecessary compression.
+
+Prefer moving secondary controls into a sheet or menu over stacking them in rows above the content.
+
+## 19. No Washed-Out Destructive Buttons
+
+Avoid translucent, low-contrast, tinted ghost buttons for destructive actions, especially the common AI-generated pale-red text on a transparent dark-red background.
+
+Prefer a restrained solid destructive button with readable text, or a neutral treatment when appropriate. Destructive actions must remain distinguishable without relying solely on color: use a clear verb ("Delete project"), and an icon where it helps.
+
+## 20. No Decorative Placeholder Identity
+
+Do not automatically introduce circular initials, generated placeholder avatars or artificial profile-picture indicators when no meaningful avatar exists.
+
+For chess players, members, accounts or other identities, plain names and relevant metadata may be sufficient. Only introduce an avatar when identity imagery genuinely helps users distinguish entities or represents actual available content.
+
 ## Meta-Principle: Remove Before Adding
 
 When an interface feels unclear, do not immediately add another component. First ask whether something can be:

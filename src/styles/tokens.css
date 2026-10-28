@@ -24,12 +24,15 @@
   --accent-text: #3dd6a0;
 
   /* Neutral interaction states (Principle 15). Emerald is reserved for brand, primary actions and meaning. */
-  --focus: rgba(236, 236, 235, 0.62);       /* focus rings, text input outlines */
+  --focus: rgba(236, 236, 235, 0.5);        /* focus rings, text input outlines */
   --select: rgba(255, 255, 255, 0.085);     /* selected rows, cards, active items */
   --select-strong: rgba(255, 255, 255, 0.16);
 
   --danger: #ef7070;
   --danger-soft: rgba(239, 112, 112, 0.14);
+  --danger-solid: #c53d3d;                  /* destructive buttons: solid, readable (Principle 19) */
+  --danger-solid-hover: #d44a4a;
+  --danger-ink: #ffffff;
   --warn: #e0b04a;
 
   /* Geometry */

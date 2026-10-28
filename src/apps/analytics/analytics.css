@@ -49,7 +49,7 @@
 /* ---------- Charts ---------- */
 .an-chart { position: relative; height: 252px; min-width: 0; }
 .an-chart svg { display: block; touch-action: pan-y; outline: none; }
-.an-chart svg:focus-visible { outline: 2px solid var(--focus); border-radius: var(--r-sm); }
+.an-chart svg:focus-visible { outline: 1.5px solid var(--focus); border-radius: var(--r-sm); }
 .an-axis { fill: var(--text-3); font-size: 11.5px; font-variant-numeric: tabular-nums; }
 .an-val { fill: var(--text-2); font-size: 11.5px; font-variant-numeric: tabular-nums; }
 .an-cat { fill: var(--text-2); font-size: 13px; }
