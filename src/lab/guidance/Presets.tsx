@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactNode } from 'react'
+import { Fragment, useEffect, useRef, useState, type ReactNode } from 'react'
 import { Button, Dialog, Dropdown, Icon, Menu, useContextMenu, MenuButton, type MenuEntry } from '../../ui'
 import { ConfirmProvider, ToastProvider, useConfirm, useToast } from '../../presets'
 import '../../../guidance/css/presets.css'
@@ -284,7 +284,7 @@ function InteractionDemo() {
         <div className="pz-table">
           <div className="pz-th eyebrow">State</div><div className="pz-th eyebrow">Treatment</div><div className="pz-th eyebrow">Token and contrast</div>
           {STATE_ROWS.map(([s, t, tok, c]) => (
-            <><div key={s + 'a'}>{s}</div><div key={s + 'b'} className="muted">{t}</div><div key={s + 'c'}><code>{tok}</code><div className="faint">{c}</div></div></>
+            <Fragment key={s}><div>{s}</div><div className="muted">{t}</div><div><code>{tok}</code><div className="faint">{c}</div></div></Fragment>
           ))}
         </div>
         <p className="pz-note" style={{ marginTop: 12 }}>P15 and P17: focus and selection are neutral and quiet. The ring must still reach 3:1 against the surface it sits on. Try Tab on this page.</p>

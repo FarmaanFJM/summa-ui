@@ -173,11 +173,11 @@
 .sm-toast--compact .sm-toast__dismiss { margin: 0; }
 .sm-toast--compact .sm-toast__action { margin-left: auto; }
 
-/* Stacking: at most 3 visible. Older toasts recede; they come back to full size while the
+/* Stacking: at most 3 visible. Older toasts recede (smaller); they come back to full size while the
    region is hovered or holds keyboard focus so their actions stay reachable. */
-.sm-toast[data-depth="1"] { opacity: 0.82; transform: scale(0.97); }
-.sm-toast[data-depth="2"] { opacity: 0.62; transform: scale(0.94); }
-.sm-toast-region:hover .sm-toast, .sm-toast-region:focus-within .sm-toast { opacity: 1; transform: none; }
+.sm-toast[data-depth="1"] { transform: scale(0.97); }
+.sm-toast[data-depth="2"] { transform: scale(0.94); }
+.sm-toast-region:hover .sm-toast, .sm-toast-region:focus-within .sm-toast { transform: none; }
 .sm-toast[data-depth="3"] { display: none; }
 
 /* ---------------------------------------------------------------- 5. Confirm dialog */
@@ -220,7 +220,7 @@
 
 /* Skeleton rows mirror the final row height, so nothing shifts when data arrives. */
 .sm-skeleton { display: block; border-radius: var(--r-sm);
-  background: linear-gradient(90deg, var(--s2), var(--s3), var(--s2)); background-size: 200% 100%; animation: sm-shimmer 1.4s linear infinite; }
+  background: linear-gradient(90deg, var(--s3), var(--s4), var(--s3)); background-size: 200% 100%; animation: sm-shimmer 1.4s linear infinite; }
 @keyframes sm-shimmer { to { background-position: -200% 0; } }
 .sm-skel-list { display: flex; flex-direction: column; }
 .sm-skel-row { display: flex; align-items: center; gap: var(--sp-3); min-height: 40px; padding: 0 var(--sp-3); }
@@ -326,6 +326,6 @@
 @media (prefers-reduced-motion: reduce) {
   .sm-toast, .sm-menu--floating, .sm-dialog, .sm-backdrop { animation: none; }
   .sm-toast, .sm-toast[data-state="leaving"], .sm-toast[data-depth] { transition: opacity 1ms; transform: none; }
-  .sm-skeleton { animation: none; background: var(--s2); }
+  .sm-skeleton { animation: none; background: var(--s3); }
   .sm-spinner { animation-duration: 1800ms; }
 }

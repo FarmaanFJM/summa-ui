@@ -40,7 +40,7 @@ export function ConfirmDialog({ open, onConfirm, onCancel, title, description, c
   const trash: IconName | undefined = icon ?? (destructive ? 'trash' : undefined)
 
   return (
-    <Dialog open={open} onClose={close} title={title} width={440}
+    <Dialog open={open} onClose={close} title={title}
       footer={
         <>
           <Button variant="secondary" onClick={close} data-autofocus={destructive && !requireText ? true : undefined}>{cancelLabel}</Button>

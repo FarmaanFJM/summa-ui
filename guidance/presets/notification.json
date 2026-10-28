@@ -69,7 +69,7 @@
     "Pause the timer while the toast is hovered or holds keyboard focus; resume with the remaining time.",
     "Esc dismisses the focused toast and returns focus to where it was.",
     "Never steal focus. Toasts are announced by assistive technology and reached by Tab (the region is last in the DOM).",
-    "Maximum 3 visible, newest nearest the bottom anchor. Older toasts recede (smaller, dimmer) and return to full size on hover or focus. Extra toasts queue and appear as others leave.",
+    "Maximum 3 visible, newest nearest the bottom anchor. Older toasts recede (slightly smaller, never translucent) and return to full size on hover or focus. Extra toasts queue and appear as others leave.",
     "De-duplicate: an identical type, title and message restarts the existing toast timer instead of stacking another.",
     "Motion is a short fade and 8px rise; prefers-reduced-motion removes the movement.",
     "Colour discipline (P03, P06): the surface is always neutral; only the leading icon takes the semantic hue. No tinted backgrounds, no coloured left borders, no coloured outlines.",
