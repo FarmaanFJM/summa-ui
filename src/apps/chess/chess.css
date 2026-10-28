@@ -246,6 +246,7 @@
   .cc-links { display: none; }
   .cc-burger { display: inline-grid; }
   .cc-nav-in { gap: 12px; }
+  .cc-logo { padding: 5px 0; min-height: var(--hit); }
   .cc-band { padding: 48px 0; }
   .cc-hero { padding: 8px 0 32px; }
   .cc-hero-grid { --bw: 100%; flex-direction: column; align-items: stretch; gap: 16px; }

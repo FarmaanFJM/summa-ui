@@ -127,3 +127,14 @@
 }
 .md-ov.fav svg { fill: currentColor; }
 .md-v-top .icon-btn.on[aria-label*="avorites"] svg { fill: currentColor; }
+
+@media (max-width: 820px) {
+  .md-actions { gap: 8px; top: 8px; right: 10px; }
+  /* the tile no longer clips (rounded overflow also clips hit testing): round the art and caption instead, and let the hit button cover the full rectangle */
+  .md-tile { overflow: visible; }
+  .md-tile > svg { clip-path: inset(0 round var(--r-lg)); }
+  .md-cap { border-radius: 0 0 var(--r-lg) var(--r-lg); }
+  .md-hit { border-radius: 0; }
+  .md-ov { position: relative; }
+  .md-ov::after { content: ""; position: absolute; left: 50%; top: 50%; width: var(--hit); height: var(--hit); transform: translate(-50%, -50%); }
+}

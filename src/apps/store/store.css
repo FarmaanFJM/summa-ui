@@ -329,3 +329,19 @@
   .st-check { min-height: 40px; }
   .st-radio { min-height: 40px; }
 }
+
+/* ---------- touch hit areas (CHK-020): visible chrome unchanged, hit areas reach 40px ---------- */
+@media (max-width: 899px), (hover: none) {
+  .st-logo { min-height: var(--hit); }
+  .st-cartbtn { position: relative; }
+  .st-cartbtn::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: var(--hit); transform: translateY(-50%); }
+  .st-seeall { position: relative; padding: 10px 0; margin: -10px 0; }
+  .st-card-name { position: relative; padding: 9px 0; margin: -9px 0; }
+  /* The rounded corner clip would swallow taps near the image corners, so round the artwork instead of the box */
+  .st-card-img { overflow: visible; }
+  .st-card-img svg { border-radius: 14px; }
+  .st-heart, .st-quick { overflow: visible; }
+  .st-heart::after, .st-quick::after { content: ""; position: absolute; left: 50%; top: 50%; width: var(--hit); height: var(--hit); transform: translate(-50%, -50%); }
+  .st-swatch::after { inset: auto; left: 50%; top: 50%; width: var(--hit); height: var(--hit); transform: translate(-50%, -50%); }
+  .st-card-sw { gap: 24px; }
+}

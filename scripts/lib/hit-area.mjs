@@ -26,6 +26,8 @@ export function measureHitAreas({ min = 40, step = 4, scope = 'body' }) {
     const c = clipRect(e)
     const full = e.getBoundingClientRect()
     if (c.w < 4 || c.h < 4 || c.w * c.h < 0.5 * full.width * full.height) continue
+    // Partly scrolled or cut off at the viewport edge: the visible slice is not the control. It is measured fully in the tall pass.
+    if (c.w < full.width - 1 || c.h < full.height - 1) continue
     if (inlineLink(e)) continue
     const cx = (c.l + c.r) / 2, cy = (c.t + c.b) / 2
     const W = Math.max(c.w, min), H = Math.max(c.h, min)

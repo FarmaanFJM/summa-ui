@@ -214,3 +214,25 @@
 .tr-sheet .tr-pct-b { height: 36px; }
 .tr-root.mid { grid-template-rows: 48px minmax(700px, 1fr) 236px; }
 .tr-root.mid .tr-oep { overflow: visible; }
+
+/* Touch hit areas (CHK-020): every control reaches 40px on mobile; desktop untouched */
+@media (max-width: 820px) {
+  .tr-mv { height: var(--hit); }
+  .tr-switch { min-height: var(--hit); }
+  .tr-star { width: var(--hit); }
+  .tr-seg { height: var(--hit); }
+  .tr-pct-b { height: var(--hit); }
+  .tr-oe .input { height: var(--hit); }
+  .tr-m-book .tr-bk-r { height: var(--hit); }
+  .tr-sheet .tr-pct-b { height: var(--hit); }
+  .tr-root.mobile .tr-chart-body { margin-bottom: 6px; } /* keep the svg corners clear of the pane's rounded clip */
+  .tr-root.mobile .tr-center { margin-bottom: 16px; }
+}
+
+/* Mobile ticker: a swipeable strip (same pattern as the reduced-motion fallback) so tiles hold still under a finger */
+@media (max-width: 820px) {
+  .tr-marq-m { overflow-x: auto; scrollbar-width: none; }
+  .tr-marq-m::-webkit-scrollbar { display: none; }
+  .tr-marq-m .tr-marq-in { animation: none; }
+  .tr-marq-m .tr-marq-in[aria-hidden] { display: none; }
+}

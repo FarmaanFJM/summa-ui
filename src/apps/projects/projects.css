@@ -133,4 +133,10 @@
   .pm-composer { padding-bottom: max(16px, env(safe-area-inset-bottom)); }
   .menu-item { min-height: 40px; }
   .pm-col { width: 78vw; }
+  .pm-status-btn { position: relative; }
+  .pm-status-btn::after { content: ""; position: absolute; left: 50%; top: 50%; width: 40px; height: 40px; transform: translate(-50%, -50%); }
+  .pm-row .pm-title { position: relative; padding-block: 8px; margin-block: -8px; min-height: 40px; box-sizing: border-box; }
+  .pm-chips { column-gap: 14px; row-gap: 14px; }
+  .pm-chip button { position: relative; }
+  .pm-chip button::after { content: ""; position: absolute; left: 50%; top: 50%; width: 40px; height: 40px; transform: translate(-50%, -50%); }
 }

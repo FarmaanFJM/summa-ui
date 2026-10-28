@@ -12,8 +12,8 @@ export function OrderBook({ s, sym, onPick, fixedRows }: { s: State; sym: string
   asks.reduce((c, l, k) => (cumA[k] = c + l.q), 0); bids.reduce((c, l, k) => (cumB[k] = c + l.q), 0)
   const max = Math.max(cumA[cumA.length - 1], cumB[cumB.length - 1])
   const spread = m.asks[0].p - m.bids[0].p
-  const row = (side: 'ask' | 'bid', l: { p: number; q: number }, c: number) => (
-    <button key={`${side}${l.p}`} type="button" className={`tr-bk-r ${side}`} onClick={() => onPick(l.p)} aria-label={`${side === 'ask' ? 'Ask' : 'Bid'} ${num(l.p, i.dec)}, size ${num(l.q, i.qdec)}. Use as limit price`}>
+  const row = (side: 'ask' | 'bid', l: { p: number; q: number }, c: number, k: number) => (
+    <button key={`${side}${k}`} type="button" className={`tr-bk-r ${side}`} onClick={() => onPick(l.p)} aria-label={`${side === 'ask' ? 'Ask' : 'Bid'} ${num(l.p, i.dec)}, size ${num(l.q, i.qdec)}. Use as limit price`}>
       <span className="tr-bk-d" style={{ width: `${(c / max) * 100}%` }} />
       <span className={`num ${side === 'ask' ? 'tr-down' : 'tr-up'}`}>{num(l.p, i.dec)}</span>
       <span className="num">{num(l.q, i.qdec)}</span>
@@ -24,11 +24,11 @@ export function OrderBook({ s, sym, onPick, fixedRows }: { s: State; sym: string
     <div className="tr-bk">
       <div className="tr-bk-h eyebrow"><span>Price</span><span className="r">Size</span><span className="r">Total</span></div>
       <div ref={ref} className="tr-bk-body">
-        <div className="tr-bk-side">{[...asks].map((l, k) => row('ask', l, cumA[k])).reverse()}</div>
+        <div className="tr-bk-side">{[...asks].map((l, k) => row('ask', l, cumA[k], k)).reverse()}</div>
         <div className="tr-bk-sp num">
           <span>Spread</span><b>{num(spread, i.dec)}</b><span className="faint">{((spread / m.price) * 100).toFixed(3)}%</span>
         </div>
-        <div className="tr-bk-side">{bids.map((l, k) => row('bid', l, cumB[k]))}</div>
+        <div className="tr-bk-side">{bids.map((l, k) => row('bid', l, cumB[k], k))}</div>
       </div>
     </div>
   )

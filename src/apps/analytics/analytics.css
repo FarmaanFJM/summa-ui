@@ -129,4 +129,9 @@
   .an-scroll { padding: 8px 8px 16px; }
   .an-ph .select.quiet, .an-th { min-height: 40px; }
   .an-tablewrap th, .an-tablewrap td { height: 44px; }
+  .an-compare .switch::before { content: ""; position: absolute; left: 50%; top: 50%; width: var(--hit); height: var(--hit); transform: translate(-50%, -50%); }
+  .an-ph .an-search .input { height: var(--hit); }
+  /* Transparent square ::after so the rounded corners of the card are tappable too. */
+  .an-kpi { position: relative; }
+  .an-kpi::after { content: ""; position: absolute; inset: 0; }
 }

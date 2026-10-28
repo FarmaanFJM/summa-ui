@@ -225,3 +225,32 @@ div.so-quote.link { cursor: pointer; }
   .so-col .so-person { padding: 12px 14px; }
   .so-comp-input { font-size: 17px; }
 }
+
+/* ---------- touch hit areas (CHK-020) ---------- */
+@media (max-width: 820px) {
+  .so-logo { min-height: var(--hit); position: relative; }
+  .so-logo::after { content: ""; position: absolute; inset: 0; }
+  /* round or rounded controls: a full rectangle ::after so the corners of the 40px area still belong to the control */
+  .so-avbtn, .so-ph > a, .so-act, .so-fab, .so-linkcard { position: relative; }
+  .so-act::after, .so-ph > a::after, .so-fab::after, .so-linkcard::after { content: ""; position: absolute; inset: 0; }
+  .so-avbtn::after { content: ""; position: absolute; left: 50%; top: 50%; width: var(--hit); height: var(--hit); transform: translate(-50%, -50%); }
+  /* name link: grow upward into the post padding without moving anything (the meta line below holds the time link) */
+  .so-name { position: relative; padding: 21px 0 0; margin-top: -21px; }
+  .so-time { position: relative; z-index: 1; }
+  /* the media grid and link card no longer clip with a radius (that clips taps in the corners): round the art instead */
+  .so-media { overflow: visible; }
+  .so-media-cell > svg { clip-path: inset(0 round 0); }
+  .so-media[data-n="1"] > .so-media-cell > svg { clip-path: inset(0 round var(--r-lg)); }
+  .so-media[data-n="2"] > :first-child > svg { clip-path: inset(0 round var(--r-lg) 0 0 var(--r-lg)); }
+  .so-media[data-n="2"] > :last-child > svg { clip-path: inset(0 round 0 var(--r-lg) var(--r-lg) 0); }
+  .so-media[data-n="3"] > :nth-child(1) > svg { clip-path: inset(0 round var(--r-lg) 0 0 var(--r-lg)); }
+  .so-media[data-n="3"] > :nth-child(2) > svg { clip-path: inset(0 round 0 var(--r-lg) 0 0); }
+  .so-media[data-n="3"] > :nth-child(3) > svg { clip-path: inset(0 round 0 0 var(--r-lg) 0); }
+  .so-media[data-n="4"] > :nth-child(1) > svg { clip-path: inset(0 round var(--r-lg) 0 0 0); }
+  .so-media[data-n="4"] > :nth-child(2) > svg { clip-path: inset(0 round 0 var(--r-lg) 0 0); }
+  .so-media[data-n="4"] > :nth-child(3) > svg { clip-path: inset(0 round 0 0 0 var(--r-lg)); }
+  .so-media[data-n="4"] > :nth-child(4) > svg { clip-path: inset(0 round 0 0 var(--r-lg) 0); }
+  .so-linkcard { overflow: visible; }
+  .so-linkcard-img { overflow: hidden; border-radius: var(--r-lg) var(--r-lg) 0 0; }
+}
+
