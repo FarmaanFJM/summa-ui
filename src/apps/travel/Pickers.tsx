@@ -159,7 +159,6 @@ export function DestinationField({ value, onChange, error }: { value: string; on
   const [open, setOpen] = useState(false)
   const [active, setActive] = useState(0)
   const id = useId()
-  const narrow = useMedia('(max-width: 820px)') // on phones the list opens once typing starts, so a bare tap never covers the fields below
   useEffect(() => { setText(destById(value)?.name ?? '') }, [value])
 
   const q = text.trim().toLowerCase()
@@ -188,7 +187,7 @@ export function DestinationField({ value, onChange, error }: { value: string; on
           <input id={id} className="tv-input" role="combobox" aria-expanded={open} aria-controls={id + '-list'} aria-autocomplete="list" aria-activedescendant={open && items[active] ? `${id}-o${active}` : undefined}
             aria-invalid={!!error} placeholder="Where to?" autoComplete="off" value={text}
             onChange={e => { setText(e.target.value); setOpen(true); setActive(0); if (value) onChange('') }}
-            onFocus={e => { if (!narrow) setOpen(true); e.currentTarget.select() }} onBlur={() => setOpen(false)} onKeyDown={onKey} />
+            onFocus={e => { setOpen(true); e.currentTarget.select() }} onBlur={() => setOpen(false)} onKeyDown={onKey} />
         </span>
       </div>
       {error && <div className="tv-err" role="alert">{error}</div>}

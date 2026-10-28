@@ -341,9 +341,14 @@ button.tv-field:hover, button.tv-field[aria-expanded="true"] { background: var(-
 /* ---------- touch hit areas (CHK-020): visible chrome unchanged, hit areas reach 40px ---------- */
 @media (max-width: 820px) {
   .tv-logo { min-height: var(--hit); }
+  .tv-back { position: relative; height: var(--hit); margin: 10px 0 6px -8px; } /* 4px taller target, same total height */
+  .tv-back::after { content: ""; position: absolute; inset: 0; } /* square hit box, rounded corners stay tappable */
   button.tv-field { position: relative; }
   button.tv-field::after { content: ""; position: absolute; inset: 0; } /* square hit box so the rounded corners stay tappable */
   .tv-input { box-sizing: content-box; padding: 10px 0; margin: -10px 0; } /* 40px tall target inside the 56px field, layout unchanged */
+  .tv-day { height: var(--hit); }
+  .tv-switch-row { min-height: var(--hit); }
+  .tv-controls.v .tv-switch-row { padding: 0 6px; margin: 0 -6px; } /* the 40px square around the switch stays inside its label */
   .tv-heart::after { content: ""; position: absolute; left: 50%; top: 50%; width: var(--hit); height: var(--hit); transform: translate(-50%, -50%); }
   .tv-stay-head .tv-heart { position: relative; }
   /* Rounded clips would swallow taps near corners, so round the artwork instead of the tappable box */
@@ -352,4 +357,13 @@ button.tv-field:hover, button.tv-field[aria-expanded="true"] { background: var(-
   .tv-dest-tile { border-radius: 0; overflow: visible; }
   .tv-dest-tile > svg, .tv-dest-shade { border-radius: var(--r-xl); }
   .tv-dest-tile:hover > svg { transform: none; }
+  .tv-gallery { overflow: visible; }
+  .tv-g-img { border-radius: var(--r-xl); overflow: hidden; }
+  .tv-sum-toggle { overflow: visible; }
+  .tv-sum-toggle .tv-sum { border-radius: 0 0 var(--r-lg) var(--r-lg); }
+}
+@media (max-width: 720px) {
+  /* Stacked result cards: round the photo, not the clipping box, so the card's tap area keeps square corners */
+  .tv-card { overflow: visible; }
+  .tv-card-img { border-radius: var(--r-xl) var(--r-xl) 0 0; }
 }

@@ -3,7 +3,8 @@
 // square centred on the element that the browser's hit testing actually assigns to that element.
 // It uses elementFromPoint, so pseudo-element extensions, overlaps and stacking are all accounted for.
 export function measureHitAreas({ min = 40, step = 4, scope = 'body' }) {
-  const root = document.querySelector(scope) ?? document.body
+  const roots = [...document.querySelectorAll(scope)]
+  if (!roots.length) roots.push(document.body)
   const SEL = 'button,a[href],input:not([type=hidden]),select,textarea,summary,[role=button],[role=tab],[role=checkbox],[role=switch],[role=menuitem],[role=option],[role=link],[role=radio],[tabindex="0"],label:has(input)'
   const vw = innerWidth, vh = innerHeight
   const label = e => e.tagName.toLowerCase() + (e.id ? '#' + e.id : '') + (typeof e.className === 'string' && e.className.trim() ? '.' + e.className.trim().split(/\s+/).slice(0, 2).join('.') : '') + ((e.getAttribute('aria-label') || e.textContent || '').trim() ? ` "${(e.getAttribute('aria-label') || e.textContent).trim().slice(0, 22)}"` : '')
@@ -18,7 +19,7 @@ export function measureHitAreas({ min = 40, step = 4, scope = 'body' }) {
   const inlineLink = e => e.tagName === 'A' && e.parentElement && /^(P|LI|SPAN|SMALL|LABEL|DIV)$/.test(e.parentElement.tagName) && [...e.parentElement.childNodes].some(n => n.nodeType === 3 && n.textContent.trim().length >= 3) && getComputedStyle(e).display === 'inline'
   const out = []
   let i = 0
-  for (const e of root.querySelectorAll(SEL)) {
+  for (const e of roots.flatMap(r => [...r.querySelectorAll(SEL)])) {
     const s = getComputedStyle(e)
     if (s.visibility === 'hidden' || s.display === 'none' || e.disabled || e.closest('[aria-hidden=true],[inert],[data-hit-exempt]')) continue
     if (e.tagName === 'INPUT' && e.closest('label') && e.getBoundingClientRect().width < 4) continue // visually hidden input, its label is tested
@@ -46,7 +47,7 @@ export function measureHitAreas({ min = 40, step = 4, scope = 'body' }) {
     }
     const effW = owned ? Math.min(maxX - minX, W) : 0, effH = owned ? Math.min(maxY - minY, H) : 0
     e.setAttribute('data-hit-i', String(i))
-    out.push({ i: i++, sel: label(e), w: Math.round(c.w), h: Math.round(c.h), effW: Math.round(effW), effH: Math.round(effH), cx: Math.round(cx), cy: Math.round(cy), bbox: owned ? [Math.round(minX), Math.round(minY), Math.round(maxX), Math.round(maxY)] : null, thief: Object.entries(thieves).sort((a, b) => b[1] - a[1])[0]?.[0] ?? null, pass: effW >= min - 2 && effH >= min - 2 })
+    out.push({ i: i++, sel: label(e), w: Math.round(c.w), h: Math.round(c.h), effW: Math.round(effW), effH: Math.round(effH), cx: Math.round(cx), cy: Math.round(cy), bbox: owned ? [Math.round(minX), Math.round(minY), Math.round(maxX), Math.round(maxY)] : null, thief: Object.entries(thieves).sort((a, b) => b[1] - a[1])[0]?.[0] ?? null, pass: effW >= min - 2 && effH >= min - 2, isRange: e.matches('input[type=range]') })
   }
   return out
 }
