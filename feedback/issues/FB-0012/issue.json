@@ -1,0 +1,31 @@
+{
+  "id": "FB-0012",
+  "createdAt": "2026-10-28T17:28:27Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "gitmanager",
+    "route": "Every screen, window title bar (Windows window controls overlay)"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Desktop window chrome: title bar and caption buttons (no guidance)",
+  "screenshots": [
+    {
+      "file": "16-title-bar.png"
+    }
+  ],
+  "explanation": "Found while giving GitManager a Windows title bar (not reported by the owner). A desktop application built with Summa-UI has to decide what happens at the top of the window: a native title bar (a white or grey band above the Summa page in light Windows themes, and a different charcoal in dark ones), or Electron's window controls overlay, where Windows keeps drawing the caption buttons and the page lays itself out around them. The guidance has nothing on window chrome: which surface the caption buttons sit on (--s0 page or --s1 panel), how tall the title bar row is, whether AppShell's floating main panel (8px margin, rounded on all corners) should reach the window's top and right edges so the buttons share its colour, where the application name and logo go, and that drag regions must exclude every control (app-region: no-drag). GitManager chose: caption buttons on --s1 with --text-2 symbols, the 52px header row as the title bar, the main panel flush top and right with only its top-left corner rounded, the sidebar's brand row as the left part, one transparent drag strip sized by env(titlebar-area-*), and no-drag on all interactive elements, backdrops and popovers. The next desktop application will face the same questions.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-gap",
+    "rationale": "Any Summa-UI desktop application (Electron, Tauri, a PWA with window controls overlay) repeats these decisions; nothing in the principles, presets or AppShell covers window chrome. Suggested change: an app-shell variant or preset for desktop windows (caption buttons on --s1, title bar height equal to the header row, panel flush to the top and right edges, brand row as the left part of the title bar, drag strip with no-drag controls), plus a check that no interactive element sits in a drag region.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P02",
+    "P08",
+    "P07"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "triaged",
+  "proposal": null
+}
