@@ -87,6 +87,6 @@ They were `--text-3` on the glass surface (2.45:1). Decision: if a hint is shown
 | `npx tsc --noEmit` | clean |
 | `npx vite build` | succeeds |
 | `npm run validate` (icons, anti-patterns, presets, guidance) | all pass: 22 principles, 16 anti-patterns, 8 presets, 22 checks, manifest hashes |
-| `npm run test:browser` | see final line below |
+| `npm run test:browser` | 84 of 84 passed (12 prototypes, 3 galleries, principles, lab at 1440 and 390; 16 anti-pattern pages; evaluator fixtures; icon and preset behaviour; 10 dialog accessibility tests) |
 | `npm run test:tap` | 940 tested, 0 undersized, 0 tap mismatches |
-| `npm run test:desktop-layout` | see final line below |
+| `npm run test:desktop-layout` | 24 of 24 snapshots (12 apps at 1440 and 1100): 0 changed elements |
