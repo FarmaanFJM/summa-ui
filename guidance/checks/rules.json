@@ -226,8 +226,8 @@
         "Both actions can genuinely be used at the same time (for example Save and Discard in an editor)"
       ],
       "patterns": [
-        "^(send|submit|generate)$",
-        "^(stop|cancel|abort)$"
+        "^(send|submit|generate)\\b",
+        "^(stop|cancel|abort)\\b"
       ],
       "patternFlags": "i"
     },

@@ -28,10 +28,10 @@
   --select: rgba(255, 255, 255, 0.085);     /* selected rows, cards, active items */
   --select-strong: rgba(255, 255, 255, 0.16);
 
-  --danger: #ef7070;
+  --danger: #f27f7f;
   --danger-soft: rgba(239, 112, 112, 0.14);
   --danger-solid: #c53d3d;                  /* destructive buttons: solid, readable (Principle 19) */
-  --danger-solid-hover: #d44a4a;
+  --danger-solid-hover: #b23535;
   --danger-ink: #ffffff;
   --warn: #e0b04a;
 

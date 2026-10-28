@@ -23,6 +23,10 @@ const APPLIED: { n: number; title: string; how: string }[] = [
   { n: 14, title: 'No sidebar stacking', how: 'Phase 2 apps have no navigation sidebar at all. Left and right columns are content panes (watchlist, filters, order book, rail).' },
   { n: 15, title: 'Monochromatic selection and focus', how: 'Focus rings, input outlines, selected rows and cards, checkboxes, switches, tabs and active nav are neutral (--focus, --select). Emerald remains for the brand mark, the primary action of a view and meaningful state.' },
   { n: 16, title: 'Layout diversity', how: 'Each Phase 2 app has its own structure, chosen from its task and documented in docs/PHASE2_LAYOUTS.md.' },
+  { n: 17, title: 'Subtle focus and selection', how: 'Keyboard focus is a 1.5px neutral ring (4.1 to 4.7:1 on the surfaces); input focus is a 1px ring; selection is a quiet fill. Measured by check CHK-018.' },
+  { n: 18, title: 'Mobile navigation breathing room', how: 'Topbars are 56px with 40px targets; wrapped bars get 12px padding and row gaps; secondary controls moved to menus or sheets. Desktop layouts unchanged.' },
+  { n: 19, title: 'No washed-out destructive buttons', how: '.btn-danger is solid with white text and a clear verb plus icon. Dense row actions use a neutral button. Destructive menu items keep danger text with an icon, last after a separator.' },
+  { n: 20, title: 'No decorative placeholder identity', how: 'Initials circles removed; plain names and metadata instead. Social uses graphic avatar art with no letters. Avatar is opt-in and renders only real imagery or explicit initials.' },
 ]
 
 const PHASE1_CHANGES = [
@@ -154,6 +158,15 @@ export default function Principles() {
             {AMBIGUITIES.map((e, i) => (
               <div key={i} className="pr-row"><dt>{e.app}</dt><dd className="muted">{e.text}</dd></div>
             ))}
+          </dl>
+        </section>
+
+        <section>
+          <h2 className="eyebrow">Guidance galleries</h2>
+          <dl className="pr-list">
+            <div className="pr-row"><dt>Anti-patterns</dt><dd><a className="pr-link" href="#/guidance/antipatterns">#/guidance/antipatterns</a></dd></div>
+            <div className="pr-row"><dt>Icons</dt><dd><a className="pr-link" href="#/guidance/icons">#/guidance/icons</a></dd></div>
+            <div className="pr-row"><dt>Presets</dt><dd><a className="pr-link" href="#/guidance/presets">#/guidance/presets</a></dd></div>
           </dl>
         </section>
 

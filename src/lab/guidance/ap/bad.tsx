@@ -30,7 +30,7 @@ export function WashedDestructive() {
     <div className="ap-demo">
       <div className="ap-panel">
         <div className="ap-h">Northwind</div>
-        <div className="ap-split"><span className="ap-bad-ghost-danger" role="img" aria-label="Washed-out Delete button"><Icon name="trash" size={15} />Delete</span></div>
+        <div className="ap-split"><button type="button" className="ap-bad-ghost-danger" tabIndex={-1}><Icon name="trash" size={15} />Delete</button></div>
       </div>
     </div>
   )

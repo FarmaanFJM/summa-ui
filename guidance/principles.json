@@ -82,8 +82,9 @@
       "title": "Information Must Earn Its Place",
       "slug": "information",
       "antipatterns": [
-        "AP-010",
-        "AP-016"
+        "AP-005",
+        "AP-006",
+        "AP-010"
       ],
       "summary": "Show the minimum information needed for the current task.",
       "rules": [
@@ -102,6 +103,7 @@
       "title": "Use as Few Colors as Possible",
       "slug": "color",
       "antipatterns": [
+        "AP-005",
         "AP-012",
         "AP-013"
       ],
@@ -168,10 +170,10 @@
       "title": "Minimalism Over Prevalence",
       "slug": "contextual-controls",
       "antipatterns": [
+        "AP-003",
         "AP-008",
         "AP-009",
-        "AP-016",
-        "AP-003"
+        "AP-016"
       ],
       "summary": "Do not show every possible action at once.",
       "rules": [
@@ -190,8 +192,7 @@
       "title": "The Rectangle Rule",
       "slug": "rectangles",
       "antipatterns": [
-        "AP-014",
-        "AP-011"
+        "AP-014"
       ],
       "summary": "Organize information in clean rectangular regions.",
       "rules": [
@@ -209,8 +210,7 @@
       "title": "Dividers Are Secondary Structure",
       "slug": "dividers",
       "antipatterns": [
-        "AP-001",
-        "AP-015"
+        "AP-001"
       ],
       "summary": "Use subtle horizontal dividers only to support an existing hierarchy.",
       "rules": [
@@ -280,9 +280,7 @@
       "number": 16,
       "title": "Layout Diversity",
       "slug": "layout",
-      "antipatterns": [
-        "AP-011"
-      ],
+      "antipatterns": [],
       "summary": "No universal left-sidebar/right-content structure.",
       "rules": [
         "Choose layout from the task, user expectations and information architecture.",
@@ -316,8 +314,7 @@
       "title": "Mobile Navigation Breathing Room",
       "slug": "mobile",
       "antipatterns": [
-        "AP-007",
-        "AP-016"
+        "AP-007"
       ],
       "summary": "Do not compress navigation, headings, filters and actions into dense vertical stacks on mobile.",
       "rules": [
@@ -369,7 +366,10 @@
       "number": 21,
       "title": "Remove Before Adding",
       "slug": "meta",
-      "antipatterns": [],
+      "antipatterns": [
+        "AP-010",
+        "AP-015"
+      ],
       "summary": "Meta-principle: when an interface feels unclear, subtract first.",
       "rules": [
         "Ask whether something can be removed, merged, relocated, hidden contextually, represented through hierarchy or revealed only when needed before adding a component."

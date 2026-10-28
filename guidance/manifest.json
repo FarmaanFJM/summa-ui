@@ -16,13 +16,13 @@
   },
   "counts": {
     "principles": 22,
-    "antipatterns": 0,
-    "presets": 0,
+    "antipatterns": 16,
+    "presets": 8,
     "checks": 22,
     "humanJudgment": 10,
-    "icons": 164,
+    "icons": 165,
     "tokens": 49,
-    "files": 182
+    "files": 215
   },
   "compat": {
     "frameworkAgnostic": true,
@@ -32,13 +32,115 @@
       "src/lab (gallery)"
     ]
   },
-  "bundleDigest": "9e89df3002aa05b9fc2a84a93cb669f625c2977543120582018b364f28b3159a",
+  "bundleDigest": "a6f6deb65972f97cd5fbddc8beb81380c4ab086662ad79cebb6235d147dbb2e6",
   "files": [
     {
       "path": "IDS.md",
       "sha256": "a5e6cdb8067500902ffa3e1ef323d8949b82cdaf65ce855a5338bc570b7688aa",
       "bytes": 1586,
       "role": "docs"
+    },
+    {
+      "path": "README.md",
+      "sha256": "6bd05a58c859479950e142941a11633878ee48c4b20fe9de97f94ce8922811ba",
+      "bytes": 2451,
+      "role": "docs"
+    },
+    {
+      "path": "antipatterns/AP-001.json",
+      "sha256": "1917fc46a90dc4c87d4b528b1cd7a94359f34cbd33d2fc2c6497cc977c3a953d",
+      "bytes": 2033,
+      "role": "antipatterns"
+    },
+    {
+      "path": "antipatterns/AP-002.json",
+      "sha256": "6233f5871f9cba692b38e526206c3f9e62a4eda78d395d7dcdc3e496ab8818aa",
+      "bytes": 1516,
+      "role": "antipatterns"
+    },
+    {
+      "path": "antipatterns/AP-003.json",
+      "sha256": "fdb96bb58b6b94eb51232d28c4538f9ac849649ea5d4a5e926471eb4c7bcf39b",
+      "bytes": 2054,
+      "role": "antipatterns"
+    },
+    {
+      "path": "antipatterns/AP-004.json",
+      "sha256": "c352a31b2b78d6d85ec510acf3813e510c8ac51f692af176ab5396f64b6252ac",
+      "bytes": 1686,
+      "role": "antipatterns"
+    },
+    {
+      "path": "antipatterns/AP-005.json",
+      "sha256": "93751a4f2bb0668c606808a4fb3e877cd488291eb706505a177142362d4641e4",
+      "bytes": 2080,
+      "role": "antipatterns"
+    },
+    {
+      "path": "antipatterns/AP-006.json",
+      "sha256": "0950bd76bc7a6bcbcab48312551ffa55b02286b309b01b43b6c0736811b2b899",
+      "bytes": 1626,
+      "role": "antipatterns"
+    },
+    {
+      "path": "antipatterns/AP-007.json",
+      "sha256": "4743ebceb8fcc40df161a2d318c3076f91ab5912e170c04e283242ca4653972e",
+      "bytes": 1545,
+      "role": "antipatterns"
+    },
+    {
+      "path": "antipatterns/AP-008.json",
+      "sha256": "f998c1ef91176d1aca69dd763e89baf31dc8b48d183028b29bc7e3e5263d45a3",
+      "bytes": 1499,
+      "role": "antipatterns"
+    },
+    {
+      "path": "antipatterns/AP-009.json",
+      "sha256": "98144cfaa2362829a54ce2b64ba3af6c4d44d2da0ba226a420573c1f80e3cb3e",
+      "bytes": 1650,
+      "role": "antipatterns"
+    },
+    {
+      "path": "antipatterns/AP-010.json",
+      "sha256": "20319ef0eca5114046ba5de7e93cdea8d04be2f97f8e9ec4e91f6eab21ad2009",
+      "bytes": 1819,
+      "role": "antipatterns"
+    },
+    {
+      "path": "antipatterns/AP-011.json",
+      "sha256": "8c52a7d417ac5c3b94a7276b56027af7baa96e18c5555fbdc45aab2cdbc078d2",
+      "bytes": 1767,
+      "role": "antipatterns"
+    },
+    {
+      "path": "antipatterns/AP-012.json",
+      "sha256": "66e89fce1ee2ffb53851c423eb5ffcdb990a03e39747f076f06dfc0571b850b1",
+      "bytes": 1474,
+      "role": "antipatterns"
+    },
+    {
+      "path": "antipatterns/AP-013.json",
+      "sha256": "b2c80fe956c4c69b6a6974f8c0814e335f818c0660ac8dbaad003a26de676eb9",
+      "bytes": 1351,
+      "role": "antipatterns"
+    },
+    {
+      "path": "antipatterns/AP-014.json",
+      "sha256": "c86eb3b6cbaaad105677ea7b21eba111e06affec26566a0cfacc43dcaa070824",
+      "bytes": 1423,
+      "role": "antipatterns"
+    },
+    {
+      "path": "antipatterns/AP-015.json",
+      "sha256": "1191c0ea2dfaa8c6dd0d6c80d14e5968392c40bcfe8e258f2b14c6144b2c332a",
+      "bytes": 1416,
+      "role": "antipatterns"
+    },
+    {
+      "path": "antipatterns/AP-016.json",
+      "sha256": "f8b05e4ea24bb9019c1eb115692260fc8c6e50c6aa396f00b6bc0c42dc74cda7",
+      "bytes": 1665,
+      "role": "antipatterns"
     },
     {
       "path": "bundle.config.json",
@@ -48,26 +150,68 @@
     },
     {
       "path": "checks/rules.json",
-      "sha256": "2c110fc851def7d0441d830ecbe68bcf28caa7c6bfb2c1898acfb3816e220909",
-      "bytes": 23132,
+      "sha256": "3988ccb760d5405d2a6a71355e63160e1ee1117c993e17b577c51c992173dbb1",
+      "bytes": 23136,
       "role": "checks"
     },
     {
       "path": "css/presets.css",
-      "sha256": "6bc3922a2921d7dc574b46255a7f7a38fa3cadcb9aba23f7612231b8f2d48a0a",
-      "bytes": 20927,
+      "sha256": "1568158b2008e85b182856992f971407e5b91c4598f6f31f3214063b30b8658c",
+      "bytes": 20895,
       "role": "css"
     },
     {
       "path": "css/tokens.css",
-      "sha256": "91fabbe29e7d76f1289d21e127a8c6c516fa12016287d559c8989bea7ebaf7d4",
+      "sha256": "8a1a9e88200dbdc614f4f96f85bb79dac0246349c83444638a836616ddc2c3b4",
       "bytes": 2099,
       "role": "css"
     },
     {
+      "path": "examples/confirm-dialog.html",
+      "sha256": "e9398ad8229ff53e41927c7a1b1317cfe4f7b9958726092408e3ee94c1c5ea1b",
+      "bytes": 6853,
+      "role": "examples"
+    },
+    {
+      "path": "examples/context-menu.html",
+      "sha256": "32e31ee60d4fcff4264998ff34fdc869437fcc44e5349cf1342ea9dfd0f4360e",
+      "bytes": 8116,
+      "role": "examples"
+    },
+    {
+      "path": "examples/destructive-button.html",
+      "sha256": "42d971e5f4ba3524a85310bfcfea50765984c425c08931b2a5212cb373b73017",
+      "bytes": 5756,
+      "role": "examples"
+    },
+    {
+      "path": "examples/dropdown.html",
+      "sha256": "c1f84ec9cfb3fc52988e983e094214c374856254e8fcd3d2001b57afbf0c9625",
+      "bytes": 10764,
+      "role": "examples"
+    },
+    {
+      "path": "examples/empty-state.html",
+      "sha256": "a56754e83b8cecb3b3b990e5b7861513d8d92ca465df9625598e9d3828a51e3b",
+      "bytes": 2201,
+      "role": "examples"
+    },
+    {
+      "path": "examples/interaction-states.html",
+      "sha256": "3bb0cc6ac4fb60f5293a758c736fc36678f847ffe3e911af6a944506778546c3",
+      "bytes": 6473,
+      "role": "examples"
+    },
+    {
+      "path": "examples/loading-state.html",
+      "sha256": "d9473f0d0cc7ae30d7852b1d78b1604fd8d0a195341a34bcb21363910ed87213",
+      "bytes": 4941,
+      "role": "examples"
+    },
+    {
       "path": "examples/notification.html",
-      "sha256": "161d04369b942a876649c1744212aa3d107b3e605e875c710c2734ca28551277",
-      "bytes": 10761,
+      "sha256": "4c1b25ba7a766afc663c0890f46f9b7955ae4174f35efd720d01f3bd4ba8e723",
+      "bytes": 10778,
       "role": "examples"
     },
     {
@@ -84,8 +228,8 @@
     },
     {
       "path": "icons/catalog.json",
-      "sha256": "9a7b0d80ff81fe6c8c565035bcd06995a8804aa1fc651d004d02c8d2b721614c",
-      "bytes": 42954,
+      "sha256": "f891c9632adb38dbcdba05ce1fed3e87b26048acca103af0ca7fd132dba131bc",
+      "bytes": 43377,
       "role": "icons"
     },
     {
@@ -971,6 +1115,12 @@
       "role": "icons"
     },
     {
+      "path": "icons/svg/triangle-alert.svg",
+      "sha256": "db66f97e916f88bf3ff1e7ab095a35257012614754223cc2ef7876a33ae5d0da",
+      "bytes": 319,
+      "role": "icons"
+    },
+    {
       "path": "icons/svg/trophy.svg",
       "sha256": "e9a9276d54fa096be64be3f72eddc2f98f815b389cfa3c76f1d538f79cd26c1c",
       "bytes": 513,
@@ -1073,15 +1223,63 @@
       "role": "icons"
     },
     {
+      "path": "presets/confirm-dialog.json",
+      "sha256": "21a7c7ccdd6b177625282f40758b0d5f004b8d64dab79a271ea1bd1a9f5f4550",
+      "bytes": 4448,
+      "role": "presets"
+    },
+    {
+      "path": "presets/context-menu.json",
+      "sha256": "f39058b3a600e1051cfd02deb60cddb435480be444c319e6b011fa47d73d5abd",
+      "bytes": 4086,
+      "role": "presets"
+    },
+    {
+      "path": "presets/destructive-button.json",
+      "sha256": "c66d751de99624d5f14361feaf860f00a951b3e7b63f8075f531770a1272d1f4",
+      "bytes": 4280,
+      "role": "presets"
+    },
+    {
+      "path": "presets/dropdown.json",
+      "sha256": "5f8460dfabb37c088a471370c52bb7636a314ef669fc333213b51e6b019e9fe7",
+      "bytes": 4498,
+      "role": "presets"
+    },
+    {
+      "path": "presets/empty-state.json",
+      "sha256": "0d3deb3555d94410905dcef6e166229e230dd79762863d2dae2ccb61448da0d9",
+      "bytes": 3506,
+      "role": "presets"
+    },
+    {
+      "path": "presets/interaction-states.json",
+      "sha256": "8a555f305e8ba12f5d7ed13bd5cd7663efec2b49e495f0744b27b7ce42a45fa2",
+      "bytes": 4264,
+      "role": "presets"
+    },
+    {
+      "path": "presets/loading-state.json",
+      "sha256": "b52900638adaaf42f679fb440f955df753eab0df4cdf91168e812b27cfcfe528",
+      "bytes": 3636,
+      "role": "presets"
+    },
+    {
+      "path": "presets/notification.json",
+      "sha256": "0f2c5b4b31577130aee5bd08087169bbc4beea8c0df3fab5c8ad170c864c403f",
+      "bytes": 6909,
+      "role": "presets"
+    },
+    {
       "path": "principles.json",
-      "sha256": "c335e80e4433ecb9c98bccc613c19df5e9426afbb7480a6d1b5c61ff19cc5e2c",
+      "sha256": "3b141d4bc78d660d50ed85b7d12de2e82b7ce9394005bceb4574ba97d09d2328",
       "bytes": 14205,
       "role": "principles"
     },
     {
       "path": "prompt-pack.md",
-      "sha256": "98734c8642a5c3b3003a274ec54fdb1ff2fa731308b361dc5afb53d46d04565a",
-      "bytes": 15844,
+      "sha256": "d4f23e639ddbbabefc062a09868da8a36123000cc6a54739c2aae5fcdc5404a0",
+      "bytes": 35935,
       "role": "principles"
     },
     {
@@ -1122,7 +1320,7 @@
     },
     {
       "path": "tokens.json",
-      "sha256": "ab62cce47c3e1d02c4eb2658537d067c6bdf67eba0c3fb32a047b32b5396f6b9",
+      "sha256": "487159c94048b3940493ae04878893a354e7931b935a12b1750569fa80eff424",
       "bytes": 7698,
       "role": "tokens"
     }

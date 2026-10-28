@@ -49,14 +49,6 @@ export function useToast(): ToastApi {
   return api
 }
 
-/** triangle-alert is not in the shared icon set yet, so the warning icon is inlined with the same geometry. */
-function TriangleAlert() {
-  return (
-    <svg className="sm-icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false"
-      dangerouslySetInnerHTML={{ __html: '<path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3M12 9v4M12 17h.01"/>' }} />
-  )
-}
-
 function ToastIcon({ type }: { type: ToastType }) {
   if (type === 'neutral') return null // neutral has no icon
   return (
@@ -64,7 +56,7 @@ function ToastIcon({ type }: { type: ToastType }) {
       {type === 'success' && <Icon name="circle-check" size={16} />}
       {type === 'error' && <Icon name="circle-x" size={16} />}
       {type === 'info' && <Icon name="info" size={16} />}
-      {type === 'warning' && <TriangleAlert />}
+      {type === 'warning' && <Icon name="triangle-alert" size={16} />}
     </span>
   )
 }

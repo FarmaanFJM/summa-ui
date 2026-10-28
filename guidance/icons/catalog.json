@@ -1952,6 +1952,19 @@
       ],
       "use": "Power on or off.",
       "file": "icons/svg/power.svg"
+    },
+    {
+      "name": "triangle-alert",
+      "lucide": "triangle-alert",
+      "category": "status-feedback",
+      "tags": [
+        "warning",
+        "caution",
+        "alert"
+      ],
+      "use": "Warning state or notification that needs attention but is not an error.",
+      "avoid": "Do not use for errors that blocked an action (use circle-x or circle-alert).",
+      "file": "icons/svg/triangle-alert.svg"
     }
   ]
 }

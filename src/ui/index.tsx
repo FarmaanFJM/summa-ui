@@ -261,7 +261,7 @@ export function Dialog({ open, onClose, title, children, footer, width }: { open
   if (!open) return null
   return createPortal(
     <div className="backdrop" onMouseDown={e => { if (e.target === e.currentTarget) onClose() }}>
-      <div ref={ref} className="dialog" role="dialog" aria-modal="true" aria-labelledby={titleId} style={width ? { width, maxWidth: '100%' } : undefined}>
+      <div ref={ref} className="dialog" role="dialog" aria-modal="true" aria-labelledby={titleId} style={width ? { width: `min(${width}px, 100%)` } : undefined}>
         <h2 id={titleId} className="dialog-head">{title}</h2>
         <div className="dialog-body">{children}</div>
         {footer && <div className="dialog-foot">{footer}</div>}

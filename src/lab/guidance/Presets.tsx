@@ -47,7 +47,7 @@ function Section({ slug, children }: { slug: string; children: ReactNode }) {
         <span className="faint">{spec?.id}</span>
         <div className="grow" />
         <div className="pz-links">
-          {spec?.implementations.html && <a href={`/guidance/${spec.implementations.html}`} target="_blank" rel="noreferrer">HTML example</a>}
+          {spec?.implementations.html && <a href={`${import.meta.env.BASE_URL}guidance/${spec.implementations.html}`} target="_blank" rel="noreferrer">HTML example</a>}
           <a href={`#/guidance/presets/${slug}`}>Link</a>
         </div>
       </div>

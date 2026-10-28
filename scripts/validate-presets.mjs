@@ -16,7 +16,7 @@ const schema = JSON.parse(readFileSync(join(guidance, 'schema/preset.schema.json
 const idsText = readFileSync(join(guidance, 'IDS.md'), 'utf8')
 const apIds = new Set(idsText.match(/AP-\d{3}/g) ?? [])
 const presetIds = new Set((idsText.match(/preset\.[a-z-]+/g) ?? []))
-const EM_DASH = '—'
+const EM_DASH = String.fromCharCode(0x2014)
 
 function check(value, spec, path, file) {
   if (!spec) return

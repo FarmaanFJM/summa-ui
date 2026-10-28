@@ -15,7 +15,8 @@
     "validate:antipatterns": "node scripts/validate-antipatterns.mjs",
     "validate:presets": "node scripts/validate-presets.mjs",
     "validate": "npm run guidance:build && npm run validate:icons && npm run validate:antipatterns && npm run validate:presets && npm run validate:guidance",
-    "checks": "node scripts/run-checks.mjs"
+    "checks": "node scripts/run-checks.mjs",
+    "test:browser": "node scripts/test-guidance.mjs"
   },
   "dependencies": {
     "react": "^19.3.1",
