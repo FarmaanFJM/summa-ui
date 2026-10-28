@@ -350,3 +350,8 @@
   .st-rbar { height: var(--hit); }
   .st-price input[type="range"] { height: var(--hit); }
 }
+
+/* Touch: the product name links in cart and checkout lines get a 40px hit area that sits above the variant text below them. */
+@media (max-width: 820px) {
+  .st-line-name { position: relative; z-index: 1; padding-block: 10px; margin-block: -10px; }
+}

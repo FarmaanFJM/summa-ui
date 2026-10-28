@@ -42,7 +42,7 @@ const SCENARIOS = {
     { name: 'task detail', steps: async p => { await p.locator('.pm-row .pm-title').first().tap(); await p.waitForTimeout(700) } },
     { name: 'new task dialog', steps: async p => { await p.keyboard.press('c'); await p.waitForTimeout(500) } },
   ],
-  documents: [{ name: 'document menu', steps: async p => { await p.locator('[aria-label*="More" i],[aria-label*="options" i]').first().tap(); await p.waitForTimeout(300) } }],
+  documents: [{ name: 'document menu', steps: async p => { await p.locator('[aria-label="Document actions"]').first().tap(); await p.waitForTimeout(300) } }],
   analytics: [{ name: 'range dropdown', steps: p => tapText(p, /Last 30 days/) }],
   files: [
     { name: 'new menu', steps: p => tapText(p, /^New$/) },
@@ -61,7 +61,7 @@ const SCENARIOS = {
     { name: 'notifications', hash: 'social/notifications' },
     { name: 'profile', hash: 'social/u/me' },
     { name: 'compose dialog', steps: async p => { await p.keyboard.press('n'); await p.waitForTimeout(500) } },
-    { name: 'compose with attachment', steps: async p => { await p.keyboard.press('n'); await p.waitForTimeout(500); await p.locator('[aria-label*="image" i],[aria-label*="photo" i]').first().tap(); await p.waitForTimeout(400) } },
+    { name: 'compose with attachment', steps: async p => { await p.keyboard.press('n'); await p.waitForTimeout(500); await p.locator('[aria-label="Attach image"]').first().tap(); await p.waitForTimeout(400) } },
   ],
   trading: [
     { name: 'instrument sheet', steps: async p => { await p.locator('[aria-label*="nstrument" i]').first().tap(); await p.waitForTimeout(500) } },
@@ -89,18 +89,35 @@ async function measureAndTap(page, all, label, scope = 'body') {
   for (const it of items) {
     if (it.isRange) continue // a touch tap on a range input moves the thumb and never fires click; its size is still checked above
     if (!it.bbox) { tapBad.push({ ...it, reason: 'no owned area' }); continue }
-    const [x0, y0, x1, y1] = it.bbox
-    const pts = [[(x0 + x1) / 2, (y0 + y1) / 2], [x0 + 3, y0 + 3], [x1 - 3, y0 + 3], [x0 + 3, y1 - 3], [x1 - 3, y1 - 3]]
+    // Earlier taps can move the page (focus scrolling, keyboards): shift the measured area by how far the element has moved.
+    const now = await page.evaluate(i => { const el = document.querySelector(`[data-hit-i="${i}"]`); if (!el) return null; const r = el.getBoundingClientRect(); return [Math.round(r.left), Math.round(r.top)] }, it.i)
+    if (!now) { tapBad.push({ ...it, reason: 'element disappeared after an earlier tap' }); continue }
+    const [dx, dy] = [now[0] - it.at[0], now[1] - it.at[1]]
+    const [x0, y0, x1, y1] = [it.bbox[0] + dx, it.bbox[1] + dy, it.bbox[2] + dx, it.bbox[3] + dy]
+    // Probes are sample points the browser's hit testing assigned to this element: its centre-most point and the points nearest each corner of its effective area.
+    const pts = it.probes.map(([x, y]) => [x + dx, y + dy])
     let bad = null
-    for (const [x, y] of pts) {
-      const layers = () => page.evaluate(() => document.querySelectorAll('.popover,[role=listbox],[role=dialog],[role=menu]').length)
-      const n0 = await layers()
-      await page.evaluate(() => { window.__tap = null })
-      await page.touchscreen.tap(x, y)
-      const ok = await page.evaluate(i => { const el = document.querySelector(`[data-hit-i="${i}"]`); const t = window.__tap; return !!(el && t && (el === t || el.contains(t) || (t.tagName === 'LABEL' && t.contains(el)))) }, it.i)
-      // Close only what this tap opened (popover, suggestion list) so later elements are tested in the state they were measured in.
-      if ((await layers()) > n0) { await page.keyboard.press('Escape'); await page.evaluate(() => document.activeElement?.blur?.()); await page.waitForTimeout(40) }
-      if (!ok) { bad = { ...it, reason: `tap at ${Math.round(x)},${Math.round(y)} did not reach the element` }; break }
+    const attempt = async (points) => {
+      for (const [x, y] of points) {
+        const layers = () => page.evaluate(() => document.querySelectorAll('.popover,[role=listbox],[role=dialog],[role=menu]').length)
+        const n0 = await layers()
+        await page.evaluate(() => { window.__tap = null })
+        await page.touchscreen.tap(x, y)
+        const [ok, landed] = await page.evaluate(i => { const el = document.querySelector(`[data-hit-i="${i}"]`); const t = window.__tap; const lab = e => e ? e.tagName.toLowerCase() + (typeof e.className === 'string' && e.className ? '.' + e.className.trim().split(/\s+/)[0] : '') : 'nothing'; return [!!(el && t && (el === t || el.contains(t) || (t.tagName === 'LABEL' && t.contains(el)))), lab(t)] }, it.i)
+        // Close only what this tap opened (popover, suggestion list) so later elements are tested in the state they were measured in.
+        if ((await layers()) > n0) { await page.keyboard.press('Escape'); await page.evaluate(() => document.activeElement?.blur?.()); await page.waitForTimeout(40) }
+        if (!ok) return { ...it, reason: `tap at ${Math.round(x)},${Math.round(y)} landed on ${landed}` }
+      }
+      return null
+    }
+    bad = await attempt(pts)
+    if (bad) {
+      // Layout may have moved while earlier taps ran (animations, focus scrolling). Re-measure this element once and retry; a real fault persists.
+      await page.waitForTimeout(250)
+      const re = await page.evaluate(measureHitAreas, { min: 40, step: 4, scope: 'body', only: it.i })
+      if (re[0]?.bbox && re[0].pass) {
+        bad = await attempt(re[0].probes)
+      }
     }
     if (bad) tapBad.push(bad)
   }
@@ -127,8 +144,8 @@ for (const app of apps) {
       await page.goto(`${base}#/${sc.hash ?? app}`); await page.waitForTimeout(1600)
       if (sc.steps) await sc.steps(page)
       // When the state opened a popover, sheet or dialog, test that layer (the page behind it is covered and is tested by the passes above).
-      const layer = await page.evaluate(() => [...document.querySelectorAll('.popover,[role=dialog],[role=listbox]')].length)
-      await measureAndTap(page, all, `state: ${sc.name}`, layer ? '.popover,[role=dialog],[role=listbox]' : 'body')
+      const layer = await page.evaluate(() => document.querySelectorAll('.popover,[role=dialog]').length)
+      await measureAndTap(page, all, `state: ${sc.name}`, layer ? '.popover,[role=dialog]' : 'body')
     } catch (e) { all.skipped.push(`${sc.name}: ${String(e.message).split('\n')[0].slice(0, 90)}`) }
     await ctx.close()
   }

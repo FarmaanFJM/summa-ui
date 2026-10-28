@@ -1,0 +1,220 @@
+{
+  "viewport": "390x844",
+  "apps": {
+    "ai": {
+      "tested": 50,
+      "undersized": 0,
+      "tapMismatch": 0,
+      "pageErrors": [],
+      "skippedScenarios": [],
+      "failing": [],
+      "tapBad": []
+    },
+    "projects": {
+      "tested": 84,
+      "undersized": 0,
+      "tapMismatch": 0,
+      "pageErrors": [],
+      "skippedScenarios": [],
+      "failing": [],
+      "tapBad": []
+    },
+    "documents": {
+      "tested": 21,
+      "undersized": 0,
+      "tapMismatch": 0,
+      "pageErrors": [],
+      "skippedScenarios": [
+        "document menu: locator.tap: Timeout 30000ms exceeded."
+      ],
+      "failing": [],
+      "tapBad": []
+    },
+    "analytics": {
+      "tested": 39,
+      "undersized": 0,
+      "tapMismatch": 1,
+      "pageErrors": [],
+      "skippedScenarios": [],
+      "failing": [],
+      "tapBad": [
+        {
+          "pass": "state: range dropdown",
+          "sel": "button.menu-item \"Last 90 days\"",
+          "reason": "tap at 19,225 did not reach the element"
+        }
+      ]
+    },
+    "files": {
+      "tested": 99,
+      "undersized": 0,
+      "tapMismatch": 9,
+      "pageErrors": [],
+      "skippedScenarios": [],
+      "failing": [],
+      "tapBad": [
+        {
+          "pass": "state: new menu",
+          "sel": "button.menu-item \"New folder\"",
+          "reason": "tap at 292,76 did not reach the element"
+        },
+        {
+          "pass": "state: new menu",
+          "sel": "button.menu-item \"New document\"",
+          "reason": "tap at 292,116 did not reach the element"
+        },
+        {
+          "pass": "state: new menu",
+          "sel": "button.menu-item \"Upload file…\"",
+          "reason": "tap at 292,165 did not reach the element"
+        },
+        {
+          "pass": "state: grid view",
+          "sel": "div.files-card \"ArchiveSep 12, 2025\"",
+          "reason": "tap at 15,297 did not reach the element"
+        },
+        {
+          "pass": "state: grid view",
+          "sel": "div.files-card \"PersonalOct 25\"",
+          "reason": "tap at 202,297 did not reach the element"
+        },
+        {
+          "pass": "state: grid view",
+          "sel": "div.files-card \"PhotosOct 19\"",
+          "reason": "tap at 189,489 did not reach the element"
+        },
+        {
+          "pass": "state: grid view",
+          "sel": "div.files-card \"WorkToday, 5:42 AM\"",
+          "reason": "tap at 376,489 did not reach the element"
+        },
+        {
+          "pass": "state: grid view",
+          "sel": "div.files-card \"2026 goals.docxSep 24 \"",
+          "reason": "tap at 15,682 did not reach the element"
+        },
+        {
+          "pass": "state: grid view",
+          "sel": "div.files-card \"Passport scan.jpgApr 2\"",
+          "reason": "tap at 202,682 did not reach the element"
+        }
+      ]
+    },
+    "media": {
+      "tested": 167,
+      "undersized": 0,
+      "tapMismatch": 0,
+      "pageErrors": [],
+      "skippedScenarios": [],
+      "failing": [],
+      "tapBad": []
+    },
+    "executive": {
+      "tested": 32,
+      "undersized": 0,
+      "tapMismatch": 0,
+      "pageErrors": [],
+      "skippedScenarios": [],
+      "failing": [],
+      "tapBad": []
+    },
+    "chess": {
+      "tested": 39,
+      "undersized": 0,
+      "tapMismatch": 3,
+      "pageErrors": [],
+      "skippedScenarios": [],
+      "failing": [],
+      "tapBad": [
+        {
+          "pass": "state: register dialog",
+          "sel": "input#_r_g_.input",
+          "reason": "tap at 39,343 did not reach the element"
+        },
+        {
+          "pass": "state: register dialog",
+          "sel": "input#_r_h_.input",
+          "reason": "tap at 39,424 did not reach the element"
+        },
+        {
+          "pass": "state: register dialog",
+          "sel": "input#_r_i_.input",
+          "reason": "tap at 39,505 did not reach the element"
+        }
+      ]
+    },
+    "social": {
+      "tested": 122,
+      "undersized": 0,
+      "tapMismatch": 0,
+      "pageErrors": [],
+      "skippedScenarios": [
+        "compose with attachment: locator.tap: Timeout 30000ms exceeded."
+      ],
+      "failing": [],
+      "tapBad": []
+    },
+    "trading": {
+      "tested": 88,
+      "undersized": 0,
+      "tapMismatch": 2,
+      "pageErrors": [],
+      "skippedScenarios": [],
+      "failing": [],
+      "tapBad": [
+        {
+          "pass": "state: order sheet",
+          "sel": "input.input.num",
+          "reason": "tap at 19,528 did not reach the element"
+        },
+        {
+          "pass": "state: order sheet",
+          "sel": "input#tr-size.input.num",
+          "reason": "tap at 19,605 did not reach the element"
+        }
+      ]
+    },
+    "store": {
+      "tested": 116,
+      "undersized": 1,
+      "tapMismatch": 2,
+      "pageErrors": [],
+      "skippedScenarios": [],
+      "failing": [
+        {
+          "pass": "state: checkout",
+          "sel": "a.st-line-name \"Ember Table Lamp\"",
+          "size": "124x21",
+          "effective": "124x20",
+          "thief": "span.muted.st-sm \"Sand\""
+        }
+      ],
+      "tapBad": [
+        {
+          "pass": "state: checkout",
+          "sel": "input#co-name.input.st-input",
+          "reason": "tap at 194,610 did not reach the element"
+        },
+        {
+          "pass": "state: checkout",
+          "sel": "button.btn.btn-primary \"Continue to delivery\"",
+          "reason": "tap at 100,670 did not reach the element"
+        }
+      ]
+    },
+    "travel": {
+      "tested": 86,
+      "undersized": 0,
+      "tapMismatch": 0,
+      "pageErrors": [],
+      "skippedScenarios": [],
+      "failing": [],
+      "tapBad": []
+    }
+  },
+  "totals": {
+    "tested": 943,
+    "undersized": 1,
+    "tapMismatch": 17
+  }
+}
