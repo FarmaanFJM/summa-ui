@@ -20,83 +20,70 @@
       "tapBad": []
     },
     "documents": {
-      "tested": 21,
+      "tested": 24,
       "undersized": 0,
       "tapMismatch": 0,
       "pageErrors": [],
-      "skippedScenarios": [
-        "document menu: locator.tap: Timeout 30000ms exceeded."
-      ],
+      "skippedScenarios": [],
       "failing": [],
       "tapBad": []
     },
     "analytics": {
       "tested": 39,
       "undersized": 0,
-      "tapMismatch": 1,
+      "tapMismatch": 0,
       "pageErrors": [],
       "skippedScenarios": [],
       "failing": [],
-      "tapBad": [
-        {
-          "pass": "state: range dropdown",
-          "sel": "button.menu-item \"Last 90 days\"",
-          "reason": "tap at 19,225 did not reach the element"
-        }
-      ]
+      "tapBad": []
     },
     "files": {
-      "tested": 99,
+      "tested": 89,
       "undersized": 0,
-      "tapMismatch": 9,
+      "tapMismatch": 8,
       "pageErrors": [],
       "skippedScenarios": [],
       "failing": [],
       "tapBad": [
         {
-          "pass": "state: new menu",
-          "sel": "button.menu-item \"New folder\"",
-          "reason": "tap at 292,76 did not reach the element"
+          "pass": "full height",
+          "sel": "div.files-mrow \"ArchiveSep 12, 2025\"",
+          "reason": "tap at 382,175 landed on div.files-mrow"
         },
         {
-          "pass": "state: new menu",
-          "sel": "button.menu-item \"New document\"",
-          "reason": "tap at 292,116 did not reach the element"
+          "pass": "full height",
+          "sel": "div.files-mrow \"PersonalOct 25\"",
+          "reason": "tap at 382,189 landed on div.files-mrow"
         },
         {
-          "pass": "state: new menu",
-          "sel": "button.menu-item \"Upload file…\"",
-          "reason": "tap at 292,165 did not reach the element"
+          "pass": "full height",
+          "sel": "div.files-mrow \"PhotosOct 19\"",
+          "reason": "tap at 382,255 landed on div.files-mrow"
         },
         {
-          "pass": "state: grid view",
-          "sel": "div.files-card \"ArchiveSep 12, 2025\"",
-          "reason": "tap at 15,297 did not reach the element"
+          "pass": "full height",
+          "sel": "div.files-mrow \"WorkToday, 5:42 AM\"",
+          "reason": "tap at 382,321 landed on div.files-mrow"
         },
         {
-          "pass": "state: grid view",
-          "sel": "div.files-card \"PersonalOct 25\"",
-          "reason": "tap at 202,297 did not reach the element"
+          "pass": "full height",
+          "sel": "div.files-mrow \"2026 goals.docxSep 24 \"",
+          "reason": "tap at 382,387 landed on div.files-mrow"
         },
         {
-          "pass": "state: grid view",
-          "sel": "div.files-card \"PhotosOct 19\"",
-          "reason": "tap at 189,489 did not reach the element"
+          "pass": "full height",
+          "sel": "div.files-mrow \"Passport scan.jpgApr 2\"",
+          "reason": "tap at 382,453 landed on div.files-mrow"
         },
         {
-          "pass": "state: grid view",
-          "sel": "div.files-card \"WorkToday, 5:42 AM\"",
-          "reason": "tap at 376,489 did not reach the element"
+          "pass": "full height",
+          "sel": "div.files-mrow \"Reading list.mdOct 23 \"",
+          "reason": "tap at 382,519 landed on div.files-mrow"
         },
         {
-          "pass": "state: grid view",
-          "sel": "div.files-card \"2026 goals.docxSep 24 \"",
-          "reason": "tap at 15,682 did not reach the element"
-        },
-        {
-          "pass": "state: grid view",
-          "sel": "div.files-card \"Passport scan.jpgApr 2\"",
-          "reason": "tap at 202,682 did not reach the element"
+          "pass": "full height",
+          "sel": "div.files-mrow \"Welcome to Drive.pdfSe\"",
+          "reason": "tap at 382,585 landed on div.files-mrow"
         }
       ]
     },
@@ -121,27 +108,11 @@
     "chess": {
       "tested": 39,
       "undersized": 0,
-      "tapMismatch": 3,
+      "tapMismatch": 0,
       "pageErrors": [],
       "skippedScenarios": [],
       "failing": [],
-      "tapBad": [
-        {
-          "pass": "state: register dialog",
-          "sel": "input#_r_g_.input",
-          "reason": "tap at 39,343 did not reach the element"
-        },
-        {
-          "pass": "state: register dialog",
-          "sel": "input#_r_h_.input",
-          "reason": "tap at 39,424 did not reach the element"
-        },
-        {
-          "pass": "state: register dialog",
-          "sel": "input#_r_i_.input",
-          "reason": "tap at 39,505 did not reach the element"
-        }
-      ]
+      "tapBad": []
     },
     "social": {
       "tested": 122,
@@ -157,50 +128,20 @@
     "trading": {
       "tested": 88,
       "undersized": 0,
-      "tapMismatch": 2,
+      "tapMismatch": 0,
       "pageErrors": [],
       "skippedScenarios": [],
       "failing": [],
-      "tapBad": [
-        {
-          "pass": "state: order sheet",
-          "sel": "input.input.num",
-          "reason": "tap at 19,528 did not reach the element"
-        },
-        {
-          "pass": "state: order sheet",
-          "sel": "input#tr-size.input.num",
-          "reason": "tap at 19,605 did not reach the element"
-        }
-      ]
+      "tapBad": []
     },
     "store": {
       "tested": 116,
-      "undersized": 1,
-      "tapMismatch": 2,
+      "undersized": 0,
+      "tapMismatch": 0,
       "pageErrors": [],
       "skippedScenarios": [],
-      "failing": [
-        {
-          "pass": "state: checkout",
-          "sel": "a.st-line-name \"Ember Table Lamp\"",
-          "size": "124x21",
-          "effective": "124x20",
-          "thief": "span.muted.st-sm \"Sand\""
-        }
-      ],
-      "tapBad": [
-        {
-          "pass": "state: checkout",
-          "sel": "input#co-name.input.st-input",
-          "reason": "tap at 194,610 did not reach the element"
-        },
-        {
-          "pass": "state: checkout",
-          "sel": "button.btn.btn-primary \"Continue to delivery\"",
-          "reason": "tap at 100,670 did not reach the element"
-        }
-      ]
+      "failing": [],
+      "tapBad": []
     },
     "travel": {
       "tested": 86,
@@ -213,8 +154,8 @@
     }
   },
   "totals": {
-    "tested": 943,
-    "undersized": 1,
-    "tapMismatch": 17
+    "tested": 936,
+    "undersized": 0,
+    "tapMismatch": 8
   }
 }

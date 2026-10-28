@@ -48,14 +48,9 @@ export function TripsPage() {
         )}
       </div>
 
-      <Dialog open={!!target} onClose={() => setTarget(null)} title="Cancel this booking?" width={420}
-        footer={<><Button variant="ghost" onClick={() => setTarget(null)}>Keep booking</Button><Button variant="danger" data-autofocus onClick={() => { if (target) cancelTrip(target.id); setTarget(null) }}>Cancel booking</Button></>}>
-        {target && stay && (
-          <p className="muted" style={{ margin: '4px 0 8px' }}>
-            {stay.name}, {fmtRange(target.q.checkIn, target.q.checkOut, loc)}.{' '}
-            {stay.cancel ? `You will be refunded ${money(target.total, cur)} in full.` : 'This rate is non-refundable, so no refund will be issued.'}
-          </p>
-        )}
+      <Dialog open={!!target} onClose={() => setTarget(null)} title="Cancel this booking?" width={420} role="alertdialog"
+        description={target && stay ? `${stay.name}, ${fmtRange(target.q.checkIn, target.q.checkOut, loc)}. ${stay.cancel ? `You will be refunded ${money(target.total, cur)} in full.` : 'This rate is non-refundable, so no refund will be issued.'}` : undefined}
+        footer={<><Button variant="ghost" onClick={() => setTarget(null)}>Keep booking</Button><Button variant="danger" onClick={() => { if (target) cancelTrip(target.id); setTarget(null) }}>Cancel booking</Button></>}>
       </Dialog>
     </div>
   )

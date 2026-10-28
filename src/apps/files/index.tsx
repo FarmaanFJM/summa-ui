@@ -590,9 +590,9 @@ export default function FilesApp() {
       {previewItem && <PreviewDialog item={previewItem} pos={Math.max(1, pvIndex + 1)} count={previewable.length || 1} location={pathOf(previewItem)} onClose={() => setPreviewId(null)} onNav={navPreview} onDownload={() => download([previewItem.id])} />}
       {picker && <MovePicker mode={picker.mode} moving={picker.ids.map(id => byId.get(id)!).filter(Boolean)} all={items} start={loc === 'drive' ? folder : 'root'} onClose={() => setPicker(null)}
         onConfirm={dest => { const p = picker; setPicker(null); if (p.mode === 'move') move(p.ids, dest); else copy(p.ids, dest) }} />}
-      <Dialog open={!!confirm} onClose={() => setConfirm(null)} title={confirm?.ids === 'all' ? 'Empty trash?' : 'Delete forever?'}
+      <Dialog open={!!confirm} onClose={() => setConfirm(null)} title={confirm?.ids === 'all' ? 'Empty trash?' : 'Delete forever?'} role="alertdialog"
+        description={confirm?.ids === 'all' ? 'Everything in Trash will be permanently deleted.' : `${Array.isArray(confirm?.ids) ? nameOf(confirm!.ids as string[]) : ''} will be permanently deleted. This can’t be undone.`}
         footer={<><Button variant="ghost" onClick={() => setConfirm(null)}>Cancel</Button><Button variant="danger" icon="trash" onClick={() => confirm && deleteForever(confirm.ids)}>{confirm?.ids === 'all' ? 'Empty trash' : 'Delete forever'}</Button></>}>
-        <p className="muted">{confirm?.ids === 'all' ? 'Everything in Trash will be permanently deleted.' : `${Array.isArray(confirm?.ids) ? nameOf(confirm!.ids as string[]) : ''} will be permanently deleted. This can’t be undone.`}</p>
       </Dialog>
     </div>
   )

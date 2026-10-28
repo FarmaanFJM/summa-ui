@@ -225,16 +225,16 @@ export function HeroGame() {
 
       <Dialog
         open={!!confirm} onClose={() => setConfirm(null)} title={confirm?.kind === 'resign' ? 'Resign this game?' : 'Start a new game?'} width={400}
+        role={confirm?.kind === 'resign' ? 'alertdialog' : 'dialog'} description={confirm?.kind === 'resign' ? 'The game will be recorded as a loss.' : 'The current game will be abandoned.'}
         footer={
           <>
             <Button variant="ghost" onClick={() => setConfirm(null)}>Cancel</Button>
             {confirm?.kind === 'resign'
-              ? <Button variant="danger" icon="flag" data-autofocus onClick={resign}>Resign game</Button>
+              ? <Button variant="danger" icon="flag" onClick={resign}>Resign game</Button>
               : <Button variant="secondary" data-autofocus onClick={() => { const c = confirm!; if (c.kind === 'new') { setPref(c.pref); setTc(c.tc); start(c.pref, c.tc) }; setConfirm(null) }}>New game</Button>}
           </>
         }
       >
-        <p className="muted cc-dialog-p">{confirm?.kind === 'resign' ? 'The game will be recorded as a loss.' : 'The current game will be abandoned.'}</p>
       </Dialog>
     </>
   )

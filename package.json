@@ -16,7 +16,11 @@
     "validate:presets": "node scripts/validate-presets.mjs",
     "validate": "npm run guidance:build && npm run validate:icons && npm run validate:antipatterns && npm run validate:presets && npm run validate:guidance",
     "checks": "node scripts/run-checks.mjs",
-    "test:browser": "node scripts/test-guidance.mjs"
+    "test:browser": "node scripts/test-guidance.mjs",
+    "test:tap": "node scripts/test-tap-targets.mjs",
+    "test:desktop-layout": "node scripts/layout-snapshot.mjs --compare docs/reports/desktop-layout-before.json",
+    "vendor": "node scripts/vendor-guidance.mjs",
+    "vendor:verify": "node scripts/verify-vendored.mjs"
   },
   "dependencies": {
     "react": "^19.3.1",

@@ -191,9 +191,8 @@ export default function DocumentsApp() {
         )}
         {toast && <div className="doc-toast" role="status">{toast}</div>}
       </AppShell>
-      <Dialog open={!!target} onClose={() => setConfirm(null)} title="Delete document?"
-        footer={<><Button variant="ghost" onClick={() => setConfirm(null)}>Cancel</Button><Button variant="danger" icon="trash" autoFocus onClick={() => target && remove(target.id)}>Delete document</Button></>}>
-        <p className="muted">“{target?.title || 'Untitled'}” will be permanently deleted.</p>
+      <Dialog open={!!target} onClose={() => setConfirm(null)} title="Delete document?" role="alertdialog" description={`“${target?.title || 'Untitled'}” will be permanently deleted.`}
+        footer={<><Button variant="ghost" onClick={() => setConfirm(null)}>Cancel</Button><Button variant="danger" icon="trash" onClick={() => target && remove(target.id)}>Delete document</Button></>}>
       </Dialog>
     </div>
   )

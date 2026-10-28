@@ -86,12 +86,11 @@ export function Sidebar({ convs, activeId, query, onQuery, searchRef, onNew, onO
         <span className="truncate grow">Farmaan Mohammad</span>
         <Icon name="chevron-down" size={14} className="faint" />
       </div>
-      <Dialog open={!!confirm} onClose={() => setConfirm(null)} title="Delete conversation?" width={400}
+      <Dialog open={!!confirm} onClose={() => setConfirm(null)} title="Delete conversation?" width={400} role="alertdialog" description={`“${confirm?.title}” will be permanently removed.`}
         footer={<>
           <Button variant="ghost" onClick={() => setConfirm(null)}>Cancel</Button>
-          <Button variant="danger" icon="trash" autoFocus onClick={() => { if (confirm) onDelete(confirm.id); setConfirm(null) }}>Delete conversation</Button>
+          <Button variant="danger" icon="trash" onClick={() => { if (confirm) onDelete(confirm.id); setConfirm(null) }}>Delete conversation</Button>
         </>}>
-        <p className="muted truncate">“{confirm?.title}” will be permanently removed.</p>
       </Dialog>
     </div>
   )

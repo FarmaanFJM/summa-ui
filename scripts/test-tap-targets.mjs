@@ -61,7 +61,7 @@ const SCENARIOS = {
     { name: 'notifications', hash: 'social/notifications' },
     { name: 'profile', hash: 'social/u/me' },
     { name: 'compose dialog', steps: async p => { await p.keyboard.press('n'); await p.waitForTimeout(500) } },
-    { name: 'compose with attachment', steps: async p => { await p.keyboard.press('n'); await p.waitForTimeout(500); await p.locator('[aria-label="Attach image"]').first().tap(); await p.waitForTimeout(400) } },
+    { name: 'compose with attachment', steps: async p => { await p.keyboard.press('n'); await p.waitForTimeout(500); await p.locator('.dialog [aria-label="Attach image"]').first().tap(); await p.waitForTimeout(400) } },
   ],
   trading: [
     { name: 'instrument sheet', steps: async p => { await p.locator('[aria-label*="nstrument" i]').first().tap(); await p.waitForTimeout(500) } },
