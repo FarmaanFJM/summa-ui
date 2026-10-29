@@ -1,0 +1,52 @@
+{
+  "id": "FB-0035",
+  "createdAt": "2026-10-29T16:28:10Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer",
+    "route": "/train/mate-in-two, /train/studies (training Notes panel, left workspace panel)"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Redundant explanatory copy: PuzzleNotesSidebar label \"Your private note\" and permanent \"Saves automatically\" / \"Saved\"",
+  "screenshots": [
+    {
+      "file": "before-notes-panel-1366.png",
+      "viewport": "1366x768",
+      "note": "Before: Unrated Puzzles. Notes heading, then \"Your private note\" and \"Saves automatically\"; toolbar buttons Notes and Details and X close buttons (FB-0036 to FB-0038)."
+    },
+    {
+      "file": "before-notes-panel-390.png",
+      "viewport": "390x844",
+      "note": "Before: stacked. The same two strings under the Notes heading."
+    },
+    {
+      "file": "after-notes-panel-1366.png",
+      "viewport": "1366x768",
+      "note": "After: Mate in Two. Heading Notes, field with the prompt \"Write a note about this position\", no label, no save line."
+    },
+    {
+      "file": "after-mate-in-two-390-notes.png",
+      "viewport": "390x844",
+      "note": "After: stacked, Notes opened from its disclosure row. Field and prompt only."
+    }
+  ],
+  "explanation": "CaissaTrainer Phase 3 (docs/ui-migration/phase3/notes.md finding P1, P2). Owner verdict: two permanent strings violate minimalism. ORIGINAL COMPONENT: the Notes panel of the training workspace, frontend/src/components/sidebars/PuzzleNotesSidebar.vue, rendered by TrainingSessionShell inside the workspace left panel headed \"Notes\" (routes /train/mate-in-two, /train/studies and the other shell pages that offer notes). EXACT STRINGS shipped by Phase 2: (1) \"Your private note\", a field label directly under the panel heading \"Notes\"; (2) \"Saves automatically\", a permanent line beside it, which after the first save became \"Saved\". WHY NEITHER ADDS VALUE: (1) the container already says \"Notes\" in its heading, so the label restates the title of the panel it sits in and tells nobody anything new; \"private\" is the default for a personal note, not news. (2) Saving is the normal behaviour of a text field, so announcing it all the time communicates no current state; \"Saved\" is the idle state restated, and a person with no problem has no decision to make from it. Phase 2 added it because the field previously gave no feedback (training-notes.md N3), but the cure for no feedback is feedback when something is happening or wrong, not a permanent reassurance. APPROVED GUIDANCE THAT ALREADY COVERS IT (v0.1.0): P04 \"Never create status tags for information that need not be shown (for example 'Automatically saved').\" AP-005 problem text: \"Status chips such as 'Automatically saved' tell users nothing they can use\", with the exceptions \"A failure state that users must notice and fix (for example 'Not saved') may use a tag or an inline indicator\" and the good example \"An event such as a save is acknowledged briefly in a notification instead of a permanent badge\". P05 \"Do not explain familiar concepts because space is available.\" and \"Prefer familiar patterns, clear naming, predictable position, progressive disclosure and contextual help over permanent explanation.\" AP-010 (Unnecessary explanatory copy): \"Remove helper text that explains familiar fields; keep copy that prevents a real error or consequence\", with the review question \"Does the text restate the label?\" P09 \"Do not add controls, containers, states, visual treatments or terminology without meaningful user value.\" P21 \"Ask whether something can be removed ... before adding a component.\" NOTE ON P10: P10 (Minimalism Over Prevalence) reads \"Do not show every possible action at once\" and its rules are about controls, so it supports the owner's word \"minimalism\" only by spirit; the copy case rests on P04, P05, P09, P21, AP-005 and AP-010. UI CORRECTION (Phase 3): both strings removed. The editor keeps an accessible name through aria-label \"Notes\". While empty it shows the prompt \"Write a note about this position\" (placeholder). Status appears only when it matters: \"Saving...\" (role status) while a request is in flight, and \"Could not save\" with a \"Try again\" button (role alert) on failure; nothing when idle or saved. The status row has reserved height (1.5rem, 2.5rem on coarse pointers) so nothing jumps. A failed save keeps a local draft so nothing is lost. EXCEPTIONS THAT STAY (this is not a rule against explanation, only against unnecessary explanation): a label or hint on an ambiguous or unfamiliar control; an essential instruction the person needs to proceed; status that affects the next decision (saving in flight before leaving, a failure, offline, unsynced); privacy or data loss information (for example that a note is visible to others, or will be deleted); accessibility names, which stay even when no visible text carries them; and temporary save or failure feedback. CLASSIFICATION: see the classification block. It is mainly a failure to apply existing guidance (application-specific), with a small residual ambiguity in how the wording of P04, AP-005 and AP-010 is scoped (see below). SCREENSHOTS: before (Unrated Puzzles, 1366 and 390: panel heading \"Notes\", then \"Your private note\" and \"Saves automatically\"; note the same capture also shows the toolbar buttons and the X, covered by FB-0036 to FB-0038); after (Mate in Two, 1366, and Mate in Two at 390 with Notes opened: heading, field with prompt, nothing else). Note: the before and after captures are different puzzle routes of the same shell; the before state of Mate in Two was not captured.",
+  "classification": {
+    "status": "proposed",
+    "kind": "application-specific",
+    "rationale": "Mainly a failure to apply approved guidance: P04 and AP-005 name 'Automatically saved' as the example of a status that need not be shown, P05 and AP-010 forbid permanent explanation and ask 'Does the text restate the label?'. CaissaTrainer recorded 0.1.0 and still shipped both strings, so by the workflow the fix is application-side (done in Phase 3). Residual, smaller guidance question for the owner: P04 and AP-005 are worded around tags and pills and AP-010 around helper text under fields, so a plain text line that repeats a container title or a permanent save state is only covered by their spirit, and CHK-005 (pills only, list has 'saved') and CHK-010 (paragraphs of 25 or more characters) would not flag either string. A patch level clarification and an optional narrow check are drafted in PR-0002 candidate/amendments.md section I; not a new principle. The Phase 2 draft FB-0026 (editable field pattern) itself asked for a permanent save state and is amended to match. Owner confirmation needed, and the owner may reclassify as guidance-ambiguity.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P05",
+    "P04",
+    "P09",
+    "P21"
+  ],
+  "relatedAntiPatterns": [
+    "AP-005",
+    "AP-010"
+  ],
+  "status": "proposal-drafted",
+  "proposal": "PR-0002"
+}

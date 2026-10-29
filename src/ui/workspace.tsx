@@ -6,8 +6,15 @@
   framework-neutral workspaceGeometry.ts; this file measures, renders and wires interaction.
 
   The size controls are a rail attached to the primary region (a resize handle that is a slider, and one options
-  menu with the discrete actions), not toolbar buttons: the toolbar is about the page (title, panel toggles), the rail is
-  about the region it sits against. Its width is reserved on both sides so the region stays centered (geometry `rail`).
+  menu with the discrete actions), not toolbar buttons: the toolbar (only when a page supplies content for it) is about the
+  page, the rail is about the region it sits against. Its width is reserved on both sides so the region stays centered (geometry `rail`).
+
+  A panel is shown or hidden by a small chevron attached to the workspace edge it lives on (a disclosure row for the
+  optional panel when the layout is stacked). There are no toolbar buttons for panels and no close X on a panel: a panel
+  is part of the workspace, not a window, and an X implies a dismissable window. A hidden panel reserves no width: the
+  region and its open panels are centered as one group. The left panel is the optional one (it yields to a drawer first
+  and is a disclosure row when stacked); the right panel is the supporting information the person works against (it is last
+  to yield and stays visible when stacked). It has no heading and no surface of its own: its content sets the hierarchy.
 
   Built only from existing tokens, presets and icons (sm-icon-btn, the shared Icon). Appearance of the
   workspace itself is in styles/workspace.css. Candidate preset spec: feedback/proposals/PR-0002.
@@ -247,28 +254,48 @@ export function Workspace({
   }, [hasHeader, hasFooter, workspaceKey])
 
   const hasLeft = left != null, hasRight = right != null
+  /** The toolbar exists only when the page gives it something to say; panel toggles never go in it. */
+  const hasToolbar = toolbarStart != null || toolbarEnd != null
   const leftOpen = prefs.isPanelOpen(workspaceKey, 'left', leftDefaultOpen)
   const rightOpen = prefs.isPanelOpen(workspaceKey, 'right', rightDefaultOpen)
   const [dragging, setDragging] = useState<number | null>(null)
 
   const g = useMemo(() => computeWorkspace({
-    width: box.w, height: box.h, padding: PADDING, gap: GAP, rail: RAIL, chromeY: TOOLBAR_HEIGHT + peak.header + peak.footer,
+    width: box.w, height: box.h, padding: PADDING, gap: GAP, rail: RAIL, chromeY: (hasToolbar ? TOOLBAR_HEIGHT : 0) + peak.header + peak.footer,
     left: hasLeft ? leftPanel : null, right: hasRight ? rightPanel : null, leftOpen, rightOpen, preferred: dragging ?? prefs.size,
-  }), [box.w, box.h, peak.header, peak.footer, hasLeft, hasRight, leftPanel, rightPanel, leftOpen, rightOpen, dragging, prefs.size])
+  }), [box.w, box.h, hasToolbar, peak.header, peak.footer, hasLeft, hasRight, leftPanel, rightPanel, leftOpen, rightOpen, dragging, prefs.size])
   useEffect(() => { onSize?.(g.size) }, [g.size, onSize])
   const stacked = g.mode === 'stacked'
 
-  /* Drawers: a panel that cannot dock opens over the workspace on demand. Escape closes it and focus returns. */
+  /* Drawers: a panel that cannot dock opens over the workspace on demand, as a modal dialog. Escape closes it and focus returns. */
   const [drawer, setDrawer] = useState<Side | null>(null)
   const toggleRef = { left: useRef<HTMLButtonElement>(null), right: useRef<HTMLButtonElement>(null) }
   const panelRef = { left: useRef<HTMLElement>(null), right: useRef<HTMLElement>(null) }
   const dockOf = (s: Side) => (s === 'left' ? g.leftDock : g.rightDock)
-  const panelState = (s: Side): PanelState => { const d = dockOf(s); return d === 'drawer' ? (drawer === s ? 'drawer-open' : 'drawer') : d }
-  const toggle = (s: Side) => {
-    if (dockOf(s) === 'drawer') { setDrawer(drawer === s ? null : s); return }
-    prefs.setPanelOpen(workspaceKey, s, !(s === 'left' ? leftOpen : rightOpen))
+  const openOf = (s: Side) => (s === 'left' ? leftOpen : rightOpen)
+  const panelState = (s: Side): PanelState => {
+    // Stacked, the right panel (what the person works against) is always part of the page. The left one follows the choice.
+    if (stacked && s === 'right' && hasRight) return 'docked'
+    if (stacked && s === 'left') return openOf('left') ? 'docked' : 'hidden'
+    const d = dockOf(s)
+    return d === 'drawer' ? (drawer === s ? 'drawer-open' : 'drawer') : d
   }
-  // The background is inert while the drawer is open, so focus returns to the toggle after the update lifts that.
+  /** What the control reports: is the panel on screen right now (docked, in an open drawer, or stacked and open). */
+  const isShown = (s: Side) => (stacked ? (s === 'right' ? true : leftOpen) : dockOf(s) === 'docked' || drawer === s)
+  const toggle = (s: Side) => {
+    if (dockOf(s) === 'drawer' && !stacked) { setDrawer(drawer === s ? null : s); return }
+    const wasOpen = openOf(s)
+    prefs.setPanelOpen(workspaceKey, s, !wasOpen)
+    // Opening a panel that only fits as a drawer shows the drawer straight away instead of leaving a chevron that did nothing.
+    if (!wasOpen && !stacked) pendingDrawer.current = s
+  }
+  const pendingDrawer = useRef<Side | null>(null)
+  useEffect(() => {
+    const s = pendingDrawer.current
+    pendingDrawer.current = null
+    if (s && dockOf(s) === 'drawer') setDrawer(s)
+  }, [g.leftDock, g.rightDock, leftOpen, rightOpen]) // eslint-disable-line react-hooks/exhaustive-deps
+  // The background is inert while the drawer is open, so focus returns to the chevron after the update lifts that.
   const closeDrawer = useCallback(() => { const s = drawer; setDrawer(null); if (s) requestAnimationFrame(() => toggleRef[s].current?.focus()) }, [drawer]) // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => { if (drawer) panelRef[drawer].current?.focus() }, [drawer]) // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => { if (drawer && dockOf(drawer) !== 'drawer') setDrawer(null) }, [g.leftDock, g.rightDock]) // eslint-disable-line react-hooks/exhaustive-deps
@@ -293,17 +320,36 @@ export function Workspace({
     onPreview: setDragging, onCommit: v => prefs.setSize(v),
   }
 
-  const style = { '--ws-size': `${g.size}px`, '--ws-left': `${g.leftWidth}px`, '--ws-right': `${g.rightWidth}px`, '--ws-pad': `${PADDING}px`, '--ws-gap': `${g.gapX}px` } as CSSProperties
+  /* The tracks include the gap to a docked panel and are 0 wide for a hidden one, so the group is centered and hidden panels reserve nothing. */
+  const style = {
+    '--ws-size': `${g.size}px`, '--ws-left': `${g.leftWidth}px`, '--ws-right': `${g.rightWidth}px`,
+    '--ws-left-track': `${g.leftWidth ? g.leftWidth + g.gapX : 0}px`, '--ws-right-track': `${g.rightWidth ? g.rightWidth + g.gapX : 0}px`,
+    '--ws-pad': `${PADDING}px`, '--ws-rail': `${RAIL}px`, '--ws-gap': `${g.gapX}px`,
+  } as CSSProperties
   const panelId = useId()
-  const toggleLabel = (s: Side, title: string) => `${(s === 'left' ? leftOpen : rightOpen) && dockOf(s) !== 'drawer' ? 'Hide' : 'Show'} ${title}`
+  const verb = (s: Side, title: string) => `${isShown(s) ? 'Hide' : 'Show'} ${title}`
+
+  /** A quiet tab on the outer edge of the workspace: it points the way the panel will move (outward to hide, inward to show). */
+  const edge = (s: Side, title: string) => (
+    <button ref={toggleRef[s]} type="button" className={`ws-edge ws-edge-${s}`} data-ws-toggle={s} aria-expanded={isShown(s)} aria-label={verb(s, title)} title={verb(s, title)}
+      inert={drawer && drawer !== s ? true : undefined} onClick={() => toggle(s)}>
+      <Icon name={s === 'left' ? (isShown(s) ? 'chevron-left' : 'chevron-right') : (isShown(s) ? 'chevron-right' : 'chevron-left')} size={16} />
+    </button>
+  )
 
   const renderPanel = (s: Side, title: string, content: ReactNode) => {
     const st = panelState(s)
+    const open = st === 'drawer-open'
     return (
       <section key={s} ref={panelRef[s]} id={`${panelId}-${s}`} className={`ws-panel ws-panel-${s} is-${st}`} aria-label={title} tabIndex={-1}
-        {...(st === 'drawer-open' ? { role: 'dialog', 'aria-modal': true } : {})} hidden={st === 'hidden' ? true : undefined} inert={drawer && drawer !== s ? true : undefined}>
-        {st === 'drawer-open' && <button type="button" className="sm-icon-btn ws-btn ws-drawer-close" aria-label="Close panel" onClick={closeDrawer}><Icon name="x" size={18} /></button>}
-        {stacked && <h2 className="ws-panel-title">{title}</h2>}
+        {...(open ? { role: 'dialog', 'aria-modal': true } : {})} inert={drawer && drawer !== s ? true : st === 'hidden' ? true : undefined}>
+        {s === 'left' && !stacked && (
+          <header className="ws-panel-head">
+            <h2 className="ws-panel-title">{title}</h2>
+            {open && <button type="button" className="sm-icon-btn ws-panel-close" aria-label={`Hide ${title}`} title={`Hide ${title}`} onClick={closeDrawer}><Icon name="chevron-left" size={16} /></button>}
+          </header>
+        )}
+        {s === 'right' && open && <button type="button" className="sm-icon-btn ws-panel-close ws-panel-close-right" aria-label={`Hide ${title}`} title={`Hide ${title}`} onClick={closeDrawer}><Icon name="chevron-right" size={16} /></button>}
         <div className="ws-panel-body">{content}</div>
       </section>
     )
@@ -312,24 +358,15 @@ export function Workspace({
   return (
     <section ref={rootRef} className={`ws ${stacked ? 'is-stacked' : ''} ${dragging !== null ? 'is-dragging' : ''}`} style={style}
       data-ws-mode={g.mode} data-ws-size={g.size} data-ws-left={panelState('left')} data-ws-right={panelState('right')} data-ws-measured={box.measured} onKeyDown={onRootKey}>
-      <div className="ws-toolbar" role="toolbar" aria-label={`${primaryLabel} layout`} inert={drawer ? true : undefined}>
-        <div className="ws-group">
-          {hasLeft && (
-            <button ref={toggleRef.left} type="button" className="sm-icon-btn ws-btn" data-ws-toggle="left" aria-pressed={g.leftDock === 'docked' || drawer === 'left'}
-              aria-label={toggleLabel('left', leftTitle)} title={toggleLabel('left', leftTitle)} onClick={() => toggle('left')}><Icon name="panel" size={18} /></button>
-          )}
-          {toolbarStart}
+      {hasToolbar && (
+        <div className="ws-toolbar" role="toolbar" aria-label={`${primaryLabel} layout`} inert={drawer ? true : undefined}>
+          <div className="ws-group">{toolbarStart}</div>
+          <div className="ws-group ws-group-end">{toolbarEnd}</div>
         </div>
-        <div className="ws-group ws-group-end">
-          {toolbarEnd}
-          {hasRight && (
-            <button ref={toggleRef.right} type="button" className="sm-icon-btn ws-btn" data-ws-toggle="right" aria-pressed={g.rightDock === 'docked' || drawer === 'right'}
-              aria-label={toggleLabel('right', rightTitle)} title={toggleLabel('right', rightTitle)} onClick={() => toggle('right')}><Icon name="sidebar-right" size={18} /></button>
-          )}
-        </div>
-      </div>
+      )}
 
       <div className="ws-body">
+        {hasLeft && !stacked && edge('left', leftTitle)}
         {hasLeft && renderPanel('left', leftTitle, left)}
         <div className="ws-primary" role="region" aria-label={primaryLabel} inert={drawer ? true : undefined}>
           {hasHeader && <div ref={headerRef} className="ws-primary-header">{primaryHeader}</div>}
@@ -337,10 +374,16 @@ export function Workspace({
             {primary}
             {!stacked && <WorkspaceRail {...railProps} placement="side" />}
           </div>
-          {stacked && <WorkspaceRail {...railProps} placement="below" />}
           {hasFooter && <div ref={footerRef} className="ws-primary-footer">{primaryFooter}</div>}
+          {stacked && <WorkspaceRail {...railProps} placement="below" />}
         </div>
         {hasRight && renderPanel('right', rightTitle, right)}
+        {hasLeft && stacked && (
+          <button ref={toggleRef.left} type="button" className="ws-disclosure" data-ws-toggle="left" aria-expanded={leftOpen} aria-controls={`${panelId}-left`} onClick={() => toggle('left')}>
+            <span>{leftTitle}</span><Icon name={leftOpen ? 'chevron-up' : 'chevron-down'} size={16} />
+          </button>
+        )}
+        {hasRight && !stacked && edge('right', rightTitle)}
       </div>
       {drawer && <div className="ws-scrim" aria-hidden="true" onClick={closeDrawer} />}
     </section>

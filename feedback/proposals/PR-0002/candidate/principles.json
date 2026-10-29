@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "status": "draft",
-  "note": "Candidate entries for guidance/principles.json. Not approved. antipatterns are empty until the owner decides whether the pattern gets its own anti-pattern or check.",
+  "note": "Candidate entries for guidance/principles.json. Not approved. antipatterns are empty until the owner decides whether the pattern gets its own anti-pattern or check. Updated for CaissaTrainer Phase 3 (hidden panels reserve nothing, chevron toggles, drawer before restack, task ordered stacking).",
   "principles": [
     {
       "id": "P23",
@@ -13,12 +13,15 @@
       "rules": [
         "Keep the primary region centered, never squeezed below a usable minimum, and the last to give up room.",
         "Disclose secondary information progressively in panels the person can hide.",
-        "Reserve the same width on both sides so a lone panel does not push the region off center.",
+        "Center the region and its open panels as one group; a hidden panel or a drawer reserves no width.",
+        "Do not flank the region with equally prominent panels: supporting information is subordinate, and the panel the person works against has no heading or card of its own.",
         "No zen or fullscreen mode: the largest size that fits and hiding the panels cover it.",
         "Panels hold content, never navigation (principle 14).",
         "Controls about the primary region live in a rail attached to it (resize handle and one options menu), not in the page toolbar; its width is reserved on both sides.",
         "A second view of the primary object is secondary: closed by default, capped well below the primary region.",
-        "Optional tools start closed behind one labelled control and the choice is remembered; nothing essential is hidden behind them."
+        "Optional tools start closed behind one control and the choice is remembered; nothing essential is hidden behind them. Which tools a module offers is a per-module decision with a stated reason, and removing one never strands what the person already wrote.",
+        "A panel is shown or hidden by a quiet chevron attached to its workspace edge (a disclosure row when stacked), reporting aria-expanded, with a 40px touch target; never a toolbar button named after the panel and never an X.",
+        "When stacked, order by task: region, status and answer controls, supporting panel, then optional tools behind a disclosure row."
       ],
       "exceptions": [
         "Applications whose product is a feed, a table or a document with a reading measure and no single primary region."
@@ -32,12 +35,14 @@
       "antipatterns": [],
       "summary": "When space runs out, panels shrink, then become a drawer, then stack.",
       "rules": [
+        "The optional panel yields to a drawer before the layout restacks (the region never drops below a stated comfort minimum, 400px in the reference); the panel the person works against yields last.",
+        "In a portrait window stack when stacking gives a much bigger region (under 70 percent of the stacked size beside the panels); never stack a landscape window only because stacking would be bigger.",
         "Order of yielding: shrink to the minimum width, on-demand drawer, stack under the primary region on a narrow screen.",
         "Never delete a panel to make room; never leave a hidden panel without a visible control that restores it.",
         "A drawer closes with Escape and returns focus to the control that opened it.",
         "Keep panels mounted so their state survives.",
-        "The responsive default is sized against the panels' minimum widths so panels yield first and grow into what remains; the default never turns a panel into a drawer.",
-        "An open drawer is a modal dialog: background inert, focus contained, Escape closes only it, focus returns to its toggle."
+        "The responsive default is sized against the open panels' minimum widths so panels yield first and grow into what remains; the default never turns the supporting panel into a drawer.",
+        "An open drawer is a modal dialog: background inert, focus contained, Escape closes only it, focus returns to the chevron that opened it; its own control is a back chevron, not an X."
       ],
       "exceptions": []
     },
@@ -65,7 +70,7 @@
       "summary": "The primary region has a responsive medium default and the person can resize it.",
       "rules": [
         "No fixed pixel size for the primary region of a workspace.",
-        "Default is deliberately medium, not the maximum; the person can go larger or smaller.",
+        "The default is dominant but deliberately below the maximum (capped at 720px in the reference); the person can go larger or smaller.",
         "The resize handle is a slider in the control rail: arrow keys, Home and End, 40px touch target.",
         "Measure the chrome around the region and hold its peak so the region does not jump."
       ],

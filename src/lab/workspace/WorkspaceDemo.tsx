@@ -67,6 +67,7 @@ export default function WorkspaceDemo() {
             </div>
           }
           leftTitle="Pages"
+          leftDefaultOpen={false}
           left={
             <div className="col" style={{ gap: 2 }} role="listbox" aria-label="Pages">
               {PAGES.map((p, i) => (
@@ -74,8 +75,9 @@ export default function WorkspaceDemo() {
               ))}
             </div>
           }
-          rightTitle="Details"
+          rightTitle="Properties"
           right={
+            /* No heading and no card: the facts say what they are. The name "Properties" only labels the region and its chevron. */
             <div className="col" style={{ gap: 'var(--sp-4)' }}>
               {FACTS.map(([k, v]) => (
                 <div key={k} className="col">

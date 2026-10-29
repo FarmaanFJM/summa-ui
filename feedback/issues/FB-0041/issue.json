@@ -1,0 +1,37 @@
+{
+  "id": "FB-0041",
+  "createdAt": "2026-10-29T16:37:16Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer",
+    "route": "Training modules: /train/studies (available), /train/mate-in-two and others (when-saved); module list in phase3/notes.md"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Optional tools differ per module as a typed capability with a documented reason, closed by default and remembered; removing a capability must never strand what the person already wrote",
+  "screenshots": [
+    {
+      "file": "after-workspace-1366.png",
+      "viewport": "1366x768",
+      "note": "After: a module where Notes are not offered for the current puzzle (when-saved, no saved note): no Notes chevron exists, only the session area."
+    },
+    {
+      "file": "after-notes-panel-1366.png",
+      "viewport": "1366x768",
+      "note": "After: Notes open on Mate in Two (the person opened them); the panel is closed until opened and its chevron is on the left edge."
+    }
+  ],
+  "explanation": "CaissaTrainer Phase 3 (notes.md section 1 and 2, Decision register). OBSERVED: the same optional tool (Notes) was offered the same way in every module, including those where it is noise (timed drills, hidden position exercises) or would break training integrity. OWNER DIRECTION: different default supporting tools per task. RULES IMPLEMENTED: (1) the capability is a typed per module decision with a stated reason (trainingNotes.ts TRAINING_NOTES, notesCapabilityFor), and a test fails when a module has no entry; values are available, when-saved and none; (2) every offered tool stays closed until opened, and the open choice is remembered per module; (3) NEVER LOSE USER DATA: no capability change deletes or rewrites a row; when-saved keeps the tool for any item that already has a saved note or an unsynced local draft; a failed lookup, or content this client cannot parse, counts as \"has a note\", because hiding the only route to a note over a network blip would be the loss the rule prevents; unknown modules resolve to when-saved, never none; drafts are mirrored locally until the server confirms the same content; (4) the control (chevron) does not exist when the tool is not offered, rather than being disabled with no way to act, and it appears when the slot appears after mount (a reactive presence check, a real bug fixed in WorkspaceLayout.vue). GENERAL PART: a product with optional tools decides per task which ones exist, writes the reason down, and treats user authored data as something no configuration may hide. PRODUCT SPECIFIC (stays in CaissaTrainer): the module table, and Studies as available, which is a judgement call. RELATED, MERGED BY REFERENCE: FB-0021 (optional tools closed by default, remembered), FB-0034 (a control must not claim a state it does not have), FB-0037. APPROVED GUIDANCE: P05 (minimum information for the current task) and P21 (remove before adding) support removing a tool from a task where it is noise, but nothing addresses the data loss side.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-gap",
+    "rationale": "Missing reusable pattern: nothing in approved guidance asks for a documented per task capability or for the rule that removing a feature must keep the user's data reachable. P05 and P21 cover only the removal. Owner confirmation needed.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P05",
+    "P21"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "proposal-drafted",
+  "proposal": "PR-0002"
+}

@@ -1,6 +1,6 @@
 {
   "id": "PR-0002",
-  "title": "Workspace pattern: resizable primary region, control rail, yielding panels, compact rail; Phase 2 candidate amendments",
+  "title": "Workspace pattern: resizable primary region, edge chevron panels, yielding panels, control rail; Phase 2 and 3 candidate amendments",
   "issues": [
     "FB-0014",
     "FB-0015",
@@ -21,13 +21,20 @@
     "FB-0031",
     "FB-0032",
     "FB-0033",
-    "FB-0034"
+    "FB-0034",
+    "FB-0035",
+    "FB-0036",
+    "FB-0037",
+    "FB-0038",
+    "FB-0039",
+    "FB-0040",
+    "FB-0041"
   ],
   "kind": "new-principle",
   "status": "draft",
   "authoredBy": "claude-agent",
   "authoredAt": "2026-10-29T06:08:27Z",
-  "summary": "Add a workspace pattern: a primary region that stays primary and can be resized by the person, side panels that yield (shrink, drawer, stack) before it, choices stored as preferences rather than measurements, and a compact icon rail for the application sidebar. Candidate principles P23 to P26 and candidate presets preset.workspace and preset.app-sidebar-rail travel as files in this folder; docs/WORKSPACE_PATTERN.md and the reference code (src/ui/workspaceGeometry.ts, src/ui/workspace.tsx, route #/workspace) are outside guidance/ and change no approved rule. It generalizes: any app with an image, canvas, preview, map or board as its main region hits the same layout problems. Open for the owner: ghost buttons (FB-0018) are deliberately not decided; whether the four size buttons are too many controls (P10); whether P26 needs a check; the CHK-011 collector matches every aside; the default size keeps panels at preferred width so it can be small on mid-size windows. CaissaTrainer Phase 2 extended this draft (FB-0020 to FB-0034): the size controls moved from the toolbar into a control rail attached to the region (FB-0020), optional tools and a duplicate view are closed by default and capped (FB-0021, FB-0022), the default is sized against panel minimums with the rail reserved on both sides (FB-0023), drawers are modal dialogs (FB-0024). Candidate amendments outside the workspace pattern are in candidate/amendments.md: tags and colour (AP-005, P06, CHK-005, FB-0025), equal surface check (FB-0028), editable text fields (FB-0026), toolbar density (FB-0027), honest toggles (FB-0034), repeated controls (FB-0030 to FB-0033), undefined class lint (FB-0029). Several are failures to apply approved guidance, not gaps (FB-0025, FB-0029, FB-0033, part of FB-0028); the proposal lists which. Draft only: the owner decides everything, including whether to split this proposal.",
+  "summary": "Add a workspace pattern: a primary region that stays primary and can be resized by the person, side panels that yield (shrink, drawer, stack) before it, choices stored as preferences rather than measurements, and a compact icon rail for the application sidebar. Candidate principles P23 to P26 and candidate presets preset.workspace and preset.app-sidebar-rail travel as files in this folder; docs/WORKSPACE_PATTERN.md and the reference code (src/ui/workspaceGeometry.ts, src/ui/workspace.tsx, route #/workspace) are outside guidance/ and change no approved rule. It generalizes: any app with an image, canvas, preview, map or board as its main region hits the same layout problems. Open for the owner: ghost buttons (FB-0018) are deliberately not decided; whether P26 needs a check; the CHK-011 collector matches every aside; whether a quiet edge chevron is discoverable enough on a real touch device (FB-0037). CaissaTrainer Phase 2 extended this draft (FB-0020 to FB-0034): the size controls moved from the toolbar into a control rail attached to the region (FB-0020), optional tools and a duplicate view are closed by default and capped (FB-0021, FB-0022), the default is sized against panel minimums with the rail reserved on both sides (FB-0023), drawers are modal dialogs (FB-0024). Candidate amendments outside the workspace pattern are in candidate/amendments.md: tags and colour (AP-005, P06, CHK-005, FB-0025), equal surface check (FB-0028), editable text fields (FB-0026), toolbar density (FB-0027), honest toggles (FB-0034), repeated controls (FB-0030 to FB-0033), undefined class lint (FB-0029). Several are failures to apply approved guidance, not gaps (FB-0025, FB-0029, FB-0033, part of FB-0028); the proposal lists which. CaissaTrainer Phase 3 (FB-0035 to FB-0041, plus updates recorded on FB-0021, FB-0023, FB-0024, FB-0026, FB-0027 and FB-0034) revised the draft: hidden panels reserve no width and the board plus its open panels are centered as one group (replacing the equal reserve rule, FB-0036); panels are shown and hidden by quiet edge chevrons that report aria-expanded, with no toolbar toggle and no panel X (FB-0037); the optional left panel yields to a drawer before the layout restacks (COMFORT_MIN 400); a portrait window stacks when stacking gives a much bigger board; the default cap is 720 and fill 0.92; stacking is ordered by task (FB-0040); optional tools are a per module capability that never strands user data (FB-0041). Phase 3 also recorded redundant explanatory copy (FB-0035, FB-0038), classified as a failure to apply P04, P05, P09, P21, AP-005 and AP-010, with a drafted AP-010 clarification and an optional narrow check in amendments.md section I, and reconciled the Phase 2 editable field draft (FB-0026) so a save state is shown only when it communicates a condition. Session information (FB-0039) is an ambiguity, not drafted as a rule. Draft only: the owner decides everything, including whether to split this proposal.",
   "change": {
     "files": [
       "PRINCIPLES.md (candidate text only: feedback/proposals/PR-0002/candidate/principles.md)",
@@ -43,7 +50,10 @@
       "src/ui/index.tsx (AppShell compact prop, NavItem title in compact), src/main.tsx (route #/workspace, workspace.css import)",
       "scripts/test-workspace.mjs, package.json (test:workspace)",
       "feedback/proposals/PR-0002/candidate/amendments.md (candidate text for AP-005, P06, CHK-005, a surface check, three candidate principles and one anti-pattern; candidate numbering only)",
-      "src/ui/workspace.tsx, src/styles/workspace.css (control rail, inert drawer) and src/ui/workspaceGeometry.ts (rail, gapX, default against minimums, dockable floor) updated to match CaissaTrainer"
+      "src/ui/workspace.tsx, src/styles/workspace.css (control rail, inert drawer) and src/ui/workspaceGeometry.ts (rail, gapX, default against minimums, dockable floor) updated to match CaissaTrainer Phase 2",
+      "src/ui/workspaceGeometry.ts, src/ui/workspace.tsx, src/styles/workspace.css, src/lab/workspace/WorkspaceDemo.tsx updated to CaissaTrainer Phase 3 (workspaceLayout.ts is the source of truth): hidden panels reserve no width, group centered, edge chevron toggles with aria-expanded, disclosure row when stacked, no toolbar panel buttons and no panel X, optional panel drawer before restack (COMFORT_MIN 400), portrait stacking, DEFAULT_CAP 720, DEFAULT_FILL 0.92",
+      "scripts/test-workspace.mjs (48 cases, includes a parity check against CaissaTrainer workspaceLayout.ts when present), scripts/build-workspace-candidate.mjs (regenerates candidate/js/workspace-geometry.js)",
+      "feedback/proposals/PR-0002/candidate/css/workspace-presets.css, examples/workspace.html, presets/workspace.json, principles.md, principles.json, amendments.md (sections D, E, F amended; I and J added), README.md and conflicts-and-decisions.md updated for Phase 3"
     ],
     "principleIds": [
       "P23",
@@ -88,20 +98,36 @@
       {
         "description": "A second full size board next to the puzzle board, shown by default (FB-0022).",
         "screenshot": "feedback/issues/FB-0022/random-puzzles-1366-3board.png"
+      },
+      {
+        "description": "Panels toggled by two toolbar buttons named after the panels, each panel carrying an X (FB-0037).",
+        "screenshot": "feedback/issues/FB-0037/before-notes-panel-1366.png"
+      },
+      {
+        "description": "An equal reserve column for a hidden panel: the region sits beside an empty void (FB-0036).",
+        "snippet": "grid-template-columns: minmax(0, 1fr) var(--ws-size) minmax(0, 1fr);  /* the empty side keeps its column; use [left track] [region + rail margin] [right track], tracks 0 when hidden */"
+      },
+      {
+        "description": "Redundant explanatory copy: a label repeating the panel title and a permanent save line (FB-0035).",
+        "screenshot": "feedback/issues/FB-0035/before-notes-panel-1366.png"
+      },
+      {
+        "description": "A collapsible panel that is the only owner of a control the person needs to continue (FB-0037).",
+        "snippet": "<aside class=\"collapsible\"><button>Next puzzle</button></aside>  /* put controls needed to continue in the strip or footer under the region */"
       }
     ],
     "positive": [
       {
-        "description": "Reference route #/workspace at 1440px: primary preview centered, panels docked at equal reserve, size controls and a corner slider handle.",
+        "description": "Reference route #/workspace at 1440px (Phase 3): the preview and the supporting panel are centered as one group, the optional Pages panel is closed behind its edge chevron and reserves no width, the size controls are the rail beside the preview.",
         "screenshot": "feedback/proposals/PR-0002/screenshots/workspace-desktop-1440.png",
         "demo": "#/workspace"
       },
       {
-        "description": "At 1100px the panels shrink and the application sidebar is the 56px rail; the preview keeps its usable size (P23, P24).",
+        "description": "At 1100px the supporting panel docks beside the preview, the application sidebar is the 56px rail, and the optional panel waits behind its edge chevron (P23, P24).",
         "screenshot": "feedback/proposals/PR-0002/screenshots/workspace-laptop-1100.png"
       },
       {
-        "description": "At 390px the workspace stacks: the preview first at full width, panels below as sections, 40px touch targets (P24, P18).",
+        "description": "At 390px the workspace stacks in task order: the preview first at full width, its rail, the supporting information, then the optional Pages panel behind a disclosure row, 40px touch targets (P24, P18, FB-0040).",
         "screenshot": "feedback/proposals/PR-0002/screenshots/workspace-phone-390.png"
       },
       {
@@ -119,6 +145,34 @@
       {
         "description": "Taxonomy chips removed, ability named in one plain line on the overview (FB-0025).",
         "screenshot": "feedback/issues/FB-0025/_train-1440.png"
+      },
+      {
+        "description": "Both panels open at 1440: a quiet Pages surface on the left, the preview, and the flat Properties panel with no heading or card on the right; chevrons on both outer edges point the way each panel will move (FB-0036, FB-0037).",
+        "screenshot": "feedback/proposals/PR-0002/screenshots/workspace-both-open-1440.png"
+      },
+      {
+        "description": "Both panels hidden: no empty columns, the preview is centered on its own and each edge chevron says Show (FB-0036).",
+        "screenshot": "feedback/proposals/PR-0002/screenshots/workspace-both-hidden-1440.png"
+      },
+      {
+        "description": "The optional panel as a modal drawer when it cannot dock beside a comfortable preview (COMFORT_MIN 400), closed by a back chevron, not an X (FB-0023 update, FB-0024, FB-0037).",
+        "screenshot": "feedback/proposals/PR-0002/screenshots/workspace-drawer-900.png"
+      },
+      {
+        "description": "Portrait tablet at 820 stacks because that gives a much bigger preview; the optional panel is a disclosure row (FB-0023 update).",
+        "screenshot": "feedback/proposals/PR-0002/screenshots/workspace-tablet-820.png"
+      },
+      {
+        "description": "Redundant copy removed: the Notes panel keeps its heading, an accessible name and a prompt while empty; no repeated label, no permanent save line (FB-0035).",
+        "screenshot": "feedback/issues/FB-0035/after-notes-panel-1366.png"
+      },
+      {
+        "description": "Save state only when it is news: a status only while a request is in flight and a failure with a retry, nothing at rest.",
+        "snippet": "<div role=\"status\" aria-live=\"polite\" class=\"note-status\">{saving ? 'Saving...' : ''}</div>\n{failed && <div role=\"alert\">Could not save <button>Try again</button></div>}  /* nothing when idle or saved (FB-0035) */"
+      },
+      {
+        "description": "Panel toggle as an edge chevron that reports what is on screen.",
+        "snippet": "<button type=\"button\" class=\"ws-edge ws-edge-left\" data-ws-toggle=\"left\" aria-expanded={shown} aria-label={shown ? 'Hide Pages' : 'Show Pages'}>...chevron...</button>  /* no toolbar toggle, no X (FB-0037) */"
       }
     ]
   },
@@ -126,8 +180,8 @@
     "result": "no-regressions",
     "regressionReport": "feedback/proposals/PR-0002/regression.json",
     "baseline": "feedback/baselines/guidance-v0.1.0.json",
-    "ranAt": "2026-10-29T13:18:30Z",
-    "notes": "Re-run by claude-agent after the Phase 2 update (control rail in the React reference, geometry port with rail, gapX, default against panel minimums): result no-regressions on the 12 approved references at 1440 and 390, tap test pass, desktop layout comparison changed for trading@1440 only (57 elements), the same pre-existing time dependent flake of scripts/layout-snapshot.mjs recorded earlier; the other apps and trading@1100 show 0 changed. No candidate check is implemented, so no check outcome can change. #/workspace tap test: 34 tested, 0 undersized (one rail button at 32px was found and fixed during this run). Not an approval."
+    "ranAt": "2026-10-29T16:57:07Z",
+    "notes": "Re-run by claude-agent after the Phase 3 update (edge chevron toggles, hidden panels reserve no width, drawer before restack, portrait stacking, cap 720 and fill 0.92, new issues FB-0035 to FB-0041, AP-010 clarification drafted): result no-regressions on the 12 approved references at 1440 and 390, tap test pass (940 elements, 0 undersized, 0 tap mismatches on the 12 applications), desktop layout comparison changed for trading only (31 elements at 1440, 59 at 1100 in this run, 82 and 82 in a second run: the count varies between runs because the trading reference shows live ticking data, the same pre-existing time dependent behaviour recorded in the Phase 2 run; trading does not use the workspace pattern; the other 11 applications show 0 changed). No candidate check is implemented, so no check outcome can change. #/workspace tap test (node scripts/test-tap-targets.mjs --apps workspace, with new scenarios for the optional panel and the rail menu): 390x844 24 tested, 820x1180 23 tested, 0 undersized, 0 tap mismatches; the edge chevron measured 32x64 effective when it hugged the screen edge and 40x64 after it was moved 8px in (found and fixed during this run; checked at 1100x700 with a touch context). npm run test:workspace: 48 pass (includes parity with CaissaTrainer workspaceLayout.ts). Not an approval."
   },
   "versionImpact": "minor",
   "existingApplications": {

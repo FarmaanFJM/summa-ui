@@ -2,20 +2,20 @@
   "guidanceVersion": "0.1.0",
   "generator": "scripts/regression-check.mjs",
   "counts": {
+    "projects@1440x900": {},
     "ai@1440x900": {
       "CHK-022 needs-human": 1
     },
     "ai@390x844": {
       "CHK-022 needs-human": 1
     },
-    "projects@1440x900": {},
-    "projects@390x844": {},
-    "documents@390x844": {
-      "CHK-022 needs-human": 4
-    },
     "documents@1440x900": {
       "CHK-022 needs-human": 4
     },
+    "documents@390x844": {
+      "CHK-022 needs-human": 4
+    },
+    "projects@390x844": {},
     "analytics@1440x900": {},
     "files@1440x900": {
       "CHK-022 needs-human": 1

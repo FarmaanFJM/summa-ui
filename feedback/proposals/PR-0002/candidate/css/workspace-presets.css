@@ -5,27 +5,22 @@
   Behaviour (measuring, geometry, focus, drawer) lives in the example HTML and js/workspace-geometry.js;
   this file only owns appearance. State is expressed with data attributes so the same markup works anywhere:
     .sm-workspace[data-mode="wide|stacked"]  [data-left|data-right="absent|hidden|docked|drawer|drawer-open"]
-  The host sets three custom properties on .sm-workspace: --sm-ws-size, --sm-ws-left, --sm-ws-right (px).
+  The host sets custom properties on .sm-workspace: --sm-ws-size, --sm-ws-left, --sm-ws-right (panel widths, px) and
+  --sm-ws-left-track, --sm-ws-right-track (panel width plus gap, 0 when the panel is hidden or a drawer).
 */
 
 /* ---------------------------------------------------------------- 10. Workspace */
-.sm-workspace { --sm-ws-pad: 16px; --sm-ws-gap: 16px; position: relative; display: flex; flex-direction: column; width: 100%; height: 100%; min-width: 0; min-height: 0; color: var(--text); }
-.sm-workspace__toolbar { flex: none; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: var(--sp-2); height: 44px; padding: 0 var(--sp-3); }
-.sm-workspace__group { display: flex; align-items: center; gap: var(--sp-1); min-width: 0; }
-.sm-workspace__group--center { justify-content: center; }
-.sm-workspace__group--end { justify-content: flex-end; }
-
-/* Toolbar buttons are sm-icon-btn with a neutral fill, so they are visible at rest. */
-.sm-workspace .sm-icon-btn { background: var(--s2); }
-.sm-workspace .sm-icon-btn:hover:not(:disabled) { background: var(--s3); color: var(--text); }
-.sm-workspace .sm-icon-btn[aria-pressed="true"] { background: var(--select); color: var(--text); }
-.sm-workspace .sm-icon-btn:disabled { opacity: 0.45; cursor: default; }
+/* Phase 3 geometry (FB-0036, FB-0037): three tracks [left panel + gap] [region + rail margin each side] [right panel + gap], centered as one
+   group; a hidden panel has a 0 wide track. A panel is shown and hidden by a quiet chevron on the workspace edge, never a toolbar button or an X. */
+.sm-workspace { --sm-ws-pad: 16px; --sm-ws-gap: 16px; --sm-ws-rail: 40px; position: relative; display: flex; flex-direction: column; width: 100%; height: 100%; min-width: 0; min-height: 0; color: var(--text); }
+.sm-workspace__toolbar { flex: none; display: flex; align-items: center; justify-content: space-between; gap: var(--sp-2); height: 44px; padding: 0 var(--sp-3); }  /* only when the page has content for it */
 
 .sm-workspace__body {
-  flex: 1 1 auto; min-height: 0; display: grid; grid-template-columns: minmax(0, 1fr) var(--sm-ws-size) minmax(0, 1fr);
-  column-gap: var(--sm-ws-gap); align-content: center; align-items: start; padding: 0 var(--sm-ws-pad) var(--sm-ws-pad); overflow-x: clip; overflow-y: auto;
+  position: relative; flex: 1 1 auto; min-height: 0; display: grid;
+  grid-template-columns: var(--sm-ws-left-track, 0px) calc(var(--sm-ws-size) + 2 * var(--sm-ws-rail)) var(--sm-ws-right-track, 0px);
+  justify-content: center; align-content: center; align-items: start; padding: 0 var(--sm-ws-pad) var(--sm-ws-pad); overflow-x: clip; overflow-y: auto;
 }
-.sm-workspace__primary { grid-column: 2; grid-row: 1; width: var(--sm-ws-size); min-width: 0; }
+.sm-workspace__primary { grid-column: 2; grid-row: 1; width: var(--sm-ws-size); min-width: 0; justify-self: center; }
 .sm-workspace__box { position: relative; width: var(--sm-ws-size); min-height: var(--sm-ws-size); }  /* at least a square */
 .sm-workspace__header { width: var(--sm-ws-size); }
 .sm-workspace__footer { width: var(--sm-ws-size); margin-top: var(--sp-3); }
@@ -41,41 +36,65 @@
 .sm-workspace.is-dragging { user-select: none; }
 .sm-workspace.is-dragging .sm-workspace__grip { background: var(--select-strong); color: var(--text); }
 
-/* Panels are content panes one step above the surface they sit on (P02). */
-.sm-workspace__panel { grid-row: 1; align-self: stretch; min-width: 0; max-height: 100%; overflow: auto; background: var(--s2); border-radius: var(--r-lg); padding: var(--sp-3); }
-.sm-workspace__panel--left { grid-column: 1; justify-self: end; width: var(--sm-ws-left); }
-.sm-workspace__panel--right { grid-column: 3; justify-self: start; width: var(--sm-ws-right); }
+/* Edge chevrons: always present (found without hover), brighter on hover and focus. */
+.sm-workspace__edge {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 5; width: 18px; height: 56px; display: grid; place-items: center; padding: 0;
+  border: 0; background: var(--s2); color: var(--text-3); cursor: pointer; opacity: 0.7;
+}
+.sm-workspace__edge svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
+.sm-workspace__edge--left { left: 0; border-radius: 0 var(--r) var(--r) 0; }
+.sm-workspace__edge--right { right: 0; border-radius: var(--r) 0 0 var(--r); }
+.sm-workspace__edge:hover, .sm-workspace__edge:focus-visible, .sm-workspace__body:hover .sm-workspace__edge { opacity: 1; }
+.sm-workspace__edge:hover { background: var(--s3); color: var(--text); }
+.sm-workspace__edge:focus-visible, .sm-workspace__back:focus-visible, .sm-workspace__disclosure:focus-visible { outline: 1.5px solid var(--focus); outline-offset: -1.5px; }
+
+/* The optional left panel is a surface one step above the page (P02). The right panel has no surface and no heading: its content decides. */
+.sm-workspace__panel { grid-row: 1; align-self: start; min-width: 0; max-height: 100%; overflow: auto; }
+.sm-workspace__panel--left { grid-column: 1; justify-self: start; width: var(--sm-ws-left); background: var(--s2); border-radius: var(--r-lg); padding: var(--sp-3); }
+.sm-workspace__panel--right { grid-column: 3; justify-self: end; width: var(--sm-ws-right); }
 .sm-workspace__panel[data-state="hidden"], .sm-workspace__panel[data-state="drawer"] { display: none; }
 .sm-workspace__panel:focus-visible { outline: 1.5px solid var(--focus); outline-offset: -1.5px; }
-.sm-workspace__panel-title { display: none; margin: 0 0 var(--sp-2); font-size: var(--fs); font-weight: 600; color: var(--text-2); }
+.sm-workspace__panel-head { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-2); margin: 0 0 var(--sp-2); }
+.sm-workspace__panel-title { margin: 0; font-size: var(--fs); font-weight: 600; color: var(--text); }
+.sm-workspace__back { display: none; width: 28px; height: 28px; padding: 0; border: 0; border-radius: var(--r-sm); place-items: center; background: transparent; color: var(--text-2); cursor: pointer; }
+.sm-workspace__back svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
 
-/* Drawer: not enough room to dock, so the panel opens over the workspace on demand. */
+/* Drawer: not enough room to dock, so the panel opens over the workspace on demand, as a modal dialog, closed by a back chevron (no X). */
 .sm-workspace__panel[data-state="drawer-open"] {
-  position: fixed; top: 0; bottom: 0; z-index: 90; width: min(360px, 88vw); max-height: none; border-radius: 0;
-  background: var(--s3); box-shadow: var(--shadow-pop); padding-top: calc(var(--sp-6) + var(--sp-3));
+  position: absolute; grid-area: auto; align-self: stretch; top: 0; bottom: 0; z-index: 90; width: min(360px, 88vw); max-height: none; border-radius: 0;
+  background: var(--s3); box-shadow: var(--shadow-pop); padding: var(--sp-3);
 }
 .sm-workspace__panel--left[data-state="drawer-open"] { left: 0; }
 .sm-workspace__panel--right[data-state="drawer-open"] { right: 0; }
-.sm-workspace__close { position: absolute; top: var(--sp-2); right: var(--sp-2); }
-.sm-workspace .sm-workspace__close { background: var(--s4); }
-.sm-workspace__scrim { position: fixed; inset: 0; z-index: 80; background: rgba(8, 9, 9, 0.55); }
+.sm-workspace__panel[data-state="drawer-open"] .sm-workspace__back { display: grid; }
+.sm-workspace__scrim { position: absolute; inset: 0; z-index: 80; background: rgba(8, 9, 9, 0.55); }
 
-/* Stacked: primary region on top, panels below as sections. Nothing is hidden. */
-.sm-workspace[data-mode="stacked"] .sm-workspace__toolbar { grid-template-columns: auto 1fr auto; }
-.sm-workspace[data-mode="stacked"] .sm-workspace__body { display: flex; flex-direction: column; align-items: center; gap: var(--sp-4); padding: 0 var(--sm-ws-pad) var(--sp-4); }
+/* Stacked: region first, then the right panel, then the optional left panel behind a disclosure row. Nothing is hidden. */
+.sm-workspace__disclosure { display: none; width: 100%; max-width: 720px; min-height: var(--control-h); align-items: center; justify-content: space-between; padding: 0 var(--sp-3); border: 0; border-radius: var(--r); background: var(--s2); color: var(--text-2); font: 500 var(--fs)/1 var(--font); cursor: pointer; }
+.sm-workspace__disclosure:hover { background: var(--s3); color: var(--text); }
+.sm-workspace[data-mode="stacked"] .sm-workspace__disclosure { display: flex; }
+.sm-workspace[data-mode="stacked"] .sm-workspace__edge { display: none; }
+.sm-workspace[data-mode="stacked"] .sm-workspace__body { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: var(--sp-3); padding: var(--sp-1) var(--sm-ws-pad) var(--sp-4); overflow: visible; }
 .sm-workspace[data-mode="stacked"] .sm-workspace__primary { order: 1; flex: none; }
-.sm-workspace[data-mode="stacked"] .sm-workspace__panel { flex: none; order: 2; width: 100%; max-width: 720px; max-height: none; align-self: auto; justify-self: auto; }
-.sm-workspace[data-mode="stacked"] .sm-workspace__panel--right { order: 3; }
-.sm-workspace[data-mode="stacked"] .sm-workspace__panel[data-state="hidden"] { display: none; }
-.sm-workspace[data-mode="stacked"] .sm-workspace__panel-title { display: block; }
+.sm-workspace[data-mode="stacked"] .sm-workspace__panel { flex: none; width: 100%; max-width: 720px; max-height: none; align-self: auto; justify-self: auto; }
+.sm-workspace[data-mode="stacked"] .sm-workspace__panel--right { order: 2; }
+.sm-workspace[data-mode="stacked"] .sm-workspace__disclosure { order: 3; }
+.sm-workspace[data-mode="stacked"] .sm-workspace__panel--left { order: 4; }
+.sm-workspace[data-mode="stacked"] .sm-workspace__panel-head { display: none; }
 
-/* Touch (P18, CHK-020): 40px effective targets. The handle keeps its look and gains a centred 44px extension. */
+/* Touch (P18, CHK-020): 40px effective targets. The handle keeps its look and gains a centred 44px extension; the chevron tab reaches past its edge. */
 @media (pointer: coarse), (max-width: 820px) {
-  .sm-workspace .sm-icon-btn { width: 40px; height: 40px; }
   .sm-workspace__toolbar { height: 52px; }
   .sm-workspace__grip { right: -4px; bottom: -4px; }
   .sm-workspace__grip::after { content: ""; position: absolute; left: 50%; top: 50%; width: 44px; height: 44px; transform: translate(-50%, -50%); }
+  .sm-workspace__edge { width: 24px; height: 64px; opacity: 1; border-radius: var(--r); }  /* 8px in from the screen edge so the extension is not clipped */
+  .sm-workspace__edge--left { left: 8px; }
+  .sm-workspace__edge--right { right: 8px; }
+  .sm-workspace__edge::after { content: ""; position: absolute; inset: -8px; }
+  .sm-workspace__back { width: 40px; height: 40px; }
+  .sm-workspace__disclosure { min-height: 40px; }
 }
+@media (prefers-reduced-motion: reduce) { .sm-workspace__edge { transition: none; } }
 
 /* ---------------------------------------------------------------- 11. Application sidebar: compact rail */
 /* One navigation list in three presentations: expanded (default sidebar), compact rail (56px), mobile drawer (host owns it). */
