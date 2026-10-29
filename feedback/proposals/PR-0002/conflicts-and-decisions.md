@@ -40,6 +40,19 @@ Agents cannot edit `docs/DECISIONS.md` (owner-protected) and the validator requi
 | P16 Layout Diversity | Task ordered stacking, hidden panels reserve nothing | No contradiction; both apply only to pages with a primary region. |
 | CaissaTrainer U1 (no hover only actions, no ghost buttons) | Chevron at 70 percent opacity at rest, full on hover | Not a Summa rule. The chevron is always present and full strength on touch; U1 is the consumer's own doctrine and is related to FB-0018. |
 
+## Added by CaissaTrainer Phase 4 (FB-0042 to FB-0044, updates on FB-0020 and FB-0041)
+
+| Approved rule | Candidate | Contradiction? |
+| --- | --- | --- |
+| P11 The Rectangle Rule (AP-014, CHK-014) | Contextual controls align with the region's edges or sit in a control region measured from it (amendments.md K1) | No. P11's approved rules and exception are about indentation, so the candidate does not contradict them and is not already covered by them. If the owner wants the general sentence in P11 itself, that is a patch level clarification (option K1b); the draft keeps it in candidate P23. |
+| P01 and P02 | The rail column is a surface step (`--s2` on the `--s1` workspace), no border, controls hover to `--s3` | Consistent: no nested border, each surface lighter than its parent. Related to FB-0028 (a surface must differ from its parent): it does. |
+| P12 Dividers | None | Not relevant. |
+| P16 Layout Diversity | The alignment rule applies only to controls about a primary region | No contradiction; scope sentence in K1. |
+| P09 Simplicity Beats Cleverness and the Meta-Principle Remove Before Adding | The container adds a surface | Tension, justified: no control is added, a detachment is removed. The wording also allows edge aligned controls with no surface, so the owner may prefer that reading. |
+| Candidate P23 control rail bullet (FB-0020) and candidate P26 resize bullet | The column spans the region's height, controls on its edges, 8px gap, 40px reserved | No contradiction: the rail still sits beside the region (below when stacked), is quiet at rest and reserves its width on both sides. FB-0037 edge chevrons attach to the workspace edge and are a different control. |
+| FB-0018 ghost buttons (undecided) | Rail buttons are transparent inside a visible surface | Still open. The surface makes them findable; the owner decision on ghost buttons is unchanged. |
+| P14 No Sidebar Stacking | A persistent return control (K2) is not navigation sidebar content | No contradiction; P14 covers back chevrons inside navigation, K2 a return to a task in another area. The approved tokens define no layer scale, so the order below modal layers is a question for the owner (token addition, not a principle). |
+
 ## Draft DECISIONS entries (not applied)
 
 ### D-008 (draft) Workspace panels beside the application sidebar (P14)

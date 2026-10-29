@@ -8,6 +8,10 @@
   The size controls are a rail attached to the primary region (a resize handle that is a slider, and one options
   menu with the discrete actions), not toolbar buttons: the toolbar (only when a page supplies content for it) is about the
   page, the rail is about the region it sits against. Its width is reserved on both sides so the region stays centered (geometry `rail`).
+  Beside the region the rail is one narrow rectangular column exactly as tall as the region, with the options control on the
+  region's top edge and the resize control on its bottom edge, measured from the region box and never from page coordinates
+  (FB-0042). It is rendered inside the region's own box for that reason; stacked, it is a compact row under the region aligned to
+  the region's right edge.
 
   A panel is shown or hidden by a small chevron attached to the workspace edge it lives on (a disclosure row for the
   optional panel when the layout is stacked). There are no toolbar buttons for panels and no close X on a panel: a panel
@@ -30,7 +34,7 @@ const TOOLBAR_HEIGHT = 44
 const PADDING = 16
 const GAP = 16
 const CHROME_GAP = 12
-/** Width the control rail takes beside the primary region; reserved on both sides by the geometry. */
+/** Width the control rail takes beside the primary region (8px gap plus the 32px column); reserved on both sides by the geometry. */
 const RAIL = 40
 export const WORKSPACE_STORAGE_KEY = 'summa-workspace-v1'
 
@@ -105,7 +109,8 @@ type RailProps = {
 /**
  * The controls about the primary region, attached to it: a resize handle (a slider: drag, or arrow keys, Home, End)
  * and one labelled options menu (APG menu button) that holds the discrete actions. Rare actions live in the menu so the
- * region keeps four fewer permanent buttons. It follows the region, so it is never left behind at an old size.
+ * region keeps four fewer permanent buttons. It follows the region, so it is never left behind at an old size. Beside the
+ * region it is a column exactly as tall as the region (FB-0042): options on the top edge, resize on the bottom edge.
  */
 function WorkspaceRail({ label, size, minSize, maxSize, atMin, atMax, customized, placement, onStep, onLargest, onRestore, onPreview, onCommit }: RailProps) {
   const [open, setOpen] = useState(false)

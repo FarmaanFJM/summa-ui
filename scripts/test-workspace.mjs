@@ -264,3 +264,41 @@ test('parity with CaissaTrainer workspaceLayout.ts when that file is present (so
     assert.deepEqual(computeWorkspace(i), src.computeWorkspace(i), JSON.stringify(i))
   }
 })
+
+/* ---- Rail alignment (FB-0042), structure and CSS. The measured browser test is scripts/test-workspace-alignment.mjs. ---- */
+const read = async rel => (await import('node:fs')).readFileSync(new URL(rel, import.meta.url), 'utf8')
+const rule = (css, selector) => { const m = css.match(new RegExp(`(^|\\n)${selector.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}\\s*\\{([^}]*)\\}`)); return m ? m[2] : '' }
+
+test('rail alignment: the side rail is a column spanning the region box, offset from the region and never from the page', async () => {
+  const css = await read('../src/styles/workspace.css'), side = rule(css, '.ws-rail.is-side')
+  ok(side, 'a .ws-rail.is-side rule exists')
+  ok(/position:\s*absolute/.test(side), 'positioned against the region box')
+  ok(/top:\s*0\b/.test(side) && /bottom:\s*0\b/.test(side), 'top and bottom equal the region top and bottom (the column is as tall as the region)')
+  ok(/left:\s*calc\(100%\s*\+\s*8px\)/.test(side), 'an 8px gap from the region right edge')
+  ok(/width:\s*32px/.test(side), '32px wide')
+  ok(/flex-direction:\s*column/.test(side) && /justify-content:\s*space-between/.test(side), 'first control on the top edge, last on the bottom edge')
+  ok(/align-items:\s*stretch/.test(side), 'both controls share one alignment')
+  ok(/background:\s*var\(--s2\)/.test(side) && !/border\s*:/.test(side), 'a surface step, no border')
+  ok(!/position:\s*fixed|\b\d+(vw|vh|dvh|svh)\b/.test(side), 'no page coordinates or viewport units')
+  eq(32 + 8, 40, 'the column plus its gap is the 40px the geometry reserves on both sides')
+})
+test('rail alignment: buttons fill the column, and the column grows with them on touch', async () => {
+  const css = await read('../src/styles/workspace.css')
+  ok(/\.ws-rail-btn\s*\{[^}]*width:\s*32px;\s*height:\s*32px/.test(css), 'rail buttons are 32px beside the region')
+  const touch = css.slice(css.indexOf('@media (max-width: 820px), (pointer: coarse)'))
+  ok(/\.ws-rail\.is-side\s*\{\s*width:\s*var\(--hit\)/.test(touch), 'the side column is --hit wide where the buttons are')
+})
+test('rail alignment: stacked, the rail is a compact row aligned to the region right edge', async () => {
+  const css = await read('../src/styles/workspace.css'), below = rule(css, '.ws-rail.is-below')
+  ok(/flex-direction:\s*row/.test(below) && /justify-content:\s*flex-end/.test(below), 'a row aligned to the right edge of the region column')
+})
+test('rail alignment: the side rail is rendered inside the region box, so its offsets are measured from the region', async () => {
+  const tsx = await read('../src/ui/workspace.tsx')
+  const box = tsx.indexOf('className="ws-primary-box"'), side = tsx.indexOf('placement="side"'), boxEnd = tsx.indexOf('</div>', side)
+  ok(box > 0 && side > box && boxEnd > side, 'WorkspaceRail placement="side" sits inside .ws-primary-box')
+  ok(tsx.indexOf('{stacked && <WorkspaceRail') > boxEnd, 'the stacked rail is outside the box, in the region column')
+})
+test('rail alignment: the rail width the geometry reserves matches the column and its gap', async () => {
+  const tsx = await read('../src/ui/workspace.tsx')
+  ok(/const RAIL = 40\b/.test(tsx), 'RAIL is 40 (8px gap plus the 32px column)')
+})

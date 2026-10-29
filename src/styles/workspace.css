@@ -47,23 +47,28 @@
 .ws-edge:hover { background: var(--s3); color: var(--text); }
 .ws-edge:focus-visible, .ws-panel-close:focus-visible, .ws-disclosure:focus-visible { outline: 1.5px solid var(--focus); outline-offset: -1.5px; }
 
-/* The control rail is attached to the region: a column against its right edge (its width is reserved on both sides by
-   the geometry), or a quiet row under it when stacked. It is always present so it can be found without hover, and rises to
-   full emphasis on hover and focus. No glow, gradient or accent. */
+/* The control rail is attached to the region (FB-0020, FB-0042). Beside the region it is one narrow rectangular column exactly as tall as the
+   region (top: 0, bottom: 0 of the region box, never page coordinates), 32px wide on the --s2 surface, 8px from the region's right edge. Its
+   options control sits on the region's top edge and its resize control on the bottom edge, both on one horizontal alignment, so the pair reads
+   as part of the region instead of as icons drifting beside it. The 8px gap plus the 32px column is the 40px reserved on both sides by the
+   geometry. Stacked, it is a compact row under the region aligned to the region's right edge. Always present so it can be found without
+   hover, and full emphasis on hover and focus. No border, glow, gradient or accent. */
 .ws-rail { display: flex; gap: var(--sp-1); opacity: 0.78; transition: opacity var(--dur) var(--ease); }
-.ws-rail.is-side { position: absolute; top: 0; bottom: 0; left: 100%; width: 44px; padding-left: 8px; flex-direction: column; justify-content: space-between; align-items: flex-start; }
+.ws-rail.is-side { position: absolute; top: 0; bottom: 0; left: calc(100% + 8px); width: 32px; flex-direction: column; justify-content: space-between; align-items: stretch; gap: 0; background: var(--s2); border-radius: var(--r); }
+/* A transparent bridge over the 8px gap keeps hover from dropping while the pointer moves from the region to the rail. */
+.ws-rail.is-side::before { content: ''; position: absolute; top: 0; bottom: 0; left: -8px; width: 8px; }
 .ws-rail.is-below { flex-direction: row; justify-content: flex-end; align-items: center; margin-top: var(--sp-1); }
 .ws-rail.is-open, .ws-primary:hover .ws-rail, .ws-primary:focus-within .ws-rail { opacity: 1; }
 @media (hover: none) { .ws-rail { opacity: 1; } }
 .ws-rail-menu-host { position: relative; }
-.ws-rail-btn { width: var(--control-h); height: var(--control-h); display: inline-grid; place-items: center; flex: none; padding: 0; border: 0; border-radius: var(--r); background: transparent; color: var(--text-2); cursor: pointer; }
+.ws-rail-btn { width: 32px; height: 32px; display: inline-grid; place-items: center; flex: none; padding: 0; border: 0; border-radius: var(--r); background: transparent; color: var(--text-2); cursor: pointer; }
 .ws-rail-btn:hover, .ws-rail-btn[aria-expanded="true"] { background: var(--s3); color: var(--text); }
 .ws-rail-btn:focus-visible, .ws-rail-item:focus-visible { outline: 1.5px solid var(--focus); outline-offset: 1px; }
 .ws-rail-handle { cursor: nwse-resize; touch-action: none; }
 .is-dragging .ws-rail-handle { background: var(--select-strong); color: var(--text); }
 .is-dragging { user-select: none; }
 .ws-rail-menu { position: absolute; z-index: 40; min-width: 17rem; padding: var(--sp-1); background: var(--s4); border-radius: var(--r-lg); box-shadow: var(--shadow-pop); display: flex; flex-direction: column; gap: 2px; }
-.is-side .ws-rail-menu { top: 0; left: 0; }
+.is-side .ws-rail-menu { top: 0; left: calc(100% + 8px); }
 .is-below .ws-rail-menu { bottom: calc(100% + var(--sp-1)); right: 0; }
 .ws-rail-item { display: flex; align-items: center; gap: 10px; width: 100%; min-height: var(--control-h); padding: 0 10px; border: 0; border-radius: var(--r); background: none; color: var(--text); font: 500 var(--fs)/1 var(--font); text-align: left; white-space: nowrap; cursor: pointer; }
 .ws-rail-item:hover:not([aria-disabled="true"]) { background: var(--select); }
@@ -114,6 +119,7 @@
 /* Touch (P18, CHK-020): at least 40px effective targets. The rail buttons, menu items, panel chevrons and disclosure row grow to --hit. */
 @media (max-width: 820px), (pointer: coarse) {
   .sm-icon-btn.ws-btn, .sm-icon-btn.ws-rail-btn, .ws-rail-handle, .sm-icon-btn.ws-panel-close { width: var(--hit); height: var(--hit); }
+  .ws-rail.is-side { width: var(--hit); } /* the column grows with its buttons; it stays the region's height */
   .ws-rail-item, .ws-disclosure { min-height: var(--hit); }
   .ws-toolbar { height: 52px; }
   /* The chevron tab grows to 24x64, sits 8px in from the screen edge (clear of the system edge swipe, and so its extension is not clipped by the

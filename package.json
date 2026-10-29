@@ -19,6 +19,7 @@
     "test:browser": "node scripts/test-guidance.mjs",
     "test:tap": "node scripts/test-tap-targets.mjs",
     "test:workspace": "node --test scripts/test-workspace.mjs",
+    "test:workspace-alignment": "node scripts/test-workspace-alignment.mjs",
     "build:workspace-candidate": "node scripts/build-workspace-candidate.mjs",
     "test:desktop-layout": "node scripts/layout-snapshot.mjs --compare docs/reports/desktop-layout-before.json",
     "vendor": "node scripts/vendor-guidance.mjs",

@@ -18,6 +18,7 @@
         "No zen or fullscreen mode: the largest size that fits and hiding the panels cover it.",
         "Panels hold content, never navigation (principle 14).",
         "Controls about the primary region live in a rail attached to it (resize handle and one options menu), not in the page toolbar; its width is reserved on both sides.",
+        "CANDIDATE (FB-0042, not policy): contextual controls associated with a primary rectangular region align with that region's meaningful edges, or sit in an explicitly defined control region measured from the region, never at arbitrary offsets or page coordinates. A control column spans the region's height with its controls on its edges (first on the top edge, last on the bottom edge, one alignment); stacked, it is a compact row under the region aligned to its right edge.",
         "A second view of the primary object is secondary: closed by default, capped well below the primary region.",
         "Optional tools start closed behind one control and the choice is remembered; nothing essential is hidden behind them. Which tools a module offers is a per-module decision with a stated reason, and removing one never strands what the person already wrote.",
         "A panel is shown or hidden by a quiet chevron attached to its workspace edge (a disclosure row when stacked), reporting aria-expanded, with a 40px touch target; never a toolbar button named after the panel and never an X.",

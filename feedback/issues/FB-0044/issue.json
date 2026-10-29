@@ -1,0 +1,38 @@
+{
+  "id": "FB-0044",
+  "createdAt": "2026-10-29T19:15:41Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer",
+    "route": "/notes/page/:pageId?study=<id> (Puzzle Study Mode), desktop 1440"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Temporary context carried between two product areas by an opaque id in the address (never content or secrets), with a calm identical fallback",
+  "screenshots": [
+    {
+      "file": "07-notes-expired-1440.png",
+      "viewport": "1440x900",
+      "note": "An expired or unknown study id leaves the address, the page opens as the ordinary page and one sentence says why, with a Dismiss."
+    },
+    {
+      "file": "05-notes-after-refresh-1440.png",
+      "viewport": "1440x900",
+      "note": "After a refresh the context survives (per tab storage) and the page is the same; the control carries one sentence saying earlier moves were not kept, so the way back does not pretend to restore."
+    }
+  ],
+  "explanation": "CaissaTrainer Phase 4 (study-mode.md sections 2.1 and 5, data.md section e, backend.md). OBSERVED: when a person moves from a task in one area to a related page in another and may come back, the application needs to carry some context. CaissaTrainer carries it as an opaque id in the address (/notes/page/:pageId?study=<contextId>) and keeps the context itself in per tab storage (sessionStorage), validated on every read, with a four hour expiry and at most five contexts. The context stores identity only: module id, a same origin return path, a page id. It never stores the position, the solution, a token or any personal data (the data layer never reads the solution field, and a test pins that none is persisted; the dialog and the context are asserted free of the position and the solution). A return path that is not a same origin relative path (a scheme, //, a backslash, a control character) is rejected when the context begins. A tampered, unknown or expired id removes itself from the address, the page opens as the ordinary page, and one sentence says what happened (\"That study link has expired. This is your ordinary notebook page.\", 07-notes-expired-1440.png). A deleted, foreign, inaccessible or failing lookup all look the same and say the same calm sentence on purpose, so the interface does not reveal whether an id exists. Signed out visitors are sent to sign in and the redirect keeps the whole address. A new tab or a copied link has no context and says so. WHAT IS GENERAL: (1) an address may carry a reference to a temporary context, never the content, a secret, a credential or personal data; (2) the context is validated, expires, and a bad or stale one degrades to the ordinary page with one plain sentence rather than an error or a half state; (3) failures that could reveal existence are indistinguishable; (4) an honest limit is shown to the person instead of faking restoration (the same rule as FB-0043). APPROVED GUIDANCE READ: nothing in the approved principles, anti-patterns, presets or checks (v0.1.0) speaks about addresses, context transfer between areas or storage; P05 (minimum information, one sentence only when needed) and P09 apply to the sentence, and P08 asks for familiar behaviour (a shareable address, working browser back). CLASSIFICATION AND HONEST LIMIT: guidance-gap with low confidence that it belongs in the design principles. It is mainly an engineering and security convention, closer to docs/SUMMA_INTEGRATION.md or the prompt pack for agents building applications than to PRINCIPLES.md, and the owner may decide it is outside Summa-UI and close it. The user-visible part (one calm sentence, identical for unavailable and unauthorized, no fake state) is the part a design rule could hold, and it is covered in FB-0043 as honesty about restoration. Not drafted as a principle in PR-0002; recorded as an integration note candidate only (candidate/amendments.md section K). Product specific, stays in CaissaTrainer: the four hour window, the five context cap, the keep alive cache, what is restored per module (backend 120 minute reaper), and the study id shape. RELATED: FB-0043 (return control), FB-0041 (never strand or leak user data).",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-gap",
+    "rationale": "Missing guideline, low confidence that it is design guidance. No approved principle, anti-pattern, preset or check covers carrying temporary context between product areas. It is mainly an engineering and security convention (opaque id, no content or secrets in the address, validated, expiring, indistinguishable failures), so the natural home is an integration note (docs/SUMMA_INTEGRATION.md or the prompt pack), not PRINCIPLES.md. The user visible part, one calm sentence and no fake restored state, is merged into FB-0043. The owner may decide it is outside Summa-UI; then resolve it as wont-fix. Owner confirmation needed.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P05",
+    "P08",
+    "P09"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "proposal-drafted",
+  "proposal": "PR-0002"
+}
