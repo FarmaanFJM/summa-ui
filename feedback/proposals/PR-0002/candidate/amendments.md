@@ -150,7 +150,7 @@ Classification (proposed): guidance-gap. P14 covers a back chevron in a navigati
 
 > When a person leaves a task for a related area and is expected to return, show one restrained return control for as long as the visit lasts. It names where it goes ("Back to puzzle"), says in one sentence before it is pressed when it cannot restore the earlier state, sits where it covers no content or control (the page reserves room at its end so the last line can scroll above it), and sits below every drawer, scrim, toast and dialog. It is absent in ordinary use.
 
-Open question for the owner: the approved tokens define no layer scale, so the stacking order is currently pinned by a unit test in the application. A layer scale (a small set of named layers: page, sticky, overlay, drawer, dialog, toast) would be a token addition, not a principle; not drafted here. Product specific and stays in CaissaTrainer: the label text, which module can restore what, keep alive parking, the four hour window.
+Open question for the owner: the approved tokens define no layer scale, so the stacking order is currently pinned by a unit test in the application. A layer scale (a small set of named layers: page, sticky, overlay, drawer, dialog, toast) would be a token addition, not a principle; not drafted here. AMENDED by FB-0045 (see K6): the control lives in an existing navigation region when one exists at that size, and the floating form above is the fallback for when none does. Product specific and stays in CaissaTrainer: the label text, which module can restore what, keep alive parking, the four hour window.
 
 ### K3. Temporary context carried by an opaque id (FB-0044), integration note candidate only
 
@@ -169,3 +169,52 @@ Classification: mostly covered or already recorded. Where and when the action ap
 | Temporary study context by opaque id, calm identical fallback | FB-0044 | Guidance gap, low confidence it is design guidance; integration note | K3 |
 | Progressive linking between two product areas | FB-0041 (Phase 4 update) | Mostly covered (P10, P05) or recorded elsewhere; thin remainder | K4 |
 | Keep alive parking of the training page, board transition (FLIP of a copy), capability map per module, legacy note import, 120 minute reaper | not recorded | Product specific, stays in CaissaTrainer | not applicable |
+
+## K6. Redundant contextual navigation overlays (FB-0045), CANDIDATE anti-pattern, not policy
+
+Status: DRAFT. Candidate wording only. The name is the owner's. There is no official anti-pattern file under `guidance/`, no AP number is reserved (candidate id CAND-AP-NAV below), and no check is implemented. The owner decides whether it is wanted, whether it is a new anti-pattern or only a clarification of P14 and P21, and its place.
+
+**What happened.** On a phone, CaissaTrainer Puzzle Study Mode showed a floating "Back to puzzle" button (`PuzzleStudyReturnBar.vue`) above the existing bottom navigation bar (`MobileBottomNavComponent`). Two navigation regions, one floating over content, less space, possible overlap. The correction (up to 1024px wide) renders no overlay: the same action takes the slot of the Notebooks item in the existing bar, so the bar gains no item and no placeholder is left; outside the mode the bar returns to Notebooks. Evidence: FB-0045 (before and after screenshots at 390 wide, `puzzleStudy.mjs` 185 checks at 360, 390, 414, 430 and 820).
+
+**Is it already covered? Honest answer: not clearly.** Exact approved text read in FB-0045. P21 (merge or relocate before adding a component), P10 ("fewer visible controls") and P14 ("The rule targets redundant navigation structures only.") point the same way, so a careful application might have found the swap. None states that a contextual navigation action belongs in an existing navigation region. P14, AP-011 and CHK-011 are about navigation sidebars side by side; P18, AP-007 and CHK-007 are about control rows stacked above content; AP-016 and CHK-016 count controls in a toolbar; CHK-020 (hit area, no overlap between controls) passed. Suggested classification: guidance-gap, small. Alternative the owner may prefer: guidance-ambiguity, settled by one clarification sentence in P14 (see K6b). Not forced into any existing rule.
+
+### K6a. Candidate anti-pattern (CAND-AP-NAV)
+
+**Name.** Redundant contextual navigation overlays.
+
+**Problem.** A contextual navigation action (a return, a "Back to ...", a mode exit) is drawn as a floating element over the content while an existing navigation region (a bottom bar, a top bar, a sidebar) is already on screen. The person gets two navigation regions, an extra element over content, less space on a small screen, a possible overlap with content or controls, and two places for related actions.
+
+**Why it matters.** Navigation is read as one hierarchy. A second, floating region competes with it and asks the person to decide which one to use. On a phone the space it takes is the scarcest space, and a floating element needs reserved room and layer rules (FB-0043) that an element in the bar does not.
+
+**Preferred solution.** Integrate the contextual action into the existing navigation surface when that keeps clarity and discoverability: it takes the slot of the item it temporarily replaces (no extra item, no placeholder), calls the same logic, is labelled by what it does, and the surface returns to normal when the context ends. Any one sentence of explanation appears once on the page, not in an overlay (P05).
+
+**Exceptions (a floating action is justified when).**
+1. There is no existing navigation region at that size (CaissaTrainer above 1024px).
+2. It is a primary creation action.
+3. It must stay reachable while the navigation region is scrolled away or hidden.
+4. It is safety critical.
+5. It is temporary feedback with an action (undo, snackbar).
+A floating control that remains must still follow FB-0043: below drawers, scrims, toasts and dialogs, covering no content or control.
+
+**Tradeoff to state.** The replaced item is not in the bar during the context. Keep it reachable another way (here the application drawer and ordinary Notes) and make sure the context is temporary. If the replaced destination has no other route, or nobody can give up the slot, keep the floating control or choose another place.
+
+**Review questions.**
+- Is there already a navigation region on screen at this size? If yes, could this action live in it?
+- Does the action take over a slot, or does it add an item, a placeholder or a new row?
+- Is the replaced destination still reachable another way, and does the bar return to normal afterwards?
+- Is the floating form one of the five exceptions, and is the reason stated?
+- Is any explanation shown once on the page and not in an overlay?
+
+**Check idea (optional, only what can be stated precisely).** At 390 wide, with a bottom navigation region present, report a visible fixed or sticky positioned, non-modal, interactive element whose box lies within 120px above that region and whose horizontal extent overlaps the page content, as needs-human (never an error). Limits: "navigation region" is detected by `nav` or `role=navigation` or a landmark fixed to the bottom, which is a heuristic; toasts, snackbars, a floating primary action and the cookie notice are exceptions that need human review; it cannot tell if the action could have lived in the bar. So at most a heuristic warning, `automation: heuristic`. No check is drafted and the regression run is therefore neutral.
+
+### K6b. Alternative home (owner's choice): one sentence in P14, patch level
+
+Candidate sentence, to be written by the owner and not by an agent: "A contextual action that navigates (a return, a mode exit) belongs in the existing navigation region when there is one, taking the slot of the item it replaces; a floating control is for when no such region exists." Risk: it widens P14 beyond sidebars, and AP-011 and CHK-011 would still be sidebar only.
+
+### K6c. Effect on K2 (FB-0043), amended
+
+K2's candidate wording describes a floating return control. Amended reading: the return control lives in an existing navigation region when one exists at that size, and the floating form (named, honest, below every drawer, scrim, toast and dialog, covering nothing) applies only when none does. The sentence "sits where it covers no content or control" now describes the fallback form. See D-015 (draft) in `conflicts-and-decisions.md`.
+
+| Finding | Issue | Classification | Where it lives in this draft |
+| --- | --- | --- | --- |
+| Floating contextual return duplicated the existing bottom navigation; now takes the Notebooks slot up to 1024px | FB-0045 (amends FB-0043) | Guidance gap, small; alternative guidance-ambiguity (P14, P21). Owner confirms. | K6, K2 amended, D-015 |
