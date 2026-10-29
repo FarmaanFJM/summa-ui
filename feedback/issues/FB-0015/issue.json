@@ -1,0 +1,38 @@
+{
+  "id": "FB-0015",
+  "createdAt": "2026-10-29T06:00:14Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer",
+    "route": "Train, Unrated Puzzles (laptop 1366x768, panel hidden)"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Collapsible side panels (info left, info right) that yield before the primary region",
+  "screenshots": [
+    {
+      "file": "laptop-random_puzzles-panel-hidden.png"
+    },
+    {
+      "file": "desktop-random_puzzles-panel-hidden.png"
+    },
+    {
+      "file": "laptop-random_puzzles-default.png"
+    }
+  ],
+  "explanation": "Found while building CaissaTrainer's workspace. Secondary information (notes, mini board, statistics) sits in panels left and right of the primary region. Summa-UI has panes (P14 says editors, inspectors and detail panels are legitimate) but no behaviour for how they respond to space. Needed: panels shrink from a preferred to a minimum width, then leave the layout and become an on-demand drawer (Escape closes it, focus returns to the toggle), then on a narrow screen stack under the primary region. Both flanks reserve equal width so a lone panel does not push the primary region off centre. Panels stay mounted so their state survives. Without this each app either hides information on small screens or squeezes the primary region.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-gap",
+    "rationale": "P14 allows content panes but nothing says how panels behave when space runs out. Generalizes to any inspector, detail or info pane beside a primary region. Suggested: panels shrink, then drawer, then stack (candidate P24).",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P05",
+    "P14",
+    "P16",
+    "P18"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "proposal-drafted",
+  "proposal": "PR-0002"
+}

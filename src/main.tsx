@@ -2,10 +2,13 @@ import { lazy, StrictMode, Suspense, useEffect, useState } from 'react'
 import { createRoot } from 'react-dom/client'
 import './styles/tokens.css'
 import './styles/base.css'
+import './styles/workspace.css'
 import { PROTOTYPES } from './registry'
 import Lab from './lab/Lab'
 import Principles from './lab/Principles'
 import GuidanceLayout, { type GuidanceTab } from './lab/guidance/Layout'
+
+const WorkspaceDemo = lazy(() => import('./lab/workspace/WorkspaceDemo'))
 
 const GUIDANCE = {
   antipatterns: lazy(() => import('./lab/guidance/AntiPatterns')),
@@ -31,6 +34,8 @@ function Root() {
   const proto = PROTOTYPES.find(p => p.id === head)
   useEffect(() => { document.title = proto ? `${proto.name} · Summa-UI` : 'Summa-UI Laboratory' }, [proto])
   if (proto) return <Suspense fallback={null}><proto.Component /></Suspense>
+  // Standalone pattern demo (docs/WORKSPACE_PATTERN.md). Not a registered prototype and not an approved reference.
+  if (head === 'workspace') return <Suspense fallback={null}><WorkspaceDemo /></Suspense>
   if (head === 'principles') return <GuidanceLayout current="principles"><Principles /></GuidanceLayout>
   if (head === 'guidance' && tail && tail in GUIDANCE) {
     const Page = GUIDANCE[tail as keyof typeof GUIDANCE]

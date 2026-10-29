@@ -1,0 +1,105 @@
+{
+  "id": "preset.workspace",
+  "name": "Workspace (resizable primary region with yielding panels)",
+  "purpose": "A page built around one primary region (an image, canvas, document page, map or board) with secondary information around it. The person can resize the primary region and hide the panels; the layout keeps the primary region primary and the panels yield first.",
+  "whenToUse": [
+    "The page has one square or fixed-ratio region that is the task (an image editor canvas, a document page preview, a map, a game board) and its useful size depends on the screen and the person.",
+    "Secondary information (details, pages, notes, statistics) helps but is not needed all the time, and can be disclosed on demand.",
+    "The same page is used on a laptop, a large monitor and a tablet and one fixed region size would be wrong on one of them."
+  ],
+  "whenNotToUse": [
+    "Text content with a reading measure (articles, documents being edited, feeds). A fixed maximum line length is correct there; this pattern is for regions whose useful size is open.",
+    "A dashboard, table or list that fills the width and has no single primary region.",
+    "Navigation. Panels carry content, never links to other areas (P14). Use the application sidebar.",
+    "A full screen or zen mode. Hiding the panels and choosing the largest size covers it without another state.",
+    "A region whose size the product must control exactly (a print preview at true size, a pixel-exact canvas). Use a fixed region and say why (P22)."
+  ],
+  "anatomy": [
+    "Toolbar (44px): panel toggles at both ends, size controls in the middle. Buttons are sm-icon-btn with a neutral --s2 fill.",
+    "Primary region: at least a square of the computed size, centered; optional header and footer above and below, measured and held at their peak.",
+    "Resize handle: a 24px slider button hanging outside the bottom right corner.",
+    "Left and right panels: content panes one step above the surface (--s2), equal reserve on both sides.",
+    "Drawer: a panel that cannot dock opens over a scrim as a dialog, 360px wide at most.",
+    "Scrim: rgba(8,9,9,.55), closes the drawer on click."
+  ],
+  "variants": [
+    {
+      "id": "wide",
+      "description": "Left panel, primary region and right panel in one row. Panels shrink from preferred to minimum width, then become drawers.",
+      "useWhen": "The workspace is at least 640px wide and a minimum-size region fits beside the open panels."
+    },
+    {
+      "id": "stacked",
+      "description": "Primary region on top at full width, open panels below as titled sections. Nothing hides behind a drawer.",
+      "useWhen": "A narrow screen, or open panels that cannot dock beside even a minimum-size region."
+    },
+    {
+      "id": "one-panel",
+      "description": "One panel only. The other flank still reserves the same width so the region stays centered.",
+      "useWhen": "Only one of the two panels has content."
+    }
+  ],
+  "behavior": [
+    "Geometry comes from the pure function in js/workspace-geometry.js (reference: src/ui/workspaceGeometry.ts). The host measures the workspace with a ResizeObserver and sets --sm-ws-size, --sm-ws-left, --sm-ws-right.",
+    "The responsive default is deliberately medium (at most 640px) and scales with the available space. The person's choice, when there is one, is only clamped for display.",
+    "A size choice is a preference, not a measurement: store the pick (null means default), never the clamped value. Store panel visibility per workspace and share one size across compatible workspaces. Guard every storage access.",
+    "Panels yield in order: shrink, drawer, stack. They stay mounted so their state survives.",
+    "Chrome above and below the region is measured; the peak since the workspace opened is used so the region never jumps.",
+    "Escape closes a drawer and returns focus to the toggle that opened it. A drawer that no longer applies closes by itself.",
+    "Status: provisional. Built from the principles and one real application; compare visually with the owner's references before treating it as reviewed."
+  ],
+  "tokens": [
+    "--s0",
+    "--s2",
+    "--s3",
+    "--s4",
+    "--select",
+    "--select-strong",
+    "--line",
+    "--text",
+    "--text-2",
+    "--r-sm",
+    "--r",
+    "--r-lg",
+    "--sp-1",
+    "--sp-2",
+    "--sp-3",
+    "--sp-4",
+    "--sp-6",
+    "--fs",
+    "--shadow-pop",
+    "--focus",
+    "--control-h"
+  ],
+  "accessibility": [
+    "Resize handle: role=slider on a real button, aria-label, aria-orientation=horizontal, aria-valuemin, aria-valuemax, aria-valuenow, aria-valuetext in pixels. Arrow keys step by 40px, Home and End jump to the limits.",
+    "Toolbar is role=toolbar with a label. Toggles use aria-pressed and a label that says what a press does. Size buttons are disabled at the limits, not hidden.",
+    "An open drawer is role=dialog with aria-modal=true and the panel title as its label; focus moves in, Tab stays inside, Escape closes, focus returns to the toggle.",
+    "Panels are labelled regions (section with aria-label), not aside and not navigation.",
+    "Touch: every control has an effective hit area of at least 40x40 CSS px (P18, CHK-020); the handle gains an invisible 44px extension.",
+    "Focus ring is the shared 1.5px --focus neutral ring on every control and on the focused panel.",
+    "Motion: none required. Nothing animates the size."
+  ],
+  "principles": [
+    "P02",
+    "P05",
+    "P08",
+    "P14",
+    "P15",
+    "P16",
+    "P17",
+    "P18"
+  ],
+  "avoids": [
+    "AP-010",
+    "AP-011",
+    "AP-016"
+  ],
+  "implementations": {
+    "html": "examples/workspace.html",
+    "css": "css/workspace-presets.css",
+    "react": "src/ui/workspace.tsx"
+  },
+  "status": "provisional",
+  "statusNote": "Candidate for PR-0002, not part of any approved bundle. It depends on candidate principles P23 to P26 (feedback/proposals/PR-0002/candidate/principles.md), which are not yet approved, so they are not listed in principles. Open owner questions are in the proposal summary."
+}

@@ -1,0 +1,33 @@
+{
+  "id": "FB-0016",
+  "createdAt": "2026-10-29T06:00:15Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer",
+    "route": "Train, Unrated Puzzles (desktop 1920x1080)"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Application sidebar: compact icon rail",
+  "screenshots": [
+    {
+      "file": "desktop-random_puzzles-default.png"
+    },
+    {
+      "file": "desktop-judgement_puzzle-default.png"
+    }
+  ],
+  "explanation": "Found while building CaissaTrainer's shell. Summa-UI's AppShell is a fixed 252px sidebar (.shell-side) that becomes a drawer under 820px; there is no middle state. A workspace page needs the room, so CaissaTrainer added a 56px icon rail (labels move to aria-label and title, the width toggle is a nav item at the bottom) between the expanded 224px sidebar and the mobile drawer. Mode is chosen by the route (workspace routes default to the rail, document-like pages to expanded) and an explicit user choice always wins. This is still one navigation sidebar, so P14 is not violated, but the pattern needs to exist in Summa-UI so apps do not each invent a rail. Reference: CaissaTrainer AppSidebar.vue, useSidebarMode.ts.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-gap",
+    "rationale": "The shell has only a fixed 252px sidebar and a drawer. A compact icon rail is a recurring middle state for workspace pages. Possible tension with P14 (no sidebar stacking) is not a conflict because it is one sidebar, but the owner should confirm; suggested DECISIONS note is in the proposal draft.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P14",
+    "P16"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "proposal-drafted",
+  "proposal": "PR-0002"
+}

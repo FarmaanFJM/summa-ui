@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Workspace preset (candidate)</title>
+<link rel="stylesheet" href="../../../../../guidance/css/tokens.css">
+<link rel="stylesheet" href="../../../../../guidance/css/presets.css">
+<link rel="stylesheet" href="../css/workspace-presets.css">
+<style>
+  /* Page chrome only. The workspace uses sm- classes. */
+  html, body { height: 100%; margin: 0; }
+  body { background: var(--s1); color: var(--text); font: 400 var(--fs)/1.5 var(--font); overflow: hidden; }
+  .stage { height: 100%; }
+  .page { width: 100%; aspect-ratio: 1; background: var(--s2); border-radius: var(--r-lg); display: grid; place-items: center; color: var(--text-2); }
+  .list { display: flex; flex-direction: column; gap: 2px; }
+  .muted-heading { font-size: var(--fs-xs); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-3); }
+</style>
+</head>
+<body>
+<div class="stage">
+  <section class="sm-workspace" id="ws" data-mode="wide" aria-label="Workspace example">
+    <div class="sm-workspace__toolbar" role="toolbar" aria-label="Preview layout">
+      <div class="sm-workspace__group">
+        <button type="button" class="sm-icon-btn" id="toggle-left" aria-pressed="true" aria-label="Hide Pages" title="Hide Pages">
+          <svg class="sm-icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></svg>
+        </button>
+      </div>
+      <div class="sm-workspace__group sm-workspace__group--center" role="group" aria-label="Preview size">
+        <button type="button" class="sm-icon-btn" id="smaller" aria-label="Smaller preview" title="Smaller preview"><svg class="sm-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/></svg></button>
+        <button type="button" class="sm-icon-btn" id="larger" aria-label="Larger preview" title="Larger preview"><svg class="sm-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14"/><path d="M12 5v14"/></svg></button>
+        <button type="button" class="sm-icon-btn" id="largest" aria-label="Largest preview that fits" title="Largest preview that fits"><svg class="sm-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 3H5a2 2 0 0 0-2 2v3"/><path d="M21 8V5a2 2 0 0 0-2-2h-3"/><path d="M3 16v3a2 2 0 0 0 2 2h3"/><path d="M16 21h3a2 2 0 0 0 2-2v-3"/></svg></button>
+        <button type="button" class="sm-icon-btn" id="restore" aria-label="Restore default size and panels" title="Restore default size and panels"><svg class="sm-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/><path d="M21 3v5h-5"/><path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/><path d="M8 16H3v5"/></svg></button>
+      </div>
+      <div class="sm-workspace__group sm-workspace__group--end">
+        <button type="button" class="sm-icon-btn" id="toggle-right" aria-pressed="true" aria-label="Hide Details" title="Hide Details">
+          <svg class="sm-icon" viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M15 3v18"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="sm-workspace__body">
+      <section class="sm-workspace__panel sm-workspace__panel--left" id="panel-left" data-state="docked" aria-label="Pages" tabindex="-1">
+        <button type="button" class="sm-icon-btn sm-workspace__close" id="close-left" aria-label="Close panel" hidden><svg class="sm-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+        <h2 class="sm-workspace__panel-title">Pages</h2>
+        <div class="list"><div class="sm-row">Page 1</div><div class="sm-row" aria-selected="true">Page 2</div><div class="sm-row">Page 3</div><div class="sm-row">Page 4</div></div>
+      </section>
+
+      <div class="sm-workspace__primary" role="region" aria-label="Preview">
+        <div class="sm-workspace__box">
+          <div class="page">Primary content</div>
+          <button type="button" class="sm-workspace__grip" id="grip" role="slider" aria-label="Resize preview" aria-orientation="horizontal"
+                  aria-valuemin="280" aria-valuemax="800" aria-valuenow="320" aria-valuetext="320 pixels">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 8 8 19M19 14l-5 5"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <section class="sm-workspace__panel sm-workspace__panel--right" id="panel-right" data-state="docked" aria-label="Details" tabindex="-1">
+        <button type="button" class="sm-icon-btn sm-workspace__close" id="close-right" aria-label="Close panel" hidden><svg class="sm-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg></button>
+        <h2 class="sm-workspace__panel-title">Details</h2>
+        <div class="muted-heading">Preview size</div><div id="readout">0 px</div>
+      </section>
+    </div>
+    <div class="sm-workspace__scrim" id="scrim" hidden></div>
+  </section>
+</div>
+
+<script src="../js/workspace-geometry.js"></script>
+<script>
+(function () {
+  var W = window.SummaWorkspace, KEY = 'sm-workspace-example-v1';
+  var root = document.getElementById('ws'), $ = function (id) { return document.getElementById(id); };
+  var prefs = { size: null, left: true, right: true };
+  try { var s = JSON.parse(localStorage.getItem(KEY) || 'null'); if (s && typeof s === 'object') prefs = { size: typeof s.size === 'number' && s.size > 0 && s.size < 4096 ? Math.round(s.size) : null, left: s.left !== false, right: s.right !== false }; } catch (e) {}
+  var save = function () { try { localStorage.setItem(KEY, JSON.stringify(prefs)); } catch (e) {} };
+  var g, drawer = null, dragging = null, drag = null, lastToggle = null;
+  var panels = { left: $('panel-left'), right: $('panel-right') }, toggles = { left: $('toggle-left'), right: $('toggle-right') }, closes = { left: $('close-left'), right: $('close-right') };
+
+  function layout() {
+    var r = root.getBoundingClientRect();
+    g = W.computeWorkspace({ width: Math.floor(r.width), height: Math.floor(r.height), padding: 16, gap: 16, chromeY: 44, left: { preferred: 320, min: 240 }, right: { preferred: 340, min: 260 }, leftOpen: prefs.left, rightOpen: prefs.right, preferred: dragging !== null ? dragging : prefs.size });
+    root.style.setProperty('--sm-ws-size', g.size + 'px'); root.style.setProperty('--sm-ws-left', g.leftWidth + 'px'); root.style.setProperty('--sm-ws-right', g.rightWidth + 'px');
+    root.dataset.mode = g.mode;
+    ['left', 'right'].forEach(function (s) {
+      var dock = s === 'left' ? g.leftDock : g.rightDock;
+      if (dock === 'drawer' && drawer === s) dock = 'drawer-open';
+      if (drawer === s && dock !== 'drawer-open') drawer = null;
+      panels[s].dataset.state = dock; panels[s].hidden = dock === 'hidden'; closes[s].hidden = dock !== 'drawer-open';
+      var label = (s === 'left' ? 'Pages' : 'Details'), open = (s === 'left' ? prefs.left : prefs.right) && dock !== 'drawer';
+      toggles[s].setAttribute('aria-pressed', String(dock === 'docked' || dock === 'drawer-open')); toggles[s].setAttribute('aria-label', (open ? 'Hide ' : 'Show ') + label); toggles[s].title = (open ? 'Hide ' : 'Show ') + label;
+    });
+    $('scrim').hidden = !drawer;
+    var grip = $('grip'); grip.setAttribute('aria-valuemin', g.minSize); grip.setAttribute('aria-valuemax', g.maxSize); grip.setAttribute('aria-valuenow', g.size); grip.setAttribute('aria-valuetext', g.size + ' pixels');
+    $('smaller').disabled = g.atMin; $('larger').disabled = g.atMax; $('largest').disabled = g.atMax; $('restore').disabled = prefs.size === null;
+    $('readout').textContent = g.size + ' px';
+  }
+  function setSize(v) { prefs.size = v; save(); layout(); }
+  function toggle(s) {
+    var dock = s === 'left' ? g.leftDock : g.rightDock;
+    if (dock === 'drawer') { drawer = drawer === s ? null : s; lastToggle = toggles[s]; layout(); if (drawer) panels[s].focus(); return; }
+    prefs[s] = !prefs[s]; save(); layout();
+  }
+  function closeDrawer() { var s = drawer; drawer = null; layout(); if (s) toggles[s].focus(); }
+  toggles.left.onclick = function () { toggle('left'); }; toggles.right.onclick = function () { toggle('right'); };
+  closes.left.onclick = closes.right.onclick = closeDrawer; $('scrim').onclick = closeDrawer;
+  $('smaller').onclick = function () { setSize(W.stepSize(g.size, -1, g)); }; $('larger').onclick = function () { setSize(W.stepSize(g.size, 1, g)); };
+  $('largest').onclick = function () { setSize(g.maxSize); }; $('restore').onclick = function () { prefs = { size: null, left: true, right: true }; drawer = null; save(); layout(); };
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && drawer) { e.stopPropagation(); closeDrawer(); } });
+  var grip = $('grip');
+  grip.addEventListener('keydown', function (e) {
+    var map = { ArrowRight: g.size + W.SIZE_STEP, ArrowUp: g.size + W.SIZE_STEP, ArrowLeft: g.size - W.SIZE_STEP, ArrowDown: g.size - W.SIZE_STEP, Home: g.minSize, End: g.maxSize };
+    if (!(e.key in map)) return; e.preventDefault(); setSize(Math.min(g.maxSize, Math.max(g.minSize, map[e.key])));
+  });
+  grip.addEventListener('pointerdown', function (e) { if (e.button !== 0) return; grip.setPointerCapture(e.pointerId); drag = { x: e.clientX, y: e.clientY, size: g.size }; root.classList.add('is-dragging'); e.preventDefault(); });
+  grip.addEventListener('pointermove', function (e) { if (drag) { dragging = W.dragSize(drag.size, e.clientX - drag.x, e.clientY - drag.y, g); layout(); } });
+  function up() { if (drag && dragging !== null) { prefs.size = dragging; save(); } drag = null; dragging = null; root.classList.remove('is-dragging'); layout(); }
+  grip.addEventListener('pointerup', up); grip.addEventListener('pointercancel', up);
+  if (typeof ResizeObserver !== 'undefined') new ResizeObserver(layout).observe(root); window.addEventListener('resize', layout);
+  layout();
+})();
+</script>
+</body>
+</html>

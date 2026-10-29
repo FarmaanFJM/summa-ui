@@ -1,0 +1,60 @@
+{
+  "guidanceVersion": "0.1.0",
+  "generator": "scripts/regression-check.mjs",
+  "counts": {
+    "ai@1440x900": {
+      "CHK-022 needs-human": 1
+    },
+    "projects@1440x900": {},
+    "ai@390x844": {
+      "CHK-022 needs-human": 1
+    },
+    "documents@1440x900": {
+      "CHK-022 needs-human": 4
+    },
+    "documents@390x844": {
+      "CHK-022 needs-human": 4
+    },
+    "projects@390x844": {},
+    "analytics@1440x900": {},
+    "analytics@390x844": {},
+    "files@1440x900": {
+      "CHK-022 needs-human": 1
+    },
+    "files@390x844": {
+      "CHK-022 needs-human": 1
+    },
+    "media@1440x900": {},
+    "media@390x844": {},
+    "executive@1440x900": {},
+    "executive@390x844": {},
+    "chess@1440x900": {},
+    "social@1440x900": {
+      "CHK-022 needs-human": 1
+    },
+    "chess@390x844": {},
+    "social@390x844": {
+      "CHK-022 needs-human": 1
+    },
+    "trading@1440x900": {},
+    "trading@390x844": {
+      "CHK-012 needs-human": 1
+    },
+    "store@1440x900": {},
+    "store@390x844": {},
+    "travel@1440x900": {
+      "CHK-013 needs-human": 9,
+      "CHK-022 needs-human": 2
+    },
+    "travel@390x844": {
+      "CHK-012 needs-human": 1,
+      "CHK-013 needs-human": 9,
+      "CHK-022 needs-human": 2
+    }
+  },
+  "regressions": [],
+  "improvements": [],
+  "result": "no-regressions",
+  "tap": "pass",
+  "desktopLayout": "changed"
+}

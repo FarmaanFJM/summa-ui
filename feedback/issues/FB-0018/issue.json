@@ -1,0 +1,30 @@
+{
+  "id": "FB-0018",
+  "createdAt": "2026-10-29T06:00:16Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer",
+    "route": "Train, Unrated Puzzles (desktop toolbar)"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Ghost buttons: CaissaTrainer doctrine bans them, Summa ships .sm-btn--ghost",
+  "screenshots": [
+    {
+      "file": "desktop-random_puzzles-default.png"
+    }
+  ],
+  "explanation": "Found during the CaissaTrainer migration. CaissaTrainer's UI doctrine says: no ghost buttons, no almost invisible transparent control, no action that only appears on hover; quiet is not invisible. Summa-UI presets ship .sm-btn--ghost (transparent, --text-2) and the React Button has variant ghost, and the Summa principles do not forbid it. The workspace toolbar buttons (smaller, larger, largest, restore) were built as .sm-icon-btn with a visible --s2 fill instead. This is recorded as a possible ambiguity for the owner to decide: either ghost is acceptable only where the control is clearly a button in context, or the guidance should say that a control must be visible at rest. This issue deliberately does not choose.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-ambiguity",
+    "rationale": "Two reasonable readings: the Summa ghost button is a valid quiet secondary, or a control that is invisible at rest is a defect (the CaissaTrainer doctrine). Recorded for the owner to decide; the agent does not choose. This is why the proposal lists it as an open question, not a rule.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P07",
+    "P08"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "proposal-drafted",
+  "proposal": "PR-0002"
+}

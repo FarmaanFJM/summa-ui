@@ -18,6 +18,7 @@
     "checks": "node scripts/run-checks.mjs",
     "test:browser": "node scripts/test-guidance.mjs",
     "test:tap": "node scripts/test-tap-targets.mjs",
+    "test:workspace": "node --test scripts/test-workspace.mjs",
     "test:desktop-layout": "node scripts/layout-snapshot.mjs --compare docs/reports/desktop-layout-before.json",
     "vendor": "node scripts/vendor-guidance.mjs",
     "vendor:verify": "node scripts/verify-vendored.mjs",
