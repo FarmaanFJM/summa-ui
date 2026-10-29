@@ -1,0 +1,33 @@
+{
+  "id": "FB-0020",
+  "createdAt": "2026-10-29T13:03:46Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer",
+    "route": "Train workspaces (desktop 1366 and 1920, phone 390)"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Control rail attached to the primary region (resize handle and options menu)",
+  "screenshots": [
+    {
+      "file": "judgement-puzzle-1366-2open.png"
+    },
+    {
+      "file": "workspace-desktop-1440.png"
+    }
+  ],
+  "explanation": "CaissaTrainer Phase 2 (CHESS-WORKSPACE.md, frontend/src/workspace). Observed: controls about the primary region (four size buttons in a page toolbar) sat far from what they act on and competed with the page toolbar, which should hold only page level things (title, one labelled toggle per panel). Phase 2 attached a control rail to the region itself: a resize handle that is a slider (drag, arrows, Home, End) and one labelled options menu holding the discrete actions (larger, smaller, largest that fits, restore). The rail follows the region, is quiet at rest (0.78 opacity, full on hover or focus, full on touch), sits beside the region on wide layouts and below it when stacked, and its width is reserved on both sides so the equal reserve keeps the region centered. Generalizes: any app with an image, canvas, preview, map or board region. Extends FB-0014 (resizable primary region), which assumed toolbar size buttons. Tension: the four toolbar buttons were an open owner question in PR-0002 (P10); the rail answers it with one menu. Controls in the menu must remain reachable by keyboard and touch (menu button pattern, 40px coarse targets).",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-gap",
+    "rationale": "No principle or preset says where controls about a region live. Gap in approved guidance, not a failure to apply it. Suggested: extend candidate P23 with a control rail rule and add the rail to preset.workspace. Owner confirmation needed.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P10",
+    "P01"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "proposal-drafted",
+  "proposal": "PR-0002"
+}

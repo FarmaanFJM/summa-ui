@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Tests the pure workspace geometry (src/ui/workspaceGeometry.ts), the reference for docs/WORKSPACE_PATTERN.md.
-// Mirrors the CaissaTrainer suite (src/workspace/__tests__/workspaceGeometry.test.ts) with neutral names.
+// Mirrors the CaissaTrainer suite (including the control rail input, gapX and the default sized against panel minimums) (src/workspace/__tests__/workspaceGeometry.test.ts) with neutral names.
 // No browser, no dependencies. Node 22 runs the erasable TypeScript directly:  node --test scripts/test-workspace.mjs
 import test from 'node:test'
 import assert from 'node:assert/strict'
@@ -125,6 +125,58 @@ test('drag grows symmetrically: horizontal pull counts double', () => {
   eq(dragSize(480, 40, 0, b), 560); eq(dragSize(480, 0, 40, b), 520); eq(dragSize(480, -1000, 0, b), 280); eq(dragSize(480, 1000, 0, b), 800)
 })
 
+test('the default is sized against the panels minimum, so panels get wider than their minimum on a laptop', () => {
+  // 1180 wide: sizing against preferred widths would leave the default at the 320 floor; against minimums it is larger.
+  const g = computeWorkspace(input({ width: 1180, height: 900 }))
+  ok(g.defaultSize > 320); eq(g.leftDock, 'docked'); eq(g.rightDock, 'docked'); ok(g.leftWidth >= 240)
+})
+test('the default never turns a panel into a drawer by itself (dockable floor)', () => {
+  for (let w = 700; w <= 2400; w += 37) for (const h of [560, 700, 860, 1100]) for (const rail of [0, 40]) {
+    const g = computeWorkspace(input({ width: w, height: h, rail }))
+    if (g.mode === 'wide') { ok(g.leftDock !== 'drawer', `left drawer at ${w}x${h} rail ${rail}`); ok(g.rightDock !== 'drawer', `right drawer at ${w}x${h} rail ${rail}`) }
+  }
+})
+test('a default cannot be smaller than the narrowest region unless the space itself is smaller', () => {
+  for (let w = 640; w <= 2000; w += 41) {
+    const g = computeWorkspace(input({ width: w, height: 900, rail: 40 }))
+    ok(g.defaultSize >= Math.min(PRIMARY_MIN, g.maxSize))
+  }
+})
+
+test('rail: the rail reserve is counted on both sides and reported as gapX', () => {
+  const plain = computeWorkspace(input({ width: 1600, height: 900 })), railed = computeWorkspace(input({ width: 1600, height: 900, rail: 40, preferred: plain.size }))
+  eq(plain.gapX, 16); eq(railed.gapX, 56)
+  // Same region size, so the flank shrinks by exactly the rail reserve and a panel is never wider than that flank.
+  const flank = (1600 - 32 - railed.size) / 2 - 56
+  ok(railed.leftWidth <= flank + 0.001); ok(railed.leftWidth <= plain.leftWidth)
+  eq(railed.reserve, Math.max(railed.leftWidth, railed.rightWidth))
+})
+test('rail: a lone panel still leaves the region centered with the rail reserved on both sides', () => {
+  const g = computeWorkspace(input({ width: 1800, height: 1000, rail: 40, leftOpen: false }))
+  eq(g.leftDock, 'hidden'); eq(g.rightDock, 'docked'); eq(g.reserve, g.rightWidth)
+})
+test('rail: with no panels open the rail changes nothing but gapX', () => {
+  const closed = { leftOpen: false, rightOpen: false }
+  const a = computeWorkspace(input({ ...closed })), b = computeWorkspace(input({ ...closed, rail: 40 }))
+  eq(a.size, b.size); eq(a.mode, b.mode)
+})
+test('rail: stacking accounts for the rail and a stacked layout reports the plain gap', () => {
+  // 900 wide, panels min 240: docks without a rail, stacks once the rail steals 2 x 40 from the flanks.
+  const without = computeWorkspace(input({ width: 900, height: 900 })), withRail = computeWorkspace(input({ width: 900, height: 900, rail: 40 }))
+  eq(without.mode, 'wide'); eq(withRail.mode, 'stacked')
+  const stacked = computeWorkspace(input({ width: 390, height: 780, chromeY: 0, padding: 12, rail: 40 }))
+  eq(stacked.mode, 'stacked'); eq(stacked.gapX, 16)
+})
+test('rail: dockable region shrinks by the rail on both sides, never more', () => {
+  const o = { width: 1100, height: 1400, preferred: 5000 }
+  const a = computeWorkspace(input({ ...o })), b = computeWorkspace(input({ ...o, rail: 40 }))
+  eq(a.size, b.size) // the maximum is bounded by width/height, not by the rail
+  ok(b.leftDock === 'drawer' && b.rightDock === 'drawer')
+})
+test('rail: absent rail input equals rail 0', () => {
+  assert.deepEqual(computeWorkspace(input()), computeWorkspace(input({ rail: 0 })))
+})
+
 test('the candidate classic script in PR-0002 matches the TypeScript (no drift)', async () => {
   const { readFileSync } = await import('node:fs')
   const { runInNewContext } = await import('node:vm')
@@ -132,8 +184,8 @@ test('the candidate classic script in PR-0002 matches the TypeScript (no drift)'
   runInNewContext(readFileSync(new URL('../feedback/proposals/PR-0002/candidate/js/workspace-geometry.js', import.meta.url), 'utf8'), ctx)
   const C = ctx.SummaWorkspace
   assert.ok(C, 'script exposes SummaWorkspace')
-  for (const w of [390, 640, 820, 1000, 1376, 1800, 3000]) for (const h of [600, 860, 1400]) for (const pref of [null, 100, 480, 5000]) for (const open of [true, false]) {
-    const i = input({ width: w, height: h, preferred: pref, leftOpen: open })
+  for (const w of [390, 640, 820, 1000, 1376, 1800, 3000]) for (const h of [600, 860, 1400]) for (const pref of [null, 100, 480, 5000]) for (const open of [true, false]) for (const rail of [undefined, 0, 40]) {
+    const i = input({ width: w, height: h, preferred: pref, leftOpen: open, rail })
     assert.deepEqual(JSON.parse(JSON.stringify(C.computeWorkspace(i))), JSON.parse(JSON.stringify(computeWorkspace(i))))
   }
   eq(C.PRIMARY_MIN, PRIMARY_MIN); eq(C.stepSize(480, 1, { minSize: 280, maxSize: 800 }), 520)

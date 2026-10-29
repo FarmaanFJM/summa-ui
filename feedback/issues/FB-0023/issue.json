@@ -1,0 +1,35 @@
+{
+  "id": "FB-0023",
+  "createdAt": "2026-10-29T13:03:47Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer",
+    "route": "Train workspaces (1180, 1366, 1920, 820, 390)"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Panels yield before the primary region (default sized against panel minimums, equal reserve including the rail, dockable floor, one stacked scroller)",
+  "screenshots": [
+    {
+      "file": "judgement-puzzle-1180-2open.png"
+    },
+    {
+      "file": "judgement-puzzle-820-2open.png"
+    },
+    {
+      "file": "workspace-laptop-1100.png"
+    }
+  ],
+  "explanation": "CaissaTrainer Phase 2 (CHESS-WORKSPACE.md, workspaceLayout.ts). Extends FB-0015, whose draft sized the default against the panels' PREFERRED widths. Evidence: at about 1180 wide that left the board small while panels sat wide, and a default floor of 320 pushed both panels into drawers in a band just above the stacking threshold. Final rules: (1) the responsive default is sized against the panels' MINIMUM widths and panels then grow into what is left up to their preferred width; (2) the default's floor is what still docks at the minimums, so the default is never the reason a panel becomes a drawer; (3) the control rail width is reserved on both sides (geometry input rail, output gapX) so centering and the stacking decision include it; (4) a stacked workspace is one scroller (the document), panels follow as sections and stay visible; (5) a person's chosen size is still clamped for display only. The Summa reference geometry (src/ui/workspaceGeometry.ts) was updated to match and tested (scripts/test-workspace.mjs). Candidate P24 text should say panels yield before the region, not only that they shrink, then drawer, then stack.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-gap",
+    "rationale": "Refines the same gap as FB-0015 with measured evidence; the draft candidate P24 and the reference geometry had the weaker rule. Not a failure to apply approved guidance. Owner decides whether to merge into FB-0015. Confirmation needed.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P05"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "proposal-drafted",
+  "proposal": "PR-0002"
+}

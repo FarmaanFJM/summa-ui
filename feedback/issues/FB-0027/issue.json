@@ -1,0 +1,33 @@
+{
+  "id": "FB-0027",
+  "createdAt": "2026-10-29T13:03:49Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer",
+    "route": "Train, Judgement Puzzles notes board (desktop 1366, phone 390)"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Toolbar density: nine equal icon buttons replaced by four direct controls and one grouped options menu",
+  "screenshots": [
+    {
+      "file": "random-puzzles-1366-3board.png"
+    },
+    {
+      "file": "judgement-puzzle-1366-3board.png"
+    }
+  ],
+  "explanation": "CaissaTrainer Phase 2 (training-notes.md N6 to N9). Observed: nine same weight icon buttons in one row, the ninth clipped by the panel edge, most used rarely, one (annotation symbols) opening a hidden 19 symbol grid. Rule applied: frequency decides visibility. At most about four direct controls per small tool; the rest live in one grouped menu button with a visible word on the trigger (Options, accessible name Notes board options), groups labelled (Position, Board, Annotate move), full APG menu button pattern (open with Enter, Space or ArrowDown; arrows, Home, End wrap; Escape closes and returns focus; Tab closes; click outside closes), items that cannot act are disabled with a reason, 36px targets with a precise pointer and 40px under a coarse pointer. Every function was preserved. P10 (minimalism over prevalence) covers the direction but gives no number and no grouping or menu button rule. Related: the workspace rail options menu (see the rail issue) uses the same pattern, and a shared menu button preset would serve both.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-gap",
+    "rationale": "P10 states the direction (fewer visible controls) but not a threshold or the grouped menu button pattern. Gap or ambiguity at the margin; the count of 4 is a judgement the owner must set. Owner confirmation needed.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P10",
+    "P09"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "proposal-drafted",
+  "proposal": "PR-0002"
+}

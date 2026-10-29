@@ -5,6 +5,10 @@
   what the primary region shows (an image, a canvas, a document preview). The numbers come from the
   framework-neutral workspaceGeometry.ts; this file measures, renders and wires interaction.
 
+  The size controls are a rail attached to the primary region (a resize handle that is a slider, and one options
+  menu with the discrete actions), not toolbar buttons: the toolbar is about the page (title, panel toggles), the rail is
+  about the region it sits against. Its width is reserved on both sides so the region stays centered (geometry `rail`).
+
   Built only from existing tokens, presets and icons (sm-icon-btn, the shared Icon). Appearance of the
   workspace itself is in styles/workspace.css. Candidate preset spec: feedback/proposals/PR-0002.
 */
@@ -19,6 +23,8 @@ const TOOLBAR_HEIGHT = 44
 const PADDING = 16
 const GAP = 16
 const CHROME_GAP = 12
+/** Width the control rail takes beside the primary region; reserved on both sides by the geometry. */
+const RAIL = 40
 export const WORKSPACE_STORAGE_KEY = 'summa-workspace-v1'
 
 /* ------------------------------------------------------------------ Preferences */
@@ -75,6 +81,104 @@ export function useWorkspacePreferences(storageKey = WORKSPACE_STORAGE_KEY) {
   }), [state, update])
 }
 export type WorkspacePreferences = ReturnType<typeof useWorkspacePreferences>
+
+/* ------------------------------------------------------------------ Control rail */
+type RailProps = {
+  label: string
+  size: number; minSize: number; maxSize: number; atMin: boolean; atMax: boolean
+  customized: boolean
+  placement: 'side' | 'below'
+  onStep: (direction: 1 | -1) => void
+  onLargest: () => void
+  onRestore: () => void
+  onPreview: (size: number | null) => void
+  onCommit: (size: number) => void
+}
+
+/**
+ * The controls about the primary region, attached to it: a resize handle (a slider: drag, or arrow keys, Home, End)
+ * and one labelled options menu (APG menu button) that holds the discrete actions. Rare actions live in the menu so the
+ * region keeps four fewer permanent buttons. It follows the region, so it is never left behind at an old size.
+ */
+function WorkspaceRail({ label, size, minSize, maxSize, atMin, atMax, customized, placement, onStep, onLargest, onRestore, onPreview, onCommit }: RailProps) {
+  const [open, setOpen] = useState(false)
+  const rootRef = useRef<HTMLDivElement>(null)
+  const triggerRef = useRef<HTMLButtonElement>(null)
+  const menuRef = useRef<HTMLDivElement>(null)
+  const start = useRef<{ x: number; y: number; size: number } | null>(null)
+  const last = useRef<number | null>(null)
+  const items = () => [...(menuRef.current?.querySelectorAll<HTMLElement>('[role="menuitem"]:not([aria-disabled="true"])') ?? [])]
+  const closeMenu = (returnFocus: boolean) => { setOpen(false); if (returnFocus) triggerRef.current?.focus() }
+  useEffect(() => {
+    if (!open) return
+    const onDoc = (e: Event) => { if (rootRef.current && !rootRef.current.contains(e.target as Node)) setOpen(false) }
+    document.addEventListener('pointerdown', onDoc)
+    return () => document.removeEventListener('pointerdown', onDoc)
+  }, [open])
+  const openMenu = (focusFirst: boolean) => { setOpen(true); if (focusFirst) requestAnimationFrame(() => items()[0]?.focus()) }
+  const onTriggerKey = (e: KeyboardEvent) => {
+    if (e.key === 'ArrowDown' || e.key === 'ArrowUp') { e.preventDefault(); openMenu(true) }
+    else if (e.key === 'Escape' && open) { e.preventDefault(); e.stopPropagation(); closeMenu(false) }
+  }
+  const onMenuKey = (e: KeyboardEvent) => {
+    const list = items(), i = list.indexOf(document.activeElement as HTMLElement)
+    if (e.key === 'ArrowDown') { e.preventDefault(); list[(i + 1) % list.length]?.focus() }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); list[(i - 1 + list.length) % list.length]?.focus() }
+    else if (e.key === 'Home') { e.preventDefault(); list[0]?.focus() }
+    else if (e.key === 'End') { e.preventDefault(); list[list.length - 1]?.focus() }
+    else if (e.key === 'Escape') { e.preventDefault(); e.stopPropagation(); closeMenu(true) }
+    else if (e.key === 'Tab') closeMenu(false)
+  }
+  const choose = (disabled: boolean, action: () => void) => { if (disabled) return; action(); closeMenu(true) }
+
+  const onDown = (e: PointerEvent<HTMLButtonElement>) => {
+    if (e.button !== 0) return
+    e.currentTarget.setPointerCapture(e.pointerId)
+    start.current = { x: e.clientX, y: e.clientY, size }
+    e.preventDefault()
+  }
+  const onMove = (e: PointerEvent<HTMLButtonElement>) => {
+    if (!start.current) return
+    last.current = dragSize(start.current.size, e.clientX - start.current.x, e.clientY - start.current.y, { minSize, maxSize })
+    onPreview(last.current)
+  }
+  const onUp = () => { if (start.current && last.current !== null) onCommit(last.current); start.current = null; last.current = null; onPreview(null) }
+  const onKey = (e: KeyboardEvent<HTMLButtonElement>) => {
+    const next = ({ ArrowRight: size + SIZE_STEP, ArrowUp: size + SIZE_STEP, ArrowLeft: size - SIZE_STEP, ArrowDown: size - SIZE_STEP, Home: minSize, End: maxSize } as Record<string, number>)[e.key]
+    if (next === undefined) return
+    e.preventDefault()
+    onCommit(Math.min(maxSize, Math.max(minSize, next)))
+  }
+  const item = (action: string, icon: 'plus' | 'minus' | 'maximize' | 'refresh', text: string, disabled: boolean, run: () => void) => (
+    <button type="button" role="menuitem" className="ws-rail-item" data-ws={action} aria-disabled={disabled} tabIndex={-1} onClick={() => choose(disabled, run)}>
+      <Icon name={icon} size={16} /><span>{text}</span>
+    </button>
+  )
+  return (
+    <div ref={rootRef} className={`ws-rail is-${placement} ${open ? 'is-open' : ''}`} data-ws-rail>
+      <div className="ws-rail-menu-host">
+        <button ref={triggerRef} type="button" className="sm-icon-btn ws-rail-btn" data-ws="options" aria-haspopup="menu" aria-expanded={open}
+          aria-label={`${label} options`} title={`${label} options`} onClick={() => (open ? closeMenu(false) : openMenu(false))} onKeyDown={onTriggerKey}>
+          <Icon name="settings" size={18} />
+        </button>
+        {open && (
+          <div ref={menuRef} className="ws-rail-menu" role="menu" aria-label={`${label} options`} onKeyDown={onMenuKey}>
+            {item('enlarge', 'plus', `Larger ${label}`, atMax, () => onStep(1))}
+            {item('shrink', 'minus', `Smaller ${label}`, atMin, () => onStep(-1))}
+            {item('fit', 'maximize', 'Largest that fits', atMax, onLargest)}
+            <div className="ws-rail-sep" role="separator" />
+            {item('restore', 'refresh', 'Restore default size and panels', !customized, onRestore)}
+          </div>
+        )}
+      </div>
+      <button type="button" className="ws-rail-btn ws-rail-handle" data-ws="resize" role="slider" aria-label={`Resize ${label}`} aria-orientation="horizontal"
+        aria-valuemin={minSize} aria-valuemax={maxSize} aria-valuenow={size} aria-valuetext={`${size} pixels`} title={`Drag to resize the ${label}`}
+        onPointerDown={onDown} onPointerMove={onMove} onPointerUp={onUp} onPointerCancel={onUp} onKeyDown={onKey}>
+        <Icon name="arrow-down-right" size={16} />
+      </button>
+    </div>
+  )
+}
 
 /* ------------------------------------------------------------------ Component */
 export type WorkspaceProps = {
@@ -148,7 +252,7 @@ export function Workspace({
   const [dragging, setDragging] = useState<number | null>(null)
 
   const g = useMemo(() => computeWorkspace({
-    width: box.w, height: box.h, padding: PADDING, gap: GAP, chromeY: TOOLBAR_HEIGHT + peak.header + peak.footer,
+    width: box.w, height: box.h, padding: PADDING, gap: GAP, rail: RAIL, chromeY: TOOLBAR_HEIGHT + peak.header + peak.footer,
     left: hasLeft ? leftPanel : null, right: hasRight ? rightPanel : null, leftOpen, rightOpen, preferred: dragging ?? prefs.size,
   }), [box.w, box.h, peak.header, peak.footer, hasLeft, hasRight, leftPanel, rightPanel, leftOpen, rightOpen, dragging, prefs.size])
   useEffect(() => { onSize?.(g.size) }, [g.size, onSize])
@@ -164,7 +268,8 @@ export function Workspace({
     if (dockOf(s) === 'drawer') { setDrawer(drawer === s ? null : s); return }
     prefs.setPanelOpen(workspaceKey, s, !(s === 'left' ? leftOpen : rightOpen))
   }
-  const closeDrawer = useCallback(() => { const s = drawer; setDrawer(null); if (s) toggleRef[s].current?.focus() }, [drawer]) // eslint-disable-line react-hooks/exhaustive-deps
+  // The background is inert while the drawer is open, so focus returns to the toggle after the update lifts that.
+  const closeDrawer = useCallback(() => { const s = drawer; setDrawer(null); if (s) requestAnimationFrame(() => toggleRef[s].current?.focus()) }, [drawer]) // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => { if (drawer) panelRef[drawer].current?.focus() }, [drawer]) // eslint-disable-line react-hooks/exhaustive-deps
   useEffect(() => { if (drawer && dockOf(drawer) !== 'drawer') setDrawer(null) }, [g.leftDock, g.rightDock]) // eslint-disable-line react-hooks/exhaustive-deps
   const onRootKey = (e: KeyboardEvent) => {
@@ -179,26 +284,16 @@ export function Workspace({
     }
   }
 
-  /* Size controls: toolbar buttons, corner handle (pointer) and keyboard (role=slider). */
+  /* Size controls live in the rail attached to the region. */
   const customized = prefs.size !== null || prefs.panels[workspaceKey]?.left !== undefined || prefs.panels[workspaceKey]?.right !== undefined
-  const drag = useRef<{ x: number; y: number; size: number } | null>(null)
-  const onGripDown = (e: PointerEvent<HTMLButtonElement>) => {
-    if (e.button !== 0) return
-    e.currentTarget.setPointerCapture(e.pointerId)
-    drag.current = { x: e.clientX, y: e.clientY, size: g.size }
-    e.preventDefault()
-  }
-  const onGripMove = (e: PointerEvent<HTMLButtonElement>) => { if (drag.current) setDragging(dragSize(drag.current.size, e.clientX - drag.current.x, e.clientY - drag.current.y, g)) }
-  const onGripUp = () => { if (drag.current && dragging !== null) prefs.setSize(dragging); drag.current = null; setDragging(null) }
-  const onGripKey = (e: KeyboardEvent<HTMLButtonElement>) => {
-    const next = ({ ArrowRight: g.size + SIZE_STEP, ArrowUp: g.size + SIZE_STEP, ArrowLeft: g.size - SIZE_STEP, ArrowDown: g.size - SIZE_STEP, Home: g.minSize, End: g.maxSize } as Record<string, number>)[e.key]
-    if (next === undefined) return
-    e.preventDefault()
-    prefs.setSize(Math.min(g.maxSize, Math.max(g.minSize, next)))
+  const step = (d: 1 | -1) => prefs.setSize(stepSize(g.size, d, g))
+  const railProps: Omit<RailProps, 'placement'> = {
+    label: primaryLabel.toLowerCase(), size: g.size, minSize: g.minSize, maxSize: g.maxSize, atMin: g.atMin, atMax: g.atMax, customized,
+    onStep: step, onLargest: () => prefs.setSize(g.maxSize), onRestore: () => { setDrawer(null); prefs.restoreDefaults(workspaceKey) },
+    onPreview: setDragging, onCommit: v => prefs.setSize(v),
   }
 
-  const style = { '--ws-size': `${g.size}px`, '--ws-left': `${g.leftWidth}px`, '--ws-right': `${g.rightWidth}px`, '--ws-pad': `${PADDING}px`, '--ws-gap': `${GAP}px` } as CSSProperties
-  const name = primaryLabel.toLowerCase()
+  const style = { '--ws-size': `${g.size}px`, '--ws-left': `${g.leftWidth}px`, '--ws-right': `${g.rightWidth}px`, '--ws-pad': `${PADDING}px`, '--ws-gap': `${g.gapX}px` } as CSSProperties
   const panelId = useId()
   const toggleLabel = (s: Side, title: string) => `${(s === 'left' ? leftOpen : rightOpen) && dockOf(s) !== 'drawer' ? 'Hide' : 'Show'} ${title}`
 
@@ -206,7 +301,7 @@ export function Workspace({
     const st = panelState(s)
     return (
       <section key={s} ref={panelRef[s]} id={`${panelId}-${s}`} className={`ws-panel ws-panel-${s} is-${st}`} aria-label={title} tabIndex={-1}
-        {...(st === 'drawer-open' ? { role: 'dialog', 'aria-modal': true } : {})} hidden={st === 'hidden' ? true : undefined}>
+        {...(st === 'drawer-open' ? { role: 'dialog', 'aria-modal': true } : {})} hidden={st === 'hidden' ? true : undefined} inert={drawer && drawer !== s ? true : undefined}>
         {st === 'drawer-open' && <button type="button" className="sm-icon-btn ws-btn ws-drawer-close" aria-label="Close panel" onClick={closeDrawer}><Icon name="x" size={18} /></button>}
         {stacked && <h2 className="ws-panel-title">{title}</h2>}
         <div className="ws-panel-body">{content}</div>
@@ -217,19 +312,13 @@ export function Workspace({
   return (
     <section ref={rootRef} className={`ws ${stacked ? 'is-stacked' : ''} ${dragging !== null ? 'is-dragging' : ''}`} style={style}
       data-ws-mode={g.mode} data-ws-size={g.size} data-ws-left={panelState('left')} data-ws-right={panelState('right')} data-ws-measured={box.measured} onKeyDown={onRootKey}>
-      <div className="ws-toolbar" role="toolbar" aria-label={`${primaryLabel} layout`}>
+      <div className="ws-toolbar" role="toolbar" aria-label={`${primaryLabel} layout`} inert={drawer ? true : undefined}>
         <div className="ws-group">
           {hasLeft && (
             <button ref={toggleRef.left} type="button" className="sm-icon-btn ws-btn" data-ws-toggle="left" aria-pressed={g.leftDock === 'docked' || drawer === 'left'}
               aria-label={toggleLabel('left', leftTitle)} title={toggleLabel('left', leftTitle)} onClick={() => toggle('left')}><Icon name="panel" size={18} /></button>
           )}
           {toolbarStart}
-        </div>
-        <div className="ws-group ws-group-size" role="group" aria-label={`${primaryLabel} size`}>
-          <button type="button" className="sm-icon-btn ws-btn" data-ws="shrink" disabled={g.atMin} aria-label={`Smaller ${name}`} title={`Smaller ${name}`} onClick={() => prefs.setSize(stepSize(g.size, -1, g))}><Icon name="minus" size={18} /></button>
-          <button type="button" className="sm-icon-btn ws-btn" data-ws="enlarge" disabled={g.atMax} aria-label={`Larger ${name}`} title={`Larger ${name}`} onClick={() => prefs.setSize(stepSize(g.size, 1, g))}><Icon name="plus" size={18} /></button>
-          <button type="button" className="sm-icon-btn ws-btn" data-ws="fit" disabled={g.atMax} aria-label={`Largest ${name} that fits`} title={`Largest ${name} that fits`} onClick={() => prefs.setSize(g.maxSize)}><Icon name="maximize" size={18} /></button>
-          <button type="button" className="sm-icon-btn ws-btn" data-ws="restore" disabled={!customized} aria-label="Restore default size and panels" title="Restore default size and panels" onClick={() => { setDrawer(null); prefs.restoreDefaults(workspaceKey) }}><Icon name="refresh" size={18} /></button>
         </div>
         <div className="ws-group ws-group-end">
           {toolbarEnd}
@@ -242,16 +331,13 @@ export function Workspace({
 
       <div className="ws-body">
         {hasLeft && renderPanel('left', leftTitle, left)}
-        <div className="ws-primary" role="region" aria-label={primaryLabel}>
+        <div className="ws-primary" role="region" aria-label={primaryLabel} inert={drawer ? true : undefined}>
           {hasHeader && <div ref={headerRef} className="ws-primary-header">{primaryHeader}</div>}
           <div className="ws-primary-box">
             {primary}
-            <button type="button" className="ws-grip" role="slider" aria-label={`Resize ${name}`} aria-orientation="horizontal"
-              aria-valuemin={g.minSize} aria-valuemax={g.maxSize} aria-valuenow={g.size} aria-valuetext={`${g.size} pixels`}
-              onPointerDown={onGripDown} onPointerMove={onGripMove} onPointerUp={onGripUp} onPointerCancel={onGripUp} onKeyDown={onGripKey}>
-              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 8 8 19M19 14l-5 5" /></svg>
-            </button>
+            {!stacked && <WorkspaceRail {...railProps} placement="side" />}
           </div>
+          {stacked && <WorkspaceRail {...railProps} placement="below" />}
           {hasFooter && <div ref={footerRef} className="ws-primary-footer">{primaryFooter}</div>}
         </div>
         {hasRight && renderPanel('right', rightTitle, right)}

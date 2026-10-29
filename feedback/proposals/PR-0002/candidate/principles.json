@@ -15,7 +15,10 @@
         "Disclose secondary information progressively in panels the person can hide.",
         "Reserve the same width on both sides so a lone panel does not push the region off center.",
         "No zen or fullscreen mode: the largest size that fits and hiding the panels cover it.",
-        "Panels hold content, never navigation (principle 14)."
+        "Panels hold content, never navigation (principle 14).",
+        "Controls about the primary region live in a rail attached to it (resize handle and one options menu), not in the page toolbar; its width is reserved on both sides.",
+        "A second view of the primary object is secondary: closed by default, capped well below the primary region.",
+        "Optional tools start closed behind one labelled control and the choice is remembered; nothing essential is hidden behind them."
       ],
       "exceptions": [
         "Applications whose product is a feed, a table or a document with a reading measure and no single primary region."
@@ -32,7 +35,9 @@
         "Order of yielding: shrink to the minimum width, on-demand drawer, stack under the primary region on a narrow screen.",
         "Never delete a panel to make room; never leave a hidden panel without a visible control that restores it.",
         "A drawer closes with Escape and returns focus to the control that opened it.",
-        "Keep panels mounted so their state survives."
+        "Keep panels mounted so their state survives.",
+        "The responsive default is sized against the panels' minimum widths so panels yield first and grow into what remains; the default never turns a panel into a drawer.",
+        "An open drawer is a modal dialog: background inert, focus contained, Escape closes only it, focus returns to its toggle."
       ],
       "exceptions": []
     },
@@ -61,7 +66,7 @@
       "rules": [
         "No fixed pixel size for the primary region of a workspace.",
         "Default is deliberately medium, not the maximum; the person can go larger or smaller.",
-        "The resize handle is a slider: arrow keys, Home and End, 40px touch target.",
+        "The resize handle is a slider in the control rail: arrow keys, Home and End, 40px touch target.",
         "Measure the chrome around the region and hold its peak so the region does not jump."
       ],
       "exceptions": [

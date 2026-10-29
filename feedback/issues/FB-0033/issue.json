@@ -1,0 +1,34 @@
+{
+  "id": "FB-0033",
+  "createdAt": "2026-10-29T13:03:53Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer",
+    "route": "Vintage Book reader (tablet 820, phone 390)"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Persistent bottom bar plus an inline copy of the same page turn controls",
+  "screenshots": [
+    {
+      "file": "before-book-820.png"
+    },
+    {
+      "file": "book-820.png"
+    }
+  ],
+  "explanation": "CaissaTrainer Phase 2 (education.md E4). Observed: Previous and Next appeared inline and in the bottom bar, and at 820 the inline pair sat flush against the screen edges with no gutter. Fix: one set of page turn controls per breakpoint. This is a failure to apply the meta principle (remove before adding) and P18 (mobile breathing room), and P10 (do not show every action at once). Application specific; it generalizes only as an anti-pattern about duplicated controls.",
+  "classification": {
+    "status": "proposed",
+    "kind": "application-specific",
+    "rationale": "Failure to apply P10 and the meta principle; fixed in the application. Could be folded into the repeated controls anti-pattern candidate (FB-0032). Suggestion only.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P10",
+    "P18",
+    "P09"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "proposal-drafted",
+  "proposal": "PR-0002"
+}

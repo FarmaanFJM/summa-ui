@@ -1,0 +1,43 @@
+{
+  "id": "FB-0025",
+  "createdAt": "2026-10-29T13:03:48Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer",
+    "route": "Train (desktop 1440 and 390), Home, Profile"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Taxonomy chips: the CALC tag and the ability, product and role badge colours",
+  "screenshots": [
+    {
+      "file": "before-_profile-1440.png"
+    },
+    {
+      "file": "before-_train-1440.png"
+    },
+    {
+      "file": "_train-1440.png"
+    },
+    {
+      "file": "_profile-1440.png"
+    }
+  ],
+  "explanation": "CaissaTrainer Phase 2 (training-overview.md). Owner finding: the CALC tag is a dark transparent yellow chip with yellow text. Verdict: confirmed and worse than styling. label-orange mapped to the warning colour, so the Calculation ability was painted in the product's warning hue; every ability had its own hue (BA purple, K&E green, Judgment and Composure cyan); the chips repeated the group heading and the Show filter on 11 of 13 cards; Home used three product hues; the Admin role chip was red; article tags used an undefined class (see the token lint issue). MOSTLY A FAILURE TO APPLY approved guidance: P04 (tags only for recognising, filtering, grouping or interacting; nobody filters or clicks a chip inside a card button), AP-005 review questions (could a user filter or click it, would removing it reduce comprehension), P06 (remove a colour if removing it loses nothing), P05. FOUR GAPS in how the guidance is worded or detected: (1) P06 lists identity among what an accent may communicate, which reads as permission for one hue per category; (2) nothing says a tag that restates the heading, filter or page it sits under is redundant even when tags are functional in the abstract; (3) nothing says a state colour (warning, danger, success) must not be reused as a category hue; (4) CHK-005 only detects fully rounded pills (radius at least half the height, height at most 28px), and the product's labels use a small radius so a rectangular chip repeated on every card passes. Fix applied in the application: chips removed from cards, one neutral label fill, the ability named in one plain line on the module overview. Candidate wording for AP-005 is in training-overview.md section 1 and in PR-0002.",
+  "classification": {
+    "status": "proposed",
+    "kind": "application-specific",
+    "rationale": "Primarily a failure to apply P04, P05, P06 and AP-005 (application-specific, fixed in the application). It also exposes 4 gaps (P06 wording on identity, repeating the container, state colour as category hue, CHK-005 detection of non-pill chips). The owner may confirm as application-specific and open the four gaps as guidance-gap, or confirm as guidance-ambiguity. Suggestion only.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P04",
+    "P05",
+    "P06"
+  ],
+  "relatedAntiPatterns": [
+    "AP-005",
+    "AP-012"
+  ],
+  "status": "proposal-drafted",
+  "proposal": "PR-0002"
+}

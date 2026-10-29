@@ -1,0 +1,33 @@
+{
+  "id": "FB-0028",
+  "createdAt": "2026-10-29T13:03:50Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer",
+    "route": "Notes (desktop 1440)"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "A surface equal to its parent is not a surface (writing sheet and rail on the panel step)",
+  "screenshots": [
+    {
+      "file": "_notes-1440.png"
+    },
+    {
+      "file": "default-1440.png"
+    }
+  ],
+  "explanation": "CaissaTrainer Phase 2 (notes-app.md A1). Measured: the writing sheet background rgb(27,28,28) on a layout shell rgb(27,28,28), and the rail the same step with a 1px border, so the writing surface had no edge. Fix: raised tone (one step above the ground, border transparent) on sheet and rail. P01 and P02 describe elevation by surface step but do not say that a region declared as a surface must resolve to a different step from its parent. Proposed: a check that flags a region with a surface role (panel, sheet, card, field) whose resolved background equals its parent's, plus the rule that a region on the page panel step uses the next step. This failure to apply P02 is application-specific; the missing check is a gap.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-gap",
+    "rationale": "Mostly a failure to apply P01 and P02 in the application, fixed there. The gap is that no check makes it testable (a raised region equal to its parent). Suggested new check, owner decides. Confirmation needed.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P01",
+    "P02"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "proposal-drafted",
+  "proposal": "PR-0002"
+}

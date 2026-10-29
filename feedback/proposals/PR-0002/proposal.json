@@ -1,18 +1,33 @@
 {
   "id": "PR-0002",
-  "title": "Workspace pattern: resizable primary region, yielding panels, compact rail",
+  "title": "Workspace pattern: resizable primary region, control rail, yielding panels, compact rail; Phase 2 candidate amendments",
   "issues": [
     "FB-0014",
     "FB-0015",
     "FB-0016",
     "FB-0017",
-    "FB-0018"
+    "FB-0018",
+    "FB-0020",
+    "FB-0021",
+    "FB-0022",
+    "FB-0023",
+    "FB-0024",
+    "FB-0025",
+    "FB-0026",
+    "FB-0027",
+    "FB-0028",
+    "FB-0029",
+    "FB-0030",
+    "FB-0031",
+    "FB-0032",
+    "FB-0033",
+    "FB-0034"
   ],
   "kind": "new-principle",
   "status": "draft",
   "authoredBy": "claude-agent",
   "authoredAt": "2026-10-29T06:08:27Z",
-  "summary": "Add a workspace pattern: a primary region that stays primary and can be resized by the person, side panels that yield (shrink, drawer, stack) before it, choices stored as preferences rather than measurements, and a compact icon rail for the application sidebar. Candidate principles P23 to P26 and candidate presets preset.workspace and preset.app-sidebar-rail travel as files in this folder; docs/WORKSPACE_PATTERN.md and the reference code (src/ui/workspaceGeometry.ts, src/ui/workspace.tsx, route #/workspace) are outside guidance/ and change no approved rule. It generalizes: any app with an image, canvas, preview, map or board as its main region hits the same layout problems. Open for the owner: ghost buttons (FB-0018) are deliberately not decided; whether the four size buttons are too many controls (P10); whether P26 needs a check; the CHK-011 collector matches every aside; the default size keeps panels at preferred width so it can be small on mid-size windows.",
+  "summary": "Add a workspace pattern: a primary region that stays primary and can be resized by the person, side panels that yield (shrink, drawer, stack) before it, choices stored as preferences rather than measurements, and a compact icon rail for the application sidebar. Candidate principles P23 to P26 and candidate presets preset.workspace and preset.app-sidebar-rail travel as files in this folder; docs/WORKSPACE_PATTERN.md and the reference code (src/ui/workspaceGeometry.ts, src/ui/workspace.tsx, route #/workspace) are outside guidance/ and change no approved rule. It generalizes: any app with an image, canvas, preview, map or board as its main region hits the same layout problems. Open for the owner: ghost buttons (FB-0018) are deliberately not decided; whether the four size buttons are too many controls (P10); whether P26 needs a check; the CHK-011 collector matches every aside; the default size keeps panels at preferred width so it can be small on mid-size windows. CaissaTrainer Phase 2 extended this draft (FB-0020 to FB-0034): the size controls moved from the toolbar into a control rail attached to the region (FB-0020), optional tools and a duplicate view are closed by default and capped (FB-0021, FB-0022), the default is sized against panel minimums with the rail reserved on both sides (FB-0023), drawers are modal dialogs (FB-0024). Candidate amendments outside the workspace pattern are in candidate/amendments.md: tags and colour (AP-005, P06, CHK-005, FB-0025), equal surface check (FB-0028), editable text fields (FB-0026), toolbar density (FB-0027), honest toggles (FB-0034), repeated controls (FB-0030 to FB-0033), undefined class lint (FB-0029). Several are failures to apply approved guidance, not gaps (FB-0025, FB-0029, FB-0033, part of FB-0028); the proposal lists which. Draft only: the owner decides everything, including whether to split this proposal.",
   "change": {
     "files": [
       "PRINCIPLES.md (candidate text only: feedback/proposals/PR-0002/candidate/principles.md)",
@@ -26,7 +41,9 @@
       "docs/WORKSPACE_PATTERN.md (new, outside guidance/)",
       "src/ui/workspaceGeometry.ts, src/ui/workspace.tsx, src/styles/workspace.css, src/lab/workspace/ (new reference, outside guidance/)",
       "src/ui/index.tsx (AppShell compact prop, NavItem title in compact), src/main.tsx (route #/workspace, workspace.css import)",
-      "scripts/test-workspace.mjs, package.json (test:workspace)"
+      "scripts/test-workspace.mjs, package.json (test:workspace)",
+      "feedback/proposals/PR-0002/candidate/amendments.md (candidate text for AP-005, P06, CHK-005, a surface check, three candidate principles and one anti-pattern; candidate numbering only)",
+      "src/ui/workspace.tsx, src/styles/workspace.css (control rail, inert drawer) and src/ui/workspaceGeometry.ts (rail, gapX, default against minimums, dockable floor) updated to match CaissaTrainer"
     ],
     "principleIds": [
       "P23",
@@ -55,6 +72,22 @@
       {
         "description": "Panels that squeeze the primary region and vanish with no way back: a fixed 360px column on each side at every width, hidden by display:none on small screens.",
         "snippet": "@media (max-width: 1000px) { .side { display: none; } }  /* P24: deleted, not yielded */"
+      },
+      {
+        "description": "Four size buttons in the page toolbar, far from the region they act on (FB-0020).",
+        "snippet": "<div role=\"toolbar\"><button>Smaller</button><button>Larger</button><button>Largest</button><button>Restore</button></div>  /* control rail instead */"
+      },
+      {
+        "description": "A category hue per ability repeated on every card, using the warning colour for one of them (FB-0025).",
+        "snippet": ".chip-calc { background: rgb(224 176 74 / .14); color: var(--warn); }  /* AP-005, P06, P04 */"
+      },
+      {
+        "description": "A drawer that sets focus on open but leaves the page behind it focusable (FB-0024).",
+        "snippet": "<aside role=\"dialog\">...</aside>  /* no aria-modal, background not inert, Tab escapes */"
+      },
+      {
+        "description": "A second full size board next to the puzzle board, shown by default (FB-0022).",
+        "screenshot": "feedback/issues/FB-0022/random-puzzles-1366-3board.png"
       }
     ],
     "positive": [
@@ -74,6 +107,18 @@
       {
         "description": "Geometry is a pure function and the stored size is only an input.",
         "snippet": "const g = computeWorkspace({ width, height, padding: 16, gap: 16, chromeY, left, right, leftOpen, rightOpen, preferred: prefs.size /* null = responsive default */ });\nprefs.setSize(pickedSize); /* the pick, never g.size */"
+      },
+      {
+        "description": "The same slice after Phase 2: duplicate board collapsed by default, capped at 240px, grouped options menu (FB-0022, FB-0027).",
+        "screenshot": "feedback/issues/FB-0022/judgement-puzzle-1366-3board.png"
+      },
+      {
+        "description": "Rail options menu open on the reference route: a menu button with the four discrete actions.",
+        "screenshot": "feedback/proposals/PR-0002/screenshots/workspace-options-menu-1440.png"
+      },
+      {
+        "description": "Taxonomy chips removed, ability named in one plain line on the overview (FB-0025).",
+        "screenshot": "feedback/issues/FB-0025/_train-1440.png"
       }
     ]
   },
@@ -81,8 +126,8 @@
     "result": "no-regressions",
     "regressionReport": "feedback/proposals/PR-0002/regression.json",
     "baseline": "feedback/baselines/guidance-v0.1.0.json",
-    "ranAt": "2026-10-29T06:32:30Z",
-    "notes": "Run by claude-agent: no new failing checks on the 12 approved references at 1440 and 390; tap test 940 tested, 0 undersized, 0 mismatches. Not an approval. The desktop layout comparison reports 'changed' for trading only (57 elements at 1440 in this run). The same comparison reported trading changed (82 and 82) on the untouched repository before any change in this proposal, and two consecutive recordings of trading differ run to run (the simulated terminal is time dependent), so it is a pre-existing flake in scripts/layout-snapshot.mjs and not caused by this change; the other 11 apps show 0 changed elements. The candidate adds no check, so no check outcome can change. #/workspace itself: run-checks reports no findings at 1440x900 and 390x844 and test-tap-targets reports 35 tested, 0 undersized."
+    "ranAt": "2026-10-29T13:18:30Z",
+    "notes": "Re-run by claude-agent after the Phase 2 update (control rail in the React reference, geometry port with rail, gapX, default against panel minimums): result no-regressions on the 12 approved references at 1440 and 390, tap test pass, desktop layout comparison changed for trading@1440 only (57 elements), the same pre-existing time dependent flake of scripts/layout-snapshot.mjs recorded earlier; the other apps and trading@1100 show 0 changed. No candidate check is implemented, so no check outcome can change. #/workspace tap test: 34 tested, 0 undersized (one rail button at 32px was found and fixed during this run). Not an approval."
   },
   "versionImpact": "minor",
   "existingApplications": {

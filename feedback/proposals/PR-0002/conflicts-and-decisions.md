@@ -14,6 +14,19 @@ Agents cannot edit `docs/DECISIONS.md` (owner-protected) and the validator requi
 | Ghost buttons (`.sm-btn--ghost`, React `Button variant="ghost"`) | None proposed | Open question (FB-0018). CaissaTrainer bans ghost buttons; Summa ships one. This proposal does not add or remove a rule. The reference toolbar uses a visible neutral fill so it works under either reading. |
 | CHK-011 procedure text versus its collector | Panel markup | The procedure says nav, `aside[aria-label*=nav]` and `[role=navigation]` count, and that content panes do not. `scripts/lib/collector.mjs` matches every `aside`. The first run of `#/workspace` flagged the shell sidebar plus a panel `<aside>`. The reference now renders panels as `<section aria-label>` (a labelled region, valid for a content pane). Owner decides whether to fix the collector to follow the procedure text, which would be a check revision. |
 
+## Added by CaissaTrainer Phase 2 (FB-0020 to FB-0034)
+
+| Approved rule | Candidate | Contradiction? |
+| --- | --- | --- |
+| P06 (identity listed among what an accent may communicate) | Category colour is not identity (amendments.md B) | No contradiction; a clarification. The owner decides whether "identity" stays or is narrowed to brand identity. |
+| P04, AP-005 | Same, plus do not repeat the container, state colour is not a category hue | No. Tightens them. Filters, category and state tags stay allowed. |
+| CHK-005 (detects only fully rounded pills, height at most 28px) | Detect repeated small radius non interactive labels on sibling cards | Check revision, not a contradiction. A widened check could fail approved reference applications; the regression run attached to this proposal measures that (the candidate is not implemented in any check, so the run is neutral). |
+| P04 (no arbitrary status tags such as Automatically saved) | Save state in editable fields (amendments.md D) | Tension. A save state that carries failure and retry is functional; an always on reassurance is not. Owner decides where the line is. |
+| CaissaTrainer U4 (a placeholder demonstrates, never instructs) | Prompt while an editable field is empty | Tension in the consumer's own doctrine (not a Summa rule). Owner says whether prompts such as "Start writing" are demonstrations. |
+| CaissaTrainer U1 (no ghost buttons, no actions that appear only on hover) | Quiet rail at 0.78 opacity, hover revealed block tools | Tension. The rail is always present and full emphasis on touch; hover revealed block tools need one permanent labelled creation entry (FB-0021). Related to FB-0018 (ghost buttons), which stays undecided. |
+| P10 | Rail menu and the grouped options menu (about four direct controls) | Consistent; the number four is a judgement for the owner. Resolves the earlier open question about four size buttons: the buttons are replaced by one menu. |
+| P14 | Page level controls in the title band, not a column of their own | Applies P14; FB-0030 is an ambiguity the owner may settle with one sentence. |
+
 ## Draft DECISIONS entries (not applied)
 
 ### D-008 (draft) Workspace panels beside the application sidebar (P14)
@@ -21,6 +34,12 @@ A workspace page may show the application sidebar (expanded or as a 56px rail) a
 
 ### D-009 (draft) Fixed width is allowed for text and true-size content (P26)
 P26 forbids fixing the size of the primary region of a workspace. A reading measure (maximum line length of articles, documents and feeds) and a preview that must show true size are exceptions under the Exception Rule and are not reported as violations.
+
+### D-011 (draft) Category colour is not identity (P06, AP-005)
+A tag set with one hue per category is decorative colour coding. Tags use one neutral fill; text carries the category. State colours are never category hues. A tag that restates its container is removed. CHK-005 is widened (owner decides) to flag repeated small radius non interactive labels. Evidence: FB-0025.
+
+### D-012 (draft) Prompts and save state in editable fields (U4, P04)
+A short prompt that demonstrates what goes in an empty editable field is allowed; a save state is allowed when it reports a real cycle (saving, saved, failed with retry) and not as permanent reassurance. Evidence: FB-0026.
 
 ### D-010 (draft, only if the owner wants it) Ghost buttons
 Open. Two readings, neither chosen here: (a) a ghost button is a valid quiet secondary where the control is clearly a button in context; (b) every control must be visible at rest, so ghost is limited to icon buttons with a visible state or removed. FB-0018 holds the evidence.

@@ -1,0 +1,32 @@
+{
+  "id": "FB-0031",
+  "createdAt": "2026-10-29T13:03:52Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer",
+    "route": "Article and Historic Game readers (laptop 1180)"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Symmetric centring reserve starved a reading sheet at mid widths",
+  "screenshots": [
+    {
+      "file": "before-article-1180.png"
+    },
+    {
+      "file": "article-1180.png"
+    }
+  ],
+  "explanation": "CaissaTrainer Phase 2 (education.md E1). Observed: at 1180 the reading sheet was 372px wide and a PGN move list wrapped inside a 50px column, because the sheet cap subtracted the 300px rail on both sides to stay centered. Lesson: centring is a preference. A reading column gets a floor measure and centring yields to it; in a spread the column keeps all the remaining room. Relevant to the workspace pattern: equal reserve (candidate P23) must not shrink the region below its minimum (it already does not for the board, PRIMARY_MIN). Gap: no guidance says centring yields to a floor measure for reading columns.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-gap",
+    "rationale": "No rule on the relation between centring and a reading measure floor. Gap, small. Candidate: one sentence in the workspace pattern. Owner confirmation needed.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P16"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "proposal-drafted",
+  "proposal": "PR-0002"
+}

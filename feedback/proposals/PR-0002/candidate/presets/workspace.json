@@ -15,9 +15,9 @@
     "A region whose size the product must control exactly (a print preview at true size, a pixel-exact canvas). Use a fixed region and say why (P22)."
   ],
   "anatomy": [
-    "Toolbar (44px): panel toggles at both ends, size controls in the middle. Buttons are sm-icon-btn with a neutral --s2 fill.",
+    "Toolbar (44px): one labelled toggle per panel and the page title. Nothing in it is about the size of the region.",
     "Primary region: at least a square of the computed size, centered; optional header and footer above and below, measured and held at their peak.",
-    "Resize handle: a 24px slider button hanging outside the bottom right corner.",
+    "Control rail attached to the primary region: a resize handle (slider) and one options menu button (larger, smaller, largest that fits, restore). Beside the region when wide (44px column, reserved on both sides), a quiet row below it when stacked. Quiet at rest, full emphasis on hover, focus and touch. DRAFT (FB-0020).",
     "Left and right panels: content panes one step above the surface (--s2), equal reserve on both sides.",
     "Drawer: a panel that cannot dock opens over a scrim as a dialog, 360px wide at most.",
     "Scrim: rgba(8,9,9,.55), closes the drawer on click."
@@ -46,7 +46,9 @@
     "Panels yield in order: shrink, drawer, stack. They stay mounted so their state survives.",
     "Chrome above and below the region is measured; the peak since the workspace opened is used so the region never jumps.",
     "Escape closes a drawer and returns focus to the toggle that opened it. A drawer that no longer applies closes by itself.",
-    "Status: provisional. Built from the principles and one real application; compare visually with the owner's references before treating it as reviewed."
+    "Status: provisional. Built from the principles and one real application; compare visually with the owner's references before treating it as reviewed.",
+    "The default size is computed against the panels' MINIMUM widths and panels then grow into what remains (up to preferred). The default's floor is what still docks at the minimums, so the default never forces a drawer. The rail width is passed to the geometry as `rail` and the horizontal gap is reported as `gapX`. (FB-0023)",
+    "Optional tools (a notes panel, a second view of the primary object) are closed by default behind one labelled disclosure control, remembered per device, kept mounted when hidden, and a duplicate view of the primary object is capped well below it. Nothing essential lives only in an optional panel. (FB-0021, FB-0022)"
   ],
   "tokens": [
     "--s0",
@@ -73,8 +75,8 @@
   ],
   "accessibility": [
     "Resize handle: role=slider on a real button, aria-label, aria-orientation=horizontal, aria-valuemin, aria-valuemax, aria-valuenow, aria-valuetext in pixels. Arrow keys step by 40px, Home and End jump to the limits.",
-    "Toolbar is role=toolbar with a label. Toggles use aria-pressed and a label that says what a press does. Size buttons are disabled at the limits, not hidden.",
-    "An open drawer is role=dialog with aria-modal=true and the panel title as its label; focus moves in, Tab stays inside, Escape closes, focus returns to the toggle.",
+    "Toolbar is role=toolbar with a label. Toggles use aria-pressed (true while docked or its drawer is open) and a label that says what a press does. The rail options trigger is a menu button (aria-haspopup=menu, aria-expanded) with the APG keys; items that cannot act are aria-disabled, not hidden.",
+    "An open drawer is role=dialog with aria-modal=true and the panel title as its label; the toolbar, primary region and the other panel are inert; focus moves in, Tab stays inside, Escape closes only the drawer, focus returns to the toggle after inert is lifted. (FB-0024)",
     "Panels are labelled regions (section with aria-label), not aside and not navigation.",
     "Touch: every control has an effective hit area of at least 40x40 CSS px (P18, CHK-020); the handle gains an invisible 44px extension.",
     "Focus ring is the shared 1.5px --focus neutral ring on every control and on the focused panel.",

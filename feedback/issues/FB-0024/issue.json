@@ -1,0 +1,29 @@
+{
+  "id": "FB-0024",
+  "createdAt": "2026-10-29T13:03:47Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer",
+    "route": "Train workspaces at a size where a panel cannot dock (desktop 1180)"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Panel drawer as a modal dialog (focus containment, return, inert background, Escape)",
+  "screenshots": [
+    {
+      "file": "judgement-puzzle-1180-2open.png"
+    }
+  ],
+  "explanation": "CaissaTrainer Phase 2 (WorkspaceLayout.vue, useDialogFocus). Observed: a drawer that only sets focus on open lets Tab walk into the page behind it. Rules now implemented: the open drawer is role=dialog with aria-modal and an accessible name; the toolbar, the primary region and the other panel are inert while it is open; Tab and Shift+Tab cycle inside; Escape closes only the drawer and stops propagation; closing returns focus to the toggle that opened it, after the update that lifts inert (focus cannot move into an inert element, so it is set again after the next render); a drawer that no longer applies because the window grew closes by itself. Draft P24 only said Escape closes and focus returns. The Summa reference (workspace.tsx) now also sets inert. Generalizes to every drawer, sheet and popover panel. Gap in approved guidance: nothing states modal semantics for drawers.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-gap",
+    "rationale": "No principle, check or preset covers modal drawer semantics (inert, containment, return). P08 (familiar dialog behaviour) points the way but is not specific. Gap. Owner confirmation needed.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P08"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "proposal-drafted",
+  "proposal": "PR-0002"
+}

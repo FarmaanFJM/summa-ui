@@ -11,14 +11,19 @@
  * Rules, in priority order:
  *  1. The primary region is the workspace. It stays square, centered in the
  *     available width, and is never squeezed below PRIMARY_MIN.
- *  2. Panels yield before the primary region does. A panel shrinks from its
- *     preferred width to its minimum, then leaves the layout and becomes an
+ *  2. Panels yield before the primary region does. The responsive default is
+ *     sized against the panels' MINIMUM widths, so the region gets its share
+ *     first; panels then grow into what is left, up to their preferred width. A
+ *     panel that cannot dock at its minimum leaves the layout and becomes an
  *     on-demand drawer. It is never destroyed.
  *  3. Both flanks reserve the same width, so a lone panel does not push the
  *     primary region off-center.
  *  4. A narrow workspace stacks: primary region full width, panels below.
  *  5. A user's chosen size is a preference, not a measurement. It is clamped
  *     for display and never rewritten because the window got smaller.
+ *  6. A control rail attached to the region (resize handle, options menu) takes
+ *     `rail` px beside it. The reserve is counted on BOTH sides, so the equal
+ *     reserve and the centering survive. Beside panels only; stacked it sits below.
  *
  * The equal-reserve idea (the same width on both sides keeps the primary region
  * centered) is shared with the MIT-licensed Chess Zen Mode extension's layout math.
@@ -44,6 +49,12 @@ export interface WorkspaceInput {
     padding: number;
     /** Gap between the primary region and a docked panel. */
     gap: number;
+    /**
+     * Extra width reserved beside the primary region on BOTH sides for its attached control rail
+     * (the rail sits on one side; reserving both keeps the equal-reserve centering). Counts only
+     * when the panels sit beside the region; a stacked layout puts the rail below instead.
+     */
+    rail?: number;
     /** Vertical px the workspace spends on things other than the primary square (toolbar, captions). */
     chromeY: number;
     left: PanelSpec | null;
@@ -68,6 +79,8 @@ export interface WorkspaceGeometry {
     rightWidth: number;
     /** Equal width reserved on each side of the primary region. */
     reserve: number;
+    /** Horizontal gap between the primary region and a docked panel, rail included. */
+    gapX: number;
     atMin: boolean;
     atMax: boolean;
     isDefault: boolean;
@@ -115,7 +128,9 @@ function flankFor(size: number, availW: number, gap: number): number {
 }
 
 export function computeWorkspace(input: WorkspaceInput): WorkspaceGeometry {
-    const { padding, gap, chromeY } = input;
+    const { padding, chromeY } = input;
+    const baseGap = input.gap;
+    const gap = baseGap + (input.rail ?? 0);
     const availW = Math.max(0, input.width - padding * 2);
     const availH = Math.max(0, input.height - padding * 2 - chromeY);
     const left = isOpenPanel(input.left, input.leftOpen) ? input.left : null;
@@ -137,15 +152,20 @@ export function computeWorkspace(input: WorkspaceInput): WorkspaceGeometry {
     const widthCap = Math.max(PRIMARY_FLOOR, availW);
     const fullMax = snapDown(Math.min(heightCap, widthCap));
 
-    // Responsive default: medium, beside panels at their preferred width if that
-    // leaves a usable primary region, else at their minimum width, else with drawers.
-    let fits = Math.min(availH, maxBeside((p) => p.preferred));
-    if (fits < PRIMARY_MIN) fits = Math.min(availH, maxBeside((p) => p.min));
+    // Responsive default: medium. Panels yield first: the region is sized against the panels'
+    // MINIMUM widths, and the panels then grow into what remains, up to their preferred width.
+    // (Sizing against preferred widths left laptop regions small while panels sat wide.)
+    let fits = Math.min(availH, maxBeside((p) => p.min));
     if (fits < PRIMARY_MIN) fits = Math.min(availH, availW);
     if (stacked) fits = Math.min(availH, availW);
+    // The default never pushes panels out: its floor is what still docks at the panels' minimum
+    // widths (not below a usable region), so a medium default cannot be the reason a panel
+    // becomes a drawer.
+    const dockable = stacked ? fullMax : Math.min(availH, maxBeside((p) => p.min));
+    const floor = Math.min(DEFAULT_FLOOR, fullMax, Math.max(PRIMARY_MIN, snapDown(dockable)));
     const defaultSize = clamp(
         snapDown(fits * (stacked ? 1 : DEFAULT_FILL)),
-        Math.min(DEFAULT_FLOOR, fullMax),
+        floor,
         Math.min(DEFAULT_CAP, fullMax),
     );
 
@@ -168,6 +188,7 @@ export function computeWorkspace(input: WorkspaceInput): WorkspaceGeometry {
             leftWidth: 0,
             rightWidth: 0,
             reserve: 0,
+            gapX: baseGap,
             atMin: size <= minSize,
             atMax: size >= maxSize,
             isDefault: input.preferred === null,
@@ -196,6 +217,7 @@ export function computeWorkspace(input: WorkspaceInput): WorkspaceGeometry {
         leftWidth: l.width,
         rightWidth: r.width,
         reserve,
+        gapX: gap,
         atMin: size <= minSize,
         atMax: size >= maxSize,
         isDefault: input.preferred === null,
