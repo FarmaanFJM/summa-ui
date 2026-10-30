@@ -1,0 +1,50 @@
+{
+  "id": "FB-0039",
+  "createdAt": "2026-10-29T16:37:16Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer",
+    "route": "Training session area: /train/mate-in-two, /train/random-puzzles (desktop 1440, phone 390)"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Human friendly session information instead of technical stat tiles: a full width state header (\"Black to Move\"), real counts only, never invented progress",
+  "screenshots": [
+    {
+      "file": "before-workspace-1366.png",
+      "viewport": "1366x768",
+      "note": "Before: a Details heading over Accuracy, Correct and Failed tiles; no statement of the current state in words."
+    },
+    {
+      "file": "after-session-mate-in-two-1440-solve.png",
+      "viewport": "1440x900",
+      "note": "After: header block \"White to Move\", then Correct and Mistakes counts in words."
+    },
+    {
+      "file": "after-session-mate-in-two-1440-review.png",
+      "viewport": "1440x900",
+      "note": "After review: metadata, result and comments follow in one flat column; Next puzzle and Finish session sit under the board."
+    },
+    {
+      "file": "after-session-mate-in-two-390-review.png",
+      "viewport": "390x844",
+      "note": "After, stacked: board first, header and counts directly under it."
+    }
+  ],
+  "explanation": "CaissaTrainer Phase 3 (session-info.md, owner direction restated there). OBSERVED: generic technical stat tiles on every module while only two of the three numbers were real; the side to move shown as a bare 2rem square. CORRECTION AND AUDIT: the area now leads with a full width header that states the current state in words (\"White to Move\", computed from the real chess state and absent where it is meaningless or would reveal hidden information), then only what the module truly has, in plain words (exercise \"3 of 10\" only where the module knows both numbers, counts \"Correct 3\" and \"Mistakes 1\", the module's own rows such as \"Score 7\"). No progress bar, no percentage, no streak, no goal exists unless a real number backs it (progressText returns nothing for an unreal number). Every module was audited for which facts are real (the table in session-info.md) before anything was shown. One home per fact: the same fact appears in the status strip and the area only as a compact echo while the main home is not on screen. GENERAL PART (candidate rules, drafts): (a) state the current state in words in one header, absent when meaningless or when it would reveal hidden information; (b) label counts in plain words and show only the ones the module has; (c) never show invented or derived numbers as if real (no fake progress); (d) one home per fact, with an echo only while the home is hidden. PRODUCT SPECIFIC PART (stays in CaissaTrainer): \"to Move\", the colour chip, which modules have a side, the training integrity limits (hidden positions). EXISTING GUIDANCE: P05 (minimum for the current task) covers (a) and (b) only loosely; P20 and AP-006 (no decorative placeholder identity, no fake avatars) are the nearest text to \"do not invent things that pretend to be real\", but are about imagery; P09 on added terminology. No sentence says that invented progress is a violation, so the honest data rule is an ambiguity at most.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-ambiguity",
+    "rationale": "Two readings are reasonable: P05 and P20 and AP-006 can be read to forbid invented numbers and decorative stat tiles, or only invented imagery and unneeded information. Mostly existing guidance applied (generic tiles are P05 and P09); the part that is not covered is stating 'never present invented or derived numbers as real progress'. A one sentence clarification could be drafted if the owner wants it; the chess header itself is product specific. Owner confirmation needed.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P05",
+    "P09",
+    "P20"
+  ],
+  "relatedAntiPatterns": [
+    "AP-006"
+  ],
+  "status": "proposal-drafted",
+  "proposal": "PR-0002"
+}

@@ -1,0 +1,37 @@
+{
+  "id": "FB-0026",
+  "createdAt": "2026-10-29T13:03:49Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer",
+    "route": "Notes (desktop 1440, phone 390) and the training notes panel"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Rich text fields: where to type (surface, prompt, accessible name, save state)",
+  "screenshots": [
+    {
+      "file": "_notes-1440.png"
+    },
+    {
+      "file": "default-1440.png"
+    },
+    {
+      "file": "judgement-puzzle-1366-4focus.png"
+    }
+  ],
+  "explanation": "CaissaTrainer Phase 2 (notes-app.md A1, A2, A3, A13; training-notes.md N1 to N3). Observed: an editable region that was an empty contenteditable with outline none, no boundary, no prompt, no accessible name (role=textbox without a label), and on the page panel's own surface step, so a first time writer could not tell where to type. Rules applied: the field or sheet sits one surface step above its ground (and see the equal surface issue); while empty it shows one short prompt drawn from an attribute so it is never written into the saved content; a visible neutral focus ring (focus-within for a composite field); an accessible name via label or aria-labelledby, and aria-describedby for the prompt while empty; click anywhere in the field writes; save state is a function of the real save cycle (idle, saving, saved, failed with a retry) in one always mounted polite status region so it is announced and does not move the layout. TENSION: CaissaTrainer doctrine U4 (a placeholder demonstrates and is never an instruction) versus a prompt such as Start writing or Write a note about this position; the owner must say whether such a prompt counts as a demonstration. Also P04 says never show a status tag such as Automatically saved when it need not be shown; a real save state that carries failure and retry is functional, an always on Saves automatically is not. Open: whether the per block optional title prompt should be withheld at rest.\n\nPHASE 3 UPDATE (2026-10-29, claude-agent, draft text only), RECONCILIATION WITH FB-0035. The save state rule above is AMENDED. This issue asked for 'save state is a function of the real save cycle (idle, saving, saved, failed with a retry)' and for a prompt and an accessible name. CaissaTrainer then shipped a permanent 'Saves automatically' / 'Saved' line and a label 'Your private note', and the owner judged both redundant (FB-0035). Reconciled rule: (1) a save state is shown only when it communicates a condition the person may act on or wait for: 'Saving...' while a request is in flight and a failure with a retry ('Could not save', 'Try again', role alert); nothing at rest and nothing after a success, because 'Saved' is the idle state restated (P04, AP-005); an unsynced or offline state counts as a condition. (2) The always mounted polite region stays for announcements, empty at rest, with reserved height so the layout does not jump. (3) The accessible name comes from an aria-label when the container's heading already names the field; a visible label that repeats the heading is not added (P05, AP-010). (4) The prompt while empty stays (a placeholder drawn from an attribute, 'Write a note about this position'); the tension with CaissaTrainer doctrine U4 is unchanged and still the owner's to settle. The candidate text in PR-0002 amendments.md section D is edited to match; section I holds the redundant copy clarification.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-gap",
+    "rationale": "No principle or preset covers how an editable text region identifies itself. Gap, with a stated tension with U4 and P04 for the owner to resolve. Owner confirmation needed.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P02",
+    "P17",
+    "P05"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "proposal-drafted",
+  "proposal": "PR-0002"
+}

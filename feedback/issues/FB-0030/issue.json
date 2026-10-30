@@ -1,0 +1,33 @@
+{
+  "id": "FB-0030",
+  "createdAt": "2026-10-29T13:03:51Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer",
+    "route": "Education Articles (desktop 1440)"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Page level controls in a column of their own beside the application sidebar (Articles, Collections, Quizzes, Courses)",
+  "screenshots": [
+    {
+      "file": "_education_articles-1180.png"
+    },
+    {
+      "file": "_education_articles-1440.png"
+    }
+  ],
+  "explanation": "CaissaTrainer Phase 2 (education.md E5). Observed: a 240px column held one toggle and one button, next to the application sidebar that already listed Education. Fix: controls that act on a page's list belong in the page title band, results take the full width. Applies P14 (no sidebar stacking: a second navigation like column beside the sidebar) and the meta principle; P14 does not say what to do with a rail of one or two page controls. Candidate lesson, no conflict.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-ambiguity",
+    "rationale": "P14 targets redundant navigation; a column of two page controls is not navigation but has the same cost. Two readings, so ambiguity rather than a clear gap or failure. Owner confirmation needed.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P14",
+    "P10"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "proposal-drafted",
+  "proposal": "PR-0002"
+}

@@ -1,0 +1,31 @@
+{
+  "id": "FB-0029",
+  "createdAt": "2026-10-29T13:03:50Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer",
+    "route": "Article viewer (code review; no article in the mock data has tags)"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Undefined colour class falls back to the accent (label-solid label-grey)",
+  "screenshots": [
+    {
+      "file": "_dashboard2.png"
+    }
+  ],
+  "explanation": "CaissaTrainer Phase 2 (training-overview.md F7). Article tags used label-solid label-grey; no label-grey class exists, so the solid fill fell back to the accent and rendered solid emerald blocks (probe: background rgb(16 185 129)). A product bug, not a rule, but a token lint that fails on unknown label or tone classes (or a component API that takes an enum instead of a class name) would have caught it, and it is the accent overuse that AP-012 describes. The screenshot is the dashboard after the neutral label change, as the article case has no rendered example.",
+  "classification": {
+    "status": "proposed",
+    "kind": "application-specific",
+    "rationale": "Application bug (unknown class). Generalizes only as an optional token or class lint, which the owner may decline. Suggestion only.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P06"
+  ],
+  "relatedAntiPatterns": [
+    "AP-012"
+  ],
+  "status": "proposal-drafted",
+  "proposal": "PR-0002"
+}

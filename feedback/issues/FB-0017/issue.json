@@ -1,0 +1,33 @@
+{
+  "id": "FB-0017",
+  "createdAt": "2026-10-29T06:00:15Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer",
+    "route": "Train, Unrated Puzzles (laptop 1366x768)"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Persisted workspace preferences (size, panel visibility, sidebar width)",
+  "screenshots": [
+    {
+      "file": "laptop-random_puzzles-default.png"
+    },
+    {
+      "file": "laptop-random_puzzles-largest.png"
+    }
+  ],
+  "explanation": "Found while building CaissaTrainer's workspace. A size the person chooses is a preference, not a measurement. A bug class appears when an app stores the clamped, rendered size: shrinking the window then silently overwrites the choice and it never comes back. CaissaTrainer stores the chosen size (null means the responsive default), clamps only for display, shares one size across compatible workspaces, remembers panel visibility per workspace, keeps the sidebar width mode as null (route decides) or an explicit boolean, validates stored values and guards every storage access. Summa-UI says nothing about remembering layout choices, so the next app will persist measurements. Reference: workspacePreferencesStore.ts and its tests.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-gap",
+    "rationale": "Nothing in the guidance says a chosen layout is a preference that must not be overwritten by a measurement. Generalizes to any resizable or collapsible layout (candidate P25).",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P05",
+    "P16"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "proposal-drafted",
+  "proposal": "PR-0002"
+}

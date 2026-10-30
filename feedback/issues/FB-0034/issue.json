@@ -1,0 +1,33 @@
+{
+  "id": "FB-0034",
+  "createdAt": "2026-10-29T13:03:53Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer",
+    "route": "Notes (desktop 1440, content width 916px)"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "A toggle reports what is shown, not what is wanted (Board toggle pressed over an empty column)",
+  "screenshots": [
+    {
+      "file": "default-1440.png"
+    },
+    {
+      "file": "rail-hidden-1440.png"
+    }
+  ],
+  "explanation": "CaissaTrainer Phase 2 (notes-app.md A9). Observed: an unlabelled icon toggle showed pressed while no board was on screen, because the content width left of the rail (916px) was under the 1000px the board needs. Fix: labelled Board button, aria-pressed means shown, and when the viewport allows a board but the width does not the button is disabled with its reason (Close Notebooks to make room for the board). Proposed: pressed follows the visible state; an unavailable toggle is disabled with a reason, never styled as on. Same principle applies to the workspace panel toggles, where aria-pressed is true while the panel is docked or its drawer is open. No approved rule covers toggle state honesty.\n\nPHASE 3 UPDATE (2026-10-29, claude-agent, draft text only): panel toggles no longer use aria-pressed. A control that shows or hides a region reports aria-expanded (is the region on screen), which is the honest state the draft asked for; the edge chevron and the stacked disclosure row use it (FB-0037). An unavailable panel has no control at all instead of a disabled one (FB-0041: a module that does not offer notes renders no chevron). The 'Board' toggle on the notes board stays a labelled disclosure ('Show board' / 'Hide board', aria-expanded, aria-controls).",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-gap",
+    "rationale": "No rule on pressed state versus visible state or on disabled with a reason. Gap, small. Owner confirmation needed.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P08",
+    "P17"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "proposal-drafted",
+  "proposal": "PR-0002"
+}

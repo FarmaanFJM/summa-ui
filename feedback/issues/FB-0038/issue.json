@@ -1,0 +1,45 @@
+{
+  "id": "FB-0038",
+  "createdAt": "2026-10-29T16:37:16Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer",
+    "route": "Training workspace right panel: /train/random-puzzles, /train/mate-in-two (desktop 1366, phone 390)"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Generic heading \"Details\" over content that already says what it is (Accuracy, Correct, Failed tiles)",
+  "screenshots": [
+    {
+      "file": "before-workspace-1366.png",
+      "viewport": "1366x768",
+      "note": "Before: a panel headed \"Details\" with an X, holding three bordered stat tiles ACCURACY 0%, CORRECT 0, FAILED 0."
+    },
+    {
+      "file": "before-notes-panel-390.png",
+      "viewport": "390x844",
+      "note": "Before: the same Details heading and X at the bottom of the stacked page."
+    },
+    {
+      "file": "after-workspace-1366.png",
+      "viewport": "1366x768",
+      "note": "After: no heading, no card, no X. Content says what it is: a state header and counts in words."
+    }
+  ],
+  "explanation": "CaissaTrainer Phase 3 (owner direction, session-info.md S1, S8, S10). OBSERVED: the right panel was headed \"Details\" (the flow modules said \"Progress\", Deep Vision and Speed Calculator said \"Calculation\") above Accuracy, Correct and Failed shown as three bordered tiles, with an X. The heading named nothing: the content below already says what it is, so the heading restated the container and was inconsistent across modules. The three tiles were generic and technical: Accuracy was a percentage derived from the same two counts shown beside it. CORRECTION: the heading is gone; the area is named \"Session\" for assistive technology (aria-label, and the chevron label), not in visible copy; the tiles became plain counts in words (\"Correct 3\", \"Mistakes 1\") below a state header (FB-0039). A heading stays where it names something the content does not (a Comments heading over a list of comments, a panel whose content is ambiguous) or where several regions need to be told apart by a person scanning. CLASSIFICATION LOGIC: this is the same family as FB-0035 (redundant explanatory copy: a label that repeats its container) and is already covered by approved guidance: P05 \"Prefer familiar patterns, clear naming, predictable position ... over permanent explanation\", P21 (\"Ask whether something can be removed ... before adding a component\"), P09 and AP-010 whose review question is \"Does the text restate the label?\". CaissaTrainer recorded 0.1.0 and still shipped it, so it is an application defect; the generic heading is listed as one example in the drafted clarification in PR-0002 candidate/amendments.md section I. The stat tile half is also P05 and P09 (a derived percentage shown beside its inputs adds nothing).",
+  "classification": {
+    "status": "proposed",
+    "kind": "application-specific",
+    "rationale": "Failure to apply existing guidance: P05, P21, P09 and AP-010 ('Does the text restate the label?') cover a generic heading over self describing content and redundant derived stat tiles. Recorded as application specific; the only guidance question is the wording scope of AP-010, drafted as one example in PR-0002 amendments.md section I with FB-0035. Owner confirmation needed.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P05",
+    "P09",
+    "P21"
+  ],
+  "relatedAntiPatterns": [
+    "AP-010"
+  ],
+  "status": "proposal-drafted",
+  "proposal": "PR-0002"
+}

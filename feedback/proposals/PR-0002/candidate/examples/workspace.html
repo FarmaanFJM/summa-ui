@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Workspace preset (candidate)</title>
+<link rel="stylesheet" href="../../../../../guidance/css/tokens.css">
+<link rel="stylesheet" href="../../../../../guidance/css/presets.css">
+<link rel="stylesheet" href="../css/workspace-presets.css">
+<style>
+  /* Page chrome only. The workspace uses sm- classes. */
+  html, body { height: 100%; margin: 0; }
+  body { background: var(--s1); color: var(--text); font: 400 var(--fs)/1.5 var(--font); overflow: hidden; }
+  .stage { height: 100%; }
+  .page { width: 100%; aspect-ratio: 1; background: var(--s2); border-radius: var(--r-lg); display: grid; place-items: center; color: var(--text-2); }
+  .list { display: flex; flex-direction: column; gap: 2px; }
+  .muted-heading { font-size: var(--fs-xs); font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; color: var(--text-3); }
+</style>
+</head>
+<body>
+<div class="stage">
+  <section class="sm-workspace" id="ws" data-mode="wide" aria-label="Workspace example">
+    <div class="sm-workspace__body">
+      <!-- Panel chevrons live on the workspace edge. No toolbar toggle, no X. -->
+      <button type="button" class="sm-workspace__edge sm-workspace__edge--left" id="edge-left" aria-expanded="false" aria-label="Show Pages" title="Show Pages"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+
+      <section class="sm-workspace__panel sm-workspace__panel--left" id="panel-left" data-state="hidden" aria-label="Pages" tabindex="-1">
+        <header class="sm-workspace__panel-head">
+          <h2 class="sm-workspace__panel-title">Pages</h2>
+          <button type="button" class="sm-workspace__back" id="back-left" aria-label="Hide Pages" title="Hide Pages"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m15 18-6-6 6-6"/></svg></button>
+        </header>
+        <div class="list"><div class="sm-row">Page 1</div><div class="sm-row" aria-selected="true">Page 2</div><div class="sm-row">Page 3</div><div class="sm-row">Page 4</div></div>
+      </section>
+
+      <div class="sm-workspace__primary" role="region" aria-label="Preview">
+        <div class="sm-workspace__box">
+          <div class="page">Primary content</div>
+          <button type="button" class="sm-workspace__grip" id="grip" role="slider" aria-label="Resize preview" aria-orientation="horizontal"
+                  aria-valuemin="280" aria-valuemax="800" aria-valuenow="320" aria-valuetext="320 pixels">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 8 8 19M19 14l-5 5"/></svg>
+          </button>
+        </div>
+      </div>
+
+      <!-- No heading and no card: the content says what it is. The name only labels the region and its chevron. -->
+      <section class="sm-workspace__panel sm-workspace__panel--right" id="panel-right" data-state="docked" aria-label="Properties" tabindex="-1">
+        <div class="muted-heading">Preview size</div><div id="readout">0 px</div>
+        <p><button type="button" class="sm-btn" id="restore">Restore default size and panels</button></p>
+      </section>
+
+      <button type="button" class="sm-workspace__disclosure" id="disclosure" aria-expanded="false" aria-controls="panel-left"><span>Pages</span><svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg></button>
+      <button type="button" class="sm-workspace__edge sm-workspace__edge--right" id="edge-right" aria-expanded="true" aria-label="Hide Properties" title="Hide Properties"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 18 6-6-6-6"/></svg></button>
+    </div>
+    <div class="sm-workspace__scrim" id="scrim" hidden></div>
+  </section>
+</div>
+
+<script src="../js/workspace-geometry.js"></script>
+<script>
+(function () {
+  var W = window.SummaWorkspace, KEY = 'sm-workspace-example-v2', RAIL = 40, GAP = 16;
+  var root = document.getElementById('ws'), $ = function (id) { return document.getElementById(id); };
+  var DEFAULTS = { size: null, left: false, right: true };   // optional tools start closed
+  var prefs = { size: DEFAULTS.size, left: DEFAULTS.left, right: DEFAULTS.right };
+  try { var s = JSON.parse(localStorage.getItem(KEY) || 'null'); if (s && typeof s === 'object') prefs = { size: typeof s.size === 'number' && s.size > 0 && s.size < 4096 ? Math.round(s.size) : null, left: typeof s.left === 'boolean' ? s.left : DEFAULTS.left, right: typeof s.right === 'boolean' ? s.right : DEFAULTS.right }; } catch (e) {}
+  var save = function () { try { localStorage.setItem(KEY, JSON.stringify(prefs)); } catch (e) {} };
+  var g, drawer = null, dragging = null, drag = null, pending = null;
+  var panels = { left: $('panel-left'), right: $('panel-right') }, edges = { left: $('edge-left'), right: $('edge-right') };
+  var TITLES = { left: 'Pages', right: 'Properties' };
+
+  function layout() {
+    var r = root.getBoundingClientRect();
+    g = W.computeWorkspace({ width: Math.floor(r.width), height: Math.floor(r.height), padding: 16, gap: GAP, rail: RAIL, chromeY: 0, left: { preferred: 320, min: 240 }, right: { preferred: 340, min: 260 }, leftOpen: prefs.left, rightOpen: prefs.right, preferred: dragging !== null ? dragging : prefs.size });
+    var stacked = g.mode === 'stacked';
+    root.dataset.mode = g.mode;
+    root.style.setProperty('--sm-ws-size', g.size + 'px'); root.style.setProperty('--sm-ws-rail', RAIL + 'px');
+    root.style.setProperty('--sm-ws-left', g.leftWidth + 'px'); root.style.setProperty('--sm-ws-right', g.rightWidth + 'px');
+    root.style.setProperty('--sm-ws-left-track', (g.leftWidth ? g.leftWidth + g.gapX : 0) + 'px'); root.style.setProperty('--sm-ws-right-track', (g.rightWidth ? g.rightWidth + g.gapX : 0) + 'px');
+    ['left', 'right'].forEach(function (s) {
+      var dock = s === 'left' ? g.leftDock : g.rightDock;
+      if (stacked) dock = s === 'right' ? 'docked' : (prefs.left ? 'docked' : 'hidden');   // stacked: the right panel is always on the page
+      else if (dock === 'drawer' && drawer === s) dock = 'drawer-open';
+      if (drawer === s && dock !== 'drawer-open') drawer = null;
+      panels[s].dataset.state = dock; panels[s].inert = dock === 'hidden' || (drawer !== null && drawer !== s);
+      var shown = stacked ? dock === 'docked' : (dock === 'docked' || dock === 'drawer-open');
+      edges[s].setAttribute('aria-expanded', String(shown)); edges[s].setAttribute('aria-label', (shown ? 'Hide ' : 'Show ') + TITLES[s]); edges[s].title = (shown ? 'Hide ' : 'Show ') + TITLES[s];
+      edges[s].querySelector('path').setAttribute('d', (s === 'left') === shown ? 'm15 18-6-6 6-6' : 'm9 18 6-6-6-6');
+    });
+    $('disclosure').setAttribute('aria-expanded', String(prefs.left));
+    $('disclosure').querySelector('path').setAttribute('d', prefs.left ? 'm18 15-6-6-6 6' : 'm6 9 6 6 6-6');
+    $('scrim').hidden = !drawer;
+    $('back-left').hidden = panels.left.dataset.state !== 'drawer-open';
+    var grip = $('grip'); grip.setAttribute('aria-valuemin', g.minSize); grip.setAttribute('aria-valuemax', g.maxSize); grip.setAttribute('aria-valuenow', g.size); grip.setAttribute('aria-valuetext', g.size + ' pixels');
+    $('restore').disabled = prefs.size === null && prefs.left === DEFAULTS.left && prefs.right === DEFAULTS.right;
+    $('readout').textContent = g.size + ' px';
+    if (pending && (pending === 'left' ? g.leftDock : g.rightDock) === 'drawer') { drawer = pending; pending = null; layout(); panels[drawer].focus(); } else pending = null;
+  }
+  function setSize(v) { prefs.size = v; save(); layout(); }
+  function toggle(s) {
+    var dock = s === 'left' ? g.leftDock : g.rightDock;
+    if (dock === 'drawer' && g.mode !== 'stacked') { drawer = drawer === s ? null : s; layout(); if (drawer) panels[s].focus(); return; }
+    prefs[s] = !prefs[s]; save();
+    if (prefs[s] && g.mode !== 'stacked') pending = s;   // opening a panel that only fits as a drawer shows the drawer at once
+    layout();
+  }
+  function closeDrawer() { var s = drawer; drawer = null; layout(); if (s) edges[s].focus(); }
+  edges.left.onclick = function () { toggle('left'); }; edges.right.onclick = function () { toggle('right'); }; $('disclosure').onclick = function () { toggle('left'); };
+  $('back-left').onclick = closeDrawer; $('scrim').onclick = closeDrawer;
+  $('restore').onclick = function () { prefs = { size: DEFAULTS.size, left: DEFAULTS.left, right: DEFAULTS.right }; drawer = null; save(); layout(); };
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && drawer) { e.stopPropagation(); closeDrawer(); } });
+  var grip = $('grip');
+  grip.addEventListener('keydown', function (e) {
+    var map = { ArrowRight: g.size + W.SIZE_STEP, ArrowUp: g.size + W.SIZE_STEP, ArrowLeft: g.size - W.SIZE_STEP, ArrowDown: g.size - W.SIZE_STEP, Home: g.minSize, End: g.maxSize };
+    if (!(e.key in map)) return; e.preventDefault(); setSize(Math.min(g.maxSize, Math.max(g.minSize, map[e.key])));
+  });
+  grip.addEventListener('pointerdown', function (e) { if (e.button !== 0) return; grip.setPointerCapture(e.pointerId); drag = { x: e.clientX, y: e.clientY, size: g.size }; root.classList.add('is-dragging'); e.preventDefault(); });
+  grip.addEventListener('pointermove', function (e) { if (drag) { dragging = W.dragSize(drag.size, e.clientX - drag.x, e.clientY - drag.y, g); layout(); } });
+  function up() { if (drag && dragging !== null) { prefs.size = dragging; save(); } drag = null; dragging = null; root.classList.remove('is-dragging'); layout(); }
+  grip.addEventListener('pointerup', up); grip.addEventListener('pointercancel', up);
+  if (typeof ResizeObserver !== 'undefined') new ResizeObserver(layout).observe(root); window.addEventListener('resize', layout);
+  layout();
+})();
+</script>
+</body>
+</html>

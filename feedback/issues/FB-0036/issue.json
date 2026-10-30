@@ -1,0 +1,48 @@
+{
+  "id": "FB-0036",
+  "createdAt": "2026-10-29T16:37:16Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer",
+    "route": "Training workspace: /train/mate-in-two, /train/random-puzzles (desktop 1366, tablet 820)"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "A primary region must not be flanked by equally prominent panels; hidden panels must reserve no space (board plus visible panels centered as a group)",
+  "screenshots": [
+    {
+      "file": "before-notes-panel-1366.png",
+      "viewport": "1366x768",
+      "note": "Before: the board between a Notes panel and a Details panel of equal weight (same surface, width, heading and X), two equal buttons top right."
+    },
+    {
+      "file": "before-workspace-1366.png",
+      "viewport": "1366x768",
+      "note": "Before: Notes hidden, but its equal reserve column stays empty, so the board sits off the middle of what is left."
+    },
+    {
+      "file": "after-workspace-1366.png",
+      "viewport": "1366x768",
+      "note": "After: no Notes panel is offered for this puzzle. The board and the session area are centered as one group, no empty column."
+    },
+    {
+      "file": "after-workspace-1366-notes.png",
+      "viewport": "1366x768",
+      "note": "After: Notes open. A quiet surface on the left, a flat session area with no heading or card on the right, the board dominant."
+    }
+  ],
+  "explanation": "CaissaTrainer Phase 3 (owner feedback on the Phase 2 workspace, screenshots reviewed). OBSERVED (before): the board was sandwiched between a Notes panel and a Details panel of equal weight (same surface, same width, same heading style, same X), with two equally prominent buttons top right, so nothing said which region was the task. With one panel hidden, the equal reserve of the Phase 2 geometry still held an empty column on that side, so the board looked stranded beside a void. CORRECTION: (1) only a panel that is open and docked takes width; the board plus its open panels are centered as ONE group in the available width, and a hidden panel or a drawer reserves nothing (workspaceLayout.ts, three tracks [left panel and gap] [board and a rail margin on each side] [right panel and gap]); (2) supporting information is subordinate: the optional left panel is a quiet surface one step above the page, the right panel (what the person works against) has no heading and no card of its own, its content sets the hierarchy; (3) the default size is dominant, cap 720 (was 640) and fill 0.92 (was 0.88); (4) the optional left panel is a drawer before the layout restacks (COMFORT_MIN 400) and the right panel is last to yield (see FB-0023 update); (5) in a portrait window the layout stacks when stacking gives a much bigger board (side board under 70 percent of the stacked board), never in a landscape window. WHAT THIS SUPERSEDES: the Phase 2 draft rule in PR-0002 candidate P23 \"Reserve the same width on both sides, so a lone panel does not push the region off center\" (FB-0014, FB-0015); the draft is amended, not the approved guidance. Merged by reference, not duplicated: FB-0014 (primary region), FB-0015 and FB-0023 (panels yield), FB-0022 (a second region is secondary). WHY IT GENERALIZES: any product with an image, canvas, preview, map or board as its main region and optional side information repeats it. APPROVED GUIDANCE: P05 (show the minimum for the current task), P09 and P21 apply only by spirit; no principle says a region must not be flanked by equals or that a hidden panel must give its space back. EXCEPTIONS: a region that is deliberately one of several equal peers (a diff viewer, a comparison); a layout where the panel is the task. NOT DECIDED HERE: the numbers (720, 0.92, 400, 70 percent) are the CaissaTrainer reference values for the owner to confirm or change.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-gap",
+    "rationale": "Missing reusable pattern. No approved principle, anti-pattern or check says that a primary region should not be flanked by equally prominent panels or that a hidden panel reserves no space. P05 and P09 only apply by spirit. It also corrects the Phase 2 draft equal reserve rule in PR-0002. Product specific parts (the chess board, the numbers) stay in CaissaTrainer. Owner confirmation needed.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P05",
+    "P09",
+    "P21"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "proposal-drafted",
+  "proposal": "PR-0002"
+}

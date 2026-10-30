@@ -1,0 +1,108 @@
+{
+  "id": "preset.workspace",
+  "name": "Workspace (resizable primary region with yielding panels)",
+  "purpose": "A page built around one primary region (an image, canvas, document page, map or board) with secondary information around it. The person can resize the primary region and hide the panels; the layout keeps the primary region primary and the panels yield first.",
+  "whenToUse": [
+    "The page has one square or fixed-ratio region that is the task (an image editor canvas, a document page preview, a map, a game board) and its useful size depends on the screen and the person.",
+    "Secondary information (details, pages, notes, statistics) helps but is not needed all the time, and can be disclosed on demand. The primary region stays visually dominant: the panels are quiet and subordinate.",
+    "The same page is used on a laptop, a large monitor and a tablet and one fixed region size would be wrong on one of them."
+  ],
+  "whenNotToUse": [
+    "Text content with a reading measure (articles, documents being edited, feeds). A fixed maximum line length is correct there; this pattern is for regions whose useful size is open.",
+    "A dashboard, table or list that fills the width and has no single primary region.",
+    "Navigation. Panels carry content, never links to other areas (P14). Use the application sidebar.",
+    "A full screen or zen mode. Hiding the panels and choosing the largest size covers it without another state.",
+    "A region whose size the product must control exactly (a print preview at true size, a pixel-exact canvas). Use a fixed region and say why (P22)."
+  ],
+  "anatomy": [
+    "Toolbar (44px): present only when the page has something to put in it (a title, module controls). It holds nothing about panels or size.",
+    "Primary region: at least a square of the computed size, centered; optional header and footer above and below, measured and held at their peak.",
+    "Control rail attached to the primary region: a resize handle (slider) and one options menu button (larger, smaller, largest that fits, restore). Beside the region when wide: one rectangular column (32px, --s2 surface, 8px gap, 40px reserved on both sides) exactly as tall as the region, positioned from the region box (never page coordinates), with the options control on the region top edge and the resize control on its bottom edge, both on one alignment; a compact row under the region aligned to its right edge when stacked (40px targets). Quiet at rest, full emphasis on hover, focus and touch. DRAFT (FB-0020, alignment candidate FB-0042).",
+    "Left and right panels: the optional left panel is a content pane one step above the surface (--s2) with a heading; the right panel (the information the person works against) has no heading and no card, its content sets the hierarchy. A hidden panel reserves no width.",
+    "Panel chevrons: a quiet 18x56 tab on the outer workspace edge of each panel (24x64, 8px in from the screen edge, with a larger hit area and full opacity on touch), pointing the way the panel will move, aria-expanded, named \"Hide Pages\" or \"Show Pages\". No toolbar toggle, no X. Stacked: the optional panel is a full width disclosure row under the region. DRAFT (FB-0037).",
+    "Drawer: a panel that cannot dock opens over a scrim as a dialog, 360px wide at most, with a back chevron to close.",
+    "Scrim: rgba(8,9,9,.55), closes the drawer on click."
+  ],
+  "variants": [
+    {
+      "id": "wide",
+      "description": "Left panel, primary region and right panel in one centered group. Only open, docked panels take width. Panels shrink from preferred to minimum width; the optional left panel becomes a drawer before the layout restacks.",
+      "useWhen": "The workspace is at least 640px wide and a minimum-size region fits beside the open right panel."
+    },
+    {
+      "id": "stacked",
+      "description": "Primary region on top at full width, then its status and the right panel, then the optional left panel behind a disclosure row. Nothing hides behind a drawer.",
+      "useWhen": "A narrow screen, a right panel that cannot dock beside even a minimum-size region, or a portrait window where stacking gives a much bigger region."
+    },
+    {
+      "id": "one-panel",
+      "description": "One panel only. The region and that panel are centered as one group; no empty column is held for the missing one.",
+      "useWhen": "Only one of the two panels has content, or the person hid one."
+    }
+  ],
+  "behavior": [
+    "Geometry comes from the pure function in js/workspace-geometry.js (reference: src/ui/workspaceGeometry.ts). The host measures the workspace with a ResizeObserver and sets --sm-ws-size, --sm-ws-left, --sm-ws-right and the two track widths.",
+    "The responsive default is dominant but deliberately below the maximum (at most 720px, 92 percent of what fits beside the open panels) and scales with the available space. The person's choice, when there is one, is only clamped for display.",
+    "A size choice is a preference, not a measurement: store the pick (null means default), never the clamped value. Store panel visibility per workspace and share one size across compatible workspaces. Guard every storage access.",
+    "Panels yield in order: shrink, then drawer (the optional left panel first, when the region beside both panels would be under 400px), then stack (a narrow workspace, a right panel that does not fit beside a minimum region, or a portrait window where stacking gives a much bigger region). They stay mounted so their state survives.",
+    "Chrome above and below the region is measured; the peak since the workspace opened is used so the region never jumps.",
+    "Escape closes a drawer and returns focus to the chevron that opened it. Opening a panel that only fits as a drawer opens the drawer straight away. A drawer that no longer applies closes by itself.",
+    "Status: provisional. Built from the principles and one real application; compare visually with the owner's references before treating it as reviewed.",
+    "The default size is computed against the panels' MINIMUM widths and panels then grow into what remains (up to preferred). The default's floor is what still docks at the minimums, so the default never forces a drawer. The rail width is passed to the geometry as `rail` and the horizontal gap is reported as `gapX`. (FB-0023)",
+    "Optional tools (a notes panel, a second view of the primary object) are closed by default behind one control, remembered per device, kept mounted when hidden, and a duplicate view of the primary object is capped well below it. Nothing essential lives only in an optional panel, and a tool a module does not offer never strands what the person already wrote there. (FB-0021, FB-0022, FB-0041)"
+  ],
+  "tokens": [
+    "--s0",
+    "--s2",
+    "--s3",
+    "--s4",
+    "--select",
+    "--select-strong",
+    "--line",
+    "--text",
+    "--text-2",
+    "--r-sm",
+    "--r",
+    "--r-lg",
+    "--sp-1",
+    "--sp-2",
+    "--sp-3",
+    "--sp-4",
+    "--sp-6",
+    "--fs",
+    "--shadow-pop",
+    "--focus",
+    "--control-h"
+  ],
+  "accessibility": [
+    "Resize handle: role=slider on a real button, aria-label, aria-orientation=horizontal, aria-valuemin, aria-valuemax, aria-valuenow, aria-valuetext in pixels. Arrow keys step by 40px, Home and End jump to the limits.",
+    "Panel chevrons are buttons with aria-expanded (true while the panel is docked or its drawer is open) and a label that says what a press does (\"Hide Pages\" or \"Show Pages\"). The stacked disclosure row has aria-expanded and aria-controls. If the page has a toolbar it is role=toolbar with a label. The rail options trigger is a menu button (aria-haspopup=menu, aria-expanded) with the APG keys; items that cannot act are aria-disabled, not hidden.",
+    "An open drawer is role=dialog with aria-modal=true and the panel title as its label; the toolbar, primary region and the other panel (and its chevron) are inert; focus moves in, Tab stays inside, Escape closes only the drawer, focus returns to the chevron after inert is lifted. (FB-0024)",
+    "Panels are labelled regions (section with aria-label), not aside and not navigation.",
+    "Touch: every control has an effective hit area of at least 40x40 CSS px (P18, CHK-020); the handle gains an invisible 44px extension and the edge chevron grows to 24x64, sits 8px in from the screen edge and has an 8px extension on every side.",
+    "Focus ring is the shared 1.5px --focus neutral ring on every control and on the focused panel.",
+    "Motion: none required. Nothing animates the size."
+  ],
+  "principles": [
+    "P02",
+    "P05",
+    "P08",
+    "P14",
+    "P15",
+    "P16",
+    "P17",
+    "P18"
+  ],
+  "avoids": [
+    "AP-010",
+    "AP-011",
+    "AP-016"
+  ],
+  "implementations": {
+    "html": "examples/workspace.html",
+    "css": "css/workspace-presets.css",
+    "react": "src/ui/workspace.tsx"
+  },
+  "status": "provisional",
+  "statusNote": "Candidate for PR-0002, not part of any approved bundle. It depends on candidate principles P23 to P26 (feedback/proposals/PR-0002/candidate/principles.md), which are not yet approved, so they are not listed in principles. Open owner questions are in the proposal summary."
+}

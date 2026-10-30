@@ -1,0 +1,48 @@
+{
+  "id": "FB-0037",
+  "createdAt": "2026-10-29T16:37:16Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer",
+    "route": "Training workspace: /train/mate-in-two (desktop 1366, drawer at 1180, phone 390)"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Panel toggles as quiet edge chevrons attached to the region they control; no toolbar buttons named after the panel, no X on a panel that is part of the workspace",
+  "screenshots": [
+    {
+      "file": "before-notes-panel-1366.png",
+      "viewport": "1366x768",
+      "note": "Before: toolbar buttons labelled Notes and Details top right (aria-pressed) and an X on each panel."
+    },
+    {
+      "file": "after-workspace-1366-notes.png",
+      "viewport": "1366x768",
+      "note": "After: a quiet chevron tab on each outer workspace edge (left chevron points left to hide Notes, right chevron points right)."
+    },
+    {
+      "file": "after-notes-drawer-1180.png",
+      "viewport": "1180x800",
+      "note": "After: Notes as a modal drawer, closed by a back chevron, not an X."
+    },
+    {
+      "file": "after-mate-in-two-390-notes.png",
+      "viewport": "390x844",
+      "note": "After: stacked. The optional panel is a full width disclosure row (aria-expanded) under the session area."
+    }
+  ],
+  "explanation": "CaissaTrainer Phase 3 (owner feedback). OBSERVED (before): panels were shown and hidden by two large buttons labelled with the panel names in the page toolbar (top right, away from the panels they control, equal in weight to the page controls), and each panel carried an X. The toolbar is about the page, so a panel button there is far from its effect; an X implies a window that can be dismissed, but a panel that is part of the workspace is not a window and comes back by the same control. RULES NOW IMPLEMENTED (WorkspaceLayout.vue): (1) one quiet chevron tab attached to the outer workspace edge of each panel (18x56, 70 percent opacity at rest, full on hover and focus), pointing the way the panel will move (outward to hide, inward to show); (2) its name says what a press does (\"Hide Notes\", \"Show Session\") and it reports aria-expanded (is the panel on screen), not aria-pressed (see the FB-0034 update); (3) touch discoverability: always present, never hover only; under pointer coarse it is 24x64 with an 8px invisible extension on every side and full opacity (P18 and CHK-020). In the Summa-UI reference the tab also moves 8px in from the screen edge on touch: a tab hugging the edge measured 32x64 effective because the outward half of its extension is clipped by the edge (and the edge is where the system back swipe lives); 8px in it measures 40x64; (4) keyboard: a real button with the neutral focus ring; Escape closes a drawer and focus returns to the chevron that opened it (FB-0024); opening a panel that only fits as a drawer opens the drawer at once so a press is never silent; (5) an open drawer is closed by a back chevron named \"Hide Notes\", not an X; (6) when stacked, the optional panel is a full width disclosure row (aria-expanded, aria-controls, 40px) and the supporting panel is always visible, so there is nothing to toggle; (7) no toolbar toggle exists at all, and the toolbar renders only when a page supplies content for it. A RELATED FUNCTIONAL RULE FOUND IN THE SAME WORK (session-info.md S3, S4, S5, S7): a surface the person can hide must never be the only owner of a control or fact needed to continue. Next puzzle and Finish session, the palette and Submit placement, the target square and the move line were moved to the strip or footer under the board, because with chevrons a collapsed panel would otherwise leave a task that cannot be left or answered. EXCEPTIONS: a panel that really is a dismissable window or popover (a dialog, a toast, a floating inspector) keeps its X; an icon that is not conventional needs its label or title; a product may keep a visible text toggle where users need the word. RELATED, MERGED BY REFERENCE: FB-0034 (honest toggles; aria-pressed becomes aria-expanded for panels), FB-0024 (drawer), FB-0020 (page toolbar versus region rail), FB-0021 (optional tools), FB-0018 (quiet versus invisible controls: the chevron has a visible neutral fill, so it is not an invisible ghost control). APPROVED GUIDANCE: P10 and P09 (do not add controls without value), P08 (familiar patterns: a chevron on a collapsible edge is familiar, an X on a docked pane is not), P17 and P15 (neutral focus). None says where a panel toggle lives.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-gap",
+    "rationale": "Missing reusable pattern: no approved rule on where panel toggles live, what they report, or that a docked panel has no X. P08, P09 and P10 apply only by spirit. Also draft text of PR-0002 (toolbar toggles, aria-pressed) is amended. Owner confirmation needed; the touch discoverability of a quiet chevron is a judgement the owner should look at on a real device.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P08",
+    "P09",
+    "P10"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "proposal-drafted",
+  "proposal": "PR-0002"
+}

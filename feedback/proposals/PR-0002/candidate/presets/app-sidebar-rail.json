@@ -1,0 +1,74 @@
+{
+  "id": "preset.app-sidebar-rail",
+  "name": "Application sidebar rail (compact mode)",
+  "purpose": "A middle state between the full application sidebar and the mobile drawer: a 56px icon rail for pages that need the width, such as a workspace. It is the same single navigation list, not a second sidebar.",
+  "whenToUse": [
+    "A workspace or canvas page needs the horizontal room and the person knows the icons.",
+    "The application has a stable set of areas with recognizable icons from the catalog.",
+    "The person should be able to choose the width, with the route supplying a default."
+  ],
+  "whenNotToUse": [
+    "Pages that read like documents or settings, where labels help. Default those routes to expanded.",
+    "Applications whose areas have no clear icon. A rail of ambiguous icons is worse than labels.",
+    "Mobile widths (820px and below). The sidebar is a drawer there and always shows labels.",
+    "A second navigation column beside the sidebar (P14). The rail replaces the width, it never adds a column."
+  ],
+  "anatomy": [
+    "Rail: 56px wide, the same surface as the expanded sidebar (--s0).",
+    "Brand mark only; the name is visually hidden.",
+    "Navigation items: 16px icon centered, label visually hidden but in the accessibility tree, title attribute as tooltip.",
+    "Width toggle at the bottom: chevrons icon, label Expand navigation or Collapse navigation."
+  ],
+  "variants": [
+    {
+      "id": "expanded",
+      "description": "Icon and label, 252px (224px in some applications).",
+      "useWhen": "Document-like pages, settings, first visits."
+    },
+    {
+      "id": "compact",
+      "description": "Icons only, 56px.",
+      "useWhen": "Workspace routes by default, or when the person chooses it."
+    }
+  ],
+  "behavior": [
+    "Mode is chosen by the route and an explicit choice always wins. Store the choice as null (route decides) or a boolean.",
+    "Below 820px the sidebar is the existing drawer and ignores the compact mode.",
+    "Active item uses the existing aria-current treatment (P15, P17).",
+    "Status: provisional."
+  ],
+  "tokens": [
+    "--s0",
+    "--s2",
+    "--s3",
+    "--text",
+    "--text-2",
+    "--r",
+    "--sp-2",
+    "--fs",
+    "--focus"
+  ],
+  "accessibility": [
+    "Labels are never display:none, so every item keeps its accessible name in the rail.",
+    "The width toggle has aria-pressed and a label that names the action.",
+    "Targets: 32px high on desktop, at least 40px effective on touch and coarse pointers (the shared hit-area rule).",
+    "Tooltips come from the title attribute; they are a convenience, not the only name."
+  ],
+  "principles": [
+    "P08",
+    "P14",
+    "P15",
+    "P16",
+    "P17"
+  ],
+  "avoids": [
+    "AP-011"
+  ],
+  "implementations": {
+    "html": "examples/app-sidebar-rail.html",
+    "css": "css/workspace-presets.css",
+    "react": "src/ui/index.tsx"
+  },
+  "status": "provisional",
+  "statusNote": "Candidate for PR-0002, not part of any approved bundle. Whether the rail needs its own preset or is a variant of a future application shell preset is an owner decision."
+}

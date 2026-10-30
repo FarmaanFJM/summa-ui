@@ -1,0 +1,34 @@
+{
+  "id": "FB-0014",
+  "createdAt": "2026-10-29T06:00:14Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer",
+    "route": "Train, Unrated Puzzles (desktop 1920x1080)"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Primary content region (chessboard) with fixed size",
+  "screenshots": [
+    {
+      "file": "desktop-random_puzzles-default.png"
+    },
+    {
+      "file": "desktop-random_puzzles-largest.png"
+    }
+  ],
+  "explanation": "Found while building CaissaTrainer's user-adjustable workspace (not reported by the owner). The primary content (a square board) was a fixed-size box: too small on a 1920 screen, too large on a laptop, and the person could not change it. Summa-UI has no pattern for a primary region the user can resize; every app picks a fixed width or a viewport percentage. CaissaTrainer built a corner handle (role=slider, arrow keys, Home/End), toolbar buttons (smaller, larger, largest that fits, restore) and a responsive default that is deliberately medium, not maximal. The mechanism is not chess specific: it applies to any square or fixed-ratio primary region such as an image canvas, a document preview, a video or a map. Reference: CaissaTrainer frontend/src/workspace/workspaceLayout.ts and WorkspaceLayout.vue.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-gap",
+    "rationale": "No principle, preset or check covers a user-resizable primary region. It generalizes: any app with a square or fixed-ratio primary region (canvas, preview, map, video) hits it. Suggested: a workspace pattern doc plus candidate principles P23 and P26 and a preset (see PR draft). Owner confirmation needed.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P05",
+    "P08",
+    "P16"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "proposal-drafted",
+  "proposal": "PR-0002"
+}

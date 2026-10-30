@@ -1,0 +1,47 @@
+{
+  "id": "FB-0040",
+  "createdAt": "2026-10-29T16:37:16Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer",
+    "route": "Training workspace stacked: /train/mate-in-two, /train/random-puzzles (phone 390, tablet 820)"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Task oriented mobile ordering for a complex workspace: primary region first, then status and answer, then session information, then optional tools",
+  "screenshots": [
+    {
+      "file": "before-notes-panel-390.png",
+      "viewport": "390x844",
+      "note": "Before: board, then the open Notes panel with its own heading, label and save line, then the Details panel; all equal weight."
+    },
+    {
+      "file": "after-workspace-390.png",
+      "viewport": "390x844",
+      "note": "After: board, its rail, then the state header and counts. Notes are not offered for this puzzle."
+    },
+    {
+      "file": "after-mate-in-two-390-notes.png",
+      "viewport": "390x844",
+      "note": "After, Notes opened: state header and counts first, then the Notes disclosure row, then the field."
+    },
+    {
+      "file": "after-session-mate-in-two-390-review.png",
+      "viewport": "390x844",
+      "note": "After an attempt: Next puzzle under the board, where the person is looking."
+    }
+  ],
+  "explanation": "CaissaTrainer Phase 3 (owner direction: mobile board first, large, info below). OBSERVED (before, 390x844): toolbar buttons at the top, the board, then the whole Notes panel (heading, label, save line, field, board toggle), then the Details panel, each a card of equal weight; the thing to do next (the answer area, Next puzzle) was far down or in a panel that could be hidden. ORDER NOW (the stacked rule in WorkspaceLayout.vue): (1) the primary region first and large (the default fills the width); (2) its status and answer controls directly under it (the strip and footer, including Next puzzle and Finish session); (3) the session information (state header, counts, metadata, comments); (4) optional tools last, behind a full width disclosure row, closed by default. The right panel is always shown when stacked; the left follows the person's choice. A portrait tablet stacks when that gives a much bigger board (geometry update on FB-0023). EXISTING GUIDANCE: P18 (mobile breathing room) says not to compress navigation and actions into dense stacks, and FB-0015 says the primary region goes first when stacked, but nothing orders the rest by what the person does. The principle behind it, order by the task, generalizes to any workspace (an editor with a canvas, an inspector and optional history). PRODUCT SPECIFIC: which items are status or answer controls in chess modules.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-gap",
+    "rationale": "Missing reusable pattern: P18 covers breathing room and FB-0015 covers 'region first', but no rule orders status and answer controls, supporting information and optional tools for a stacked workspace. Owner confirmation needed.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P18",
+    "P05"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "proposal-drafted",
+  "proposal": "PR-0002"
+}

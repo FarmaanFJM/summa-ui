@@ -1,0 +1,145 @@
+/*
+  Workspace pattern and compact navigation rail (docs/WORKSPACE_PATTERN.md).
+  Reference CSS for src/ui/workspace.tsx. Built only on the tokens in tokens.css; adds none.
+  Everything is scoped to .ws*, .rail-toggle and .shell[data-side="compact"], so screens that do not use the
+  pattern render exactly as before.
+*/
+
+/* ---------------------------------------------------------------- Workspace */
+.ws { position: relative; display: flex; flex-direction: column; width: 100%; height: 100%; min-width: 0; min-height: 0; color: var(--text); }
+
+.ws-toolbar { flex: none; display: flex; align-items: center; justify-content: space-between; gap: var(--sp-2); height: 44px; padding: 0 var(--sp-3); }
+.ws-group { display: flex; align-items: center; gap: var(--sp-1); min-width: 0; }
+.ws-group-end { justify-content: flex-end; }
+
+/* Module controls a page may put in the optional toolbar (panels never go there). Visible at rest (neutral --s2 fill), quiet on hover.
+   Whether a transparent ghost icon button is acceptable is an open owner question (FB-0018), so this reference does not use one. */
+.sm-icon-btn.ws-btn { background: var(--s2); }
+.sm-icon-btn.ws-btn:hover:not(:disabled) { background: var(--s3); color: var(--text); }
+.sm-icon-btn.ws-btn[aria-pressed="true"] { background: var(--select); color: var(--text); }
+.sm-icon-btn.ws-btn:disabled { opacity: 0.45; cursor: default; }
+
+/* The body is a three column grid: [left panel + gap] [region + rail margin on each side] [right panel + gap], centered as one
+   group. A hidden panel or a drawer has a 0 wide track, so it reserves nothing and the region sits in what is left. */
+.ws-body {
+  position: relative; flex: 1 1 auto; min-height: 0; display: grid;
+  grid-template-columns: var(--ws-left-track) calc(var(--ws-size) + 2 * var(--ws-rail)) var(--ws-right-track);
+  justify-content: center; align-content: center; align-items: start; padding: 0 var(--ws-pad) var(--ws-pad); overflow-x: clip; overflow-y: auto;
+  transition: grid-template-columns var(--dur-slow, 200ms) var(--ease);
+}
+
+/* The primary region sits in the middle of its own column. At least a square: extra content grows it downward instead of overlapping what is below. */
+.ws-primary { grid-column: 2; grid-row: 1; width: var(--ws-size); min-width: 0; justify-self: center; }
+.ws-primary-box { position: relative; width: var(--ws-size); min-height: var(--ws-size); }
+.ws-primary-header { width: var(--ws-size); }
+.ws-primary-footer { width: var(--ws-size); margin-top: var(--sp-3); }
+
+/* Edge chevrons: a quiet tab on the outer edge of the workspace that shows or hides the panel beside it. Always present so it can
+   be found without hover, brighter on hover and focus. Never a toolbar button, never an X: a panel is part of the workspace. */
+.ws-edge {
+  position: absolute; top: 50%; transform: translateY(-50%); z-index: 5; width: 18px; height: 56px; display: grid; place-items: center; padding: 0;
+  border: 0; background: var(--s2); color: var(--text-3); cursor: pointer; opacity: 0.7;
+  transition: opacity var(--dur) var(--ease), background var(--dur) var(--ease), color var(--dur) var(--ease);
+}
+.ws-edge-left { left: 0; border-radius: 0 var(--r) var(--r) 0; }
+.ws-edge-right { right: 0; border-radius: var(--r) 0 0 var(--r); }
+.ws-edge:hover, .ws-edge:focus-visible, .ws-body:hover .ws-edge { opacity: 1; }
+.ws-edge:hover { background: var(--s3); color: var(--text); }
+.ws-edge:focus-visible, .ws-panel-close:focus-visible, .ws-disclosure:focus-visible { outline: 1.5px solid var(--focus); outline-offset: -1.5px; }
+
+/* The control rail is attached to the region (FB-0020, FB-0042). Beside the region it is one narrow rectangular column exactly as tall as the
+   region (top: 0, bottom: 0 of the region box, never page coordinates), 32px wide on the --s2 surface, 8px from the region's right edge. Its
+   options control sits on the region's top edge and its resize control on the bottom edge, both on one horizontal alignment, so the pair reads
+   as part of the region instead of as icons drifting beside it. The 8px gap plus the 32px column is the 40px reserved on both sides by the
+   geometry. Stacked, it is a compact row under the region aligned to the region's right edge. Always present so it can be found without
+   hover, and full emphasis on hover and focus. No border, glow, gradient or accent. */
+.ws-rail { display: flex; gap: var(--sp-1); opacity: 0.78; transition: opacity var(--dur) var(--ease); }
+.ws-rail.is-side { position: absolute; top: 0; bottom: 0; left: calc(100% + 8px); width: 32px; flex-direction: column; justify-content: space-between; align-items: stretch; gap: 0; background: var(--s2); border-radius: var(--r); }
+/* A transparent bridge over the 8px gap keeps hover from dropping while the pointer moves from the region to the rail. */
+.ws-rail.is-side::before { content: ''; position: absolute; top: 0; bottom: 0; left: -8px; width: 8px; }
+.ws-rail.is-below { flex-direction: row; justify-content: flex-end; align-items: center; margin-top: var(--sp-1); }
+.ws-rail.is-open, .ws-primary:hover .ws-rail, .ws-primary:focus-within .ws-rail { opacity: 1; }
+@media (hover: none) { .ws-rail { opacity: 1; } }
+.ws-rail-menu-host { position: relative; }
+.ws-rail-btn { width: 32px; height: 32px; display: inline-grid; place-items: center; flex: none; padding: 0; border: 0; border-radius: var(--r); background: transparent; color: var(--text-2); cursor: pointer; }
+.ws-rail-btn:hover, .ws-rail-btn[aria-expanded="true"] { background: var(--s3); color: var(--text); }
+.ws-rail-btn:focus-visible, .ws-rail-item:focus-visible { outline: 1.5px solid var(--focus); outline-offset: 1px; }
+.ws-rail-handle { cursor: nwse-resize; touch-action: none; }
+.is-dragging .ws-rail-handle { background: var(--select-strong); color: var(--text); }
+.is-dragging { user-select: none; }
+.ws-rail-menu { position: absolute; z-index: 40; min-width: 17rem; padding: var(--sp-1); background: var(--s4); border-radius: var(--r-lg); box-shadow: var(--shadow-pop); display: flex; flex-direction: column; gap: 2px; }
+.is-side .ws-rail-menu { top: 0; left: calc(100% + 8px); }
+.is-below .ws-rail-menu { bottom: calc(100% + var(--sp-1)); right: 0; }
+.ws-rail-item { display: flex; align-items: center; gap: 10px; width: 100%; min-height: var(--control-h); padding: 0 10px; border: 0; border-radius: var(--r); background: none; color: var(--text); font: 500 var(--fs)/1 var(--font); text-align: left; white-space: nowrap; cursor: pointer; }
+.ws-rail-item:hover:not([aria-disabled="true"]) { background: var(--select); }
+.ws-rail-item[aria-disabled="true"] { opacity: 0.45; cursor: default; }
+.ws-rail-sep { height: 1px; margin: var(--sp-1) 4px; background: var(--line); }
+@media (prefers-reduced-motion: reduce) { .ws-rail { transition: none; } }
+
+/* Panels are <section aria-label> regions, not <aside>: they hold content, not navigation (see P14 and CHK-011). */
+/* The optional left panel is a surface one step above the page (P02). The right panel is the supporting information the person works
+   against: it draws no surface and no heading of its own, so its content sets the hierarchy (P01, P05). */
+.ws-panel { grid-row: 1; align-self: start; min-width: 0; max-height: 100%; overflow: auto; }
+.ws-panel-left { grid-column: 1; justify-self: start; width: var(--ws-left); background: var(--s2); border-radius: var(--r-lg); padding: var(--sp-3); }
+.ws-panel-right { grid-column: 3; justify-self: end; width: var(--ws-right); }
+.ws-panel.is-hidden, .ws-panel.is-drawer { display: none; }
+.ws-panel.is-docked { animation: ws-panel-in var(--dur-slow, 200ms) var(--ease); }
+@keyframes ws-panel-in { from { opacity: 0; } to { opacity: 1; } }
+.ws-panel-body { min-width: 0; }
+.ws-panel-head { display: flex; align-items: center; justify-content: space-between; gap: var(--sp-2); margin: 0 0 var(--sp-2); }
+.ws-panel-title { margin: 0; font-size: var(--fs); font-weight: 600; color: var(--text); }
+.sm-icon-btn.ws-panel-close { width: 28px; height: 28px; border-radius: var(--r-sm); color: var(--text-2); }
+.ws-panel-close-right { margin-bottom: var(--sp-2); }
+
+/* Drawer: there is not enough room to dock, so the panel opens over the workspace (not the window) on demand, as a modal dialog. */
+.ws-panel.is-drawer-open {
+  position: absolute; grid-area: auto; align-self: stretch; top: 0; bottom: 0; z-index: 90; width: min(360px, 88vw); max-height: none;
+  border-radius: 0; background: var(--s3); padding: var(--sp-3); box-shadow: var(--shadow-pop);
+}
+.ws-panel-left.is-drawer-open { left: 0; }
+.ws-panel-right.is-drawer-open { right: 0; }
+.ws-scrim { position: absolute; inset: 0; z-index: 80; background: rgba(8, 9, 9, 0.55); }
+
+/* Stacked: the primary region first, then the status and answer area (the right panel), then the optional left panel behind a
+   disclosure row. Nothing the person needs is hidden. */
+.is-stacked .ws-body { display: flex; flex-direction: column; align-items: center; justify-content: flex-start; gap: var(--sp-3); padding: var(--sp-1) var(--ws-pad) var(--sp-4); overflow: visible; transition: none; }
+.is-stacked .ws-primary { order: 1; flex: none; display: flex; flex-direction: column; }
+.is-stacked .ws-primary-box { order: 1; }
+.is-stacked .ws-primary-header { order: 2; margin-top: var(--sp-2); }
+.is-stacked .ws-primary-footer { order: 3; }
+.is-stacked .ws-rail { order: 4; }
+.is-stacked .ws-panel { flex: none; width: 100%; max-width: 720px; max-height: none; align-self: auto; justify-self: auto; }
+.is-stacked .ws-panel-right { order: 2; }
+.is-stacked .ws-disclosure { order: 3; }
+.is-stacked .ws-panel-left { order: 4; }
+.ws-disclosure { width: 100%; max-width: 720px; min-height: var(--control-h); display: flex; align-items: center; justify-content: space-between; padding: 0 var(--sp-3); border: 0; border-radius: var(--r); background: var(--s2); color: var(--text-2); font: 500 var(--fs)/1 var(--font); cursor: pointer; }
+.ws-disclosure:hover { background: var(--s3); color: var(--text); }
+@media (prefers-reduced-motion: reduce) { .ws-body, .ws-panel, .ws-edge { transition: none; } .ws-panel.is-docked { animation: none; } }
+
+/* Touch (P18, CHK-020): at least 40px effective targets. The rail buttons, menu items, panel chevrons and disclosure row grow to --hit. */
+@media (max-width: 820px), (pointer: coarse) {
+  .sm-icon-btn.ws-btn, .sm-icon-btn.ws-rail-btn, .ws-rail-handle, .sm-icon-btn.ws-panel-close { width: var(--hit); height: var(--hit); }
+  .ws-rail.is-side { width: var(--hit); } /* the column grows with its buttons; it stays the region's height */
+  .ws-rail-item, .ws-disclosure { min-height: var(--hit); }
+  .ws-toolbar { height: 52px; }
+  /* The chevron tab grows to 24x64, sits 8px in from the screen edge (clear of the system edge swipe, and so its extension is not clipped by the
+     edge: measured 32x64 effective when it hugged the edge), and reaches 8px past its visible shape on every side, at full strength. */
+  .ws-edge { width: 24px; height: 64px; opacity: 1; border-radius: var(--r); }
+  .ws-edge-left { left: 8px; }
+  .ws-edge-right { right: 8px; }
+  .ws-edge::after { content: ''; position: absolute; inset: -8px; }
+}
+
+/* ---------------------------------------------------------------- Compact navigation rail */
+/* Desktop only: below 820px the shell sidebar is already a drawer and always shows labels. */
+@media (min-width: 821px) {
+  .shell[data-side="compact"] .shell-side { width: 56px !important; padding-inline: 8px; align-items: stretch; }
+  .shell[data-side="compact"] .nav-item { justify-content: center; padding: 0; }
+  .shell[data-side="compact"] .brand { justify-content: center; padding-inline: 0; }
+  /* Labels stay in the accessibility tree (visually hidden, never display:none); a title shows them on hover. */
+  .shell[data-side="compact"] .nav-item > :not(svg),
+  .shell[data-side="compact"] .brand > :not(.brand-mark) {
+    position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+  }
+}
+.rail-toggle { margin-top: auto; }

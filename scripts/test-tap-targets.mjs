@@ -33,6 +33,10 @@ const PASSES = [
    cannot be found is reported as skipped (never silently passed). */
 const tapText = async (page, re, opt = {}) => { const l = page.locator(opt.sel ?? 'button,[role=button],[role=tab],a', { hasText: re }).first(); await l.tap({ timeout: 2500 }); await page.waitForTimeout(450) }
 const SCENARIOS = {
+  workspace: [
+    { name: 'optional panel opened (disclosure row or drawer)', steps: async p => { await p.locator('[data-ws-toggle="left"]').first().tap(); await p.waitForTimeout(500) } },
+    { name: 'rail options menu', scope: '.ws-rail-menu', steps: async p => { await p.locator('[data-ws="options"]').first().tap(); await p.waitForTimeout(400) } },
+  ],
   ai: [
     { name: 'composer generating', steps: async p => { await p.locator('textarea').first().fill('Explain latency'); await p.keyboard.press('Enter'); await p.waitForTimeout(9000) } }, // wait for the streamed reply to finish so positions are stable
     { name: 'drawer conversation menu', steps: async p => { await p.locator('[aria-label="Open navigation"]').first().tap(); await p.waitForTimeout(400); await p.locator('[aria-label^="Actions for"]').first().tap(); await p.waitForTimeout(300) } },
@@ -145,7 +149,7 @@ for (const app of apps) {
       if (sc.steps) await sc.steps(page)
       // When the state opened a popover, sheet or dialog, test that layer (the page behind it is covered and is tested by the passes above).
       const layer = await page.evaluate(() => document.querySelectorAll('.popover,[role=dialog]').length)
-      await measureAndTap(page, all, `state: ${sc.name}`, layer ? '.popover,[role=dialog]' : 'body')
+      await measureAndTap(page, all, `state: ${sc.name}`, sc.scope ?? (layer ? '.popover,[role=dialog]' : 'body'))
     } catch (e) { all.skipped.push(`${sc.name}: ${String(e.message).split('\n')[0].slice(0, 90)}`) }
     await ctx.close()
   }

@@ -1,0 +1,35 @@
+{
+  "id": "FB-0023",
+  "createdAt": "2026-10-29T13:03:47Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer",
+    "route": "Train workspaces (1180, 1366, 1920, 820, 390)"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Panels yield before the primary region (default sized against panel minimums, equal reserve including the rail, dockable floor, one stacked scroller)",
+  "screenshots": [
+    {
+      "file": "judgement-puzzle-1180-2open.png"
+    },
+    {
+      "file": "judgement-puzzle-820-2open.png"
+    },
+    {
+      "file": "workspace-laptop-1100.png"
+    }
+  ],
+  "explanation": "CaissaTrainer Phase 2 (CHESS-WORKSPACE.md, workspaceLayout.ts). Extends FB-0015, whose draft sized the default against the panels' PREFERRED widths. Evidence: at about 1180 wide that left the board small while panels sat wide, and a default floor of 320 pushed both panels into drawers in a band just above the stacking threshold. Final rules: (1) the responsive default is sized against the panels' MINIMUM widths and panels then grow into what is left up to their preferred width; (2) the default's floor is what still docks at the minimums, so the default is never the reason a panel becomes a drawer; (3) the control rail width is reserved on both sides (geometry input rail, output gapX) so centering and the stacking decision include it; (4) a stacked workspace is one scroller (the document), panels follow as sections and stay visible; (5) a person's chosen size is still clamped for display only. The Summa reference geometry (src/ui/workspaceGeometry.ts) was updated to match and tested (scripts/test-workspace.mjs). Candidate P24 text should say panels yield before the region, not only that they shrink, then drawer, then stack.\n\nPHASE 3 UPDATE (2026-10-29, claude-agent, draft text only): the geometry moved on, source of truth CaissaTrainer workspaceLayout.ts and its port src/ui/workspaceGeometry.ts. (1) The equal reserve on both sides described above is SUPERSEDED: hidden panels and drawers reserve no width and the board plus its open panels are centered as one group (FB-0036). (2) The optional left panel is demoted to a drawer before the layout restacks: when both open panels cannot sit beside a board of at least COMFORT_MIN (400px, plus the rail margin on both sides) and the workspace is at least 640px wide; the right panel, the one the person works against, is the last to yield, so opening notes at 1180px with the application sidebar expanded no longer makes the board jump. (3) Portrait stacking: in a window taller than wide, the layout stacks when the board beside the panels would be under 70 percent of the board a stacked layout gives (a tablet held upright); a landscape window never stacks only because stacking would be bigger. (4) DEFAULT_CAP 640 became 720 and DEFAULT_FILL 0.88 became 0.92 (the board dominates). (5) Unchanged: panels yield before the board, the default is sized against the panels' minimum widths, a dockable floor, one stacked scroller. Test: scripts/test-workspace.mjs.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-gap",
+    "rationale": "Refines the same gap as FB-0015 with measured evidence; the draft candidate P24 and the reference geometry had the weaker rule. Not a failure to apply approved guidance. Owner decides whether to merge into FB-0015. Confirmation needed.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P05"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "proposal-drafted",
+  "proposal": "PR-0002"
+}

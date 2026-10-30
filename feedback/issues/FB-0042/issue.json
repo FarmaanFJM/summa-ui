@@ -1,0 +1,60 @@
+{
+  "id": "FB-0042",
+  "createdAt": "2026-10-29T19:14:41Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer",
+    "route": "Train workspaces (desktop 1366, phone 390)"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Board control rail alignment: controls floating beside the primary region, detached from its rectangle",
+  "screenshots": [
+    {
+      "file": "before-rail-1366.png",
+      "viewport": "1366x768",
+      "note": "Before: Phase 3 rail. The gear glyph is about 15px inside the board top edge and the handle glyph about 17px inside the bottom edge, with no container."
+    },
+    {
+      "file": "before-rail-390.png",
+      "viewport": "390x844",
+      "note": "Before: narrow screen, two transparent icons in a row under the board."
+    },
+    {
+      "file": "before-reference-1440.png",
+      "viewport": "1440x900",
+      "note": "Before: the Summa-UI reference lab (PR-0002 screenshot) had the same floating icons."
+    },
+    {
+      "file": "after-rail-1366.png",
+      "viewport": "1366x768",
+      "note": "After: one 32px column on the --s2 surface, exactly as tall as the board (122 to 674 against 122 to 674 in the e2e), options on the top edge, resize on the bottom edge, one x."
+    },
+    {
+      "file": "after-rail-390.png",
+      "viewport": "390x844",
+      "note": "After: compact row under the board aligned to its right edge, 40px targets."
+    },
+    {
+      "file": "after-reference-1440.png",
+      "viewport": "1440x900",
+      "note": "After: the Summa-UI reference lab, measured by scripts/test-workspace-alignment.mjs (rail 102 to 790 against region 102 to 790, 8px gap)."
+    }
+  ],
+  "explanation": "CaissaTrainer Phase 4 (frontend/src/workspace/WorkspaceResizeRail.vue and WorkspaceLayout.vue; measured by frontend/e2e/workspaceChevrons.mjs; Summa-UI React equivalent in src/ui/workspace.tsx). OBSERVED (before, Phase 3 rail, before-rail-1366.png): two small transparent icon buttons (the options gear and the resize handle) floated beside the board in a column that was spaced between top and bottom but had no visible container. Read from the screenshot at 1366x768: the board spans y 82 to 714, the gear glyph sits near y 97 (about 15px inside the top edge) and the handle glyph near y 697 (about 17px inside the bottom edge), so neither control is on an edge and neither is clearly inside the board. Nothing joins them to the board or to each other. WHY IT LOOKED DISCONNECTED: (1) no visible container, so each icon read as its own object and the eye had no rectangle to attach them to; (2) the controls hung at arbitrary insets from the board corners, so they were not on an edge of the region and not in a region of their own; (3) the board is the dominant edge on the page, and two orphan marks beside it made its right side look unfinished rather than part of one composition. The Phase 3 rail broke no approved text: no borders, no indentation, tokens only. That is why this is recorded. CORRECTED LAYOUT (after, after-rail-1366.png): one narrow rectangular column, 32px wide, on the --s2 surface, exactly as tall as the board, 8px from the board right edge, with the options control sitting on the board top edge and the resize control on the bottom edge, both on one horizontal alignment (one x). It is positioned from the board box (top 0, bottom 0, left calc(100% + 8px) inside the board container), never from page coordinates, so it follows the board when it is resized. On narrow screens (after-rail-390.png) the controls move to a compact row under the board aligned to the board right edge, 40px touch targets. MEASURED (the CaissaTrainer e2e, workspaceChevrons.mjs, 48 of 48 passing in the Phase 4 report): rail top and bottom equal board top and bottom (122 to 674 against 122 to 674), 8px gap, both controls share one x. The Summa-UI reference lab shows the same defect and the same fix (before-reference-1440.png, after-reference-1440.png) and is measured by scripts/test-workspace-alignment.mjs in a real browser: at 1440x900 rail 102 to 790 against region 102 to 790, gap 8px, width 32px, controls at x 918 and 918; at 1100x700 rail 94 to 598 against region 94 to 598; after a resize the relationship still holds. The same script fails 8 of 24 assertions on the previous CSS. APPROVED GUIDANCE READ (v0.1.0, guidance/principles.json and PRINCIPLES.md): P11 The Rectangle Rule, summary \"Organize information in clean rectangular regions.\" Rules: \"Do not use indentation as the primary hierarchy mechanism.\" \"Express hierarchy with typography, text color, weight, size and spacing; body content starts at the same left edge as its heading.\" \"Prefer flat lists, breadcrumbs and a single-level sidebar to indented trees.\" Exception: \"List marker gutters and table cell padding are not indentation.\" PRINCIPLES.md adds that indentation \"breaks the rectangular flow of the interface and gradually produces increasingly irregular content edges\". AP-014 and CHK-014 detect indentation only. P01 No Borders Within Borders: hierarchy through \"background elevation, spacing, typography and subtle section dividers\"; the corrected column uses a surface step and no border, so it complies. P02 (each elevated surface is lighter than its parent): the column is --s2 on the --s1 workspace, controls hover to --s3, so it complies. P12 Dividers Are Secondary Structure: not relevant, no divider is added or needed. P16 Layout Diversity: the corrected rail only exists on a page that has a primary region, so it does not impose a universal layout. P10 Minimalism Over Prevalence: the rail keeps two controls (the other actions stay in one menu). No anti-pattern or check addresses floating, detached or misaligned controls; AP-014 and CHK-014 are about indentation. CLASSIFICATION AND HONEST LIMIT: not already covered by P11 as written. P11 is the nearest home and its spirit (clean rectangles, regular edges) points the same way, but every approved rule and exception in it is about indentation of hierarchical content, and the Phase 3 rail passed all of them. A broad reading of the summary would make this an ambiguity, and the owner may prefer to settle it as a one sentence P11 clarification (patch); that is offered as an option in the draft, not decided. The proposal drafts the rule inside candidate P23 (it extends the control rail bullet recorded by FB-0020), because the evidence is a control rail on a primary region. GENERALIZES: any page with a primary rectangular region and contextual controls about it: an image viewer (zoom, rotate, fit), a map (zoom, layers), a code editor (a gutter or tool column spanning the editor height), a video player (transport on the bottom edge), a canvas or document preview. Controls either align with the region meaningful edges or sit in an explicitly defined control region measured from the region. Does not apply to controls that are not about the region (page toolbars, navigation). Does not forbid in-region overlays that already sit on region edges. PRODUCT SPECIFIC (stays in CaissaTrainer): the content of the options menu (flip board, FEN, add to notebook), the board squares that must never be covered. RELATED: FB-0020 (control rail attached to the region; this finding refines where its controls sit and does not contradict it: the rail still lives beside the region, is quiet at rest, and reserves 40px (8px gap plus the 32px column) on both sides), FB-0018 (ghost buttons: the rail buttons are transparent, but they now sit inside a visible container, which is the part that makes them findable; the ghost question stays undecided), FB-0028 (a surface must differ from its parent: the column is a step above the workspace).",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-gap",
+    "rationale": "Not already covered by P11 as written: every approved P11 rule and exception is about indentation of hierarchical content (AP-014 and CHK-014 likewise), and the Phase 3 rail complied with P01, P02, P11 and P16 yet looked detached. No approved principle, anti-pattern, preset or check says how contextual controls attach to a primary region (align to its edges, or sit in a control region measured from it). P11 is the nearest home through its spirit (clean rectangles, regular edges); if the owner reads its summary broadly this becomes a guidance-ambiguity settled by a one sentence patch level P11 clarification, which the draft offers as an option. Not product specific: it repeats for any image viewer, map, code editor or video region. Suggested: extend the control rail bullet of candidate P23 (FB-0020). Owner confirmation needed.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P11",
+    "P01",
+    "P02",
+    "P10",
+    "P16"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "proposal-drafted",
+  "proposal": "PR-0002"
+}

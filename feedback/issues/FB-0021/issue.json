@@ -1,0 +1,36 @@
+{
+  "id": "FB-0021",
+  "createdAt": "2026-10-29T13:03:46Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer",
+    "route": "Train, Judgement Puzzles and Notes (desktop 1366, phone 390)"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Optional tools and panels: closed by default, remembered choice (notes panel, notes board, navigator)",
+  "screenshots": [
+    {
+      "file": "random-puzzles-1366-1closed.png"
+    },
+    {
+      "file": "judgement-puzzle-1366-1closed.png"
+    },
+    {
+      "file": "rail-hidden-1440.png"
+    }
+  ],
+  "explanation": "CaissaTrainer Phase 2 (training-notes.md N4, notes-app.md A10, A11). Observed: optional supporting tools were forced into view (a notes panel with a full second board shown by default). Phase 2 rules: an optional tool starts closed behind one labelled disclosure control (aria-expanded, aria-controls), the person's open or closed choice is remembered per device (stored as a flag, wrapped in try/catch, the page renders without it), the tool keeps its state while hidden (created on first open, then hidden, not destroyed), and nothing essential is hidden. Corollary from Notes: tools revealed only on hover or focus (block controls) are fine for reading comfort, but the one creation action for the document's central object (Add board) needs a permanent labelled button, otherwise it is undiscoverable. A module that needs a tool to play must not rely on the optional panel. Generalizes to any inspector, notes or secondary view. Tension: CaissaTrainer rule U1 (no actions that only appear on hover) is partly in tension with hover revealed block tools, which is why the visible entry point matters. P05 and P10 cover the principle; the remembered choice, the closed default for optional and the no hidden essential control rule are not stated.\n\nPHASE 3 UPDATE (2026-10-29, claude-agent, draft text only): two refinements. (1) Which optional tools a module offers is a typed per module decision with a stated reason, and removing a tool never strands what the person already wrote (FB-0041). (2) The 'one labelled disclosure control' is now the quiet edge chevron on the workspace edge, or a full width disclosure row when stacked (FB-0037); the rule that optional tools start closed and the choice is remembered is unchanged.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-gap",
+    "rationale": "P05 mentions progressive disclosure but nothing says optional tools start closed, remember the choice, keep state when hidden, and never hide the only home of an essential control. Gap. Extends FB-0015 (panels) and FB-0017 (preferences). Owner confirmation needed.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P05",
+    "P10"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "proposal-drafted",
+  "proposal": "PR-0002"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "FB-0019",
+  "createdAt": "2026-10-29T06:00:16Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer",
+    "route": "Train, Judgement Puzzles (laptop 1366x768, placeholder and submit button)"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Tokens: --text-3 on --s2 and white text on the emerald accent",
+  "screenshots": [
+    {
+      "file": "laptop-judgement_puzzle-default.png"
+    }
+  ],
+  "explanation": "Found while migrating CaissaTrainer to the v0.1.0 tokens, measured from the token values. (1) --text-3 (#6f7371) on --s2 (#232424) is 3.24:1 (3.55:1 on --s1), below 4.5:1, so it cannot carry essential text such as placeholders, captions or counts. docs/DECISIONS.md D-007 already moved menu shortcut hints to --text-2 and left the token itself open; this is more evidence that the token is used for text people must read (the placeholder in the screenshot is an example). CaissaTrainer had to keep a rule: essential text is --text-2 or brighter. (2) White text on the emerald --accent (#10b981) is 2.54:1; --accent-ink (#04281d) on --accent is 6.24:1. Any text on an accent fill must use --accent-ink, never white; a migrated app inherited white-on-green from its old palette until a test caught it. The tokens.json usage note for --accent-ink says 'Text on accent fills' but no check or principle says white is wrong.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-gap",
+    "rationale": "Contrast of --text-3 (3.24:1 on --s2) and white on --accent (2.54:1) is not covered by a principle or check; PR-0001 already proposes CHK-023 for the first. Suggested: extend that check to cover text on accent fills and add the evidence to D-007's open question. The token-level decision stays with the owner.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P17"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "triaged",
+  "proposal": null
+}

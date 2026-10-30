@@ -1,0 +1,36 @@
+{
+  "id": "FB-0022",
+  "createdAt": "2026-10-29T13:03:47Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer",
+    "route": "Train, Random Puzzles (desktop 1366, phone 390)"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Competing primary regions: a second board beside the puzzle board",
+  "screenshots": [
+    {
+      "file": "random-puzzles-1366-3board.png"
+    },
+    {
+      "file": "judgement-puzzle-1366-3board.png"
+    },
+    {
+      "file": "judgement-puzzle-390-3board.png"
+    }
+  ],
+  "explanation": "CaissaTrainer Phase 2 (training-notes.md N4, N5). Observed: the notes panel showed a full 280px board next to the 328 to 352px solving board, which is 79 to 90 percent of the primary region at 1180 and on a phone. Two equal regions compete, the eye has no single place to start. Phase 2: the duplicate view is secondary: collapsed by default, capped at 15rem (240px) at every width, smaller than the primary region in every layout, created on first open. Generalizes: a preview next to an editor, a mini map next to a map, a second chart. Related approved guidance: P01 hierarchy and P09 simplicity apply in spirit but neither says a duplicate view must be capped relative to the primary region.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-gap",
+    "rationale": "No principle limits a secondary view of the same object. Gap. Suggested: one rule in candidate P23: a second view of the primary object is secondary, closed by default and capped well below it. Owner confirmation needed.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P09",
+    "P05"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "proposal-drafted",
+  "proposal": "PR-0002"
+}

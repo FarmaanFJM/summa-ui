@@ -1,0 +1,37 @@
+{
+  "id": "FB-0041",
+  "createdAt": "2026-10-29T16:37:16Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer",
+    "route": "Training modules: /train/studies (available), /train/mate-in-two and others (when-saved); module list in phase3/notes.md"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Optional tools differ per module as a typed capability with a documented reason, closed by default and remembered; removing a capability must never strand what the person already wrote",
+  "screenshots": [
+    {
+      "file": "after-workspace-1366.png",
+      "viewport": "1366x768",
+      "note": "After: a module where Notes are not offered for the current puzzle (when-saved, no saved note): no Notes chevron exists, only the session area."
+    },
+    {
+      "file": "after-notes-panel-1366.png",
+      "viewport": "1366x768",
+      "note": "After: Notes open on Mate in Two (the person opened them); the panel is closed until opened and its chevron is on the left edge."
+    }
+  ],
+  "explanation": "CaissaTrainer Phase 3 (notes.md section 1 and 2, Decision register). OBSERVED: the same optional tool (Notes) was offered the same way in every module, including those where it is noise (timed drills, hidden position exercises) or would break training integrity. OWNER DIRECTION: different default supporting tools per task. RULES IMPLEMENTED: (1) the capability is a typed per module decision with a stated reason (trainingNotes.ts TRAINING_NOTES, notesCapabilityFor), and a test fails when a module has no entry; values are available, when-saved and none; (2) every offered tool stays closed until opened, and the open choice is remembered per module; (3) NEVER LOSE USER DATA: no capability change deletes or rewrites a row; when-saved keeps the tool for any item that already has a saved note or an unsynced local draft; a failed lookup, or content this client cannot parse, counts as \"has a note\", because hiding the only route to a note over a network blip would be the loss the rule prevents; unknown modules resolve to when-saved, never none; drafts are mirrored locally until the server confirms the same content; (4) the control (chevron) does not exist when the tool is not offered, rather than being disabled with no way to act, and it appears when the slot appears after mount (a reactive presence check, a real bug fixed in WorkspaceLayout.vue). GENERAL PART: a product with optional tools decides per task which ones exist, writes the reason down, and treats user authored data as something no configuration may hide. PRODUCT SPECIFIC (stays in CaissaTrainer): the module table, and Studies as available, which is a judgement call. RELATED, MERGED BY REFERENCE: FB-0021 (optional tools closed by default, remembered), FB-0034 (a control must not claim a state it does not have), FB-0037. APPROVED GUIDANCE: P05 (minimum information for the current task) and P21 (remove before adding) support removing a tool from a task where it is noise, but nothing addresses the data loss side. PHASE 4 UPDATE (progressive linking between two product areas, add-to-notebook.md and data.md; no new issue, merged here by reference). CaissaTrainer links an item in one area (a puzzle) to a page in another (a notebook) progressively: the action is offered only where it applies (a typed per module capability that fails closed to none for an unknown module or an item without a stable identity, the same rule as this issue), as a quiet item in the region options menu and, only for modules where it is prominent, one secondary button under the counts; existing links are shown first as a contextual indicator that is part of the layout (\"In notebook X\", or a small menu for several) and the first dialog step offers \"Open X\" per linked page or an explicit \"Create another page\", so a person is not pushed into a duplicate; one dialog, nothing is created until the person confirms (Cancel creates nothing, a missing default collection is staged, not created); a duplicate click sends one request (one clientRequestId per confirmation, reused for a retry); a failure keeps every choice; an earlier note that cannot be converted stays reachable as plain text and is never deleted; the dialog and the context never carry the position or the solution; opening the linked page begins a visit with a way back (FB-0043, FB-0044). CLASSIFICATION: mostly covered or already recorded. P10 (contextual controls, interaction guard) and P05 cover where and when the action appears; the fail closed capability and the never strand data rule are FB-0041 itself; the way back is FB-0043; the context is FB-0044. The rest (reuse existing before creating another, create nothing until confirmed, idempotent retry) is a sound practice but a thin general part, so it is not drafted as a rule. Product specific, stays in CaissaTrainer: the capability table, the Puzzles collection default, legacy note import, the dialog fields and copy.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-gap",
+    "rationale": "Missing reusable pattern: nothing in approved guidance asks for a documented per task capability or for the rule that removing a feature must keep the user's data reachable. P05 and P21 cover only the removal. Owner confirmation needed.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P05",
+    "P21"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "proposal-drafted",
+  "proposal": "PR-0002"
+}

@@ -1,0 +1,23 @@
+{
+  "schemaVersion": 1,
+  "application": {
+    "name": "caissatrainer",
+    "repository": "https://github.com/FarmaanFJM/CaissaTrainer",
+    "commit": "7a4c71becd16eb7ae1cd20f7dc195324a8a0a14a"
+  },
+  "guidance": {
+    "name": "summa-ui-guidance",
+    "version": "0.1.0",
+    "bundleDigest": "5ef73215334c313089cb3cd87f6f78f65eef48f67dfdc5d53bd84fedad408cc7",
+    "tag": "guidance-v0.1.0",
+    "source": "vendored"
+  },
+  "recordedAt": "2026-10-29T05:59:31Z",
+  "exceptions": [
+    {
+      "principle": "P15",
+      "reason": "CaissaTrainer legacy --primary alias points at the emerald --accent and colours links and active table accents",
+      "scope": "application links and tables, not focus rings or selection"
+    }
+  ]
+}
