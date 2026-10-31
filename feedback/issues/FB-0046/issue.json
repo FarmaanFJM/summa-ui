@@ -1,0 +1,28 @@
+{
+  "id": "FB-0046",
+  "createdAt": "2026-10-31T10:54:49Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "gitmanager"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Popover / menu surface (.popover in base.css)",
+  "screenshots": [
+    {
+      "file": "glass.png"
+    }
+  ],
+  "explanation": "The dropdown opened by the three-dot menu in Runner Details looks partially transparent: labels, warnings and other content underneath remain visible through the menu. I do not want this glass-like effect. Action menus should be fully opaque with a solid charcoal surface matching the Summa-UI surface hierarchy, with no blur.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-incorrect",
+    "rationale": "Pinned guidance-v0.1.0 base.css draws .popover (every menu, dropdown and context menu) as 88% --s4 over a 14px blur (--glass) and principle 7 says the theme is 'slightly glassy'. Applications that follow it show content through menu labels, which an unseen application would repeat. Suggested direction for the owner: menus and popovers use the solid --s4 surface (tokens already say --s4 is for menus), drop --glass from .popover, and reword principle 7. GitManager already applies this locally (docs/SUMMA_UI_ADOPTION.md, Opaque menus) without editing its pinned copy. This is a suggestion only; confirmation and any proposal are the owner's decision.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P07"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "triaged",
+  "proposal": null
+}
