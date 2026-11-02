@@ -1,0 +1,29 @@
+{
+  "id": "FB-0047",
+  "createdAt": "2026-11-02T00:11:55Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Application shell: page origin, title placement, navigation across pages",
+  "screenshots": [
+    {
+      "file": "before_sheet.png"
+    }
+  ],
+  "explanation": "Owner: CaissaTrainer feels like many unrelated pages that share components. Moving between Play, Education, Clubs, Guide, Achievements, Train, Wiki and the Lichess lobby changes where the content starts, where the title sits, how cards look and which back control is used, so each page feels like a different website. Reusing buttons, cards and tokens is not enough: persistent navigation, content origin, title placement, supporting regions and surface language must stay structurally continuous, with a small family of intentional shells (content page, dense tool, board workspace, reading page).",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-gap",
+    "rationale": "P07 (one visual language) and P16 (layout diversity) cover shared components and varied layouts but nothing says the application frame, content origin, title placement and supporting regions must stay continuous between pages. Any multi-page application would repeat this. Suggested: a first-class principle on application continuity with a small family of shells. Owner decides.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P07",
+    "P16"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "proposal-drafted",
+  "proposal": "PR-0003"
+}

@@ -1,0 +1,28 @@
+{
+  "id": "FB-0050",
+  "createdAt": "2026-11-02T00:11:56Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Train page: horizontal rules as structure",
+  "screenshots": [
+    {
+      "file": "_train_1440.png"
+    }
+  ],
+  "explanation": "Owner: the Train page uses too many horizontal divider lines between regions, rows and groups, compensating for weak hierarchy. Structure should come from whitespace, grouping, typography, surface contrast and layout; rules should be exceptional.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-ambiguity",
+    "rationale": "P12 allows subtle dividers when spacing alone is ambiguous, and an agent can read that as licence to put a rule between every region. The owner's reading is that hierarchy comes first from layout, spacing, typography and surface, and rules are exceptional. Suggested clarification of P12. Owner decides.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P12"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "triaged",
+  "proposal": "PR-0003"
+}

@@ -1,0 +1,29 @@
+{
+  "id": "FB-0051",
+  "createdAt": "2026-11-02T00:11:56Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Analysis board: permanent chrome above the board",
+  "screenshots": [
+    {
+      "file": "_analysis_1440.png"
+    }
+  ],
+  "explanation": "Owner: a Not analysed bar sits above the board, hard to read and consuming the vertical space the board needs; the evaluation bar was horizontal above the board; resize and settings sat in a large container strip beside it. When a page has a dominant interactive object, the workspace must be designed around it: nothing permanent above or below it, controls beside it or on hover, so it can grow to the edges of the window.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-gap",
+    "rationale": "Candidate P23 (PR-0002) keeps the primary region primary but does not forbid permanent headers, status bars or toolbars above and below it, nor say the region may grow to the window edges. Suggested: extend it into a primary-object layout rule, and state the touch exception. Owner decides.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P07",
+    "P16"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "triaged",
+  "proposal": "PR-0003"
+}
