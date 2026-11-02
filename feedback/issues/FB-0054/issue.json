@@ -1,0 +1,28 @@
+{
+  "id": "FB-0054",
+  "createdAt": "2026-11-02T06:46:25Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Web typography scale, editorial serif and the CaissaTrainer wordmark",
+  "screenshots": [
+    {
+      "file": "brand_sheet.png"
+    }
+  ],
+  "explanation": "Owner: nearly every text element had the same importance. A website needs a display scale, section and card titles, body, support, metadata and eyebrow labels, plus an editorial serif for educational and historical content, while navigation, controls and tools keep a readable functional face. The brand wordmark is a deliberate two part composition: Caissa in bold emerald sans, Trainer in a flowing parchment italic serif, one continuous word beside the knight mark. The two colour treatment is a brand element, not a heading style.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-gap",
+    "rationale": "Approved guidance has a type scale for utility interfaces (tokens --fs-xs to --fs-2xl) and no display, editorial or brand typography rules. Gap for any content website.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P07"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "triaged",
+  "proposal": "PR-0004"
+}

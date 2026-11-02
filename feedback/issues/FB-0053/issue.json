@@ -1,0 +1,28 @@
+{
+  "id": "FB-0053",
+  "createdAt": "2026-11-02T06:46:25Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Warm secondary palette and its semantic roles",
+  "screenshots": [
+    {
+      "file": "figma-train.png"
+    }
+  ],
+  "explanation": "Owner: keep the charcoal and emerald identity and add a controlled warm palette (cream, parchment, caramel, wood) inspired by chess literature. Emerald means action, active training and progress. Warm means editorial, educational and historical content, featured recommendations and contrasting surfaces. They are not interchangeable, not every card is coloured, charcoal stays the foundation. Principle 6 (as few colours as possible) needs an explicit reconciliation.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-ambiguity",
+    "rationale": "P06 says use as few colours as possible and allows accents that communicate meaning, interaction, identity or state. A second palette with a semantic role is allowed in spirit but not stated, and a strict reading forbids it. This is an ambiguity that needs an explicit decision (DECISIONS entry). Owner decides.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P06"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "triaged",
+  "proposal": "PR-0004"
+}

@@ -1,0 +1,30 @@
+{
+  "id": "FB-0055",
+  "createdAt": "2026-11-02T06:46:25Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Action hierarchy and focus on warm surfaces",
+  "screenshots": [
+    {
+      "file": "figma-train.png"
+    }
+  ],
+  "explanation": "Owner: not every action is a charcoal rectangle with a chevron, and not every action is emerald. Primary, secondary, tertiary, quiet text, icon only, destructive and branded integration actions must look like what they are. Large emerald rings around focused inputs and dropdowns are an anti pattern: restrained borders, subtle hover, keyboard focus visible via focus-visible. The neutral light focus ring of the tokens vanishes on a warm light surface, so focus needs a dark variant there, checked for 3 to 1 contrast.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-gap",
+    "rationale": "P15, P17 and P19 govern selection, focus and destructive buttons on charcoal. There is no action hierarchy beyond primary, secondary, outline, destructive, and no focus rule for light or warm surfaces. Gap.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P15",
+    "P17",
+    "P19"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "triaged",
+  "proposal": "PR-0004"
+}

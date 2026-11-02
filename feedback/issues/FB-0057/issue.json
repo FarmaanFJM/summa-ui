@@ -1,0 +1,28 @@
+{
+  "id": "FB-0057",
+  "createdAt": "2026-11-02T06:46:26Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Third party brand cards (Lichess Puzzles)",
+  "screenshots": [
+    {
+      "file": "figma-train.png"
+    }
+  ],
+  "explanation": "Owner: the Lichess Puzzles entry is a light contrasting card carrying the Lichess identity, with a dark action. No decorative label such as THIRD-PARTY PUZZLES, and nothing implying an official partnership. Rules are needed for third party identity on a branded interface: where a light surface is allowed, which mark may be shown, what must not be claimed.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-gap",
+    "rationale": "No rule covers third party identity (logos, light brand cards, claims of partnership). Any app that links to an external service repeats this. Gap.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P20"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "triaged",
+  "proposal": "PR-0004"
+}

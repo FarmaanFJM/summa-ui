@@ -1,0 +1,29 @@
+{
+  "id": "FB-0052",
+  "createdAt": "2026-11-02T06:46:25Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Website composition: structured asymmetry and purpose specific rectangular cards",
+  "screenshots": [
+    {
+      "file": "figma-train.png"
+    }
+  ],
+  "explanation": "Owner: the plain page shells of the previous layout pass are consistent but too plain, repetitive and rigid. The approved Figma Train direction composes a page from rectangular cards of unequal width, height, weight and colour on one underlying grid: a wide main region of horizontal cards beside a column of contrasting feature cards, with content reclaiming the width beneath. Asymmetry must be intentional (one grid, no random gaps), must not reserve an empty column for a small insert, and must keep a sensible reading order and a deliberate mobile order. Cards are purpose built, not one generic card.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-gap",
+    "rationale": "P07 and P16 allow layout variety but give no method for an expressive website composition. Candidate P27 (PR-0003, draft) covers the shell family; structured asymmetry is a composition rule inside it for content websites. Any content site would repeat it. Owner decides.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P07",
+    "P16"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "proposal-drafted",
+  "proposal": "PR-0004"
+}

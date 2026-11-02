@@ -1,0 +1,85 @@
+{
+  "id": "PR-0004",
+  "title": "Summa-UI Web: a content website discipline with structured asymmetry, warm palette, editorial type, action hierarchy and brand rules",
+  "issues": [
+    "FB-0052",
+    "FB-0053",
+    "FB-0054",
+    "FB-0055",
+    "FB-0056",
+    "FB-0057"
+  ],
+  "kind": "new-principle",
+  "status": "draft",
+  "authoredBy": "claude-agent",
+  "authoredAt": "2026-11-02T06:46:35Z",
+  "summary": "Add a Summa-UI Web discipline for content websites that shares the approved Desktop foundations and adds ten candidate rules (W01 to W10): structured asymmetry, rectangular purpose built surfaces, charcoal emerald and warm colour roles, a web type scale with a self hosted editorial serif, an action hierarchy, restrained focus with a dark ring on warm surfaces, selection without a stripe, third party identity, real imagery and deliberate responsive composition, plus brand lockup guidance. It generalizes: any content or learning website has pages that need more than utility minimalism and repeats the same failures (identical cards, one weight of type, thick focus rings, stripes on selection). Draft only: the owner decides everything. Open for the owner: whether Web is a profile (this draft) or separate language; the P06 reconciliation for the warm palette (draft D-016); P07 (draft D-017); whether the warm values are final or only derived from the Figma Make Train reference; the ghost button question (FB-0018) for the tertiary action. Builds on but does not depend on the draft PR-0003 (P27 to P31). Not an approval: CaissaTrainer implements these provisionally.",
+  "change": {
+    "files": [
+      "PRINCIPLES.md (candidate text only: feedback/proposals/PR-0004/candidate/principles.md)",
+      "guidance/principles.json (candidate entries: feedback/proposals/PR-0004/candidate/principles.json)",
+      "guidance/css/tokens.css (candidate web tokens: feedback/proposals/PR-0004/candidate/tokens-web.css, the CaissaTrainer web.css)",
+      "docs/SUMMA_WEB.md (new, outside guidance/)",
+      "docs/DECISIONS.md (owner only: draft D-016 and D-017 in feedback/proposals/PR-0004/conflicts-and-decisions.md)"
+    ],
+    "principleIds": [
+      "P03",
+      "P04",
+      "P06",
+      "P07",
+      "P11",
+      "P12",
+      "P15",
+      "P16",
+      "P17",
+      "P19",
+      "P20"
+    ],
+    "antiPatternIds": [],
+    "checkIds": [],
+    "presetIds": []
+  },
+  "examples": {
+    "negative": [
+      {
+        "description": "The previous layout pass: consistent shells, but every page a plain stack of equal cards with one weight of type (FB-0052).",
+        "screenshot": "feedback/proposals/PR-0004/screenshots/before-pages-1440.png"
+      },
+      {
+        "description": "A thick emerald ring on a focused input.",
+        "snippet": ".input:focus { box-shadow: 0 0 0 3px var(--accent); }  /* W06 */"
+      },
+      {
+        "description": "A coloured stripe marking the selected navigation item.",
+        "snippet": ".nav-item.active { border-left: 3px solid var(--accent); }  /* W07 */"
+      },
+      {
+        "description": "A label that only says the entry is third party.",
+        "snippet": "<span class=\"tag\">THIRD-PARTY PUZZLES</span>  /* W08 */"
+      }
+    ],
+    "positive": [
+      {
+        "description": "The approved Figma Make Train reference: a main region of horizontal cards beside a column of contrasting feature cards, display type, eyebrow, warm featured card, ink action on a light brand card.",
+        "screenshot": "feedback/proposals/PR-0004/screenshots/figma-train.png"
+      },
+      {
+        "description": "The CaissaTrainer lockup: bold emerald sans plus parchment italic serif as one word beside the knight, at desktop, compact, drawer and 1x scale.",
+        "screenshot": "feedback/proposals/PR-0004/screenshots/brand-lockup.png"
+      }
+    ]
+  },
+  "validation": {
+    "result": "no-regressions",
+    "regressionReport": "feedback/proposals/PR-0004/regression.json",
+    "baseline": "feedback/baselines/guidance-v0.1.0.json",
+    "ranAt": "2026-11-02T06:49:30Z",
+    "notes": "npm run regression over the 12 approved references at 1440 and 390: no-regressions. guidance/ and PRINCIPLES.md have no diff, so no check outcome can change. Not an approval."
+  },
+  "versionImpact": "minor",
+  "existingApplications": {
+    "policy": "unchanged-until-owner-updates"
+  },
+  "ownerDecision": null,
+  "releasedIn": null
+}
