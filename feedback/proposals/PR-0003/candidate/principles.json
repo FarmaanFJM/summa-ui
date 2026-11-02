@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "note": "Candidate entries for guidance/principles.json. Not approved. Evidence FB-0047 to FB-0051.",
+  "principles": [
+    {
+      "id": "P27",
+      "number": 27,
+      "title": "Application Continuity",
+      "slug": "application-continuity",
+      "antipatterns": [],
+      "summary": "Navigating between parts of one application must not feel like a different website: stable frame, predictable content origin, title and supporting regions, a small family of shells.",
+      "rules": [
+        "Persistent navigation stays put and keeps its shape; a destination changes the content region only.",
+        "Pages of one family share one horizontal origin, one top offset and one maximum width.",
+        "Titles, page actions, trail and supporting content have predictable places.",
+        "Use a small family of shells: content page, reading page, dense tool, primary-object workspace. A new page picks one.",
+        "A page that changes shell while open (lobby to game) says so and the frame follows.",
+        "Local navigation stays inside the content region; never a second full height sidebar.",
+        "Surfaces have roles used the same way everywhere; do not alternate between no surface, a darker surface, a bordered panel and a rule for the same job."
+      ]
+    },
+    {
+      "id": "P28",
+      "number": 28,
+      "title": "One Home for Every Control",
+      "slug": "one-control-home",
+      "antipatterns": [],
+      "summary": "A function has one obvious control; do not duplicate it in a menu unless a stated usability reason requires it.",
+      "rules": [
+        "If a direct manipulation control exists, its commands do not also appear in a settings menu.",
+        "A menu holds preferences about its subject, grouped and narrow, not copies of controls elsewhere.",
+        "Navigation controls appear once, next to the content they move through.",
+        "A deliberate duplicate names its reason (for example a keyboard or touch fallback)."
+      ]
+    },
+    {
+      "id": "P29",
+      "number": 29,
+      "title": "Labels Are Not Clutter When They Resolve Ambiguity",
+      "slug": "labels-resolve-ambiguity",
+      "antipatterns": [],
+      "summary": "Remove information that adds no understanding; keep concise labels that prevent a wrong reading.",
+      "rules": [
+        "A bare value whose meaning is not obvious needs a concise label.",
+        "Do not remove a label to save space; arrange labelled controls more compactly.",
+        "Remove text that restates what a control, layout or heading already says.",
+        "Test: if removing the text leaves a reasonable person unsure what a value means, it is a label."
+      ]
+    },
+    {
+      "id": "P30",
+      "number": 30,
+      "title": "Hierarchy Before Separators",
+      "slug": "hierarchy-before-separators",
+      "antipatterns": [],
+      "summary": "Structure comes from layout, spacing, typography, grouping and surface; horizontal rules are a last resort.",
+      "rules": [
+        "Try spacing, then a heading, then a surface step, before a rule.",
+        "A rule under every heading and between every row hides a weak hierarchy.",
+        "Repeated rows are cards or plain rows separated by space.",
+        "A header that needs a rule to separate it from the body points to missing surface or spacing."
+      ]
+    },
+    {
+      "id": "P31",
+      "number": 31,
+      "title": "Primary-Object Layouts",
+      "slug": "primary-object-layout",
+      "antipatterns": [],
+      "summary": "Design the workspace around the dominant interactive object and let it grow toward the window edges.",
+      "rules": [
+        "Nothing permanent above or below the object reduces its scaling area; no header, status bar, banner or toolbar.",
+        "Controls about the object float beside it, appear on hover or focus, have no container and take no permanent space; touch shows them.",
+        "Edge information such as an evaluation bar sits against the edge, sized with the object, and is absent when off.",
+        "Side panels run state and configuration, then the main data taking spare height, then the one primary action.",
+        "A failure is reported in the control that can act on it or temporarily, never in a permanent strip over the object.",
+        "Exception: information the task needs next to the object (live game clocks, drill answers) may sit above or below it, stated."
+      ]
+    }
+  ]
+}

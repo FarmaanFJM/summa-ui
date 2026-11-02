@@ -1,0 +1,29 @@
+{
+  "id": "FB-0049",
+  "createdAt": "2026-11-02T00:11:56Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Analysis side panel: unlabeled depth and lines",
+  "screenshots": [
+    {
+      "file": "_analysis_1440.png"
+    }
+  ],
+  "explanation": "Owner: depth and number of lines were two stacks of bare numbers with no labels, so the values were ambiguous. The fix is not to remove labels to save space but to remove unnecessary information and keep a concise label (Depth 16, Lines 2). Minimalism removes information that adds no understanding; it does not strip labels that resolve ambiguity.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-ambiguity",
+    "rationale": "P05 says show the minimum information and warns against permanent explanation, which can be read as removing labels. The owner's reading: remove unnecessary information, keep labels that resolve ambiguity. Two reasonable readings give different results, so this is an ambiguity. Suggested clarification inside P05. Owner decides.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P05",
+    "P21"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "triaged",
+  "proposal": "PR-0003"
+}

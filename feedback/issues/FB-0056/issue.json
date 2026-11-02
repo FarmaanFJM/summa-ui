@@ -1,0 +1,29 @@
+{
+  "id": "FB-0056",
+  "createdAt": "2026-11-02T06:46:26Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Selected state: coloured curved left stripe on navigation and cards",
+  "screenshots": [
+    {
+      "file": "figma-directions.png"
+    }
+  ],
+  "explanation": "Owner: the recurring curved emerald left border on selected navigation items and interactive cards is not part of the approved direction. A selected item is a subtle surface step plus type weight. (Principle 3 already forbids the arbitrary left border; the owner wants the selected navigation case stated.)",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-ambiguity",
+    "rationale": "P03 forbids the arbitrary left border as generic emphasis but allows it with an established semantic meaning; the selected navigation item is a case an agent may read either way. One sentence would settle it. Owner decides.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P03",
+    "P15"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "triaged",
+  "proposal": "PR-0004"
+}

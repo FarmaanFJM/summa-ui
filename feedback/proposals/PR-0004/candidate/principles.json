@@ -1,0 +1,138 @@
+{
+  "schemaVersion": 1,
+  "status": "draft",
+  "note": "Candidate Summa-UI Web rules W01 to W10. Not approved, not numbered into the P series: the owner decides numbering and whether Web is a profile. Evidence FB-0052 to FB-0057.",
+  "principles": [
+    {
+      "id": "W01",
+      "number": 101,
+      "title": "Structured Asymmetry",
+      "slug": "structured-asymmetry",
+      "antipatterns": [],
+      "summary": "One column grid, deliberately unequal compositions: cards differ in width, height, weight and surface, edges stay on the grid, a feature insert lets content flow beside it and reclaim the width beneath it.",
+      "rules": [
+        "Asymmetry is intentional, never random gaps.",
+        "Not a regular grid with unequal cards: use row spanning so content flows around an insert.",
+        "Do not reserve an empty column for a small insert.",
+        "Keep a sensible reading order and a deliberate mobile order.",
+        "Never in a primary object workspace or dense tool."
+      ]
+    },
+    {
+      "id": "W02",
+      "number": 102,
+      "title": "Rectangular Surfaces",
+      "slug": "rectangular-surfaces",
+      "antipatterns": [],
+      "summary": "Square or subtly rounded corners, purpose built cards, hierarchy by surface step, type and whitespace.",
+      "rules": [
+        "2px to 8px corners; no pill containers.",
+        "One card design per kind of content, not one generic card.",
+        "Share behaviour, allow compositional difference; avoid components with dozens of flags."
+      ]
+    },
+    {
+      "id": "W03",
+      "number": 103,
+      "title": "Charcoal, Emerald and Warm",
+      "slug": "charcoal-emerald-warm",
+      "antipatterns": [],
+      "summary": "Charcoal is the foundation, emerald means action and progress, a warm palette means editorial, educational and historical material and featured surfaces.",
+      "rules": [
+        "Emerald and warm are not interchangeable.",
+        "Not every card is coloured; a warm surface is an insert, never the page.",
+        "Text on warm is ink; focus on warm is a dark ring.",
+        "Needs an explicit decision against P06."
+      ]
+    },
+    {
+      "id": "W04",
+      "number": 104,
+      "title": "Web Typography",
+      "slug": "web-typography",
+      "antipatterns": [],
+      "summary": "Two self hosted faces and a scale with roles: display, title, section, card, body, support, metadata, eyebrow, editorial.",
+      "rules": [
+        "Functional sans for navigation, controls, tools and body.",
+        "Editorial serif for the wordmark, editorial headings, features and educational or historical content, never in a dense tool.",
+        "No third party font fetch; few families and weights."
+      ]
+    },
+    {
+      "id": "W05",
+      "number": 105,
+      "title": "Action Hierarchy",
+      "slug": "action-hierarchy",
+      "antipatterns": [],
+      "summary": "Actions look like what they are: primary, secondary, tertiary, ink, outline, icon only, destructive, branded integration.",
+      "rules": [
+        "One dominant primary per region.",
+        "Tertiary is a quiet text action with an arrow.",
+        "Ink is the solid dark action for light or warm surfaces.",
+        "Not every action is emerald or a charcoal rectangle with a chevron."
+      ]
+    },
+    {
+      "id": "W06",
+      "number": 106,
+      "title": "Restrained Focus and Hover",
+      "slug": "restrained-focus",
+      "antipatterns": [],
+      "summary": "Subtle hover, focus-visible rings of 1px to 1.5px at 3:1 against the surface, a dark ring on warm surfaces.",
+      "rules": [
+        "Pointer interaction never draws a large ring.",
+        "No thick or emerald rings, glows, expanding borders or nested outlines.",
+        "Validate focus contrast on charcoal and on warm surfaces."
+      ]
+    },
+    {
+      "id": "W07",
+      "number": 107,
+      "title": "Selection Without a Stripe",
+      "slug": "selection-without-stripe",
+      "antipatterns": [],
+      "summary": "A selected navigation item or card is a surface step and heavier type, with no coloured left stripe.",
+      "rules": [
+        "Settles the P03 reading for selection."
+      ]
+    },
+    {
+      "id": "W08",
+      "number": 108,
+      "title": "Third Party Identity",
+      "slug": "third-party-identity",
+      "antipatterns": [],
+      "summary": "A third party entry may use a light surface and its mark where terms permit, without decorative labels or claims of partnership.",
+      "rules": [
+        "No label that only says third party.",
+        "No wording implying partnership or endorsement without one.",
+        "The mark is shown as supplied."
+      ]
+    },
+    {
+      "id": "W09",
+      "number": 109,
+      "title": "Real Imagery",
+      "slug": "real-imagery",
+      "antipatterns": [],
+      "summary": "Imagery is meaningful to the content; nothing is fabricated to fill an empty state.",
+      "rules": [
+        "No unrelated stock photography.",
+        "Empty states are deliberate and consistent."
+      ]
+    },
+    {
+      "id": "W10",
+      "number": 110,
+      "title": "Deliberate Responsive Composition",
+      "slug": "responsive-composition",
+      "antipatterns": [],
+      "summary": "Desktop, tablet and mobile are designed, not collapsed.",
+      "rules": [
+        "Main content before supporting features on mobile where it serves the task.",
+        "Local navigation becomes a compact selector.",
+        "No horizontal overflow; touch targets follow the approved rule."
+      ]
+    }
+  ]
+}

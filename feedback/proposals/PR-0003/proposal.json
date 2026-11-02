@@ -1,0 +1,83 @@
+{
+  "id": "PR-0003",
+  "title": "Application continuity, one control home, labels that resolve ambiguity, hierarchy before separators, primary-object layouts",
+  "issues": [
+    "FB-0047",
+    "FB-0048",
+    "FB-0049",
+    "FB-0050",
+    "FB-0051"
+  ],
+  "kind": "new-principle",
+  "status": "draft",
+  "authoredBy": "claude-agent",
+  "authoredAt": "2026-11-02T00:12:04Z",
+  "summary": "Add five candidate principles from the CaissaTrainer application layout pass: P27 Application Continuity (a stable frame, one content origin, predictable title and supporting regions, a small family of shells: content page, reading page, dense tool, primary-object workspace), P28 One Home for Every Control, P29 Labels Are Not Clutter When They Resolve Ambiguity (a clarification of P05), P30 Hierarchy Before Separators (a clarification of P12), and P31 Primary-Object Layouts (extends candidate P23: nothing permanent above or below the dominant object, floating hover controls with a touch exception, edge information absent when off, side panel hierarchy). Each generalizes: any multi-page application repeats continuity failures, any app with a direct manipulation control plus a menu repeats duplication, and any app built around a canvas, map or board repeats the chrome problem. Draft only: the text travels in feedback/proposals/PR-0003/candidate; PRINCIPLES.md and guidance/ are unchanged. Open for the owner: whether P29 and P30 are clarifications of P05 and P12 rather than new numbers; whether P31 merges into P23 from PR-0002; the touch exception wording; whether a check is wanted (a measured title origin comparison across routes is implemented in CaissaTrainer e2e/applicationShell.mjs but is not a Summa check).",
+  "change": {
+    "files": [
+      "PRINCIPLES.md (candidate text only: feedback/proposals/PR-0003/candidate/principles.md)",
+      "guidance/principles.json (candidate entries: feedback/proposals/PR-0003/candidate/principles.json)",
+      "docs/APPLICATION_SHELLS.md (new, outside guidance/)",
+      "docs/DECISIONS.md (owner only; no entry drafted, no approved rule is contradicted)"
+    ],
+    "principleIds": [
+      "P05",
+      "P07",
+      "P12",
+      "P14",
+      "P16",
+      "P23",
+      "P27",
+      "P28",
+      "P29",
+      "P30",
+      "P31"
+    ],
+    "antiPatternIds": [],
+    "checkIds": [],
+    "presetIds": []
+  },
+  "examples": {
+    "negative": [
+      {
+        "description": "Ten pages of one application whose titles start at different x positions, with a round back button on one page, text on another, and bare text instead of cards (FB-0047).",
+        "screenshot": "feedback/proposals/PR-0003/screenshots/before-pages-1440.png"
+      },
+      {
+        "description": "A board workspace with a Not analysed bar above the board, a container strip of controls beside it, a settings menu that repeats Larger, Smaller and Largest that fits, and unlabelled depth and lines values (FB-0048, FB-0049, FB-0051).",
+        "screenshot": "feedback/proposals/PR-0003/screenshots/before-analysis-1440.png"
+      },
+      {
+        "description": "A rule under every region heading and between every row, standing in for hierarchy (FB-0050).",
+        "snippet": ".region h2 { border-bottom: 1px solid var(--line); } .row + .row { border-top: 1px solid var(--line); }  /* P30 */"
+      }
+    ],
+    "positive": [
+      {
+        "description": "The same pages after the pass: one title x, one sidebar, one card surface, one trail component, whitespace instead of rules.",
+        "screenshot": "feedback/proposals/PR-0003/screenshots/after-pages-1440.png"
+      },
+      {
+        "description": "Analysis workspace: evaluation bar flush against the board only while the engine is on, nothing above or below the board, hover-only floating controls, a panel that reads engine, moves, Analyse game, with labelled Depth and Lines side by side.",
+        "screenshot": "feedback/proposals/PR-0003/screenshots/after-analysis-engine-1440.png"
+      },
+      {
+        "description": "The largest board uses nearly the full window height because nothing permanent sits above or below it.",
+        "screenshot": "feedback/proposals/PR-0003/screenshots/after-analysis-largest-1440.png"
+      }
+    ]
+  },
+  "validation": {
+    "result": "no-regressions",
+    "regressionReport": "feedback/proposals/PR-0003/regression.json",
+    "baseline": "feedback/baselines/guidance-v0.1.0.json",
+    "ranAt": "2026-11-02T00:21:57Z",
+    "notes": "npm run regression over the 12 approved references at 1440 and 390: no-regressions. guidance/ and PRINCIPLES.md have no diff, so no check outcome can change. Not an approval."
+  },
+  "versionImpact": "minor",
+  "existingApplications": {
+    "policy": "unchanged-until-owner-updates"
+  },
+  "ownerDecision": null,
+  "releasedIn": null
+}

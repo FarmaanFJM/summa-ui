@@ -1,0 +1,100 @@
+/*
+ * Summa-UI Web foundations for CaissaTrainer (provisional).
+ *
+ * The approved Summa-UI bundle (v0.1.0) is a desktop utility language. A content website needs more:
+ * an editorial voice, a warm secondary palette, a display type scale and purpose built cards. Those rules
+ * are a DRAFT proposal in the Summa-UI repository (feedback/proposals/PR-0004), not approved doctrine.
+ * Everything here is therefore a CaissaTrainer layer on top of the vendored Summa tokens: it never
+ * redefines a Summa token, and it is recorded as an exception in summa-ui.usage.json.
+ *
+ * Fonts are self hosted (assets/fonts, SIL OFL): the application never fetches a font from a third party.
+ * Two families only. Inter is the functional face. Playfair Display is the editorial face, used for the
+ * wordmark, editorial headings and feature cards, never in dense tools.
+ */
+@font-face {
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 100 900;
+    font-display: swap;
+    src: url('../../fonts/inter-latin-wght-normal.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Playfair Display';
+    font-style: normal;
+    font-weight: 400 900;
+    font-display: swap;
+    src: url('../../fonts/playfair-display-latin-wght-normal.woff2') format('woff2');
+}
+@font-face {
+    font-family: 'Playfair Display';
+    font-style: italic;
+    font-weight: 400 900;
+    font-display: swap;
+    src: url('../../fonts/playfair-display-latin-wght-italic.woff2') format('woff2');
+}
+
+:root {
+    /* ---- Warm secondary palette: aged paper, parchment, caramel, wood. Derived from the Figma Make Train page. ----
+     * Roles: editorial and educational surfaces, historical material, featured recommendations.
+     * Never interchangeable with emerald (action, progress, active training). Charcoal stays the foundation. */
+    --w-cream: #e7dcc4;
+    --w-parchment: #d8c9a8;
+    --w-caramel: #ba9569;
+    --w-wood: #806343;
+    /* Text and rules ON a warm surface. Contrast on --w-parchment: --w-ink 10.4:1, --w-ink-2 5.5:1; --w-wood on parchment is 3.4:1, so it is for large type and decoration only. */
+    --w-ink: #231b12;
+    --w-ink-2: #5a4630;
+    /* A light neutral surface for third party identity cards (Lichess), warm enough to sit with the palette. */
+    --w-paper: #ece8df;
+    /* Keyboard focus on a warm surface: the light neutral ring of tokens.css would vanish on parchment. */
+    --w-focus: rgba(35, 27, 18, 0.75);
+
+    /* ---- Web type scale (Inter unless noted) ---- */
+    --font-editorial: 'Playfair Display', 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
+    --t-display: 700 clamp(2.25rem, 1.4rem + 3.2vw, 3.75rem) / 1.02 var(--font);
+    --t-title: 700 clamp(1.75rem, 1.3rem + 1.6vw, 2.5rem) / 1.08 var(--font);
+    --t-section: 650 1.375rem / 1.2 var(--font);
+    --t-card: 600 1.0625rem / 1.25 var(--font);
+    --t-body: 400 0.9375rem / 1.55 var(--font);
+    --t-support: 400 0.875rem / 1.5 var(--font);
+    --t-meta: 500 0.75rem / 1.3 var(--font);
+    --t-eyebrow: 600 0.6875rem / 1.2 var(--font);
+    --t-editorial-display: 600 clamp(2rem, 1.3rem + 2.4vw, 3.25rem) / 1.05 var(--font-editorial);
+    --t-editorial-card: 600 clamp(1.5rem, 1.2rem + 1vw, 2rem) / 1.1 var(--font-editorial);
+    --track-display: -0.035em;
+    --track-title: -0.025em;
+    --track-eyebrow: 0.12em;
+}
+
+/* Eyebrow: a small uppercase emerald line above a title (TRAIN / CATALOGUE). Functional emphasis, not decoration. */
+.web-eyebrow {
+    margin: 0;
+    font: var(--t-eyebrow);
+    letter-spacing: var(--track-eyebrow);
+    text-transform: uppercase;
+    color: var(--accent-text);
+}
+.web-eyebrow.is-warm { color: var(--w-caramel); }
+.on-warm .web-eyebrow { color: var(--w-ink-2); }
+
+.web-display { margin: 0; font: var(--t-display); letter-spacing: var(--track-display); color: var(--text); text-wrap: balance; }
+.web-title { margin: 0; font: var(--t-title); letter-spacing: var(--track-title); color: var(--text); text-wrap: balance; }
+.web-section { margin: 0; font: var(--t-section); letter-spacing: -0.015em; color: var(--text); }
+.web-support { margin: 0; font: var(--t-support); color: var(--text-2); max-width: 46ch; }
+.web-editorial { font-family: var(--font-editorial); font-weight: 600; }
+.web-editorial-italic { font-family: var(--font-editorial); font-style: italic; font-weight: 500; }
+
+/*
+ * Warm editorial surface. Children use .on-warm tokens: ink on parchment, the ink button, and a dark
+ * focus ring. A warm surface is an insert in a charcoal page, never the page itself.
+ */
+.on-warm {
+    background: var(--w-parchment);
+    color: var(--w-ink);
+    --focus: var(--w-focus);
+    --text: var(--w-ink);
+    --text-2: var(--w-ink-2);
+    --text-3: var(--w-ink-2);
+}
+.on-warm.is-cream { background: var(--w-cream); }
+.on-warm.is-paper { background: var(--w-paper); }

@@ -3,21 +3,30 @@
   "application": {
     "name": "caissatrainer",
     "repository": "https://github.com/FarmaanFJM/CaissaTrainer",
-    "commit": "7a4c71becd16eb7ae1cd20f7dc195324a8a0a14a"
+    "commit": "9dee16a1de5074f78f66d69f9e606f2ba850be8f"
   },
   "guidance": {
     "name": "summa-ui-guidance",
     "version": "0.1.0",
     "bundleDigest": "5ef73215334c313089cb3cd87f6f78f65eef48f67dfdc5d53bd84fedad408cc7",
-    "tag": "guidance-v0.1.0",
     "source": "vendored"
   },
-  "recordedAt": "2026-10-29T05:59:31Z",
+  "recordedAt": "2026-11-02T06:47:46Z",
   "exceptions": [
     {
       "principle": "P15",
       "reason": "CaissaTrainer legacy --primary alias points at the emerald --accent and colours links and active table accents",
       "scope": "application links and tables, not focus rings or selection"
+    },
+    {
+      "principle": "P06",
+      "reason": "Provisional warm secondary palette (cream, parchment, caramel, wood) for editorial and educational surfaces, draft Summa-UI Web W03 in feedback/proposals/PR-0004 awaiting the owner",
+      "scope": "insert and feature surfaces on content pages, never the page background or dense tools"
+    },
+    {
+      "principle": "P07",
+      "reason": "Provisional editorial serif (Playfair Display, self hosted) and display type scale for the wordmark and educational or historical content, draft Summa-UI Web W04 in feedback/proposals/PR-0004 awaiting the owner",
+      "scope": "content pages and the brand lockup, never dense tools"
     }
   ]
 }

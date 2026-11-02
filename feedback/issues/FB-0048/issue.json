@@ -1,0 +1,30 @@
+{
+  "id": "FB-0048",
+  "createdAt": "2026-11-02T00:11:55Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Board settings menu duplicating the resize control",
+  "screenshots": [
+    {
+      "file": "_analysis_1440.png"
+    }
+  ],
+  "explanation": "Owner: the board settings menu repeats Larger, Smaller, Largest that fits and Restore size although a dedicated resize control already exists beside the board. A function should have one obvious home unless duplication has a clear usability reason.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-gap",
+    "rationale": "P09, P10 and P21 push toward fewer controls but none states that a function has one home. A resize command in a settings menu next to a dedicated resize control is the example; any app with a direct manipulation control plus a menu would repeat it. Suggested principle: no duplicated control ownership. Owner decides.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P09",
+    "P10",
+    "P21"
+  ],
+  "relatedAntiPatterns": [],
+  "status": "triaged",
+  "proposal": "PR-0003"
+}
