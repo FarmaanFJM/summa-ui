@@ -41,6 +41,7 @@ export default function Lab({ current }: { current: string }) {
               <NavItem icon="x" label="Anti-patterns" onClick={() => { location.hash = '/guidance/antipatterns' }} />
               <NavItem icon="layers" label="Icons" onClick={() => { location.hash = '/guidance/icons' }} />
               <NavItem icon="sliders" label="Presets" onClick={() => { location.hash = '/guidance/presets' }} />
+              <NavItem icon="list-check" label="Information density" onClick={() => { location.hash = '/guidance/density' }} />
               <NavItem icon="info" label="Principles applied" onClick={() => { location.hash = '/principles' }} />
             </nav>
           </div>

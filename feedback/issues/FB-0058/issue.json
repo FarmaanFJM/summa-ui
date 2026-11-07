@@ -1,0 +1,34 @@
+{
+  "id": "FB-0058",
+  "createdAt": "2026-11-07T08:05:09Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "gitmanager"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Information density: repository rows, tooltips, settings, status text",
+  "screenshots": [
+    {
+      "file": "information-density-1440.png"
+    }
+  ],
+  "explanation": "Owner brief (TOP): Show only the information the user needs at the moment they need it. Owner explanation: default to the action, not the explanation (Sync with Remote, never a paragraph under it). Explain on hover or focus only, with consequences in the confirmation dialog when the operation starts. Prefer obvious labels and icons to tooltips. Keep Level 1 (name, essential status, primary action, critical problem) always visible, Level 2 (secondary actions, paths, logs, environment) on demand, Level 3 (diagnostics, long explanations, dangerous-operation confirmations) only when relevant. Reduce text: Synced, Running, Terminal, Backend failed, 3 changed files, Stopped, Environment. The screenshot is the lab reference page showing Avoid and Prefer examples built from the draft components, not a screenshot of an affected product screen.",
+  "classification": {
+    "status": "proposed",
+    "kind": "guidance-gap",
+    "rationale": "P05 and P10 state the intent but no rule covers tooltip behaviour, the three information levels, text reduction, where content lives, or consequences in confirmations. Any unseen application can repeat permanent explanatory paragraphs. Suggested only; the owner confirms.",
+    "proposedBy": "claude-agent"
+  },
+  "relatedPrinciples": [
+    "P05",
+    "P10",
+    "P17",
+    "P21"
+  ],
+  "relatedAntiPatterns": [
+    "AP-010",
+    "AP-016"
+  ],
+  "status": "proposal-drafted",
+  "proposal": "PR-0005"
+}
