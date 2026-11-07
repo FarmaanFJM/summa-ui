@@ -1,0 +1,82 @@
+{
+  "id": "PR-0005",
+  "title": "TOP: show only the information the user needs at the moment they need it",
+  "issues": [
+    "FB-0058"
+  ],
+  "kind": "new-principle",
+  "status": "draft",
+  "authoredBy": "claude-agent",
+  "authoredAt": "2026-11-07T08:05:13Z",
+  "summary": "Add the TOP discipline (show only the information the user needs at the moment they need it) as six candidate rules P32 to P37: show only what is needed now, deliberate tooltips, three information levels, short status text, consequences in the confirmation, and accessibility of minimal interfaces. It generalizes: any application tends to add permanent explanatory paragraphs, tooltips that carry essential facts and stacked actions. Shipped additively outside guidance/: docs/TOP.md and the reusable components in src/ui/top.tsx with a lab page 'Information density'. Open for the owner: new principle versus a revision of P05 and P10 (see conflicts-and-decisions.md). Not an approval.",
+  "change": {
+    "files": [
+      "PRINCIPLES.md (candidate text only: feedback/proposals/PR-0005/candidate/principles.md)",
+      "guidance/principles.json (candidate entries: feedback/proposals/PR-0005/candidate/principles.json)",
+      "docs/TOP.md (new, outside guidance/)",
+      "src/ui/top.tsx, src/styles/top.css (new components, additive)",
+      "src/presets/Confirm.tsx (optional target and consequences props)",
+      "src/lab/guidance/Density.tsx (lab page Information density)",
+      "docs/DECISIONS.md (owner only: see feedback/proposals/PR-0005/conflicts-and-decisions.md)"
+    ],
+    "principleIds": [
+      "P05",
+      "P10",
+      "P13",
+      "P14",
+      "P17",
+      "P19",
+      "P21",
+      "P22"
+    ],
+    "antiPatternIds": [
+      "AP-010",
+      "AP-016"
+    ],
+    "checkIds": [],
+    "presetIds": []
+  },
+  "examples": {
+    "negative": [
+      {
+        "description": "A repository row with a permanent paragraph and six visible buttons (lab page, Avoid column).",
+        "screenshot": "feedback/proposals/PR-0005/screenshots/information-density-1440.png"
+      },
+      {
+        "description": "A button with a permanent instruction paragraph under it.",
+        "snippet": "<Button>Sync with Remote</Button>\n<p>Pressing this button will fetch the latest commits ...</p>"
+      },
+      {
+        "description": "A destructive consequence only in a tooltip.",
+        "snippet": "<Tooltip content=\"Deletes the folder\"><Button variant=\"danger\">Delete</Button></Tooltip>"
+      }
+    ],
+    "positive": [
+      {
+        "description": "A compact row: name, status word, primary action and an overflow menu (lab page, Prefer column).",
+        "screenshot": "feedback/proposals/PR-0005/screenshots/information-density-1440.png"
+      },
+      {
+        "description": "Consequences in the confirmation, with the exact target in monospace.",
+        "snippet": "<ConfirmDialog destructive title=\"Delete local repository?\" target=\"C:\\\\Projects\\\\Example\" consequences={['Moves the folder to the Recycle Bin']} confirmLabel=\"Delete repository\" />"
+      },
+      {
+        "description": "A one sentence tooltip that does not repeat the label.",
+        "snippet": "<Tooltip content=\"Fetches, merges, then pushes this branch.\"><IconButton icon=\"info\" label=\"About sync\" /></Tooltip>"
+      }
+    ]
+  },
+  "validation": {
+    "result": "no-regressions",
+    "regressionReport": "feedback/proposals/PR-0005/regression.json",
+    "baseline": "feedback/baselines/guidance-v0.1.0.json",
+    "ranAt": "2026-11-07T08:18:52Z",
+    "notes": "npm run regression --with-tap --with-layout over the 12 approved references at 1440 and 390: no-regressions, tap pass, desktop layout unchanged. guidance/ and PRINCIPLES.md have no diff, so no check outcome can change. Also passing: tsc, vite build, npm run validate, test:browser (84/84), test:tap (0 undersized). Not an approval."
+  },
+  "versionImpact": "minor",
+  "existingApplications": {
+    "policy": "unchanged-until-owner-updates"
+  },
+  "ownerDecision": null,
+  "releasedIn": null
+}

@@ -383,3 +383,5 @@ export function useHotkey(combo: string, fn: (e: KeyboardEvent) => void, deps: u
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, deps)
 }
+
+export * from './top'

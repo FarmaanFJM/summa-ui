@@ -2,11 +2,12 @@ import type { ReactNode } from 'react'
 import { Icon, Tabs } from '../../ui'
 import './guidance.css'
 
-export type GuidanceTab = 'antipatterns' | 'icons' | 'presets' | 'principles'
+export type GuidanceTab = 'antipatterns' | 'icons' | 'presets' | 'density' | 'principles'
 const ITEMS: { value: GuidanceTab; label: string }[] = [
   { value: 'antipatterns', label: 'Anti-patterns' },
   { value: 'icons', label: 'Icons' },
   { value: 'presets', label: 'Presets' },
+  { value: 'density', label: 'Information density' },
   { value: 'principles', label: 'Principles' },
 ]
 

@@ -3,6 +3,7 @@ import { createRoot } from 'react-dom/client'
 import './styles/tokens.css'
 import './styles/base.css'
 import './styles/workspace.css'
+import './styles/top.css'
 import { PROTOTYPES } from './registry'
 import Lab from './lab/Lab'
 import Principles from './lab/Principles'
@@ -14,6 +15,7 @@ const GUIDANCE = {
   antipatterns: lazy(() => import('./lab/guidance/AntiPatterns')),
   icons: lazy(() => import('./lab/guidance/Icons')),
   presets: lazy(() => import('./lab/guidance/Presets')),
+  density: lazy(() => import('./lab/guidance/Density')),
 } as const
 
 function useRoute() {

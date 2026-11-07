@@ -41,5 +41,6 @@ Standalone routes render the app alone, with no laboratory chrome.
 ## Guidance releases and feedback
 - Release records: `docs/releases/` (current: `guidance-v0.1.0`, approved by the owner, tag `guidance-v0.1.0`). Procedure and immutability: `docs/RELEASING.md`.
 - Consuming from another repository (for example Summa): `docs/SUMMA_INTEGRATION.md`, vendored and digest pinned.
+- Information density (TOP: show only what the user needs when they need it): `docs/TOP.md`, components in `src/ui/top.tsx`, lab page `#/guidance/density`. Draft convention, proposal `feedback/proposals/PR-0005`.
 - Design feedback loop: `docs/FEEDBACK_WORKFLOW.md`, records in `feedback/`.
 - `npm run validate`, `npm run test:browser`, `npm run test:tap`, `npm run regression`, `npm run verify:release -- <tag>`.
