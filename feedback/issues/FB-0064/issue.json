@@ -1,0 +1,24 @@
+{
+  "id": "FB-0064",
+  "createdAt": "2026-11-07T23:54:02Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Segmented control: per-surface centring patches (U31)",
+  "screenshots": [
+    {
+      "file": "m6-after.png"
+    }
+  ],
+  "explanation": "The shared segmented control left labels at the start of a stretched button, and three surfaces (Lichess lobby, Settings page, board settings tabs) each patched it with their own justify-content override. The defect is the primitive's: fix it there and delete the copies. Screenshot: the board settings tabs after the fix (labels centred; gaps measured equal, 75 px each side). CaissaTrainer doctrine U31. Recorded by an agent; classification is a suggestion for the owner.",
+  "classification": {
+    "status": "unclassified",
+    "kind": null
+  },
+  "relatedPrinciples": [],
+  "relatedAntiPatterns": [],
+  "status": "open",
+  "proposal": null
+}

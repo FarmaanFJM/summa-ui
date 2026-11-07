@@ -1,0 +1,24 @@
+{
+  "id": "FB-0065",
+  "createdAt": "2026-11-07T23:54:02Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Board settings: control hidden where it is used (U32)",
+  "screenshots": [
+    {
+      "file": "m6-after.png"
+    }
+  ],
+  "explanation": "The RGB colour field was shown for the Static mode only because Static was the first mode to use it; Immersive fills the room with the same colour and lost its control. A control follows the state that uses its value, not the mode that introduced it. Screenshot: the same panel for context; the 2D build has no Environment tab, so the Immersive state itself is covered by a unit test in CaissaTrainer (boardSettingsPanel.test.ts). CaissaTrainer doctrine U32. Recorded by an agent; classification is a suggestion for the owner.",
+  "classification": {
+    "status": "unclassified",
+    "kind": null
+  },
+  "relatedPrinciples": [],
+  "relatedAntiPatterns": [],
+  "status": "open",
+  "proposal": null
+}
