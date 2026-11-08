@@ -3,8 +3,9 @@
 import { readFileSync, readdirSync, existsSync } from 'node:fs'
 import { join } from 'node:path'
 import { validate } from './lib/mini-schema.mjs'
+import { repoRoot } from './lib/repo-root.mjs'
 
-const root = new URL('..', import.meta.url).pathname
+const root = repoRoot(import.meta.url)
 const json = p => JSON.parse(readFileSync(p, 'utf8'))
 const errors = []
 const err = m => errors.push(m)

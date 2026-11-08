@@ -6,8 +6,9 @@ import { readFileSync, writeFileSync, mkdirSync, rmSync, existsSync } from 'node
 import { createHash } from 'node:crypto'
 import { join, dirname, resolve } from 'node:path'
 import { execSync } from 'node:child_process'
+import { repoRoot } from './lib/repo-root.mjs'
 
-const root = new URL('..', import.meta.url).pathname
+const root = repoRoot(import.meta.url)
 const src = join(root, 'guidance')
 const args = process.argv.slice(2)
 const opt = n => { const i = args.indexOf(`--${n}`); return i >= 0 ? args[i + 1] : undefined }

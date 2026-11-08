@@ -5,8 +5,9 @@ import { readFileSync, readdirSync, existsSync, statSync } from 'node:fs'
 import { createHash } from 'node:crypto'
 import { join, relative } from 'node:path'
 import { validate } from './lib/mini-schema.mjs'
+import { repoRoot } from './lib/repo-root.mjs'
 
-const root = new URL('..', import.meta.url).pathname
+const root = repoRoot(import.meta.url)
 const G = join(root, 'guidance')
 const read = p => readFileSync(p, 'utf8')
 const json = p => JSON.parse(read(p))
