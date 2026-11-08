@@ -6,8 +6,9 @@
 import { spawn, spawnSync } from 'node:child_process'
 import { readFileSync, writeFileSync, existsSync } from 'node:fs'
 import { join } from 'node:path'
+import { repoRoot } from './lib/repo-root.mjs'
 
-const root = new URL('..', import.meta.url).pathname
+const root = repoRoot(import.meta.url)
 const args = process.argv.slice(2)
 const opt = (n, d) => { const i = args.indexOf(`--${n}`); return i >= 0 ? args[i + 1] : d }
 const registry = JSON.parse(readFileSync(join(root, 'feedback/applications.json'), 'utf8')).applications.filter(a => a.status !== 'retired' && a.regression !== false)

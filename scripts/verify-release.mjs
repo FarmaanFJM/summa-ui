@@ -5,8 +5,9 @@
 // Usage: node scripts/verify-release.mjs guidance-v0.1.0 [--expect-digest <sha256>] [--expect-commit <sha>]
 import { execFileSync } from 'node:child_process'
 import { createHash } from 'node:crypto'
+import { repoRoot } from './lib/repo-root.mjs'
 
-const root = new URL('..', import.meta.url).pathname
+const root = repoRoot(import.meta.url)
 const tag = process.argv[2]
 const opt = n => { const i = process.argv.indexOf(`--${n}`); return i >= 0 ? process.argv[i + 1] : undefined }
 if (!tag) { console.error('usage: verify-release.mjs <tag> [--expect-digest sha] [--expect-commit sha]'); process.exit(2) }

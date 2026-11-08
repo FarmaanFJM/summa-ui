@@ -6,8 +6,9 @@
 //   node scripts/feedback.mjs propose FB-0001 --title "<title>" --kind <proposal kind> --impact patch|minor|major --by <name>
 import { readFileSync, writeFileSync, mkdirSync, copyFileSync, existsSync, readdirSync } from 'node:fs'
 import { basename, join } from 'node:path'
+import { repoRoot } from './lib/repo-root.mjs'
 
-const root = new URL('..', import.meta.url).pathname
+const root = repoRoot(import.meta.url)
 const args = process.argv.slice(2)
 const cmd = args[0]
 const all = n => args.flatMap((a, i) => (a === `--${n}` ? [args[i + 1]] : []))
