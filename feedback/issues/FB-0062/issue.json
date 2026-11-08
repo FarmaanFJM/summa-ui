@@ -1,0 +1,24 @@
+{
+  "id": "FB-0062",
+  "createdAt": "2026-11-07T23:52:47Z",
+  "reportedBy": "claude-agent",
+  "application": {
+    "id": "caissatrainer"
+  },
+  "guidanceVersion": "0.1.0",
+  "component": "Lobby: unnecessary configuration hierarchy (U29)",
+  "screenshots": [
+    {
+      "file": "computer-setup-1440.png"
+    }
+  ],
+  "explanation": "Three ordinary settings (takebacks, time odds, friendly arbiter) were behind More options. A short set of ordinary settings with room is shown as compact fields; disclosure is for many, rare or expert settings. Evidence: CaissaTrainer docs/ui/figma-revamp/after/computer-setup-1440.png, an earlier iteration of the Play setup page that still shows the problem (Level 4 repeated over the preview, Opponent and You seats before the colour is decided, each setting with its own heading). The rule text is CaissaTrainer doctrine U3, U7, U28, U29 and U30 (docs/ui/doctrine.md section 3.1). Recorded by an agent; the classification is a suggestion for the owner.",
+  "classification": {
+    "status": "unclassified",
+    "kind": null
+  },
+  "relatedPrinciples": [],
+  "relatedAntiPatterns": [],
+  "status": "open",
+  "proposal": null
+}
